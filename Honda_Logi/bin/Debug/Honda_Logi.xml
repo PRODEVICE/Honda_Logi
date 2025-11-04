@@ -1,0 +1,456 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Honda_Logi
+</name>
+</assembly>
+<members>
+<member name="T:Honda_Logi.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Honda_Logi.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Honda_Logi.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_BoltDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Gaisou_BoxDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Gaisou_DanboruDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Housou_KbnDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Kosou_ShizaiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_KubunDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_MitsumoriDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Naisou_ShizaiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_RateDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_TankaDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_BoltRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Gaisou_BoxRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Gaisou_DanboruRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Housou_KbnRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Kosou_ShizaiRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_KubunRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_MitsumoriRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Naisou_ShizaiRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_RateRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_TankaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_BoltRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Gaisou_BoxRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Gaisou_DanboruRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Housou_KbnRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Kosou_ShizaiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_KubunRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_MitsumoriRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_Naisou_ShizaiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_RateRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_TankaRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Bolt">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Buhin_Order_List">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Gaisou_Box">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Gaisou_Danboru">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Housou_Kbn">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Kosou_Shizai">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Kubun">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Mitsumori">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Naisou_Shizai">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Rate">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Tanka">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_MTableAdapters.TableAdapterManager.UpdateUpdatedRows(Honda_Logi.DS_M,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_MTableAdapters.TableAdapterManager.UpdateInsertedRows(Honda_Logi.DS_M,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_MTableAdapters.TableAdapterManager.UpdateDeletedRows(Honda_Logi.DS_M,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_MTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_MTableAdapters.TableAdapterManager.UpdateAll(Honda_Logi.DS_M)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_ERR_LOGDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCCDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_Gyomu_PlanDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_KOW46DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_KIT60DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_ERR_LOGRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCCRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_Gyomu_PlanRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_KOW46Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_KIT60Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_ERR_LOGRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCCRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_Gyomu_PlanRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_KOW46RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_KIT60RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_ERR_LOG">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC_Lot">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.DT_T_Gyomu_PlanTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.DT_T_KOW46TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.DT_T_KIT60TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_TTableAdapters.TableAdapterManager.UpdateUpdatedRows(Honda_Logi.DS_T,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_TTableAdapters.TableAdapterManager.UpdateInsertedRows(Honda_Logi.DS_T,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_TTableAdapters.TableAdapterManager.UpdateDeletedRows(Honda_Logi.DS_T,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_TTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_TTableAdapters.TableAdapterManager.UpdateAll(Honda_Logi.DS_T)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+</members>
+</doc>

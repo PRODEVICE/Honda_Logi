@@ -1,0 +1,854 @@
+﻿Imports System.IO
+Imports System.Configuration
+Imports System.Text
+Imports System.Data.SqlClient
+Imports ClosedXML.Excel
+
+Public Class F_Receive
+
+    'ページロード時
+    Private Sub F_Receive_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'TODO: このコード行はデータを 'DS_M.DT_M_Kubun' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+        Me.TA_M_Kubun.Fill(Me.DS_M.DT_M_Kubun)
+
+        'CCCのファイルパスを初期セット
+        Txt_File_Path.Text = My.Settings.CCC_Path
+
+        Dtp_Nengetu.Format = DateTimePickerFormat.Custom
+        Dtp_Nengetu.CustomFormat = "yyyy年MM月"
+
+    End Sub
+
+    '**********************************************************************************
+    'ボタンクリック時
+    '**********************************************************************************
+
+    '参照ボタンクリック時
+    Private Sub Btn_Sanshou_Click(sender As Object, e As EventArgs) Handles Btn_Sanshou.Click
+
+        Try
+
+            Using ofd As New OpenFileDialog()
+
+                'ダイアログのタイトル
+                ofd.Title = "ファイルを指定してください"
+
+                '初期フォルダ（テキストボックスにパスがある場合はそこを開く）
+                If System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(Txt_File_Path.Text)) Then
+                    ofd.InitialDirectory = System.IO.Path.GetDirectoryName(Txt_File_Path.Text)
+                Else
+                    ofd.InitialDirectory = "C:\"
+                End If
+
+                '選択できるファイルの種類（必要に応じて調整）
+                ofd.Filter = "すべてのファイル (*.*)|*.*"
+
+                '複数選択を許可する場合
+                ofd.Multiselect = False
+
+                'OKが押されたらファイルパスをテキストボックスに表示
+                If ofd.ShowDialog(Me) = DialogResult.OK Then
+                    Txt_File_Path.Text = ofd.FileName
+                End If
+
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
+    '取込ボタンクリック時
+    Private Sub Btn_Receive_Click(sender As Object, e As EventArgs) Handles Btn_Receive.Click
+
+        Try
+
+            Dim nengetu As String = Dtp_Nengetu.Value.Year.ToString & "/" & Dtp_Nengetu.Value.Month.ToString.PadLeft(2, "0")
+
+
+            '選択されたファイル種類によって処理分岐
+            If Cmb_Shurui.SelectedValue = "1" Then 'CCC
+
+                My.Settings.CCC_Path = Txt_File_Path.Text.Trim
+                Inport_CCC(My.Settings.CCC_Path, nengetu)
+
+            ElseIf Cmb_Shurui.SelectedValue = "2" Then 'KOW46
+
+                My.Settings.KOW46_Path = Txt_File_Path.Text.Trim
+                Inport_KOW46(My.Settings.KOW46_Path, nengetu)
+
+            ElseIf Cmb_Shurui.SelectedValue = "3" Then 'KIT60
+
+                My.Settings.KIT60_Path = Txt_File_Path.Text.Trim
+                Inport_KIT60(My.Settings.KIT60_Path, nengetu)
+
+            ElseIf Cmb_Shurui.SelectedValue = "4" Then '業務量
+
+                My.Settings.Gyoumu_Path = Txt_File_Path.Text.Trim
+                Inport_Gyoumu(My.Settings.Gyoumu_Path, nengetu)
+            End If
+
+
+            MessageBox.Show("取り込み完了しました。")
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
+    '**********************************************************************************
+    'その他コントロール系イベント
+    '**********************************************************************************
+
+    '取込対象が変更されたとき
+    Private Sub Cmb_Shurui_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmb_Shurui.SelectedIndexChanged
+
+        Try
+
+            '各ファイルごとに保存されているファイルパスを表示
+            If Cmb_Shurui.SelectedValue = "1" Then 'CCC
+
+                Txt_File_Path.Text = My.Settings.CCC_Path
+
+            ElseIf Cmb_Shurui.SelectedValue = "2" Then 'KOW46
+
+                Txt_File_Path.Text = My.Settings.KOW46_Path
+
+            ElseIf Cmb_Shurui.SelectedValue = "3" Then 'KIT60
+
+                Txt_File_Path.Text = My.Settings.KIT60_Path
+
+            ElseIf Cmb_Shurui.SelectedValue = "4" Then '業務量
+
+                Txt_File_Path.Text = My.Settings.Gyoumu_Path
+
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
+
+    '**********************************************************************************
+    '関数
+    '**********************************************************************************
+
+    'CCCファイル取り込み処理
+    Sub Inport_CCC(_file_path As String, _nengetu As String)
+
+        Try
+
+            Dim dt_ccc As New DS_T.DT_T_CCCDataTable
+            Dim batchSize As Integer = 5000
+            Dim batchCount As Integer = 0
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+            Using conn As New SqlConnection(connectionString)
+
+                conn.Open()
+
+
+
+                Using tran As SqlTransaction = conn.BeginTransaction()
+
+                    Try
+
+                        '同一年月のデータがあるかチェック
+
+                        '確認ダイアログ表示
+
+                        '削除ならDelete処理
+
+
+
+
+                        Using bulk As New SqlBulkCopy(conn, SqlBulkCopyOptions.Default, tran)
+
+                            bulk.DestinationTableName = "T_CCC"
+                            bulk.BatchSize = batchSize
+
+                            Dim dtBatch As DataTable = dt_ccc.Clone()
+
+                            For Each line As String In File.ReadLines(_file_path, Encoding.Default)
+
+                                If String.IsNullOrWhiteSpace(line) Then
+                                    Continue For
+                                End If
+
+                                Dim dr As DataRow = dtBatch.NewRow()
+                                dr("工程管理ｼｽﾃﾑ日付") = NormalizeString(Mid(line, 1, 8))
+                                dr("処理ID") = NormalizeString(Mid(line, 9, 3))
+                                dr("包装指示1") = NormalizeString(Mid(line, 12, 1))
+                                dr("コンテンツ1") = NormalizeString(Mid(line, 13, 1))
+                                dr("パッケージコンテンツ1") = NormalizeString(Mid(line, 14, 1))
+                                dr("パッキングチェックシート1") = NormalizeString(Mid(line, 15, 1))
+                                dr("ケースマーク1") = NormalizeString(Mid(line, 16, 1))
+                                dr("部品管理エフ1") = NormalizeString(Mid(line, 17, 1))
+                                dr("包装指示2") = NormalizeString(Mid(line, 18, 4))
+                                dr("コンテンツ2") = NormalizeString(Mid(line, 22, 5))
+                                dr("パッケージコンテンツ2") = NormalizeString(Mid(line, 27, 4))
+                                dr("パッキングチェックシート2") = NormalizeString(Mid(line, 31, 4))
+                                dr("ケースマーク2") = NormalizeString(Mid(line, 35, 4))
+                                dr("部品管理エフ2") = NormalizeString(Mid(line, 39, 4))
+                                dr("包装指示3") = NormalizeString(Mid(line, 43, 1))
+                                dr("コンテンツ3") = NormalizeString(Mid(line, 44, 1))
+                                dr("パッケージコンテンツ3") = NormalizeString(Mid(line, 45, 1))
+                                dr("パッキングチェックシート3") = NormalizeString(Mid(line, 46, 1))
+                                dr("ケースマーク3") = NormalizeString(Mid(line, 47, 1))
+                                dr("部品管理エフ3") = NormalizeString(Mid(line, 48, 1))
+                                dr("包装指示4") = NormalizeString(Mid(line, 49, 1))
+                                dr("コンテンツ4") = NormalizeString(Mid(line, 50, 1))
+                                dr("パッケージコンテンツ4") = NormalizeString(Mid(line, 51, 1))
+                                dr("パッキングチェックシート4") = NormalizeString(Mid(line, 52, 1))
+                                dr("ケースマーク4") = NormalizeString(Mid(line, 53, 1))
+                                dr("部品管理エフ4") = NormalizeString(Mid(line, 54, 1))
+                                dr("予約1") = NormalizeString(Mid(line, 55, 1))
+                                dr("予約2") = NormalizeString(Mid(line, 56, 1))
+                                dr("予約3") = NormalizeString(Mid(line, 57, 1))
+                                dr("予約4") = NormalizeString(Mid(line, 58, 1))
+                                dr("予約5") = NormalizeString(Mid(line, 59, 1))
+                                dr("アイテムNO表示") = NormalizeString(Mid(line, 60, 1))
+                                dr("KD部番表示区分") = NormalizeString(Mid(line, 61, 1))
+                                dr("C_M重量表示要否") = NormalizeString(Mid(line, 62, 1))
+                                dr("A_Sフォーマット") = NormalizeString(Mid(line, 63, 1))
+                                dr("A_S日本表示形式") = NormalizeString(Mid(line, 64, 1))
+                                dr("A_S現地表示形式") = NormalizeString(Mid(line, 65, 1))
+                                dr("A_S輸出部品名称") = NormalizeString(Mid(line, 66, 1))
+                                dr("P_ﾘｽﾄ2ND記述") = NormalizeString(Mid(line, 67, 1))
+                                dr("包装資材表示要否") = NormalizeString(Mid(line, 68, 1))
+                                dr("オプション表示区分") = NormalizeString(Mid(line, 69, 1))
+                                dr("機種コード表示区分") = NormalizeString(Mid(line, 70, 1))
+                                dr("予約6") = NormalizeString(Mid(line, 71, 1))
+                                dr("原産国表示要否") = NormalizeString(Mid(line, 72, 1))
+                                dr("対応要否_10_2") = NormalizeString(Mid(line, 73, 1))
+                                dr("対応要否_5品目") = NormalizeString(Mid(line, 74, 1))
+                                dr("包装SS") = NormalizeString(Mid(line, 75, 1))
+                                dr("汎区分24") = NormalizeString(Mid(line, 76, 1))
+                                dr("PC_NO") = NormalizeString(Mid(line, 77, 11))
+                                dr("ｺﾝﾄﾛｰﾙNO") = NormalizeString(Mid(line, 88, 4))
+                                dr("年度1") = NormalizeString(Mid(line, 92, 1))
+                                dr("モデル1") = NormalizeString(Mid(line, 93, 3))
+                                dr("モデフNO") = NormalizeString(Mid(line, 96, 4))
+                                dr("ケースNO1") = NormalizeString(Mid(line, 100, 5))
+                                dr("レコードID") = NormalizeString(Mid(line, 105, 1))
+                                dr("バッチ処理エラーコード") = NormalizeString(Mid(line, 106, 2))
+                                dr("量産_枠外区分") = NormalizeString(Mid(line, 108, 1))
+                                dr("インボイスNO") = NormalizeString(Mid(line, 109, 12))
+                                dr("代表DIST") = NormalizeString(Mid(line, 121, 3))
+                                dr("部品群") = NormalizeString(Mid(line, 124, 3))
+                                dr("包装ロットNO") = NormalizeString(Mid(line, 127, 10))
+                                dr("包装ロット連番") = NormalizeString(Mid(line, 137, 2))
+                                dr("現地工場コード") = NormalizeString(Mid(line, 139, 1))
+                                dr("現地ラインNO1") = NormalizeString(Mid(line, 140, 1))
+                                dr("年1") = NormalizeString(Mid(line, 141, 4))
+                                dr("月1") = NormalizeString(Mid(line, 145, 2))
+                                dr("連番1") = NormalizeString(Mid(line, 147, 4))
+                                dr("サフィックス") = NormalizeString(Mid(line, 151, 2))
+                                dr("K_Y_KD1") = NormalizeString(Mid(line, 153, 1))
+                                dr("年度2") = NormalizeString(Mid(line, 154, 1))
+                                dr("モデル2") = NormalizeString(Mid(line, 155, 3))
+                                dr("タイプ1") = NormalizeString(Mid(line, 158, 3))
+                                dr("オプション1") = NormalizeString(Mid(line, 161, 3))
+                                dr("外装HES1") = NormalizeString(Mid(line, 164, 4))
+                                dr("内装タイプ1") = NormalizeString(Mid(line, 168, 8))
+                                dr("K_Y_KD2") = NormalizeString(Mid(line, 176, 1))
+                                dr("年度3") = NormalizeString(Mid(line, 177, 1))
+                                dr("モデル3") = NormalizeString(Mid(line, 178, 3))
+                                dr("タイプ2") = NormalizeString(Mid(line, 181, 3))
+                                dr("群") = NormalizeString(Mid(line, 184, 3))
+                                dr("外装HES2") = NormalizeString(Mid(line, 187, 4))
+                                dr("内装タイプ2") = NormalizeString(Mid(line, 191, 8))
+                                dr("K_Y_KD3") = NormalizeString(Mid(line, 199, 1))
+                                dr("年度4") = NormalizeString(Mid(line, 200, 1))
+                                dr("モデル4") = NormalizeString(Mid(line, 201, 3))
+                                dr("タイプ3") = NormalizeString(Mid(line, 204, 3))
+                                dr("オプション2") = NormalizeString(Mid(line, 207, 3))
+                                dr("外装HES3") = NormalizeString(Mid(line, 210, 4))
+                                dr("内装タイプ3") = NormalizeString(Mid(line, 214, 8))
+                                dr("MIX区分") = NormalizeString(Mid(line, 222, 1))
+                                dr("代表区分1") = NormalizeString(Mid(line, 223, 1))
+                                dr("包装仕様有無区分") = NormalizeString(Mid(line, 224, 1))
+                                dr("包装場") = NormalizeString(Mid(line, 225, 4))
+                                dr("オーダー区分") = NormalizeString(Mid(line, 229, 1))
+                                dr("オーダー経歴NO") = NormalizeString(Mid(line, 230, 3))
+                                dr("配送先DIST") = NormalizeString(Mid(line, 233, 3))
+                                dr("オーダー元プラント") = NormalizeString(Mid(line, 236, 1))
+                                dr("現地ラインNO2") = NormalizeString(Mid(line, 237, 1))
+                                dr("モデル年度") = NormalizeString(Mid(line, 238, 2))
+                                dr("オーダー理由コード") = NormalizeString(Mid(line, 240, 1))
+                                dr("オーダー年月日SEQ") = NormalizeString(Mid(line, 241, 11))
+                                dr("シップメントNO") = NormalizeString(Mid(line, 252, 2))
+                                dr("基本生産計画区分") = NormalizeString(Mid(line, 254, 1))
+                                dr("計画年月") = NormalizeString(Mid(line, 255, 6))
+                                dr("計画改訂NO") = NormalizeString(Mid(line, 261, 2))
+                                dr("計画コード") = NormalizeString(Mid(line, 263, 6))
+                                dr("包装予定日") = NormalizeString(Mid(line, 269, 8))
+                                dr("計画確定区分") = NormalizeString(Mid(line, 277, 1))
+                                dr("SS") = NormalizeString(Mid(line, 278, 1))
+                                dr("本社製品区分") = NormalizeString(Mid(line, 279, 1))
+                                dr("年2") = NormalizeString(Mid(line, 280, 4))
+                                dr("月2") = NormalizeString(Mid(line, 284, 2))
+                                dr("連番2") = NormalizeString(Mid(line, 286, 2))
+                                dr("包装数量") = NormalizeString(Mid(line, 288, 7))
+                                dr("個装ライン") = NormalizeString(Mid(line, 295, 2))
+                                dr("内装ライン") = NormalizeString(Mid(line, 297, 6))
+                                dr("包装ライン_外装") = NormalizeString(Mid(line, 303, 2))
+                                dr("ケース順位") = NormalizeString(Mid(line, 306, 13))
+                                dr("包装ロット台数") = NormalizeString(Mid(line, 319, 7))
+                                dr("ケース保税区分") = NormalizeString(Mid(line, 326, 1))
+                                dr("ケースグロスL") = NormalizeString(Mid(line, 327, 5))
+                                dr("ケースグロスW") = NormalizeString(Mid(line, 332, 5))
+                                dr("ケースグロスH") = NormalizeString(Mid(line, 337, 5))
+                                dr("ケースグロス容量M3") = NormalizeString(Mid(line, 342, 9))
+                                dr("ケースネットL") = NormalizeString(Mid(line, 351, 5))
+                                dr("ケースネットW") = NormalizeString(Mid(line, 356, 5))
+                                dr("ケースネットH") = NormalizeString(Mid(line, 361, 5))
+                                dr("ケースネット容量M3") = NormalizeString(Mid(line, 366, 9))
+                                dr("ケースネット重量") = NormalizeString(Mid(line, 375, 10))
+                                dr("ケース重量計画値") = NormalizeString(Mid(line, 385, 8))
+                                dr("ケース実績重量") = NormalizeString(Mid(line, 393, 9))
+                                dr("ケース重量測定要求") = NormalizeString(Mid(line, 402, 1))
+                                dr("初物部品ケースサイン") = NormalizeString(Mid(line, 403, 1))
+                                dr("エンジンASSYサイン") = NormalizeString(Mid(line, 404, 1))
+                                dr("K_Y_KD4") = NormalizeString(Mid(line, 405, 1))
+                                dr("年度5") = NormalizeString(Mid(line, 406, 1))
+                                dr("モデル5") = NormalizeString(Mid(line, 407, 3))
+                                dr("タイプ4") = NormalizeString(Mid(line, 410, 3))
+                                dr("オプション3") = NormalizeString(Mid(line, 413, 3))
+                                dr("外装HES4") = NormalizeString(Mid(line, 416, 4))
+                                dr("内装タイプ4") = NormalizeString(Mid(line, 420, 8))
+                                dr("エンジン入り数") = NormalizeString(Mid(line, 428, 3))
+                                dr("パッキングNO") = NormalizeString(Mid(line, 431, 3))
+                                dr("FILLER1") = NormalizeString(Mid(line, 434, 2))
+                                dr("オーダーアイテムNO") = NormalizeString(Mid(line, 436, 5))
+                                dr("ITEM") = NormalizeString(Mid(line, 441, 5))
+                                dr("基本部番") = NormalizeString(Mid(line, 446, 15))
+                                dr("設変部番") = NormalizeString(Mid(line, 461, 15))
+                                dr("KD部番") = NormalizeString(Mid(line, 476, 9))
+                                dr("部品色") = NormalizeString(Mid(line, 485, 11))
+                                dr("輸出部品名称") = NormalizeString(Mid(line, 496, 95))
+                                dr("第二外国語名称") = ""
+                                dr("主管SS") = ""
+                                dr("現地ロケーションNO") = ""
+                                dr("部品単位重量") = NormalizeString(Mid(line, 591, 9))
+                                dr("個装資材記号") = NormalizeString(Mid(line, 600, 5))
+                                dr("個装手順SEQ") = NormalizeString(Mid(line, 605, 4))
+                                dr("部品収容数") = NormalizeString(Mid(line, 609, 6))
+                                dr("個装担当NO") = NormalizeString(Mid(line, 615, 7))
+                                dr("内装資材記号") = NormalizeString(Mid(line, 622, 5))
+                                dr("内装手順SEQ") = NormalizeString(Mid(line, 627, 3))
+                                dr("内装NO") = NormalizeString(Mid(line, 630, 2))
+                                dr("個装入り数") = NormalizeString(Mid(line, 632, 7))
+                                dr("内装担当NO") = NormalizeString(Mid(line, 639, 7))
+                                dr("外装資材記号") = NormalizeString(Mid(line, 646, 5))
+                                dr("モジュール手順SEQ") = NormalizeString(Mid(line, 651, 3))
+                                dr("内装入り数") = NormalizeString(Mid(line, 654, 7))
+                                dr("外装担当NO1") = NormalizeString(Mid(line, 661, 7))
+                                dr("外装担当NO2") = NormalizeString(Mid(line, 668, 7))
+                                dr("台当り使用個数") = NormalizeString(Mid(line, 675, 5))
+                                dr("包装指示数") = NormalizeString(Mid(line, 680, 5))
+                                dr("ケース個内装荷姿必要") = NormalizeString(Mid(line, 685, 3))
+                                dr("コンテンツ必要枚数") = NormalizeString(Mid(line, 688, 3))
+                                dr("要否区分") = NormalizeString(Mid(line, 691, 1))
+                                dr("品質チェック要否") = NormalizeString(Mid(line, 692, 1))
+                                dr("取引先NO") = NormalizeString(Mid(line, 693, 3))
+                                dr("搬入ホーム") = NormalizeString(Mid(line, 697, 6))
+                                dr("海事専用機種名称") = NormalizeString(Mid(line, 703, 14))
+                                dr("包装特性1") = NormalizeString(Mid(line, 717, 7))
+                                dr("包装特性2") = NormalizeString(Mid(line, 724, 1))
+                                dr("包装特性3") = NormalizeString(Mid(line, 725, 1))
+                                dr("包装特性4") = NormalizeString(Mid(line, 726, 1))
+                                dr("包装特性5") = NormalizeString(Mid(line, 727, 1))
+                                dr("FILLER2") = NormalizeString(Mid(line, 728, 1))
+                                dr("部品包装特性1") = NormalizeString(Mid(line, 729, 2))
+                                dr("部品包装特性2") = NormalizeString(Mid(line, 731, 2))
+                                dr("部品包装特性3") = NormalizeString(Mid(line, 733, 2))
+                                dr("部品包装特性4") = NormalizeString(Mid(line, 735, 2))
+                                dr("部品包装特性5") = NormalizeString(Mid(line, 737, 2))
+                                dr("内装総重量") = NormalizeString(Mid(line, 739, 9))
+                                dr("代表区分2") = NormalizeString(Mid(line, 748, 1))
+                                dr("副資材1") = NormalizeString(Mid(line, 749, 5))
+                                dr("必要数1") = NormalizeString(Mid(line, 754, 3))
+                                dr("代表区分3") = NormalizeString(Mid(line, 757, 1))
+                                dr("副資材2") = NormalizeString(Mid(line, 758, 5))
+                                dr("必要数2") = NormalizeString(Mid(line, 763, 3))
+                                dr("代表区分4") = NormalizeString(Mid(line, 766, 1))
+                                dr("副資材3") = NormalizeString(Mid(line, 767, 5))
+                                dr("必要数3") = NormalizeString(Mid(line, 772, 3))
+                                dr("代表区分5") = NormalizeString(Mid(line, 775, 1))
+                                dr("副資材4") = NormalizeString(Mid(line, 776, 5))
+                                dr("必要数4") = NormalizeString(Mid(line, 781, 3))
+                                dr("代表区分6") = NormalizeString(Mid(line, 784, 1))
+                                dr("副資材5") = NormalizeString(Mid(line, 785, 5))
+                                dr("必要数5") = NormalizeString(Mid(line, 790, 3))
+                                dr("代表区分7") = NormalizeString(Mid(line, 793, 1))
+                                dr("副資材6") = NormalizeString(Mid(line, 794, 5))
+                                dr("必要数6") = NormalizeString(Mid(line, 799, 3))
+                                dr("代表区分8") = NormalizeString(Mid(line, 802, 1))
+                                dr("副資材7") = NormalizeString(Mid(line, 803, 5))
+                                dr("必要数7") = NormalizeString(Mid(line, 808, 3))
+                                dr("代表区分9") = NormalizeString(Mid(line, 811, 1))
+                                dr("副資材8") = NormalizeString(Mid(line, 812, 5))
+                                dr("必要数8") = NormalizeString(Mid(line, 817, 3))
+                                dr("代表区分10") = NormalizeString(Mid(line, 820, 1))
+                                dr("副資材9") = NormalizeString(Mid(line, 821, 5))
+                                dr("必要数9") = NormalizeString(Mid(line, 826, 3))
+                                dr("代表区分11") = NormalizeString(Mid(line, 829, 1))
+                                dr("副資材10") = NormalizeString(Mid(line, 830, 5))
+                                dr("必要数10") = NormalizeString(Mid(line, 835, 3))
+                                dr("代表区分12") = NormalizeString(Mid(line, 838, 1))
+                                dr("副資材11") = NormalizeString(Mid(line, 839, 5))
+                                dr("必要数11") = NormalizeString(Mid(line, 844, 3))
+                                dr("代表区分13") = NormalizeString(Mid(line, 847, 1))
+                                dr("副資材12") = NormalizeString(Mid(line, 848, 5))
+                                dr("必要数12") = NormalizeString(Mid(line, 853, 3))
+                                dr("代表区分14") = NormalizeString(Mid(line, 856, 1))
+                                dr("副資材13") = NormalizeString(Mid(line, 857, 5))
+                                dr("必要数13") = NormalizeString(Mid(line, 862, 3))
+                                dr("代表区分15") = NormalizeString(Mid(line, 865, 1))
+                                dr("副資材14") = NormalizeString(Mid(line, 866, 5))
+                                dr("必要数14") = NormalizeString(Mid(line, 871, 3))
+                                dr("代表区分16") = NormalizeString(Mid(line, 874, 1))
+                                dr("副資材15") = NormalizeString(Mid(line, 875, 5))
+                                dr("必要数15") = NormalizeString(Mid(line, 880, 3))
+                                dr("代表区分17") = NormalizeString(Mid(line, 883, 1))
+                                dr("副資材16") = NormalizeString(Mid(line, 884, 5))
+                                dr("必要数16") = NormalizeString(Mid(line, 889, 3))
+                                dr("代表区分18") = NormalizeString(Mid(line, 892, 1))
+                                dr("副資材17") = NormalizeString(Mid(line, 893, 5))
+                                dr("必要数17") = NormalizeString(Mid(line, 898, 3))
+                                dr("代表区分19") = NormalizeString(Mid(line, 901, 1))
+                                dr("副資材18") = NormalizeString(Mid(line, 902, 5))
+                                dr("必要数18") = NormalizeString(Mid(line, 907, 3))
+                                dr("代表区分20") = NormalizeString(Mid(line, 910, 1))
+                                dr("副資材19") = NormalizeString(Mid(line, 911, 5))
+                                dr("必要数19") = NormalizeString(Mid(line, 916, 3))
+                                dr("代表区分21") = NormalizeString(Mid(line, 919, 1))
+                                dr("副資材20") = NormalizeString(Mid(line, 920, 5))
+                                dr("必要数20") = NormalizeString(Mid(line, 925, 3))
+                                dr("ダイレクト包装記号1") = NormalizeString(Mid(line, 928, 1))
+                                dr("リターナブル区分1") = NormalizeString(Mid(line, 929, 1))
+                                dr("ダイレクト包装記号2") = NormalizeString(Mid(line, 930, 1))
+                                dr("リターナブル区分2") = NormalizeString(Mid(line, 931, 1))
+                                dr("ダイレクト包装記号3") = NormalizeString(Mid(line, 932, 1))
+                                dr("リターナブル区分3") = NormalizeString(Mid(line, 933, 1))
+                                dr("HNS") = NormalizeString(Mid(line, 934, 1))
+                                dr("保税区分") = NormalizeString(Mid(line, 935, 3))
+                                dr("エンジンASSY区分") = NormalizeString(Mid(line, 938, 1))
+                                dr("部品特性3") = NormalizeString(Mid(line, 939, 1))
+                                dr("部品特性4") = NormalizeString(Mid(line, 940, 1))
+                                dr("部品特性5") = NormalizeString(Mid(line, 941, 1))
+                                dr("部品特性6") = NormalizeString(Mid(line, 942, 1))
+                                dr("原産国コード1") = NormalizeString(Mid(line, 943, 15))
+                                dr("外産品区分1") = NormalizeString(Mid(line, 958, 11))
+                                dr("部品特性10") = NormalizeString(Mid(line, 969, 1))
+                                dr("FILLER3") = NormalizeString(Mid(line, 970, 1))
+                                dr("DIST名称") = NormalizeString(Mid(line, 971, 30))
+                                dr("基本部番ハイフン付") = NormalizeString(Mid(line, 1001, 18))
+                                dr("設変部番ハイフン付") = NormalizeString(Mid(line, 1019, 23))
+                                dr("部品特性フラブ") = NormalizeString(Mid(line, 1042, 1))
+                                dr("部品属性4") = NormalizeString(Mid(line, 1043, 1))
+                                dr("輸送手段") = NormalizeString(Mid(line, 1044, 4))
+                                dr("実績有無区分") = NormalizeString(Mid(line, 1048, 1))
+                                dr("実績数量") = NormalizeString(Mid(line, 1049, 7))
+                                dr("種別NO") = NormalizeString(Mid(line, 1056, 9))
+                                dr("原産国コード2") = NormalizeString(Mid(line, 1065, 3))
+                                dr("外産品区分2") = NormalizeString(Mid(line, 1068, 11))
+                                dr("モジュールコード") = NormalizeString(Mid(line, 1079, 1))
+                                dr("ケースNO2") = NormalizeString(Mid(line, 1080, 5))
+                                dr("転送日時") = NormalizeString(Mid(line, 1085, 34))
+                                dr("FILLER4") = NormalizeString(Mid(line, 1119, 1))
+                                dr("取込年月") = _nengetu
+
+                                dtBatch.Rows.Add(dr)
+                                batchCount += 1
+
+                                '規定値を超えたらインサート処理
+                                If batchCount >= batchSize Then
+                                    bulk.WriteToServer(dtBatch)
+                                    dtBatch.Clear()
+                                    batchCount = 0
+                                End If
+
+                            Next
+
+                            ' 残りのレコードを挿入
+                            If dtBatch.Rows.Count > 0 Then
+                                bulk.WriteToServer(dtBatch)
+                            End If
+
+                        End Using 'SqlBulkCopy
+
+                        ' 成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' エラーが出たらロールバック
+                        tran.Rollback()
+                        Throw ex
+                    End Try
+
+                End Using　'SqlTransaction
+
+            End Using　'SqlConnection
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    'KOW46ファイル取り込み処理
+    Sub Inport_KOW46(_file_path As String, _nengetu As String)
+
+        Try
+            Dim dt_kow As New DS_T.DT_T_KOW46DataTable
+
+            Dim batchSize As Integer = 5000
+            Dim batchCount As Integer = 0
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+            Using conn As New SqlConnection(connectionString)
+
+                conn.Open()
+
+                Using tran As SqlTransaction = conn.BeginTransaction()
+
+                    Try
+
+                        '同一年月のデータがあるかチェック
+
+                        '確認ダイアログ表示
+
+                        '削除ならDelete処理
+
+
+                        Using bulk As New SqlBulkCopy(conn, SqlBulkCopyOptions.Default, tran)
+
+                            bulk.DestinationTableName = "T_KOW46"
+                            bulk.BatchSize = batchSize
+
+                            Dim dtBatch As DataTable = dt_kow.Clone()
+
+                            For Each line As String In File.ReadLines(_file_path, Encoding.Default)
+
+                                If String.IsNullOrWhiteSpace(line) Then
+                                    Continue For
+                                End If
+
+                                Dim dr As DataRow = dtBatch.NewRow()
+                                dr("包装ロットNo") = NormalizeString(Mid(line, 71, 12))
+                                dr("MUDULE") = NormalizeString(Mid(line, 83, 4))
+                                dr("本C_No") = ""
+                                dr("内装手順") = Mid(line, 109, 3).Trim
+                                dr("手順識別") = Mid(line, 117, 4).Trim
+                                dr("資材規格") = NormalizeString(Mid(line, 121, 5))
+                                dr("使用数") = NormalizeString(Mid(line, 127, 7))
+                                dr("主資材") = NormalizeString(Mid(line, 134, 1))
+                                dr("その他1") = NormalizeString(Mid(line, 18, 4))
+                                dr("その他2") = dr("包装ロットNo") & dr("MUDULE") & dr("本C_No") & dr("内装手順") & dr("資材規格")
+                                dr("年度") = ""
+                                dr("モデル") = ""
+                                dr("タイプ") = ""
+                                dr("オプション") = ""
+                                dr("資材単価表示") = ""
+                                dr("資材費") = ""
+                                dr("ケース当たりの内装資材費") = ""
+                                dr("ケース当たりの外装資材費") = ""
+                                dr("内装入数_カートン数") = ""
+                                dr("ケース内必要資材数") = ""
+                                dr("取込年月") = _nengetu
+
+                                dtBatch.Rows.Add(dr)
+                                batchCount += 1
+
+                                '規定値を超えたらインサート処理
+                                If batchCount >= batchSize Then
+                                    bulk.WriteToServer(dtBatch)
+                                    dtBatch.Clear()
+                                    batchCount = 0
+                                End If
+
+                            Next
+
+                            ' 残りのレコードを挿入
+                            If dtBatch.Rows.Count > 0 Then
+                                bulk.WriteToServer(dtBatch)
+                            End If
+
+                        End Using 'SqlBulkCopy
+
+                        'その他２の値のレコードカウントを取得してその他１を更新する
+                        Dim sql As String = "WITH CountCTE AS (
+                                                        SELECT その他2,COUNT(*) AS cnt
+                                                        FROM T_KOW46
+                                                        GROUP BY その他2
+                                                    )
+                                                    UPDATE t
+                                                    SET t.その他1 = c.cnt
+                                                    FROM T_KOW46 t
+                                                    INNER JOIN CountCTE c
+                                                        ON t.その他2 = c.その他2;"
+                        'SQL実行
+                        Using cmd As New SqlClient.SqlCommand(sql, conn, tran)
+                            cmd.ExecuteNonQuery()
+                        End Using
+
+                        ' 成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' エラーが出たらロールバック
+                        tran.Rollback()
+                        Throw ex
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    'KIT60ファイル取り込み処理
+    Sub Inport_KIT60(_file_path As String, _nengetu As String)
+
+        Try
+
+            ' 1. Excel から読み込み
+            Dim dt_kit As New DS_T.DT_T_KIT60DataTable
+            Using workbook As New XLWorkbook(_file_path)
+                Dim ws = workbook.Worksheet(1) ' 1枚目のシート
+                Dim firstRow As Boolean = True
+                Dim count As Integer = 0
+
+                For Each row In ws.RowsUsed()
+                    If firstRow Then
+
+                        If count <= 2 Then
+                            count = count + 1
+                        Else
+                            firstRow = False
+                        End If
+
+                    Else
+
+                        ' データ行を追加
+                        Dim dr = dt_kit.NewRow()
+                        Dim i As Integer = 1
+
+
+                        For Each cell In row.Cells(2, 44)
+                            dr(i) = cell.Value
+                            i += 1
+                        Next
+
+                        '最後に取込年月をセット
+                        dr("取込年月") = _nengetu
+
+                        dt_kit.Rows.Add(dr)
+                    End If
+
+
+                Next
+            End Using
+
+            'DBへインサート
+            Dim batchSize As Integer = 5000
+            Dim batchCount As Integer = 0
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+            Using conn As New SqlConnection(connectionString)
+
+                conn.Open()
+
+                Using tran As SqlTransaction = conn.BeginTransaction()
+
+                    Try
+
+                        Using bulk As New SqlBulkCopy(conn, SqlBulkCopyOptions.Default, tran)
+
+                            bulk.DestinationTableName = "T_KIT60"
+                            bulk.BatchSize = batchSize
+
+                            Dim dtBatch As DataTable = dt_kit.Clone()
+
+                            For Each row In dt_kit.Rows
+
+                                dtBatch.ImportRow(row)
+                                batchCount += 1
+
+                                '規定値を超えたらインサート処理
+                                If batchCount >= batchSize Then
+                                    bulk.WriteToServer(dtBatch)
+                                    dtBatch.Clear()
+                                    batchCount = 0
+                                End If
+
+                            Next
+
+                            ' 残りのレコードを挿入
+                            If dtBatch.Rows.Count > 0 Then
+                                bulk.WriteToServer(dtBatch)
+                            End If
+
+                        End Using 'SqlBulkCopy
+
+
+                        ' 成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' エラーが出たらロールバック
+                        tran.Rollback()
+                        Throw ex
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
+
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    '業務ファイル取り込み処理
+    Sub Inport_Gyoumu(_file_path As String, _nengetu As String)
+
+        Try
+
+            ' 1. Excel から読み込み
+            Dim dt_gyoumu As New DS_T.DT_T_Gyomu_PlanDataTable
+
+            Using workbook As New XLWorkbook(_file_path)
+
+                Dim ws = workbook.Worksheet(1) ' 1枚目のシート
+                Dim firstRow As Boolean = True
+                Dim count As Integer = 0
+
+                For Each row In ws.RowsUsed()
+                    If firstRow Then
+
+                        If count <= 2 Then
+                            count = count + 1
+                        Else
+                            firstRow = False
+                        End If
+
+                    Else
+
+                        ' データ行を追加
+                        Dim dr = dt_gyoumu.NewRow()
+                        Dim i As Integer = 1
+
+                        For Each cell In row.Cells(2, 78)
+                            dr(i) = cell.Value
+                            i += 1
+                        Next
+
+                        '最後に取込年月をセット
+                        dr("取込年月") = _nengetu
+
+                        dt_gyoumu.Rows.Add(dr)
+                    End If
+                Next
+            End Using
+
+            'DBへインサート
+            Dim batchSize As Integer = 5000
+            Dim batchCount As Integer = 0
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+            Using conn As New SqlConnection(connectionString)
+
+                conn.Open()
+
+                Using tran As SqlTransaction = conn.BeginTransaction()
+
+                    Try
+
+                        Using bulk As New SqlBulkCopy(conn, SqlBulkCopyOptions.Default, tran)
+
+                            bulk.DestinationTableName = "T_Gyomu_Plan"
+                            bulk.BatchSize = batchSize
+
+                            Dim dtBatch As DataTable = dt_gyoumu.Clone()
+
+                            For Each row In dt_gyoumu.Rows
+
+                                dtBatch.ImportRow(row)
+                                batchCount += 1
+
+                                '規定値を超えたらインサート処理
+                                If batchCount >= batchSize Then
+                                    bulk.WriteToServer(dtBatch)
+                                    dtBatch.Clear()
+                                    batchCount = 0
+                                End If
+
+                            Next
+
+                            ' 残りのレコードを挿入
+                            If dtBatch.Rows.Count > 0 Then
+                                bulk.WriteToServer(dtBatch)
+                            End If
+
+                        End Using 'SqlBulkCopy
+
+
+                        ' 成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' エラーが出たらロールバック
+                        tran.Rollback()
+                        Throw ex
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
+
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    '空白と先頭の0を外す処理
+    Public Function NormalizeString(ByVal input As String) As String
+
+        If input Is Nothing Then
+            Return String.Empty
+        End If
+
+        ' 前後の空白を除去
+        Dim trimmed As String = input.Trim()
+
+        ' 数値のみか判定（負号・小数点なしの整数想定）
+        If System.Text.RegularExpressions.Regex.IsMatch(trimmed, "^\d+$") Then
+
+            ' 数値変換して戻す（0パディング除去）
+            Return CLng(trimmed).ToString()
+
+        Else
+            Return trimmed
+        End If
+
+    End Function
+
+End Class

@@ -1,0 +1,79 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class F_Make_1Lot
+    Inherits System.Windows.Forms.Form
+
+    'フォームがコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Windows フォーム デザイナーで必要です。
+    Private components As System.ComponentModel.IContainer
+
+    'メモ: 以下のプロシージャは Windows フォーム デザイナーで必要です。
+    'Windows フォーム デザイナーを使用して変更できます。  
+    'コード エディターを使って変更しないでください。
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.Dtp_Nengetu = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Btn_Change = New System.Windows.Forms.Button()
+        Me.SuspendLayout()
+        '
+        'Dtp_Nengetu
+        '
+        Me.Dtp_Nengetu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Dtp_Nengetu.Location = New System.Drawing.Point(197, 71)
+        Me.Dtp_Nengetu.Name = "Dtp_Nengetu"
+        Me.Dtp_Nengetu.Size = New System.Drawing.Size(200, 23)
+        Me.Dtp_Nengetu.TabIndex = 34
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label3.Location = New System.Drawing.Point(197, 49)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(74, 18)
+        Me.Label3.TabIndex = 33
+        Me.Label3.Text = "対象年月"
+        '
+        'Btn_Change
+        '
+        Me.Btn_Change.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Change.Location = New System.Drawing.Point(323, 211)
+        Me.Btn_Change.Name = "Btn_Change"
+        Me.Btn_Change.Size = New System.Drawing.Size(124, 65)
+        Me.Btn_Change.TabIndex = 32
+        Me.Btn_Change.Text = "変　換"
+        Me.Btn_Change.UseVisualStyleBackColor = True
+        '
+        'F_Make_1Lot
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Dtp_Nengetu)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Btn_Change)
+        Me.Name = "F_Make_1Lot"
+        Me.Text = "データ変換"
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+
+    Friend WithEvents Dtp_Nengetu As DateTimePicker
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Btn_Change As Button
+End Class
