@@ -1,12 +1,12 @@
-﻿Public Class F_Mitsumori
+﻿Public Class F_Housou
 
     Dim fnc As New Function_Class
 
     'ページロード時
-    Private Sub F_Mitsumori_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub F_Housou_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'TODO: このコード行はデータを 'DS_M.DT_M_Mitsumori' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.TA_M_Mitsumori.Fill(Me.DS_M.DT_M_Mitsumori)
+        'TODO: このコード行はデータを 'DS_M.DT_M_Housou_Kbn' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+        Me.TA_M_Housou_Kbn.Fill(Me.DS_M.DT_M_Housou_Kbn)
 
         'ヘッダーとすべてのセルの内容に合わせて、列の幅を自動調整する
         GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
@@ -22,19 +22,22 @@
 
         Try
 
-            Dim ta_mitsumori As New DS_MTableAdapters.TA_M_Mitsumori
+            Dim ta_housou As New DS_MTableAdapters.TA_M_Housou_Kbn
 
-            Dim mitsumori_cd As String = Txt_Mitsumori_CD.Text.Trim
-            Dim shimuke As String = Txt_Shimuke.Text.Trim
-            Dim kishu As String = Txt_Kishu.Text.Trim
-            Dim type As String = Txt_Type.Text.Trim
-            Dim op As String = Txt_OP.Text.Trim
+            Dim line As String = Txt_Line.Text.Trim
+            Dim DIST As String = Txt_DIST.Text.Trim
+            Dim housou_kbn As String = Txt_Housou.Text.Trim
             Dim id As String = Txt_id.Text.Trim
 
             '入力チェック
-            If mitsumori_cd = "" Then
+            If DIST = "" Then
 
-                MessageBox.Show("見積コードを入力してください")
+                MessageBox.Show("DISTを入力してください")
+                Exit Sub
+
+            ElseIf housou_kbn = "" Then
+
+                MessageBox.Show("個装/内装を入力してください")
                 Exit Sub
 
             End If
@@ -45,24 +48,24 @@
                 Dim chk_count As String = ""
 
                 '存在チェック
-                chk_count = ta_mitsumori.Q_存在チェック(mitsumori_cd)
+                chk_count = ta_housou.Q_存在チェック(DIST, housou_kbn)
 
                 If chk_count <> 0 Then
-                    MessageBox.Show("既に登録済みの見積コードです。")
+                    MessageBox.Show("既に登録済みのDIST、個装内装の組み合わせです。")
                     Exit Sub
                 End If
 
                 '登録処理
-                ta_mitsumori.Q_見積登録(mitsumori_cd, shimuke, kishu, type, op)
+                ta_housou.Q_包装登録(line, DIST, housou_kbn)
 
             Else '更新モード
 
-                ta_mitsumori.Q_見積更新(mitsumori_cd, shimuke, kishu, type, op, id)
+                ta_housou.Q_包装更新(line, DIST, housou_kbn, id)
 
             End If
 
             'GV更新
-            Me.TA_M_Mitsumori.Fill(Me.DS_M.DT_M_Mitsumori)
+            Me.TA_M_Housou_Kbn.Fill(Me.DS_M.DT_M_Housou_Kbn)
 
             'クリア
             clear()
@@ -70,8 +73,10 @@
             MessageBox.Show("完了しました。")
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Mitsumori_Btn_Touroku_Click")
+
+            fnc.ERR_LOG(ex.Message, "F_Housou_Btn_Touroku_Click")
             MessageBox.Show(ex.Message)
+
         End Try
 
     End Sub
@@ -80,7 +85,6 @@
     Private Sub Btn_Clear_Click(sender As Object, e As EventArgs) Handles Btn_Clear.Click
         clear()
     End Sub
-
 
     '******************************************************************************
     'GVイベント
@@ -91,7 +95,7 @@
 
         Try
 
-            Dim ta_mitsumori As New DS_MTableAdapters.TA_M_Mitsumori
+            Dim ta_housou As New DS_MTableAdapters.TA_M_Housou_Kbn
 
             'ヘッダークリックは無視
             If e.RowIndex < 0 Then
@@ -108,11 +112,9 @@
 
                 Txt_id.Text = target_id
 
-                Txt_Mitsumori_CD.Text = grid.Rows(e.RowIndex).Cells("見積コード").Value.ToString()
-                Txt_Shimuke.Text = grid.Rows(e.RowIndex).Cells("仕向").Value.ToString()
-                Txt_Kishu.Text = grid.Rows(e.RowIndex).Cells("機種").Value.ToString()
-                Txt_Type.Text = grid.Rows(e.RowIndex).Cells("タイプ").Value.ToString()
-                Txt_OP.Text = grid.Rows(e.RowIndex).Cells("OP").Value.ToString()
+                Txt_Line.Text = grid.Rows(e.RowIndex).Cells("ライン").Value.ToString()
+                Txt_DIST.Text = grid.Rows(e.RowIndex).Cells("DIST").Value.ToString()
+                Txt_Housou.Text = grid.Rows(e.RowIndex).Cells("個装内装区分").Value.ToString()
 
                 Btn_Touroku.Text = "更　新"
 
@@ -127,7 +129,7 @@
                     grid.Rows.RemoveAt(e.RowIndex)
 
                     'DBからも削除
-                    ta_mitsumori.Q_見積削除(target_id)
+                    ta_housou.Q_包装削除(target_id)
 
                     MessageBox.Show("削除完了しました。")
 
@@ -136,12 +138,11 @@
             End If
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Mitsumori_GV_Master_CellContentClick")
+            fnc.ERR_LOG(ex.Message, "F_Tanka_GV_Master_CellContentClick")
             MessageBox.Show(ex.Message)
         End Try
 
     End Sub
-
 
     '******************************************************************************
     '関数
@@ -151,14 +152,10 @@
     Sub clear()
 
         Txt_id.Text = ""
-        Txt_Kishu.Text = ""
-        Txt_Mitsumori_CD.Text = ""
-        Txt_OP.Text = ""
-        Txt_Shimuke.Text = ""
-        Txt_Type.Text = ""
+        Txt_Line.Text = ""
+        Txt_DIST.Text = ""
+        Txt_Housou.Text = ""
 
         Btn_Touroku.Text = "登　録"
     End Sub
-
-
 End Class

@@ -24,17 +24,20 @@
 
     '賃率マスタボタンクリック時
     Private Sub Btn_M_Tinritsu_Click(sender As Object, e As EventArgs) Handles Btn_M_Tinritsu.Click
-
+        Dim OpenForm As New F_Rate
+        OpenForm.ShowDialog()
     End Sub
 
     '資材単価マスタボタンクリック時
     Private Sub Btn_M_Tanka_Click(sender As Object, e As EventArgs) Handles Btn_M_Tanka.Click
-
+        Dim OpenForm As New F_Tanka
+        OpenForm.ShowDialog()
     End Sub
 
     '個装/内装登録早見表ボタンクリック時
     Private Sub Btn_M_Hayami_Click(sender As Object, e As EventArgs) Handles Btn_M_Hayami.Click
-
+        Dim OpenForm As New F_Housou
+        OpenForm.ShowDialog()
     End Sub
 
     '工数マスタボタンクリック時
@@ -49,7 +52,8 @@
 
     '部品単位オーダーリストボタンクリック時
     Private Sub Btn_M_Order_Click(sender As Object, e As EventArgs) Handles Btn_M_Order.Click
-
+        Dim OpenForm As New F_Buhin_Order_List
+        OpenForm.ShowDialog()
     End Sub
 
 End Class

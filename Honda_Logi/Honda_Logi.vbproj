@@ -162,16 +162,40 @@
     <Compile Include="F_Receive.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Master\F_Buhin_Order_List.Designer.vb">
+      <DependentUpon>F_Buhin_Order_List.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Master\F_Buhin_Order_List.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\F_Housou.Designer.vb">
+      <DependentUpon>F_Housou.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Master\F_Housou.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Master\F_Mitsumori.Designer.vb">
       <DependentUpon>F_Mitsumori.vb</DependentUpon>
     </Compile>
     <Compile Include="Master\F_Mitsumori.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Master\F_Rate.Designer.vb">
+      <DependentUpon>F_Rate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Master\F_Rate.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Master\F_Shizai.Designer.vb">
       <DependentUpon>F_Shizai.vb</DependentUpon>
     </Compile>
     <Compile Include="Master\F_Shizai.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\F_Tanka.Designer.vb">
+      <DependentUpon>F_Tanka.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Master\F_Tanka.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -206,11 +230,23 @@
     <EmbeddedResource Include="F_Receive.resx">
       <DependentUpon>F_Receive.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Master\F_Buhin_Order_List.resx">
+      <DependentUpon>F_Buhin_Order_List.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\F_Housou.resx">
+      <DependentUpon>F_Housou.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master\F_Mitsumori.resx">
       <DependentUpon>F_Mitsumori.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Master\F_Rate.resx">
+      <DependentUpon>F_Rate.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master\F_Shizai.resx">
       <DependentUpon>F_Shizai.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\F_Tanka.resx">
+      <DependentUpon>F_Tanka.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

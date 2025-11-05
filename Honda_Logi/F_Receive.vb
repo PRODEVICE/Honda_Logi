@@ -154,8 +154,6 @@ Public Class F_Receive
 
                 conn.Open()
 
-
-
                 Using tran As SqlTransaction = conn.BeginTransaction()
 
                     Try

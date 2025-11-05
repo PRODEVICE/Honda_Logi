@@ -20,6 +20,9 @@ Public Class F_Shizai
             Lbl_Suryou.Visible = False
             Txt_Suryou.Visible = False
 
+            'ヘッダーとすべてのセルの内容に合わせて、列の幅を自動調整する
+            GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Shizai_Master_Load")
             MessageBox.Show(ex.Message)
@@ -172,6 +175,8 @@ Public Class F_Shizai
             'クリア
             clear()
 
+            MessageBox.Show("完了しました。")
+
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Shizai_Master_Btn_Touroku_Click")
             MessageBox.Show(ex.Message)
@@ -277,6 +282,8 @@ Public Class F_Shizai
                         ta_box.Q_箱削除(target_id)
 
                     End If
+
+                    MessageBox.Show("削除完了しました。")
 
                 End If
 

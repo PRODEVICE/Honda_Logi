@@ -32,11 +32,6 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:Honda_Logi.DS_M.DT_M_Gaisou_BoxDataTable">
 <summary>
 Represents the strongly named DataTable class.
@@ -82,12 +77,12 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:Honda_Logi.DS_M.DT_M_BoltRow">
+<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListDataTable">
 <summary>
-Represents strongly named DataRow class.
+Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListRow">
+<member name="T:Honda_Logi.DS_M.DT_M_BoltRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -137,12 +132,12 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:Honda_Logi.DS_M.DT_M_BoltRowChangeEvent">
+<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListRow">
 <summary>
-Row event argument class
+Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListRowChangeEvent">
+<member name="T:Honda_Logi.DS_M.DT_M_BoltRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -192,12 +187,12 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
-<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Bolt">
+<member name="T:Honda_Logi.DS_M.DT_M_Buhin_Order_ListRowChangeEvent">
 <summary>
-Represents the connection and commands used to retrieve and save data.
+Row event argument class
 </summary>
 </member>
-<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Buhin_Order_List">
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Bolt">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -243,6 +238,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Tanka">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Buhin_Order_List">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -297,16 +297,6 @@ Represents a strongly typed in-memory cache of data.
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:Honda_Logi.DS_T.DT_T_CCCDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
-<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotDataTable">
-<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member>
 <member name="T:Honda_Logi.DS_T.DT_T_Gyomu_PlanDataTable">
 <summary>
 Represents the strongly named DataTable class.
@@ -322,17 +312,22 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCCDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_WorkDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:Honda_Logi.DS_T.DT_T_ERR_LOGRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:Honda_Logi.DS_T.DT_T_CCCRow">
-<summary>
-Represents strongly named DataRow class.
-</summary>
-</member>
-<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -352,17 +347,22 @@ Represents strongly named DataRow class.
 Represents strongly named DataRow class.
 </summary>
 </member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCCRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_WorkRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
 <member name="T:Honda_Logi.DS_T.DT_T_ERR_LOGRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:Honda_Logi.DS_T.DT_T_CCCRowChangeEvent">
-<summary>
-Row event argument class
-</summary>
-</member>
-<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
@@ -382,17 +382,22 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCCRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_LotRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_WorkRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:Honda_Logi.DS_TTableAdapters.TA_T_ERR_LOG">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC">
-<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member>
-<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC_Lot">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -408,6 +413,21 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:Honda_Logi.DS_TTableAdapters.DT_T_KIT60TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC_Lot">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC_Work">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
