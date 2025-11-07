@@ -1,4 +1,6 @@
-﻿Public Class F_Tanka
+﻿Imports System.Configuration
+
+Public Class F_Tanka
 
     Dim fnc As New Function_Class
 
@@ -48,10 +50,10 @@
 
             End If
 
+            Dim chk_count As String = ""
+
             '新規モード
             If Btn_Touroku.Text = "登　録" Then
-
-                Dim chk_count As String = ""
 
                 '存在チェック
                 chk_count = ta_tanka.Q_存在チェック(shizai_cd)
@@ -66,6 +68,14 @@
 
             Else '更新モード
 
+                '存在チェック
+                chk_count = ta_tanka.Q_更新存在チェック(shizai_cd, id)
+
+                If chk_count <> 0 Then
+                    MessageBox.Show("既に登録済みの資材コードです。")
+                    Exit Sub
+                End If
+
                 ta_tanka.Q_単価更新(shizai_cd, shizai_nm, tanka, maker, id)
 
             End If
@@ -79,10 +89,47 @@
             MessageBox.Show("完了しました。")
 
         Catch ex As Exception
-
-            fnc.ERR_LOG(ex.Message, "F_Tanka_Load_Btn_Touroku_Click")
+            fnc.ERR_LOG(ex.Message, "F_Tanka_Btn_Touroku_Click")
             MessageBox.Show(ex.Message)
+        End Try
 
+    End Sub
+
+    '検索ボタンクリック時
+    Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
+
+        Try
+
+            'コンフィグのコネクトストリング取得
+            Dim con As New SqlClient.SqlConnection
+            con.ConnectionString = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+            'SQL作成
+            Dim CommandString As String
+
+            CommandString = MakeSQL_Search()
+
+            'GVをクリア
+            GV_Master.DataSource = Nothing
+
+            'テーブルアダプター作成
+            Dim DataAdapter As New SqlClient.SqlDataAdapter(CommandString, con)
+
+            'SQLを実行
+            Me.DS_M.DT_M_Tanka.Clear()
+            DataAdapter.Fill(Me.DS_M.DT_M_Tanka)
+            GV_Master.DataSource = Me.DS_M.DT_M_Tanka
+
+            ' 列幅を自動調整
+            GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+            GV_Master.AutoResizeColumns()
+
+            '入力項目もクリア
+            clear()
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Tanka_Btn_Search_Click")
+            MessageBox.Show(ex.Message)
         End Try
 
     End Sub
@@ -166,5 +213,73 @@
 
         Btn_Touroku.Text = "登　録"
     End Sub
+
+    Function MakeSQL_Search() As String
+
+        Try
+
+            Dim shizai_cd As String = Txt_S_Shizai_CD.Text.Trim
+            Dim shizai_nm As String = Txt_S_Shizai_NM.Text.Trim
+            Dim tanka As String = Txt_S_Tanka.Text.Trim
+            Dim maker As String = Txt_S_Maker.Text.Trim
+
+            Dim Retstr As String = Nothing
+            Dim strtemp As String = Nothing
+
+            'Where区作成区作成
+
+            '資材コード
+            If (shizai_cd.Length > 0) Then
+                If strtemp = Nothing Then
+                    strtemp = "資材コード like '%" & shizai_cd & "%'"
+                Else
+                    strtemp = strtemp & " AND 資材コード like '%" & shizai_cd & "%'"
+                End If
+            End If
+
+            '資材名
+            If (shizai_nm.Length > 0) Then
+                If strtemp = Nothing Then
+                    strtemp = "資材名 like '%" & shizai_nm & "%'"
+                Else
+                    strtemp = strtemp & " AND 資材名 like '%" & shizai_nm & "%'"
+                End If
+            End If
+
+            '単価
+            If (tanka.Length > 0) Then
+                If strtemp = Nothing Then
+                    strtemp = "単価 like '%" & tanka & "%'"
+                Else
+                    strtemp = strtemp & " AND 単価 like '%" & tanka & "%'"
+                End If
+            End If
+
+            'メーカーコード
+            If (maker.Length > 0) Then
+                If strtemp = Nothing Then
+                    strtemp = "メーカーコード like '%" & maker & "%'"
+                Else
+                    strtemp = strtemp & " AND メーカーコード like '%" & maker & "%'"
+                End If
+            End If
+
+            'Where句の完成
+            If strtemp <> Nothing Then
+                strtemp = " WHERE " & strtemp
+            End If
+
+            '最終的なSQL文の作成
+            Retstr = "SELECT  *
+                        FROM M_Tanka "
+            Retstr = Retstr & strtemp       'Where句
+
+            Return Retstr
+
+        Catch ex As Exception
+            Throw New Exception(ex.Message)
+        End Try
+
+    End Function
 
 End Class

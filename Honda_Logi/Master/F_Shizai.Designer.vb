@@ -23,8 +23,8 @@ Partial Class F_Shizai
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Txt_Suryou = New System.Windows.Forms.TextBox()
         Me.Lbl_Suryou = New System.Windows.Forms.Label()
         Me.Btn_Clear = New System.Windows.Forms.Button()
@@ -41,6 +41,9 @@ Partial Class F_Shizai
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TA_M_Kubun = New Honda_Logi.DS_MTableAdapters.TA_M_Kubun()
+        Me.Txt_S_Shizai_CD = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Btn_Search = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -52,7 +55,7 @@ Partial Class F_Shizai
         'Txt_Suryou
         '
         Me.Txt_Suryou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Suryou.Location = New System.Drawing.Point(440, 22)
+        Me.Txt_Suryou.Location = New System.Drawing.Point(392, 49)
         Me.Txt_Suryou.Name = "Txt_Suryou"
         Me.Txt_Suryou.Size = New System.Drawing.Size(70, 23)
         Me.Txt_Suryou.TabIndex = 12
@@ -61,7 +64,7 @@ Partial Class F_Shizai
         '
         Me.Lbl_Suryou.AutoSize = True
         Me.Lbl_Suryou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Lbl_Suryou.Location = New System.Drawing.Point(394, 25)
+        Me.Lbl_Suryou.Location = New System.Drawing.Point(346, 52)
         Me.Lbl_Suryou.Name = "Lbl_Suryou"
         Me.Lbl_Suryou.Size = New System.Drawing.Size(40, 16)
         Me.Lbl_Suryou.TabIndex = 11
@@ -79,7 +82,7 @@ Partial Class F_Shizai
         '
         'Txt_id
         '
-        Me.Txt_id.Location = New System.Drawing.Point(561, 6)
+        Me.Txt_id.Location = New System.Drawing.Point(392, 84)
         Me.Txt_id.Name = "Txt_id"
         Me.Txt_id.Size = New System.Drawing.Size(50, 19)
         Me.Txt_id.TabIndex = 9
@@ -98,7 +101,7 @@ Partial Class F_Shizai
         'Txt_Shizai_CD
         '
         Me.Txt_Shizai_CD.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Shizai_CD.Location = New System.Drawing.Point(162, 25)
+        Me.Txt_Shizai_CD.Location = New System.Drawing.Point(107, 49)
         Me.Txt_Shizai_CD.Name = "Txt_Shizai_CD"
         Me.Txt_Shizai_CD.Size = New System.Drawing.Size(173, 23)
         Me.Txt_Shizai_CD.TabIndex = 3
@@ -109,36 +112,36 @@ Partial Class F_Shizai
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 100)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(803, 370)
+        Me.Panel1.Size = New System.Drawing.Size(803, 376)
         Me.Panel1.TabIndex = 9
         '
         'GV_Master
         '
         Me.GV_Master.AllowUserToAddRows = False
         Me.GV_Master.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
         Me.GV_Master.Name = "GV_Master"
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.GV_Master.RowTemplate.Height = 31
-        Me.GV_Master.Size = New System.Drawing.Size(803, 370)
+        Me.GV_Master.Size = New System.Drawing.Size(803, 376)
         Me.GV_Master.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(80, 25)
+        Me.Label1.Location = New System.Drawing.Point(25, 52)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(76, 16)
         Me.Label1.TabIndex = 2
@@ -154,9 +157,9 @@ Partial Class F_Shizai
         Me.Panel2.Controls.Add(Me.Txt_Shizai_CD)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 470)
+        Me.Panel2.Location = New System.Drawing.Point(0, 476)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(803, 115)
+        Me.Panel2.Size = New System.Drawing.Size(803, 109)
         Me.Panel2.TabIndex = 10
         '
         'Cmb_Shurui
@@ -165,7 +168,7 @@ Partial Class F_Shizai
         Me.Cmb_Shurui.DisplayMember = "区分詳細名"
         Me.Cmb_Shurui.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Cmb_Shurui.FormattingEnabled = True
-        Me.Cmb_Shurui.Location = New System.Drawing.Point(164, 17)
+        Me.Cmb_Shurui.Location = New System.Drawing.Point(109, 33)
         Me.Cmb_Shurui.Name = "Cmb_Shurui"
         Me.Cmb_Shurui.Size = New System.Drawing.Size(175, 24)
         Me.Cmb_Shurui.TabIndex = 11
@@ -184,6 +187,9 @@ Partial Class F_Shizai
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Search)
+        Me.Panel3.Controls.Add(Me.Txt_S_Shizai_CD)
+        Me.Panel3.Controls.Add(Me.Label2)
         Me.Panel3.Controls.Add(Me.Label5)
         Me.Panel3.Controls.Add(Me.Cmb_Shurui)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
@@ -196,7 +202,7 @@ Partial Class F_Shizai
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(80, 20)
+        Me.Label5.Location = New System.Drawing.Point(25, 36)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(75, 16)
         Me.Label5.TabIndex = 12
@@ -206,7 +212,35 @@ Partial Class F_Shizai
         '
         Me.TA_M_Kubun.ClearBeforeFill = True
         '
-        'F_Shizai_Master
+        'Txt_S_Shizai_CD
+        '
+        Me.Txt_S_Shizai_CD.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Shizai_CD.Location = New System.Drawing.Point(428, 33)
+        Me.Txt_S_Shizai_CD.Name = "Txt_S_Shizai_CD"
+        Me.Txt_S_Shizai_CD.Size = New System.Drawing.Size(173, 23)
+        Me.Txt_S_Shizai_CD.TabIndex = 14
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label2.Location = New System.Drawing.Point(346, 36)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(76, 16)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "資材コード"
+        '
+        'Btn_Search
+        '
+        Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Search.Location = New System.Drawing.Point(663, 16)
+        Me.Btn_Search.Name = "Btn_Search"
+        Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
+        Me.Btn_Search.TabIndex = 13
+        Me.Btn_Search.Text = "検　索"
+        Me.Btn_Search.UseVisualStyleBackColor = True
+        '
+        'F_Shizai
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -214,7 +248,7 @@ Partial Class F_Shizai
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
-        Me.Name = "F_Shizai_Master"
+        Me.Name = "F_Shizai"
         Me.Text = "資材マスタ"
         Me.Panel1.ResumeLayout(False)
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).EndInit()
@@ -243,4 +277,7 @@ Partial Class F_Shizai
     Friend WithEvents DS_M As DS_M
     Friend WithEvents DTMKubunBindingSource As BindingSource
     Friend WithEvents TA_M_Kubun As DS_MTableAdapters.TA_M_Kubun
+    Friend WithEvents Btn_Search As Button
+    Friend WithEvents Txt_S_Shizai_CD As TextBox
+    Friend WithEvents Label2 As Label
 End Class

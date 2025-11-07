@@ -42,7 +42,8 @@
 
     '工数マスタボタンクリック時
     Private Sub Btn_M_Kousu_Click(sender As Object, e As EventArgs) Handles Btn_M_Kousu.Click
-
+        Dim OpenForm As New F_Second
+        OpenForm.ShowDialog()
     End Sub
 
     '機種係数マスタボタンクリック時

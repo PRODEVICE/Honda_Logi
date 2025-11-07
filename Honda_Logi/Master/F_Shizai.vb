@@ -51,9 +51,8 @@ Public Class F_Shizai
             Dim id As String = Txt_id.Text.Trim
 
             '入力チェック
-            If Cmb_Shurui.SelectedValue = "2" Then
+            If Cmb_Shurui.SelectedValue = "2" Then '内装資材マスタなら
 
-                '内装資材マスタなら
                 If shizai_cd = "" Or suryou = "" Then
                     MessageBox.Show("資材コード、数量を入力してください")
                     Exit Sub
@@ -68,10 +67,11 @@ Public Class F_Shizai
 
             End If
 
+            Dim chk_count As String = ""
+
             '新規モード
             If Btn_Touroku.Text = "登　録" Then
 
-                Dim chk_count As String = ""
 
                 If Cmb_Shurui.SelectedValue = "1" Then
 
@@ -147,21 +147,61 @@ Public Class F_Shizai
 
                 If Cmb_Shurui.SelectedValue = "1" Then
 
+                    '存在チェック
+                    chk_count = ta_kosou.Q_存在チェック(shizai_cd)
+
+                    If chk_count >= 1 Then
+                        MessageBox.Show("既に登録済みの資材コードです。")
+                        Exit Sub
+                    End If
+
                     ta_kosou.Q_個装資材更新(shizai_cd, id)
 
                 ElseIf Cmb_Shurui.SelectedValue = "2" Then
+
+                    '存在チェック
+                    chk_count = ta_naisou.Q_存在チェック(shizai_cd)
+
+                    If chk_count >= 1 Then
+                        MessageBox.Show("既に登録済みの資材コードです。")
+                        Exit Sub
+                    End If
 
                     ta_naisou.Q_内装資材更新(shizai_cd, suryou, id)
 
                 ElseIf Cmb_Shurui.SelectedValue = "3" Then
 
+                    '存在チェック
+                    chk_count = ta_bolt.Q_存在チェック(shizai_cd)
+
+                    If chk_count >= 1 Then
+                        MessageBox.Show("既に登録済みの資材コードです。")
+                        Exit Sub
+                    End If
+
                     ta_bolt.Q_ボルト更新(shizai_cd, id)
 
                 ElseIf Cmb_Shurui.SelectedValue = "4" Then
 
+                    '存在チェック
+                    chk_count = ta_danboru.Q_存在チェック(shizai_cd)
+
+                    If chk_count >= 1 Then
+                        MessageBox.Show("既に登録済みの資材コードです。")
+                        Exit Sub
+                    End If
+
                     ta_danboru.Q_ダンボール更新(shizai_cd, id)
 
                 ElseIf Cmb_Shurui.SelectedValue = "5" Then
+
+                    '存在チェック
+                    chk_count = ta_box.Q_存在チェック(shizai_cd)
+
+                    If chk_count >= 1 Then
+                        MessageBox.Show("既に登録済みの資材コードです。")
+                        Exit Sub
+                    End If
 
                     ta_box.Q_箱更新(shizai_cd, id)
 
@@ -179,6 +219,126 @@ Public Class F_Shizai
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Shizai_Master_Btn_Touroku_Click")
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
+    '検索ボタンクリック時
+    Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
+
+        Try
+
+            Dim dt_kosou As New DS_M.DT_M_Kosou_ShizaiDataTable
+            Dim dt_naisou As New DS_M.DT_M_Naisou_ShizaiDataTable
+            Dim dt_bolt As New DS_M.DT_M_BoltDataTable
+            Dim dt_danboru As New DS_M.DT_M_Gaisou_DanboruDataTable
+            Dim dt_box As New DS_M.DT_M_Gaisou_BoxDataTable
+
+            Dim master_kbn As String = Cmb_Shurui.SelectedValue
+            Dim shizai_cd As String = Txt_S_Shizai_CD.Text.Trim
+
+            If shizai_cd.Length = 0 Then
+
+                Chenge_Master(master_kbn)
+
+            Else
+
+                'コンフィグのコネクトストリング取得
+                Dim con As New SqlClient.SqlConnection
+                con.ConnectionString = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+                'SQL作成
+                Dim CommandString As String
+
+                CommandString = MakeSQL_Search(master_kbn, shizai_cd)
+
+                'GVをクリア
+                GV_Master.DataSource = Nothing
+
+
+                'テーブルアダプター作成
+                Dim DataAdapter As New SqlClient.SqlDataAdapter(CommandString, con)
+
+                If master_kbn = "1" Then
+
+                    'SQLを実行
+                    DataAdapter.Fill(dt_kosou)
+                    GV_Master.DataSource = dt_kosou
+
+                ElseIf master_kbn = "2" Then
+
+                    'SQLを実行
+                    DataAdapter.Fill(dt_naisou)
+                    GV_Master.DataSource = dt_naisou
+
+                ElseIf master_kbn = "3" Then
+
+                    'SQLを実行
+                    DataAdapter.Fill(dt_bolt)
+                    GV_Master.DataSource = dt_bolt
+
+                ElseIf master_kbn = "4" Then
+
+                    'SQLを実行
+                    DataAdapter.Fill(dt_danboru)
+                    GV_Master.DataSource = dt_danboru
+
+                ElseIf master_kbn = "5" Then
+
+                    'SQLを実行
+                    DataAdapter.Fill(dt_box)
+                    GV_Master.DataSource = dt_box
+
+                End If
+
+                ' ID列を非表示に
+                If GV_Master.Columns.Contains("ID") Then
+                    GV_Master.Columns("ID").Visible = False
+                End If
+
+                ' 既存のボタン列を削除（逆順で安全に）
+                For i As Integer = GV_Master.Columns.Count - 1 To 0 Step -1
+                    If GV_Master.Columns(i).Name = "選択" Or GV_Master.Columns(i).Name = "削除" Then
+                        GV_Master.Columns.RemoveAt(i)
+                    End If
+                Next
+
+                ' 選択ボタン列（最初の列）
+                Dim selectCol As New DataGridViewLinkColumn()
+                selectCol.Name = "選択"
+                selectCol.HeaderText = "選択"
+                selectCol.Text = "選択"
+                selectCol.UseColumnTextForLinkValue = True
+                selectCol.Width = 60
+                selectCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                selectCol.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+                GV_Master.Columns.Insert(0, selectCol)   ' 最初の列に追加
+
+                ' 削除ボタン列（最後の列）
+                Dim deleteCol As New DataGridViewLinkColumn()
+                deleteCol.Name = "削除"
+                deleteCol.HeaderText = "削除"
+                deleteCol.Text = "削除"
+                deleteCol.UseColumnTextForLinkValue = True
+                deleteCol.Width = 60
+                deleteCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                deleteCol.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+                GV_Master.Columns.Add(deleteCol)   ' 最後の列に追加
+
+                ' 列幅を自動調整
+                GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+                GV_Master.AutoResizeColumns()
+
+            End If
+
+            '入力項目もクリア
+            clear()
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Shizai_Master_Btn_Search_Click")
             MessageBox.Show(ex.Message)
         End Try
 
@@ -306,7 +466,9 @@ Public Class F_Shizai
         Try
 
             'GVのデータソースを切り替える
-            Chenge_Master(Cmb_Shurui.SelectedValue)
+            'Chenge_Master(Cmb_Shurui.SelectedValue)
+            Btn_Search_Click(Nothing, Nothing)
+
 
             'コントロールの表示制御
             If Cmb_Shurui.SelectedValue = "2" Then
@@ -368,7 +530,6 @@ Public Class F_Shizai
                 'SQLを実行
                 DataAdapter.Fill(dt_kosou)
                 GV_Master.DataSource = dt_kosou
-
 
             ElseIf master_kbn = "2" Then
 
@@ -462,6 +623,41 @@ Public Class F_Shizai
                 From = "M_Gaisou_Danboru"
             ElseIf _shurui = "5" Then
                 From = "M_Gaisou_Box"
+            End If
+
+
+            '最終的なSQL文の作成
+            Retstr = "SELECT  *
+                        FROM " & From
+            Retstr = Retstr & strtemp       'Where句
+
+            Return Retstr
+
+        Catch ex As Exception
+            Throw New Exception(ex.Message)
+        End Try
+
+    End Function
+
+    Function MakeSQL_Search(_shurui, _shizai_cd) As String
+
+        Try
+
+            Dim strtemp As String = Nothing
+            Dim Retstr As String = Nothing
+            Dim From As String
+
+            'FromWhere区作成
+            If _shurui = "1" Then
+                From = "M_Kosou_Shizai WHERE 個装資材コード like '%" & _shizai_cd & "%'"
+            ElseIf _shurui = "2" Then
+                From = "M_Naisou_Shizai WHERE 内装資材コード like '%" & _shizai_cd & "%'"
+            ElseIf _shurui = "3" Then
+                From = "M_Bolt WHERE 個装資材コード like '%" & _shizai_cd & "%'"
+            ElseIf _shurui = "4" Then
+                From = "M_Gaisou_Danboru WHERE 内装資材コード like '%" & _shizai_cd & "%'"
+            ElseIf _shurui = "5" Then
+                From = "M_Gaisou_Box WHERE 内装資材コード like '%" & _shizai_cd & "%'"
             End If
 
 

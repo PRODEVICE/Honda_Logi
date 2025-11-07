@@ -41,9 +41,6 @@ Partial Class F_Mitsumori
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GV_Master = New System.Windows.Forms.DataGridView()
-        Me.DTMMitsumoriBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DS_M = New Honda_Logi.DS_M()
-        Me.TA_M_Mitsumori = New Honda_Logi.DS_MTableAdapters.TA_M_Mitsumori()
         Me.選択 = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.見積コード = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -52,15 +49,33 @@ Partial Class F_Mitsumori
         Me.タイプ = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OP = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.削除 = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.DTMMitsumoriBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DS_M = New Honda_Logi.DS_M()
+        Me.TA_M_Mitsumori = New Honda_Logi.DS_MTableAdapters.TA_M_Mitsumori()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Txt_S_OP = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Txt_S_Kishu = New System.Windows.Forms.TextBox()
+        Me.Txt_S_Type = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Txt_S_Shimuke = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Btn_Search = New System.Windows.Forms.Button()
+        Me.Txt_S_Mitsumori_CD = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Btn_Delete = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMMitsumoriBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.Btn_Delete)
         Me.Panel2.Controls.Add(Me.Txt_OP)
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Controls.Add(Me.Txt_Type)
@@ -202,9 +217,9 @@ Partial Class F_Mitsumori
         '
         Me.Panel1.Controls.Add(Me.GV_Master)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Location = New System.Drawing.Point(0, 100)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1013, 498)
+        Me.Panel1.Size = New System.Drawing.Size(1013, 398)
         Me.Panel1.TabIndex = 13
         '
         'GV_Master
@@ -229,22 +244,8 @@ Partial Class F_Mitsumori
         DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GV_Master.RowTemplate.Height = 31
-        Me.GV_Master.Size = New System.Drawing.Size(1013, 498)
+        Me.GV_Master.Size = New System.Drawing.Size(1013, 398)
         Me.GV_Master.TabIndex = 1
-        '
-        'DTMMitsumoriBindingSource
-        '
-        Me.DTMMitsumoriBindingSource.DataMember = "DT_M_Mitsumori"
-        Me.DTMMitsumoriBindingSource.DataSource = Me.DS_M
-        '
-        'DS_M
-        '
-        Me.DS_M.DataSetName = "DS_M"
-        Me.DS_M.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TA_M_Mitsumori
-        '
-        Me.TA_M_Mitsumori.ClearBeforeFill = True
         '
         '選択
         '
@@ -298,12 +299,156 @@ Partial Class F_Mitsumori
         Me.削除.Text = "削除"
         Me.削除.UseColumnTextForLinkValue = True
         '
+        'DTMMitsumoriBindingSource
+        '
+        Me.DTMMitsumoriBindingSource.DataMember = "DT_M_Mitsumori"
+        Me.DTMMitsumoriBindingSource.DataSource = Me.DS_M
+        '
+        'DS_M
+        '
+        Me.DS_M.DataSetName = "DS_M"
+        Me.DS_M.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TA_M_Mitsumori
+        '
+        Me.TA_M_Mitsumori.ClearBeforeFill = True
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.Txt_S_OP)
+        Me.Panel3.Controls.Add(Me.Label9)
+        Me.Panel3.Controls.Add(Me.Txt_S_Kishu)
+        Me.Panel3.Controls.Add(Me.Txt_S_Type)
+        Me.Panel3.Controls.Add(Me.Label8)
+        Me.Panel3.Controls.Add(Me.Label10)
+        Me.Panel3.Controls.Add(Me.Txt_S_Shimuke)
+        Me.Panel3.Controls.Add(Me.Label7)
+        Me.Panel3.Controls.Add(Me.Btn_Search)
+        Me.Panel3.Controls.Add(Me.Txt_S_Mitsumori_CD)
+        Me.Panel3.Controls.Add(Me.Label6)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1013, 100)
+        Me.Panel3.TabIndex = 15
+        '
+        'Txt_S_OP
+        '
+        Me.Txt_S_OP.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_OP.Location = New System.Drawing.Point(377, 64)
+        Me.Txt_S_OP.Name = "Txt_S_OP"
+        Me.Txt_S_OP.Size = New System.Drawing.Size(70, 23)
+        Me.Txt_S_OP.TabIndex = 22
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label9.Location = New System.Drawing.Point(331, 67)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(29, 16)
+        Me.Label9.TabIndex = 21
+        Me.Label9.Text = "OP"
+        '
+        'Txt_S_Kishu
+        '
+        Me.Txt_S_Kishu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Kishu.Location = New System.Drawing.Point(550, 12)
+        Me.Txt_S_Kishu.Name = "Txt_S_Kishu"
+        Me.Txt_S_Kishu.Size = New System.Drawing.Size(108, 23)
+        Me.Txt_S_Kishu.TabIndex = 20
+        '
+        'Txt_S_Type
+        '
+        Me.Txt_S_Type.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Type.Location = New System.Drawing.Point(115, 64)
+        Me.Txt_S_Type.Name = "Txt_S_Type"
+        Me.Txt_S_Type.Size = New System.Drawing.Size(108, 23)
+        Me.Txt_S_Type.TabIndex = 20
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label8.Location = New System.Drawing.Point(504, 15)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(40, 16)
+        Me.Label8.TabIndex = 19
+        Me.Label8.Text = "機種"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label10.Location = New System.Drawing.Point(69, 67)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(43, 16)
+        Me.Label10.TabIndex = 19
+        Me.Label10.Text = "タイプ"
+        '
+        'Txt_S_Shimuke
+        '
+        Me.Txt_S_Shimuke.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Shimuke.Location = New System.Drawing.Point(377, 15)
+        Me.Txt_S_Shimuke.Name = "Txt_S_Shimuke"
+        Me.Txt_S_Shimuke.Size = New System.Drawing.Size(70, 23)
+        Me.Txt_S_Shimuke.TabIndex = 19
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label7.Location = New System.Drawing.Point(331, 18)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(40, 16)
+        Me.Label7.TabIndex = 18
+        Me.Label7.Text = "仕向"
+        '
+        'Btn_Search
+        '
+        Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Search.Location = New System.Drawing.Point(686, 54)
+        Me.Btn_Search.Name = "Btn_Search"
+        Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
+        Me.Btn_Search.TabIndex = 15
+        Me.Btn_Search.Text = "検　索"
+        Me.Btn_Search.UseVisualStyleBackColor = True
+        '
+        'Txt_S_Mitsumori_CD
+        '
+        Me.Txt_S_Mitsumori_CD.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Mitsumori_CD.Location = New System.Drawing.Point(115, 12)
+        Me.Txt_S_Mitsumori_CD.Name = "Txt_S_Mitsumori_CD"
+        Me.Txt_S_Mitsumori_CD.Size = New System.Drawing.Size(173, 23)
+        Me.Txt_S_Mitsumori_CD.TabIndex = 17
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label6.Location = New System.Drawing.Point(33, 15)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(76, 16)
+        Me.Label6.TabIndex = 16
+        Me.Label6.Text = "見積コード"
+        '
+        'Btn_Delete
+        '
+        Me.Btn_Delete.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Delete.Location = New System.Drawing.Point(891, 63)
+        Me.Btn_Delete.Name = "Btn_Delete"
+        Me.Btn_Delete.Size = New System.Drawing.Size(110, 40)
+        Me.Btn_Delete.TabIndex = 19
+        Me.Btn_Delete.Text = "全件削除"
+        Me.Btn_Delete.UseVisualStyleBackColor = True
+        '
         'F_Mitsumori
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1013, 613)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "F_Mitsumori"
         Me.Text = "見積コード"
@@ -313,6 +458,8 @@ Partial Class F_Mitsumori
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DTMMitsumoriBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -344,4 +491,17 @@ Partial Class F_Mitsumori
     Friend WithEvents タイプ As DataGridViewTextBoxColumn
     Friend WithEvents OP As DataGridViewTextBoxColumn
     Friend WithEvents 削除 As DataGridViewLinkColumn
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Txt_S_OP As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Txt_S_Kishu As TextBox
+    Friend WithEvents Txt_S_Type As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Txt_S_Shimuke As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Btn_Search As Button
+    Friend WithEvents Txt_S_Mitsumori_CD As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Btn_Delete As Button
 End Class

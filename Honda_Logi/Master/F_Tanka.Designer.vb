@@ -49,11 +49,22 @@ Partial Class F_Tanka
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TA_M_Tanka = New Honda_Logi.DS_MTableAdapters.TA_M_Tanka()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Txt_S_Maker = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Txt_S_Tanka = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Txt_S_Shizai_NM = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Txt_S_Shizai_CD = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Btn_Search = New System.Windows.Forms.Button()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMTankaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Txt_Maker
@@ -122,7 +133,7 @@ Partial Class F_Tanka
         '
         'Txt_id
         '
-        Me.Txt_id.Location = New System.Drawing.Point(916, 22)
+        Me.Txt_id.Location = New System.Drawing.Point(813, 22)
         Me.Txt_id.Name = "Txt_id"
         Me.Txt_id.Size = New System.Drawing.Size(50, 19)
         Me.Txt_id.TabIndex = 9
@@ -178,7 +189,7 @@ Partial Class F_Tanka
         DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GV_Master.RowTemplate.Height = 31
-        Me.GV_Master.Size = New System.Drawing.Size(1231, 498)
+        Me.GV_Master.Size = New System.Drawing.Size(935, 383)
         Me.GV_Master.TabIndex = 1
         '
         '選択
@@ -241,9 +252,9 @@ Partial Class F_Tanka
         '
         Me.Panel1.Controls.Add(Me.GV_Master)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Location = New System.Drawing.Point(0, 115)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1231, 498)
+        Me.Panel1.Size = New System.Drawing.Size(935, 383)
         Me.Panel1.TabIndex = 15
         '
         'Panel2
@@ -262,19 +273,119 @@ Partial Class F_Tanka
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 498)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1231, 115)
+        Me.Panel2.Size = New System.Drawing.Size(935, 115)
         Me.Panel2.TabIndex = 16
         '
         'TA_M_Tanka
         '
         Me.TA_M_Tanka.ClearBeforeFill = True
         '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.Btn_Search)
+        Me.Panel3.Controls.Add(Me.Txt_S_Maker)
+        Me.Panel3.Controls.Add(Me.Label5)
+        Me.Panel3.Controls.Add(Me.Txt_S_Tanka)
+        Me.Panel3.Controls.Add(Me.Label6)
+        Me.Panel3.Controls.Add(Me.Txt_S_Shizai_NM)
+        Me.Panel3.Controls.Add(Me.Label7)
+        Me.Panel3.Controls.Add(Me.Txt_S_Shizai_CD)
+        Me.Panel3.Controls.Add(Me.Label8)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(935, 115)
+        Me.Panel3.TabIndex = 17
+        '
+        'Txt_S_Maker
+        '
+        Me.Txt_S_Maker.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Maker.Location = New System.Drawing.Point(401, 72)
+        Me.Txt_S_Maker.Name = "Txt_S_Maker"
+        Me.Txt_S_Maker.Size = New System.Drawing.Size(108, 23)
+        Me.Txt_S_Maker.TabIndex = 24
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label5.Location = New System.Drawing.Point(331, 75)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(56, 16)
+        Me.Label5.TabIndex = 23
+        Me.Label5.Text = "メーカー"
+        '
+        'Txt_S_Tanka
+        '
+        Me.Txt_S_Tanka.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Tanka.Location = New System.Drawing.Point(115, 72)
+        Me.Txt_S_Tanka.Name = "Txt_S_Tanka"
+        Me.Txt_S_Tanka.Size = New System.Drawing.Size(123, 23)
+        Me.Txt_S_Tanka.TabIndex = 22
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label6.Location = New System.Drawing.Point(33, 75)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(40, 16)
+        Me.Label6.TabIndex = 21
+        Me.Label6.Text = "単価"
+        '
+        'Txt_S_Shizai_NM
+        '
+        Me.Txt_S_Shizai_NM.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Shizai_NM.Location = New System.Drawing.Point(401, 21)
+        Me.Txt_S_Shizai_NM.Name = "Txt_S_Shizai_NM"
+        Me.Txt_S_Shizai_NM.Size = New System.Drawing.Size(360, 23)
+        Me.Txt_S_Shizai_NM.TabIndex = 20
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label7.Location = New System.Drawing.Point(331, 24)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(56, 16)
+        Me.Label7.TabIndex = 19
+        Me.Label7.Text = "資材名"
+        '
+        'Txt_S_Shizai_CD
+        '
+        Me.Txt_S_Shizai_CD.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Shizai_CD.Location = New System.Drawing.Point(115, 21)
+        Me.Txt_S_Shizai_CD.Name = "Txt_S_Shizai_CD"
+        Me.Txt_S_Shizai_CD.Size = New System.Drawing.Size(173, 23)
+        Me.Txt_S_Shizai_CD.TabIndex = 18
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label8.Location = New System.Drawing.Point(33, 21)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(76, 16)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "資材コード"
+        '
+        'Btn_Search
+        '
+        Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Search.Location = New System.Drawing.Point(686, 55)
+        Me.Btn_Search.Name = "Btn_Search"
+        Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
+        Me.Btn_Search.TabIndex = 25
+        Me.Btn_Search.Text = "検　索"
+        Me.Btn_Search.UseVisualStyleBackColor = True
+        '
         'F_Tanka
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1231, 613)
+        Me.ClientSize = New System.Drawing.Size(935, 613)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "F_Tanka"
         Me.Text = "単価マスタ"
@@ -284,6 +395,8 @@ Partial Class F_Tanka
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -311,4 +424,14 @@ Partial Class F_Tanka
     Friend WithEvents 単価 As DataGridViewTextBoxColumn
     Friend WithEvents メーカーコード As DataGridViewTextBoxColumn
     Friend WithEvents 削除 As DataGridViewLinkColumn
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Txt_S_Maker As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Txt_S_Tanka As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Txt_S_Shizai_NM As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Txt_S_Shizai_CD As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Btn_Search As Button
 End Class

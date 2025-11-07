@@ -25,24 +25,19 @@ Partial Class F_Buhin_Order_List
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.Txt_Maker = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GV_Master = New System.Windows.Forms.DataGridView()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Txt_Tanka = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Txt_Shizai_NM = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Btn_Clear = New System.Windows.Forms.Button()
-        Me.Txt_id = New System.Windows.Forms.TextBox()
-        Me.Btn_Touroku = New System.Windows.Forms.Button()
-        Me.Txt_Shizai_CD = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.DS_M = New Honda_Logi.DS_M()
         Me.DTMBuhinOrderListBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DS_M = New Honda_Logi.DS_M()
         Me.TA_M_Buhin_Order_List = New Honda_Logi.DS_MTableAdapters.TA_M_Buhin_Order_List()
-        Me.選択 = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Txt_S_Export_NM = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Txt_S_DIST = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Btn_Search = New System.Windows.Forms.Button()
+        Me.Txt_S_Basic_No = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DIST = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.No = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -103,40 +98,26 @@ Partial Class F_Buhin_Order_List
         Me.数量20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.単品重量 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.内装重量 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.削除 = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Btn_Search = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Txt_S_Order_Lot = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Txt_S_OS = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Txt_S_Carton = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMBuhinOrderListBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Txt_Maker
-        '
-        Me.Txt_Maker.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Maker.Location = New System.Drawing.Point(671, 19)
-        Me.Txt_Maker.Name = "Txt_Maker"
-        Me.Txt_Maker.Size = New System.Drawing.Size(220, 23)
-        Me.Txt_Maker.TabIndex = 16
         '
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.GV_Master)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 79)
+        Me.Panel1.Location = New System.Drawing.Point(0, 134)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1357, 487)
+        Me.Panel1.Size = New System.Drawing.Size(1357, 547)
         Me.Panel1.TabIndex = 17
         '
         'GV_Master
@@ -153,7 +134,7 @@ Partial Class F_Buhin_Order_List
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.DIST, Me.No, Me.変更フラグ, Me.GR, Me.Basic_Part_No, Me.Export_Name, Me.Order_Lot, Me.LOTカートン数, Me.個装入数, Me.OS, Me.内装適用, Me.L, Me.W, Me.H, Me.防錆, Me.個装適用袋, Me.袋必要数, Me.資材コード1, Me.数量1, Me.資材コード2, Me.数量2, Me.資材コード3, Me.数量3, Me.資材コード4, Me.数量4, Me.資材コード5, Me.数量5, Me.資材コード6, Me.数量6, Me.資材コード7, Me.数量7, Me.資材コード8, Me.数量8, Me.資材コード9, Me.数量9, Me.資材コード10, Me.数量10, Me.資材コード11, Me.数量11, Me.資材コード12, Me.数量12, Me.資材コード13, Me.数量13, Me.資材コード14, Me.数量14, Me.資材コード15, Me.数量15, Me.資材コード16, Me.数量16, Me.資材コード17, Me.数量17, Me.資材コード18, Me.数量18, Me.資材コード19, Me.数量19, Me.資材コード20, Me.数量20, Me.単品重量, Me.内装重量, Me.削除})
+        Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id, Me.DIST, Me.No, Me.変更フラグ, Me.GR, Me.Basic_Part_No, Me.Export_Name, Me.Order_Lot, Me.LOTカートン数, Me.個装入数, Me.OS, Me.内装適用, Me.L, Me.W, Me.H, Me.防錆, Me.個装適用袋, Me.袋必要数, Me.資材コード1, Me.数量1, Me.資材コード2, Me.数量2, Me.資材コード3, Me.数量3, Me.資材コード4, Me.数量4, Me.資材コード5, Me.数量5, Me.資材コード6, Me.数量6, Me.資材コード7, Me.数量7, Me.資材コード8, Me.数量8, Me.資材コード9, Me.数量9, Me.資材コード10, Me.数量10, Me.資材コード11, Me.数量11, Me.資材コード12, Me.数量12, Me.資材コード13, Me.数量13, Me.資材コード14, Me.数量14, Me.資材コード15, Me.数量15, Me.資材コード16, Me.数量16, Me.資材コード17, Me.数量17, Me.資材コード18, Me.数量18, Me.資材コード19, Me.数量19, Me.資材コード20, Me.数量20, Me.単品重量, Me.内装重量})
         Me.GV_Master.DataSource = Me.DTMBuhinOrderListBindingSource
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
@@ -161,142 +142,107 @@ Partial Class F_Buhin_Order_List
         DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GV_Master.RowTemplate.Height = 31
-        Me.GV_Master.Size = New System.Drawing.Size(1357, 487)
+        Me.GV_Master.Size = New System.Drawing.Size(1357, 547)
         Me.GV_Master.TabIndex = 1
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label4.Location = New System.Drawing.Point(542, 22)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(123, 16)
-        Me.Label4.TabIndex = 15
-        Me.Label4.Text = "BASIC PART NO"
-        '
-        'Txt_Tanka
-        '
-        Me.Txt_Tanka.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Tanka.Location = New System.Drawing.Point(432, 19)
-        Me.Txt_Tanka.Name = "Txt_Tanka"
-        Me.Txt_Tanka.Size = New System.Drawing.Size(89, 23)
-        Me.Txt_Tanka.TabIndex = 14
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.Location = New System.Drawing.Point(397, 22)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(29, 16)
-        Me.Label3.TabIndex = 13
-        Me.Label3.Text = "GR"
-        '
-        'Txt_Shizai_NM
-        '
-        Me.Txt_Shizai_NM.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Shizai_NM.Location = New System.Drawing.Point(287, 19)
-        Me.Txt_Shizai_NM.Name = "Txt_Shizai_NM"
-        Me.Txt_Shizai_NM.Size = New System.Drawing.Size(76, 23)
-        Me.Txt_Shizai_NM.TabIndex = 12
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(255, 22)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(26, 16)
-        Me.Label2.TabIndex = 11
-        Me.Label2.Text = "No"
-        '
-        'Btn_Clear
-        '
-        Me.Btn_Clear.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Clear.Location = New System.Drawing.Point(1128, 63)
-        Me.Btn_Clear.Name = "Btn_Clear"
-        Me.Btn_Clear.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Clear.TabIndex = 10
-        Me.Btn_Clear.Text = "クリア"
-        Me.Btn_Clear.UseVisualStyleBackColor = True
-        '
-        'Txt_id
-        '
-        Me.Txt_id.Location = New System.Drawing.Point(1307, 6)
-        Me.Txt_id.Name = "Txt_id"
-        Me.Txt_id.Size = New System.Drawing.Size(50, 19)
-        Me.Txt_id.TabIndex = 9
-        Me.Txt_id.Visible = False
-        '
-        'Btn_Touroku
-        '
-        Me.Btn_Touroku.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Touroku.Location = New System.Drawing.Point(1026, 63)
-        Me.Btn_Touroku.Name = "Btn_Touroku"
-        Me.Btn_Touroku.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Touroku.TabIndex = 0
-        Me.Btn_Touroku.Text = "登　録"
-        Me.Btn_Touroku.UseVisualStyleBackColor = True
-        '
-        'Txt_Shizai_CD
-        '
-        Me.Txt_Shizai_CD.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Shizai_CD.Location = New System.Drawing.Point(80, 19)
-        Me.Txt_Shizai_CD.Name = "Txt_Shizai_CD"
-        Me.Txt_Shizai_CD.Size = New System.Drawing.Size(145, 23)
-        Me.Txt_Shizai_CD.TabIndex = 3
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(33, 22)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(41, 16)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "DIST"
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.TextBox4)
-        Me.Panel2.Controls.Add(Me.Label8)
-        Me.Panel2.Controls.Add(Me.Txt_Maker)
-        Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Controls.Add(Me.Txt_Tanka)
-        Me.Panel2.Controls.Add(Me.Label3)
-        Me.Panel2.Controls.Add(Me.Txt_Shizai_NM)
-        Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Controls.Add(Me.Btn_Clear)
-        Me.Panel2.Controls.Add(Me.Txt_id)
-        Me.Panel2.Controls.Add(Me.Btn_Touroku)
-        Me.Panel2.Controls.Add(Me.Txt_Shizai_CD)
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 566)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1357, 115)
-        Me.Panel2.TabIndex = 18
-        '
-        'DS_M
-        '
-        Me.DS_M.DataSetName = "DS_M"
-        Me.DS_M.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'DTMBuhinOrderListBindingSource
         '
         Me.DTMBuhinOrderListBindingSource.DataMember = "DT_M_Buhin_Order_List"
         Me.DTMBuhinOrderListBindingSource.DataSource = Me.DS_M
         '
+        'DS_M
+        '
+        Me.DS_M.DataSetName = "DS_M"
+        Me.DS_M.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'TA_M_Buhin_Order_List
         '
         Me.TA_M_Buhin_Order_List.ClearBeforeFill = True
         '
-        '選択
+        'Panel3
         '
-        Me.選択.HeaderText = "選択"
-        Me.選択.Name = "選択"
-        Me.選択.Text = "選択"
-        Me.選択.UseColumnTextForLinkValue = True
+        Me.Panel3.Controls.Add(Me.Txt_S_Carton)
+        Me.Panel3.Controls.Add(Me.Label3)
+        Me.Panel3.Controls.Add(Me.Txt_S_OS)
+        Me.Panel3.Controls.Add(Me.Label2)
+        Me.Panel3.Controls.Add(Me.Txt_S_Order_Lot)
+        Me.Panel3.Controls.Add(Me.Label1)
+        Me.Panel3.Controls.Add(Me.Txt_S_Export_NM)
+        Me.Panel3.Controls.Add(Me.Label7)
+        Me.Panel3.Controls.Add(Me.Txt_S_DIST)
+        Me.Panel3.Controls.Add(Me.Label6)
+        Me.Panel3.Controls.Add(Me.Btn_Search)
+        Me.Panel3.Controls.Add(Me.Txt_S_Basic_No)
+        Me.Panel3.Controls.Add(Me.Label5)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1357, 134)
+        Me.Panel3.TabIndex = 19
+        '
+        'Txt_S_Export_NM
+        '
+        Me.Txt_S_Export_NM.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Export_NM.Location = New System.Drawing.Point(783, 24)
+        Me.Txt_S_Export_NM.Name = "Txt_S_Export_NM"
+        Me.Txt_S_Export_NM.Size = New System.Drawing.Size(220, 23)
+        Me.Txt_S_Export_NM.TabIndex = 23
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label7.Location = New System.Drawing.Point(654, 27)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(113, 16)
+        Me.Label7.TabIndex = 22
+        Me.Label7.Text = "EXPORT NAME"
+        '
+        'Txt_S_DIST
+        '
+        Me.Txt_S_DIST.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_DIST.Location = New System.Drawing.Point(93, 24)
+        Me.Txt_S_DIST.Name = "Txt_S_DIST"
+        Me.Txt_S_DIST.Size = New System.Drawing.Size(145, 23)
+        Me.Txt_S_DIST.TabIndex = 21
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label6.Location = New System.Drawing.Point(46, 27)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(41, 16)
+        Me.Label6.TabIndex = 20
+        Me.Label6.Text = "DIST"
+        '
+        'Btn_Search
+        '
+        Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Search.Location = New System.Drawing.Point(1014, 62)
+        Me.Btn_Search.Name = "Btn_Search"
+        Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
+        Me.Btn_Search.TabIndex = 19
+        Me.Btn_Search.Text = "検　索"
+        Me.Btn_Search.UseVisualStyleBackColor = True
+        '
+        'Txt_S_Basic_No
+        '
+        Me.Txt_S_Basic_No.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Basic_No.Location = New System.Drawing.Point(400, 24)
+        Me.Txt_S_Basic_No.Name = "Txt_S_Basic_No"
+        Me.Txt_S_Basic_No.Size = New System.Drawing.Size(220, 23)
+        Me.Txt_S_Basic_No.TabIndex = 18
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label5.Location = New System.Drawing.Point(271, 27)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(123, 16)
+        Me.Label5.TabIndex = 17
+        Me.Label5.Text = "BASIC PART NO"
         '
         'id
         '
@@ -660,109 +606,59 @@ Partial Class F_Buhin_Order_List
         Me.内装重量.HeaderText = "内装重量"
         Me.内装重量.Name = "内装重量"
         '
-        '削除
+        'Txt_S_Order_Lot
         '
-        Me.削除.HeaderText = "削除"
-        Me.削除.Name = "削除"
-        Me.削除.Text = "削除"
-        Me.削除.UseColumnTextForLinkValue = True
+        Me.Txt_S_Order_Lot.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Order_Lot.Location = New System.Drawing.Point(144, 76)
+        Me.Txt_S_Order_Lot.Name = "Txt_S_Order_Lot"
+        Me.Txt_S_Order_Lot.Size = New System.Drawing.Size(145, 23)
+        Me.Txt_S_Order_Lot.TabIndex = 25
         '
-        'Panel3
+        'Label1
         '
-        Me.Panel3.Controls.Add(Me.TextBox3)
-        Me.Panel3.Controls.Add(Me.Label7)
-        Me.Panel3.Controls.Add(Me.TextBox2)
-        Me.Panel3.Controls.Add(Me.Label6)
-        Me.Panel3.Controls.Add(Me.Btn_Search)
-        Me.Panel3.Controls.Add(Me.TextBox1)
-        Me.Panel3.Controls.Add(Me.Label5)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1357, 79)
-        Me.Panel3.TabIndex = 19
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label1.Location = New System.Drawing.Point(46, 79)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(92, 16)
+        Me.Label1.TabIndex = 24
+        Me.Label1.Text = "ORDER_LOT"
         '
-        'TextBox1
+        'Txt_S_OS
         '
-        Me.TextBox1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(400, 24)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(220, 23)
-        Me.TextBox1.TabIndex = 18
+        Me.Txt_S_OS.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_OS.Location = New System.Drawing.Point(400, 76)
+        Me.Txt_S_OS.Name = "Txt_S_OS"
+        Me.Txt_S_OS.Size = New System.Drawing.Size(145, 23)
+        Me.Txt_S_OS.TabIndex = 27
         '
-        'Label5
+        'Label2
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(271, 27)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(123, 16)
-        Me.Label5.TabIndex = 17
-        Me.Label5.Text = "BASIC PART NO"
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label2.Location = New System.Drawing.Point(365, 79)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(29, 16)
+        Me.Label2.TabIndex = 26
+        Me.Label2.Text = "OS"
         '
-        'Btn_Search
+        'Txt_S_Carton
         '
-        Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Search.Location = New System.Drawing.Point(1039, 14)
-        Me.Btn_Search.Name = "Btn_Search"
-        Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Search.TabIndex = 19
-        Me.Btn_Search.Text = "検　索"
-        Me.Btn_Search.UseVisualStyleBackColor = True
+        Me.Txt_S_Carton.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Carton.Location = New System.Drawing.Point(783, 72)
+        Me.Txt_S_Carton.Name = "Txt_S_Carton"
+        Me.Txt_S_Carton.Size = New System.Drawing.Size(145, 23)
+        Me.Txt_S_Carton.TabIndex = 29
         '
-        'TextBox2
+        'Label3
         '
-        Me.TextBox2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(93, 24)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(145, 23)
-        Me.TextBox2.TabIndex = 21
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label6.Location = New System.Drawing.Point(46, 27)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(41, 16)
-        Me.Label6.TabIndex = 20
-        Me.Label6.Text = "DIST"
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(783, 24)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(220, 23)
-        Me.TextBox3.TabIndex = 23
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(654, 27)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(113, 16)
-        Me.Label7.TabIndex = 22
-        Me.Label7.Text = "EXPORT NAME"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(1026, 19)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(220, 23)
-        Me.TextBox4.TabIndex = 25
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label8.Location = New System.Drawing.Point(897, 22)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(113, 16)
-        Me.Label8.TabIndex = 24
-        Me.Label8.Text = "EXPORT NAME"
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label3.Location = New System.Drawing.Point(654, 75)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(119, 16)
+        Me.Label3.TabIndex = 28
+        Me.Label3.Text = "内装適用カートン"
         '
         'F_Buhin_Order_List
         '
@@ -771,39 +667,30 @@ Partial Class F_Buhin_Order_List
         Me.ClientSize = New System.Drawing.Size(1357, 681)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel2)
         Me.Name = "F_Buhin_Order_List"
         Me.Text = "F_Buhin_Order_List"
         Me.Panel1.ResumeLayout(False)
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        CType(Me.DS_M, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DTMBuhinOrderListBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DS_M, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents Txt_Maker As TextBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GV_Master As DataGridView
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Txt_Tanka As TextBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Txt_Shizai_NM As TextBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Btn_Clear As Button
-    Friend WithEvents Txt_id As TextBox
-    Friend WithEvents Btn_Touroku As Button
-    Friend WithEvents Txt_Shizai_CD As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents DS_M As DS_M
     Friend WithEvents DTMBuhinOrderListBindingSource As BindingSource
     Friend WithEvents TA_M_Buhin_Order_List As DS_MTableAdapters.TA_M_Buhin_Order_List
-    Friend WithEvents 選択 As DataGridViewLinkColumn
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Txt_S_Export_NM As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Txt_S_DIST As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Btn_Search As Button
+    Friend WithEvents Txt_S_Basic_No As TextBox
+    Friend WithEvents Label5 As Label
     Friend WithEvents id As DataGridViewTextBoxColumn
     Friend WithEvents DIST As DataGridViewTextBoxColumn
     Friend WithEvents No As DataGridViewTextBoxColumn
@@ -864,15 +751,10 @@ Partial Class F_Buhin_Order_List
     Friend WithEvents 数量20 As DataGridViewTextBoxColumn
     Friend WithEvents 単品重量 As DataGridViewTextBoxColumn
     Friend WithEvents 内装重量 As DataGridViewTextBoxColumn
-    Friend WithEvents 削除 As DataGridViewLinkColumn
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Btn_Search As Button
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label5 As Label
+    Friend WithEvents Txt_S_Carton As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Txt_S_OS As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Txt_S_Order_Lot As TextBox
+    Friend WithEvents Label1 As Label
 End Class

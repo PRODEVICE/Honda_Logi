@@ -387,3 +387,4 @@ C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Rate
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Tanka.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Housou.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Buhin_Order_List.resources
+C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Second.resources
