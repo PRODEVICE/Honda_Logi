@@ -10,10 +10,10 @@ Public Class F_Receive
     Private Sub F_Receive_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'TODO: このコード行はデータを 'DS_M.DT_M_Kubun' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.TA_M_Kubun.Fill(Me.DS_M.DT_M_Kubun)
+        'Me.TA_M_Kubun.Fill(Me.DS_M.DT_M_Kubun)
 
         'CCCのファイルパスを初期セット
-        Txt_File_Path.Text = My.Settings.CCC_Path
+        Txt_File_Path.Text = My.Settings.Input_Path
 
         Dtp_Nengetu.Format = DateTimePickerFormat.Custom
         Dtp_Nengetu.CustomFormat = "yyyy年MM月"
@@ -29,30 +29,23 @@ Public Class F_Receive
 
         Try
 
-            Using ofd As New OpenFileDialog()
+            '上部に表示する説明テキストを指定する
+            FolderBrowserDialog1.Description = "フォルダを指定してください。"
+            'ルートフォルダを指定する
+            ''デフォルトでDesktop
+            'FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop
+            '最初に選択するフォルダを指定する
+            'RootFolder以下にあるフォルダである必要がある
+            FolderBrowserDialog1.SelectedPath = Txt_File_Path.Text
+            'ユーザーが新しいフォルダを作成できるようにする
+            'デフォルトでTrue
+            FolderBrowserDialog1.ShowNewFolderButton = True
 
-                'ダイアログのタイトル
-                ofd.Title = "ファイルを指定してください"
-
-                '初期フォルダ（テキストボックスにパスがある場合はそこを開く）
-                If System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(Txt_File_Path.Text)) Then
-                    ofd.InitialDirectory = System.IO.Path.GetDirectoryName(Txt_File_Path.Text)
-                Else
-                    ofd.InitialDirectory = "C:\"
-                End If
-
-                '選択できるファイルの種類（必要に応じて調整）
-                ofd.Filter = "すべてのファイル (*.*)|*.*"
-
-                '複数選択を許可する場合
-                ofd.Multiselect = False
-
-                'OKが押されたらファイルパスをテキストボックスに表示
-                If ofd.ShowDialog(Me) = DialogResult.OK Then
-                    Txt_File_Path.Text = ofd.FileName
-                End If
-
-            End Using
+            'ダイアログを表示する
+            If FolderBrowserDialog1.ShowDialog(Me) = DialogResult.OK Then
+                '選択されたフォルダを表示する
+                Txt_File_Path.Text = FolderBrowserDialog1.SelectedPath
+            End If
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -65,30 +58,50 @@ Public Class F_Receive
 
         Try
 
+            Dim targetFolder As String = Txt_File_Path.Text.Trim
             Dim nengetu As String = Dtp_Nengetu.Value.Year.ToString & "/" & Dtp_Nengetu.Value.Month.ToString.PadLeft(2, "0")
 
+            My.Settings.Input_Path = Txt_File_Path.Text.Trim
 
-            '選択されたファイル種類によって処理分岐
-            If Cmb_Shurui.SelectedValue = "1" Then 'CCC
+            'フォルダ内のファイル一覧取得
+            Dim files As String() = Directory.GetFiles(targetFolder)
 
-                My.Settings.CCC_Path = Txt_File_Path.Text.Trim
-                Inport_CCC(My.Settings.CCC_Path, nengetu)
+            'ループで1件ずつ取り出し
+            For Each filePath As String In files
 
-            ElseIf Cmb_Shurui.SelectedValue = "2" Then 'KOW46
+                Dim fileName As String = Path.GetFileName(filePath)  ' ファイル名のみ
+                Dim ext As String = Path.GetExtension(filePath).ToLower() ' 拡張子
 
-                My.Settings.KOW46_Path = Txt_File_Path.Text.Trim
-                Inport_KOW46(My.Settings.KOW46_Path, nengetu)
 
-            ElseIf Cmb_Shurui.SelectedValue = "3" Then 'KIT60
+                ' ファイル名で処理を分岐
+                If fileName.Contains("CCC") Then 'CCCファイル
 
-                My.Settings.KIT60_Path = Txt_File_Path.Text.Trim
-                Inport_KIT60(My.Settings.KIT60_Path, nengetu)
+                    Inport_CCC(filePath, nengetu)
 
-            ElseIf Cmb_Shurui.SelectedValue = "4" Then '業務量
+                ElseIf fileName.Contains("KOW46") Then 'KOW46ファイル
 
-                My.Settings.Gyoumu_Path = Txt_File_Path.Text.Trim
-                Inport_Gyoumu(My.Settings.Gyoumu_Path, nengetu)
-            End If
+                    Inport_KOW46(filePath, nengetu)
+
+                ElseIf fileName.Contains("KIT60") Then
+
+                    Inport_KIT60(filePath, nengetu)
+
+                ElseIf fileName.Contains("業務量") Then
+
+                    Inport_Gyoumu(filePath, nengetu)
+
+                ElseIf fileName.Contains("部品単位オーダーリスト") Then
+
+
+
+                Else
+
+                    ' 上記以外はスルー
+
+
+                End If
+
+            Next
 
 
             MessageBox.Show("取り込み完了しました。")
@@ -105,35 +118,35 @@ Public Class F_Receive
     '**********************************************************************************
 
     '取込対象が変更されたとき
-    Private Sub Cmb_Shurui_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmb_Shurui.SelectedIndexChanged
+    'Private Sub Cmb_Shurui_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmb_Shurui.SelectedIndexChanged
 
-        Try
+    '    Try
 
-            '各ファイルごとに保存されているファイルパスを表示
-            If Cmb_Shurui.SelectedValue = "1" Then 'CCC
+    '        '各ファイルごとに保存されているファイルパスを表示
+    '        If Cmb_Shurui.SelectedValue = "1" Then 'CCC
 
-                Txt_File_Path.Text = My.Settings.CCC_Path
+    '            Txt_File_Path.Text = My.Settings.CCC_Path
 
-            ElseIf Cmb_Shurui.SelectedValue = "2" Then 'KOW46
+    '        ElseIf Cmb_Shurui.SelectedValue = "2" Then 'KOW46
 
-                Txt_File_Path.Text = My.Settings.KOW46_Path
+    '            Txt_File_Path.Text = My.Settings.KOW46_Path
 
-            ElseIf Cmb_Shurui.SelectedValue = "3" Then 'KIT60
+    '        ElseIf Cmb_Shurui.SelectedValue = "3" Then 'KIT60
 
-                Txt_File_Path.Text = My.Settings.KIT60_Path
+    '            Txt_File_Path.Text = My.Settings.KIT60_Path
 
-            ElseIf Cmb_Shurui.SelectedValue = "4" Then '業務量
+    '        ElseIf Cmb_Shurui.SelectedValue = "4" Then '業務量
 
-                Txt_File_Path.Text = My.Settings.Gyoumu_Path
+    '            Txt_File_Path.Text = My.Settings.Gyoumu_Path
 
-            End If
+    '        End If
 
 
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
+    '    Catch ex As Exception
+    '        MessageBox.Show(ex.Message)
+    '    End Try
 
-    End Sub
+    'End Sub
 
 
     '**********************************************************************************

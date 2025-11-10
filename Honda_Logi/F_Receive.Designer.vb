@@ -34,6 +34,7 @@ Partial Class F_Receive
         Me.TA_M_Kubun = New Honda_Logi.DS_MTableAdapters.TA_M_Kubun()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Dtp_Nengetu = New System.Windows.Forms.DateTimePicker()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         CType(Me.DTMKubunBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -173,4 +174,5 @@ Partial Class F_Receive
     Friend WithEvents TA_M_Kubun As DS_MTableAdapters.TA_M_Kubun
     Friend WithEvents Label3 As Label
     Friend WithEvents Dtp_Nengetu As DateTimePicker
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 End Class

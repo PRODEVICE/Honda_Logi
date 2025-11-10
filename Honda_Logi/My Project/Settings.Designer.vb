@@ -112,6 +112,18 @@ Namespace My
                 Me("Gyoumu_Path") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\")>  _
+        Public Property Input_Path() As String
+            Get
+                Return CType(Me("Input_Path"),String)
+            End Get
+            Set
+                Me("Input_Path") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -368,7 +368,6 @@ C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\System.Buffers.xm
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\System.Memory.xml
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\System.Numerics.Vectors.xml
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.AssemblyReference.cache
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Main.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Make_1Lot.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Master_Main.resources
@@ -388,3 +387,4 @@ C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Tank
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Housou.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Buhin_Order_List.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Second.resources
+C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.AssemblyReference.cache
