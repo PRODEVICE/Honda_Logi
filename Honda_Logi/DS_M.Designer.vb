@@ -45,9 +45,11 @@ Partial Public Class DS_M
     
     Private tableDT_M_Tanka As DT_M_TankaDataTable
     
-    Private tableDT_M_Buhin_Order_List As DT_M_Buhin_Order_ListDataTable
-    
     Private tableDT_M_Second As DT_M_SecondDataTable
+    
+    Private tableDT_M_Bangou As DT_M_BangouDataTable
+    
+    Private tableDT_M_User As DT_M_UserDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -108,11 +110,14 @@ Partial Public Class DS_M
             If (Not (ds.Tables("DT_M_Tanka")) Is Nothing) Then
                 MyBase.Tables.Add(New DT_M_TankaDataTable(ds.Tables("DT_M_Tanka")))
             End If
-            If (Not (ds.Tables("DT_M_Buhin_Order_List")) Is Nothing) Then
-                MyBase.Tables.Add(New DT_M_Buhin_Order_ListDataTable(ds.Tables("DT_M_Buhin_Order_List")))
-            End If
             If (Not (ds.Tables("DT_M_Second")) Is Nothing) Then
                 MyBase.Tables.Add(New DT_M_SecondDataTable(ds.Tables("DT_M_Second")))
+            End If
+            If (Not (ds.Tables("DT_M_Bangou")) Is Nothing) Then
+                MyBase.Tables.Add(New DT_M_BangouDataTable(ds.Tables("DT_M_Bangou")))
+            End If
+            If (Not (ds.Tables("DT_M_User")) Is Nothing) Then
+                MyBase.Tables.Add(New DT_M_UserDataTable(ds.Tables("DT_M_User")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -235,9 +240,9 @@ Partial Public Class DS_M
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property DT_M_Buhin_Order_List() As DT_M_Buhin_Order_ListDataTable
+    Public ReadOnly Property DT_M_Second() As DT_M_SecondDataTable
         Get
-            Return Me.tableDT_M_Buhin_Order_List
+            Return Me.tableDT_M_Second
         End Get
     End Property
     
@@ -245,9 +250,19 @@ Partial Public Class DS_M
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property DT_M_Second() As DT_M_SecondDataTable
+    Public ReadOnly Property DT_M_Bangou() As DT_M_BangouDataTable
         Get
-            Return Me.tableDT_M_Second
+            Return Me.tableDT_M_Bangou
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property DT_M_User() As DT_M_UserDataTable
+        Get
+            Return Me.tableDT_M_User
         End Get
     End Property
     
@@ -348,11 +363,14 @@ Partial Public Class DS_M
             If (Not (ds.Tables("DT_M_Tanka")) Is Nothing) Then
                 MyBase.Tables.Add(New DT_M_TankaDataTable(ds.Tables("DT_M_Tanka")))
             End If
-            If (Not (ds.Tables("DT_M_Buhin_Order_List")) Is Nothing) Then
-                MyBase.Tables.Add(New DT_M_Buhin_Order_ListDataTable(ds.Tables("DT_M_Buhin_Order_List")))
-            End If
             If (Not (ds.Tables("DT_M_Second")) Is Nothing) Then
                 MyBase.Tables.Add(New DT_M_SecondDataTable(ds.Tables("DT_M_Second")))
+            End If
+            If (Not (ds.Tables("DT_M_Bangou")) Is Nothing) Then
+                MyBase.Tables.Add(New DT_M_BangouDataTable(ds.Tables("DT_M_Bangou")))
+            End If
+            If (Not (ds.Tables("DT_M_User")) Is Nothing) Then
+                MyBase.Tables.Add(New DT_M_UserDataTable(ds.Tables("DT_M_User")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -446,16 +464,22 @@ Partial Public Class DS_M
                 Me.tableDT_M_Tanka.InitVars
             End If
         End If
-        Me.tableDT_M_Buhin_Order_List = CType(MyBase.Tables("DT_M_Buhin_Order_List"),DT_M_Buhin_Order_ListDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableDT_M_Buhin_Order_List) Is Nothing) Then
-                Me.tableDT_M_Buhin_Order_List.InitVars
-            End If
-        End If
         Me.tableDT_M_Second = CType(MyBase.Tables("DT_M_Second"),DT_M_SecondDataTable)
         If (initTable = true) Then
             If (Not (Me.tableDT_M_Second) Is Nothing) Then
                 Me.tableDT_M_Second.InitVars
+            End If
+        End If
+        Me.tableDT_M_Bangou = CType(MyBase.Tables("DT_M_Bangou"),DT_M_BangouDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableDT_M_Bangou) Is Nothing) Then
+                Me.tableDT_M_Bangou.InitVars
+            End If
+        End If
+        Me.tableDT_M_User = CType(MyBase.Tables("DT_M_User"),DT_M_UserDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableDT_M_User) Is Nothing) Then
+                Me.tableDT_M_User.InitVars
             End If
         End If
     End Sub
@@ -488,10 +512,12 @@ Partial Public Class DS_M
         MyBase.Tables.Add(Me.tableDT_M_Rate)
         Me.tableDT_M_Tanka = New DT_M_TankaDataTable()
         MyBase.Tables.Add(Me.tableDT_M_Tanka)
-        Me.tableDT_M_Buhin_Order_List = New DT_M_Buhin_Order_ListDataTable()
-        MyBase.Tables.Add(Me.tableDT_M_Buhin_Order_List)
         Me.tableDT_M_Second = New DT_M_SecondDataTable()
         MyBase.Tables.Add(Me.tableDT_M_Second)
+        Me.tableDT_M_Bangou = New DT_M_BangouDataTable()
+        MyBase.Tables.Add(Me.tableDT_M_Bangou)
+        Me.tableDT_M_User = New DT_M_UserDataTable()
+        MyBase.Tables.Add(Me.tableDT_M_User)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -556,13 +582,19 @@ Partial Public Class DS_M
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializeDT_M_Buhin_Order_List() As Boolean
+    Private Function ShouldSerializeDT_M_Second() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializeDT_M_Second() As Boolean
+    Private Function ShouldSerializeDT_M_Bangou() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializeDT_M_User() As Boolean
         Return false
     End Function
     
@@ -655,10 +687,13 @@ Partial Public Class DS_M
     Public Delegate Sub DT_M_TankaRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_M_TankaRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub DT_M_Buhin_Order_ListRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_M_Buhin_Order_ListRowChangeEvent)
+    Public Delegate Sub DT_M_SecondRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_M_SecondRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub DT_M_SecondRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_M_SecondRowChangeEvent)
+    Public Delegate Sub DT_M_BangouRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_M_BangouRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub DT_M_UserRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_M_UserRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -3766,1141 +3801,6 @@ Partial Public Class DS_M
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class DT_M_Buhin_Order_ListDataTable
-        Inherits Global.System.Data.TypedTableBase(Of DT_M_Buhin_Order_ListRow)
-        
-        Private columnid As Global.System.Data.DataColumn
-        
-        Private columnDIST As Global.System.Data.DataColumn
-        
-        Private columnNo As Global.System.Data.DataColumn
-        
-        Private column変更フラグ As Global.System.Data.DataColumn
-        
-        Private columnGR As Global.System.Data.DataColumn
-        
-        Private columnBasic_Part_No As Global.System.Data.DataColumn
-        
-        Private columnExport_Name As Global.System.Data.DataColumn
-        
-        Private columnOrder_Lot As Global.System.Data.DataColumn
-        
-        Private columnLOTカートン数 As Global.System.Data.DataColumn
-        
-        Private column個装入数 As Global.System.Data.DataColumn
-        
-        Private columnOS As Global.System.Data.DataColumn
-        
-        Private column内装適用 As Global.System.Data.DataColumn
-        
-        Private columnL As Global.System.Data.DataColumn
-        
-        Private columnW As Global.System.Data.DataColumn
-        
-        Private columnH As Global.System.Data.DataColumn
-        
-        Private column防錆 As Global.System.Data.DataColumn
-        
-        Private column個装適用袋 As Global.System.Data.DataColumn
-        
-        Private column袋必要数 As Global.System.Data.DataColumn
-        
-        Private column資材コード1 As Global.System.Data.DataColumn
-        
-        Private column数量1 As Global.System.Data.DataColumn
-        
-        Private column資材コード2 As Global.System.Data.DataColumn
-        
-        Private column数量2 As Global.System.Data.DataColumn
-        
-        Private column資材コード3 As Global.System.Data.DataColumn
-        
-        Private column数量3 As Global.System.Data.DataColumn
-        
-        Private column資材コード4 As Global.System.Data.DataColumn
-        
-        Private column数量4 As Global.System.Data.DataColumn
-        
-        Private column資材コード5 As Global.System.Data.DataColumn
-        
-        Private column数量5 As Global.System.Data.DataColumn
-        
-        Private column資材コード6 As Global.System.Data.DataColumn
-        
-        Private column数量6 As Global.System.Data.DataColumn
-        
-        Private column資材コード7 As Global.System.Data.DataColumn
-        
-        Private column数量7 As Global.System.Data.DataColumn
-        
-        Private column資材コード8 As Global.System.Data.DataColumn
-        
-        Private column数量8 As Global.System.Data.DataColumn
-        
-        Private column資材コード9 As Global.System.Data.DataColumn
-        
-        Private column数量9 As Global.System.Data.DataColumn
-        
-        Private column資材コード10 As Global.System.Data.DataColumn
-        
-        Private column数量10 As Global.System.Data.DataColumn
-        
-        Private column資材コード11 As Global.System.Data.DataColumn
-        
-        Private column数量11 As Global.System.Data.DataColumn
-        
-        Private column資材コード12 As Global.System.Data.DataColumn
-        
-        Private column数量12 As Global.System.Data.DataColumn
-        
-        Private column資材コード13 As Global.System.Data.DataColumn
-        
-        Private column数量13 As Global.System.Data.DataColumn
-        
-        Private column資材コード14 As Global.System.Data.DataColumn
-        
-        Private column数量14 As Global.System.Data.DataColumn
-        
-        Private column資材コード15 As Global.System.Data.DataColumn
-        
-        Private column数量15 As Global.System.Data.DataColumn
-        
-        Private column資材コード16 As Global.System.Data.DataColumn
-        
-        Private column数量16 As Global.System.Data.DataColumn
-        
-        Private column資材コード17 As Global.System.Data.DataColumn
-        
-        Private column数量17 As Global.System.Data.DataColumn
-        
-        Private column資材コード18 As Global.System.Data.DataColumn
-        
-        Private column数量18 As Global.System.Data.DataColumn
-        
-        Private column資材コード19 As Global.System.Data.DataColumn
-        
-        Private column数量19 As Global.System.Data.DataColumn
-        
-        Private column資材コード20 As Global.System.Data.DataColumn
-        
-        Private column数量20 As Global.System.Data.DataColumn
-        
-        Private column単品重量 As Global.System.Data.DataColumn
-        
-        Private column内装重量 As Global.System.Data.DataColumn
-        
-        Private column見積No As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "DT_M_Buhin_Order_List"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property idColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnid
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property DISTColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDIST
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property NoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnNo
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 変更フラグColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.column変更フラグ
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property GRColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnGR
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Basic_Part_NoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnBasic_Part_No
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Export_NameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnExport_Name
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Order_LotColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnOrder_Lot
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property LOTカートン数Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnLOTカートン数
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 個装入数Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column個装入数
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property OSColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnOS
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 内装適用Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column内装適用
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property LColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnL
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property WColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnW
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property HColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnH
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 防錆Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column防錆
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 個装適用袋Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column個装適用袋
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 袋必要数Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column袋必要数
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード3Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード3
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量3Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量3
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード4Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード4
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量4Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量4
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード5Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード5
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量5Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量5
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード6Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード6
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量6Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量6
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード7Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード7
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量7Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量7
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード8Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード8
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量8Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量8
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード9Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード9
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量9Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量9
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード10Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード10
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量10Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量10
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード11Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード11
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量11Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量11
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード12Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード12
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量12Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量12
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード13Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード13
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量13Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量13
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード14Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード14
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量14Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量14
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード15Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード15
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量15Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量15
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード16Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード16
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量16Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量16
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード17Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード17
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量17Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量17
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード18Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード18
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量18Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量18
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード19Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード19
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量19Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量19
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 資材コード20Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column資材コード20
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 数量20Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column数量20
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 単品重量Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column単品重量
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 内装重量Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.column内装重量
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property 見積NoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.column見積No
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As DT_M_Buhin_Order_ListRow
-            Get
-                Return CType(Me.Rows(index),DT_M_Buhin_Order_ListRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event DT_M_Buhin_Order_ListRowChanging As DT_M_Buhin_Order_ListRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event DT_M_Buhin_Order_ListRowChanged As DT_M_Buhin_Order_ListRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event DT_M_Buhin_Order_ListRowDeleting As DT_M_Buhin_Order_ListRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event DT_M_Buhin_Order_ListRowDeleted As DT_M_Buhin_Order_ListRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub AddDT_M_Buhin_Order_ListRow(ByVal row As DT_M_Buhin_Order_ListRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddDT_M_Buhin_Order_ListRow( _
-                    ByVal DIST As String,  _
-                    ByVal No As Integer,  _
-                    ByVal 変更フラグ As Integer,  _
-                    ByVal GR As String,  _
-                    ByVal Basic_Part_No As String,  _
-                    ByVal Export_Name As String,  _
-                    ByVal Order_Lot As Integer,  _
-                    ByVal LOTカートン数 As String,  _
-                    ByVal 個装入数 As Integer,  _
-                    ByVal OS As String,  _
-                    ByVal 内装適用 As String,  _
-                    ByVal L As Integer,  _
-                    ByVal W As Integer,  _
-                    ByVal H As Integer,  _
-                    ByVal 防錆 As String,  _
-                    ByVal 個装適用袋 As String,  _
-                    ByVal 袋必要数 As String,  _
-                    ByVal 資材コード1 As String,  _
-                    ByVal 数量1 As Integer,  _
-                    ByVal 資材コード2 As String,  _
-                    ByVal 数量2 As Integer,  _
-                    ByVal 資材コード3 As String,  _
-                    ByVal 数量3 As Integer,  _
-                    ByVal 資材コード4 As String,  _
-                    ByVal 数量4 As Integer,  _
-                    ByVal 資材コード5 As String,  _
-                    ByVal 数量5 As Integer,  _
-                    ByVal 資材コード6 As String,  _
-                    ByVal 数量6 As Integer,  _
-                    ByVal 資材コード7 As String,  _
-                    ByVal 数量7 As Integer,  _
-                    ByVal 資材コード8 As String,  _
-                    ByVal 数量8 As Integer,  _
-                    ByVal 資材コード9 As String,  _
-                    ByVal 数量9 As Integer,  _
-                    ByVal 資材コード10 As String,  _
-                    ByVal 数量10 As Integer,  _
-                    ByVal 資材コード11 As String,  _
-                    ByVal 数量11 As Integer,  _
-                    ByVal 資材コード12 As String,  _
-                    ByVal 数量12 As Integer,  _
-                    ByVal 資材コード13 As String,  _
-                    ByVal 数量13 As Integer,  _
-                    ByVal 資材コード14 As String,  _
-                    ByVal 数量14 As Integer,  _
-                    ByVal 資材コード15 As String,  _
-                    ByVal 数量15 As Integer,  _
-                    ByVal 資材コード16 As String,  _
-                    ByVal 数量16 As Integer,  _
-                    ByVal 資材コード17 As String,  _
-                    ByVal 数量17 As Integer,  _
-                    ByVal 資材コード18 As String,  _
-                    ByVal 数量18 As Integer,  _
-                    ByVal 資材コード19 As String,  _
-                    ByVal 数量19 As Integer,  _
-                    ByVal 資材コード20 As String,  _
-                    ByVal 数量20 As Integer,  _
-                    ByVal 単品重量 As Decimal,  _
-                    ByVal 内装重量 As Decimal,  _
-                    ByVal 見積No As Integer) As DT_M_Buhin_Order_ListRow
-            Dim rowDT_M_Buhin_Order_ListRow As DT_M_Buhin_Order_ListRow = CType(Me.NewRow,DT_M_Buhin_Order_ListRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot, LOTカートン数, 個装入数, OS, 内装適用, L, W, H, 防錆, 個装適用袋, 袋必要数, 資材コード1, 数量1, 資材コード2, 数量2, 資材コード3, 数量3, 資材コード4, 数量4, 資材コード5, 数量5, 資材コード6, 数量6, 資材コード7, 数量7, 資材コード8, 数量8, 資材コード9, 数量9, 資材コード10, 数量10, 資材コード11, 数量11, 資材コード12, 数量12, 資材コード13, 数量13, 資材コード14, 数量14, 資材コード15, 数量15, 資材コード16, 数量16, 資材コード17, 数量17, 資材コード18, 数量18, 資材コード19, 数量19, 資材コード20, 数量20, 単品重量, 内装重量, 見積No}
-            rowDT_M_Buhin_Order_ListRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowDT_M_Buhin_Order_ListRow)
-            Return rowDT_M_Buhin_Order_ListRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function FindByid(ByVal id As Integer) As DT_M_Buhin_Order_ListRow
-            Return CType(Me.Rows.Find(New Object() {id}),DT_M_Buhin_Order_ListRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As DT_M_Buhin_Order_ListDataTable = CType(MyBase.Clone,DT_M_Buhin_Order_ListDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New DT_M_Buhin_Order_ListDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnid = MyBase.Columns("id")
-            Me.columnDIST = MyBase.Columns("DIST")
-            Me.columnNo = MyBase.Columns("No")
-            Me.column変更フラグ = MyBase.Columns("変更フラグ")
-            Me.columnGR = MyBase.Columns("GR")
-            Me.columnBasic_Part_No = MyBase.Columns("Basic_Part_No")
-            Me.columnExport_Name = MyBase.Columns("Export_Name")
-            Me.columnOrder_Lot = MyBase.Columns("Order_Lot")
-            Me.columnLOTカートン数 = MyBase.Columns("LOTカートン数")
-            Me.column個装入数 = MyBase.Columns("個装入数")
-            Me.columnOS = MyBase.Columns("OS")
-            Me.column内装適用 = MyBase.Columns("内装適用")
-            Me.columnL = MyBase.Columns("L")
-            Me.columnW = MyBase.Columns("W")
-            Me.columnH = MyBase.Columns("H")
-            Me.column防錆 = MyBase.Columns("防錆")
-            Me.column個装適用袋 = MyBase.Columns("個装適用袋")
-            Me.column袋必要数 = MyBase.Columns("袋必要数")
-            Me.column資材コード1 = MyBase.Columns("資材コード1")
-            Me.column数量1 = MyBase.Columns("数量1")
-            Me.column資材コード2 = MyBase.Columns("資材コード2")
-            Me.column数量2 = MyBase.Columns("数量2")
-            Me.column資材コード3 = MyBase.Columns("資材コード3")
-            Me.column数量3 = MyBase.Columns("数量3")
-            Me.column資材コード4 = MyBase.Columns("資材コード4")
-            Me.column数量4 = MyBase.Columns("数量4")
-            Me.column資材コード5 = MyBase.Columns("資材コード5")
-            Me.column数量5 = MyBase.Columns("数量5")
-            Me.column資材コード6 = MyBase.Columns("資材コード6")
-            Me.column数量6 = MyBase.Columns("数量6")
-            Me.column資材コード7 = MyBase.Columns("資材コード7")
-            Me.column数量7 = MyBase.Columns("数量7")
-            Me.column資材コード8 = MyBase.Columns("資材コード8")
-            Me.column数量8 = MyBase.Columns("数量8")
-            Me.column資材コード9 = MyBase.Columns("資材コード9")
-            Me.column数量9 = MyBase.Columns("数量9")
-            Me.column資材コード10 = MyBase.Columns("資材コード10")
-            Me.column数量10 = MyBase.Columns("数量10")
-            Me.column資材コード11 = MyBase.Columns("資材コード11")
-            Me.column数量11 = MyBase.Columns("数量11")
-            Me.column資材コード12 = MyBase.Columns("資材コード12")
-            Me.column数量12 = MyBase.Columns("数量12")
-            Me.column資材コード13 = MyBase.Columns("資材コード13")
-            Me.column数量13 = MyBase.Columns("数量13")
-            Me.column資材コード14 = MyBase.Columns("資材コード14")
-            Me.column数量14 = MyBase.Columns("数量14")
-            Me.column資材コード15 = MyBase.Columns("資材コード15")
-            Me.column数量15 = MyBase.Columns("数量15")
-            Me.column資材コード16 = MyBase.Columns("資材コード16")
-            Me.column数量16 = MyBase.Columns("数量16")
-            Me.column資材コード17 = MyBase.Columns("資材コード17")
-            Me.column数量17 = MyBase.Columns("数量17")
-            Me.column資材コード18 = MyBase.Columns("資材コード18")
-            Me.column数量18 = MyBase.Columns("数量18")
-            Me.column資材コード19 = MyBase.Columns("資材コード19")
-            Me.column数量19 = MyBase.Columns("数量19")
-            Me.column資材コード20 = MyBase.Columns("資材コード20")
-            Me.column数量20 = MyBase.Columns("数量20")
-            Me.column単品重量 = MyBase.Columns("単品重量")
-            Me.column内装重量 = MyBase.Columns("内装重量")
-            Me.column見積No = MyBase.Columns("見積No")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnid = New Global.System.Data.DataColumn("id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnid)
-            Me.columnDIST = New Global.System.Data.DataColumn("DIST", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDIST)
-            Me.columnNo = New Global.System.Data.DataColumn("No", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNo)
-            Me.column変更フラグ = New Global.System.Data.DataColumn("変更フラグ", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column変更フラグ)
-            Me.columnGR = New Global.System.Data.DataColumn("GR", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnGR)
-            Me.columnBasic_Part_No = New Global.System.Data.DataColumn("Basic_Part_No", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnBasic_Part_No)
-            Me.columnExport_Name = New Global.System.Data.DataColumn("Export_Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnExport_Name)
-            Me.columnOrder_Lot = New Global.System.Data.DataColumn("Order_Lot", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOrder_Lot)
-            Me.columnLOTカートン数 = New Global.System.Data.DataColumn("LOTカートン数", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnLOTカートン数)
-            Me.column個装入数 = New Global.System.Data.DataColumn("個装入数", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column個装入数)
-            Me.columnOS = New Global.System.Data.DataColumn("OS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOS)
-            Me.column内装適用 = New Global.System.Data.DataColumn("内装適用", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column内装適用)
-            Me.columnL = New Global.System.Data.DataColumn("L", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnL)
-            Me.columnW = New Global.System.Data.DataColumn("W", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnW)
-            Me.columnH = New Global.System.Data.DataColumn("H", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnH)
-            Me.column防錆 = New Global.System.Data.DataColumn("防錆", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column防錆)
-            Me.column個装適用袋 = New Global.System.Data.DataColumn("個装適用袋", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column個装適用袋)
-            Me.column袋必要数 = New Global.System.Data.DataColumn("袋必要数", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column袋必要数)
-            Me.column資材コード1 = New Global.System.Data.DataColumn("資材コード1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード1)
-            Me.column数量1 = New Global.System.Data.DataColumn("数量1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量1)
-            Me.column資材コード2 = New Global.System.Data.DataColumn("資材コード2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード2)
-            Me.column数量2 = New Global.System.Data.DataColumn("数量2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量2)
-            Me.column資材コード3 = New Global.System.Data.DataColumn("資材コード3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード3)
-            Me.column数量3 = New Global.System.Data.DataColumn("数量3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量3)
-            Me.column資材コード4 = New Global.System.Data.DataColumn("資材コード4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード4)
-            Me.column数量4 = New Global.System.Data.DataColumn("数量4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量4)
-            Me.column資材コード5 = New Global.System.Data.DataColumn("資材コード5", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード5)
-            Me.column数量5 = New Global.System.Data.DataColumn("数量5", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量5)
-            Me.column資材コード6 = New Global.System.Data.DataColumn("資材コード6", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード6)
-            Me.column数量6 = New Global.System.Data.DataColumn("数量6", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量6)
-            Me.column資材コード7 = New Global.System.Data.DataColumn("資材コード7", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード7)
-            Me.column数量7 = New Global.System.Data.DataColumn("数量7", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量7)
-            Me.column資材コード8 = New Global.System.Data.DataColumn("資材コード8", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード8)
-            Me.column数量8 = New Global.System.Data.DataColumn("数量8", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量8)
-            Me.column資材コード9 = New Global.System.Data.DataColumn("資材コード9", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード9)
-            Me.column数量9 = New Global.System.Data.DataColumn("数量9", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量9)
-            Me.column資材コード10 = New Global.System.Data.DataColumn("資材コード10", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード10)
-            Me.column数量10 = New Global.System.Data.DataColumn("数量10", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量10)
-            Me.column資材コード11 = New Global.System.Data.DataColumn("資材コード11", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード11)
-            Me.column数量11 = New Global.System.Data.DataColumn("数量11", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量11)
-            Me.column資材コード12 = New Global.System.Data.DataColumn("資材コード12", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード12)
-            Me.column数量12 = New Global.System.Data.DataColumn("数量12", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量12)
-            Me.column資材コード13 = New Global.System.Data.DataColumn("資材コード13", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード13)
-            Me.column数量13 = New Global.System.Data.DataColumn("数量13", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量13)
-            Me.column資材コード14 = New Global.System.Data.DataColumn("資材コード14", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード14)
-            Me.column数量14 = New Global.System.Data.DataColumn("数量14", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量14)
-            Me.column資材コード15 = New Global.System.Data.DataColumn("資材コード15", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード15)
-            Me.column数量15 = New Global.System.Data.DataColumn("数量15", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量15)
-            Me.column資材コード16 = New Global.System.Data.DataColumn("資材コード16", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード16)
-            Me.column数量16 = New Global.System.Data.DataColumn("数量16", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量16)
-            Me.column資材コード17 = New Global.System.Data.DataColumn("資材コード17", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード17)
-            Me.column数量17 = New Global.System.Data.DataColumn("数量17", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量17)
-            Me.column資材コード18 = New Global.System.Data.DataColumn("資材コード18", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード18)
-            Me.column数量18 = New Global.System.Data.DataColumn("数量18", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量18)
-            Me.column資材コード19 = New Global.System.Data.DataColumn("資材コード19", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード19)
-            Me.column数量19 = New Global.System.Data.DataColumn("数量19", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量19)
-            Me.column資材コード20 = New Global.System.Data.DataColumn("資材コード20", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column資材コード20)
-            Me.column数量20 = New Global.System.Data.DataColumn("数量20", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column数量20)
-            Me.column単品重量 = New Global.System.Data.DataColumn("単品重量", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column単品重量)
-            Me.column内装重量 = New Global.System.Data.DataColumn("内装重量", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column内装重量)
-            Me.column見積No = New Global.System.Data.DataColumn("見積No", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.column見積No)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
-            Me.columnid.AutoIncrement = true
-            Me.columnid.AutoIncrementSeed = -1
-            Me.columnid.AutoIncrementStep = -1
-            Me.columnid.AllowDBNull = false
-            Me.columnid.ReadOnly = true
-            Me.columnid.Unique = true
-            Me.columnDIST.MaxLength = 20
-            Me.columnGR.MaxLength = 100
-            Me.columnBasic_Part_No.MaxLength = 50
-            Me.columnExport_Name.MaxLength = 100
-            Me.columnLOTカートン数.MaxLength = 50
-            Me.columnOS.MaxLength = 100
-            Me.column内装適用.MaxLength = 50
-            Me.column防錆.MaxLength = 50
-            Me.column個装適用袋.MaxLength = 50
-            Me.column袋必要数.MaxLength = 100
-            Me.column資材コード1.MaxLength = 50
-            Me.column資材コード2.MaxLength = 50
-            Me.column資材コード3.MaxLength = 50
-            Me.column資材コード4.MaxLength = 50
-            Me.column資材コード5.MaxLength = 50
-            Me.column資材コード6.MaxLength = 50
-            Me.column資材コード7.MaxLength = 50
-            Me.column資材コード8.MaxLength = 50
-            Me.column資材コード9.MaxLength = 50
-            Me.column資材コード10.MaxLength = 50
-            Me.column資材コード11.MaxLength = 50
-            Me.column資材コード12.MaxLength = 50
-            Me.column資材コード13.MaxLength = 50
-            Me.column資材コード14.MaxLength = 50
-            Me.column資材コード15.MaxLength = 50
-            Me.column資材コード16.MaxLength = 50
-            Me.column資材コード17.MaxLength = 50
-            Me.column資材コード18.MaxLength = 50
-            Me.column資材コード19.MaxLength = 50
-            Me.column資材コード20.MaxLength = 50
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function NewDT_M_Buhin_Order_ListRow() As DT_M_Buhin_Order_ListRow
-            Return CType(Me.NewRow,DT_M_Buhin_Order_ListRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New DT_M_Buhin_Order_ListRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(DT_M_Buhin_Order_ListRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.DT_M_Buhin_Order_ListRowChangedEvent) Is Nothing) Then
-                RaiseEvent DT_M_Buhin_Order_ListRowChanged(Me, New DT_M_Buhin_Order_ListRowChangeEvent(CType(e.Row,DT_M_Buhin_Order_ListRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.DT_M_Buhin_Order_ListRowChangingEvent) Is Nothing) Then
-                RaiseEvent DT_M_Buhin_Order_ListRowChanging(Me, New DT_M_Buhin_Order_ListRowChangeEvent(CType(e.Row,DT_M_Buhin_Order_ListRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.DT_M_Buhin_Order_ListRowDeletedEvent) Is Nothing) Then
-                RaiseEvent DT_M_Buhin_Order_ListRowDeleted(Me, New DT_M_Buhin_Order_ListRowChangeEvent(CType(e.Row,DT_M_Buhin_Order_ListRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.DT_M_Buhin_Order_ListRowDeletingEvent) Is Nothing) Then
-                RaiseEvent DT_M_Buhin_Order_ListRowDeleting(Me, New DT_M_Buhin_Order_ListRowChangeEvent(CType(e.Row,DT_M_Buhin_Order_ListRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub RemoveDT_M_Buhin_Order_ListRow(ByVal row As DT_M_Buhin_Order_ListRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As DS_M = New DS_M()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "DT_M_Buhin_Order_ListDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class DT_M_SecondDataTable
         Inherits Global.System.Data.TypedTableBase(Of DT_M_SecondRow)
         
@@ -5172,6 +4072,579 @@ Partial Public Class DS_M
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "DT_M_SecondDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class DT_M_BangouDataTable
+        Inherits Global.System.Data.TypedTableBase(Of DT_M_BangouRow)
+        
+        Private column見積No As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "DT_M_Bangou"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 見積NoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column見積No
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As DT_M_BangouRow
+            Get
+                Return CType(Me.Rows(index),DT_M_BangouRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event DT_M_BangouRowChanging As DT_M_BangouRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event DT_M_BangouRowChanged As DT_M_BangouRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event DT_M_BangouRowDeleting As DT_M_BangouRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event DT_M_BangouRowDeleted As DT_M_BangouRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddDT_M_BangouRow(ByVal row As DT_M_BangouRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddDT_M_BangouRow(ByVal 見積No As Integer) As DT_M_BangouRow
+            Dim rowDT_M_BangouRow As DT_M_BangouRow = CType(Me.NewRow,DT_M_BangouRow)
+            Dim columnValuesArray() As Object = New Object() {見積No}
+            rowDT_M_BangouRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowDT_M_BangouRow)
+            Return rowDT_M_BangouRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As DT_M_BangouDataTable = CType(MyBase.Clone,DT_M_BangouDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New DT_M_BangouDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.column見積No = MyBase.Columns("見積No")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.column見積No = New Global.System.Data.DataColumn("見積No", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column見積No)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewDT_M_BangouRow() As DT_M_BangouRow
+            Return CType(Me.NewRow,DT_M_BangouRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New DT_M_BangouRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(DT_M_BangouRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.DT_M_BangouRowChangedEvent) Is Nothing) Then
+                RaiseEvent DT_M_BangouRowChanged(Me, New DT_M_BangouRowChangeEvent(CType(e.Row,DT_M_BangouRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.DT_M_BangouRowChangingEvent) Is Nothing) Then
+                RaiseEvent DT_M_BangouRowChanging(Me, New DT_M_BangouRowChangeEvent(CType(e.Row,DT_M_BangouRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.DT_M_BangouRowDeletedEvent) Is Nothing) Then
+                RaiseEvent DT_M_BangouRowDeleted(Me, New DT_M_BangouRowChangeEvent(CType(e.Row,DT_M_BangouRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.DT_M_BangouRowDeletingEvent) Is Nothing) Then
+                RaiseEvent DT_M_BangouRowDeleting(Me, New DT_M_BangouRowChangeEvent(CType(e.Row,DT_M_BangouRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveDT_M_BangouRow(ByVal row As DT_M_BangouRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As DS_M = New DS_M()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "DT_M_BangouDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class DT_M_UserDataTable
+        Inherits Global.System.Data.TypedTableBase(Of DT_M_UserRow)
+        
+        Private columnid As Global.System.Data.DataColumn
+        
+        Private columnUser_id As Global.System.Data.DataColumn
+        
+        Private columnUser_NM As Global.System.Data.DataColumn
+        
+        Private columnKengen As Global.System.Data.DataColumn
+        
+        Private columnPassword As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "DT_M_User"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property User_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUser_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property User_NMColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUser_NM
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property KengenColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnKengen
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PasswordColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPassword
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As DT_M_UserRow
+            Get
+                Return CType(Me.Rows(index),DT_M_UserRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event DT_M_UserRowChanging As DT_M_UserRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event DT_M_UserRowChanged As DT_M_UserRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event DT_M_UserRowDeleting As DT_M_UserRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event DT_M_UserRowDeleted As DT_M_UserRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddDT_M_UserRow(ByVal row As DT_M_UserRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddDT_M_UserRow(ByVal User_id As String, ByVal User_NM As String, ByVal Kengen As String, ByVal Password As String) As DT_M_UserRow
+            Dim rowDT_M_UserRow As DT_M_UserRow = CType(Me.NewRow,DT_M_UserRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, User_id, User_NM, Kengen, Password}
+            rowDT_M_UserRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowDT_M_UserRow)
+            Return rowDT_M_UserRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByid(ByVal id As Integer) As DT_M_UserRow
+            Return CType(Me.Rows.Find(New Object() {id}),DT_M_UserRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As DT_M_UserDataTable = CType(MyBase.Clone,DT_M_UserDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New DT_M_UserDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnid = MyBase.Columns("id")
+            Me.columnUser_id = MyBase.Columns("User_id")
+            Me.columnUser_NM = MyBase.Columns("User_NM")
+            Me.columnKengen = MyBase.Columns("Kengen")
+            Me.columnPassword = MyBase.Columns("Password")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnid = New Global.System.Data.DataColumn("id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid)
+            Me.columnUser_id = New Global.System.Data.DataColumn("User_id", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUser_id)
+            Me.columnUser_NM = New Global.System.Data.DataColumn("User_NM", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUser_NM)
+            Me.columnKengen = New Global.System.Data.DataColumn("Kengen", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnKengen)
+            Me.columnPassword = New Global.System.Data.DataColumn("Password", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPassword)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
+            Me.columnid.AutoIncrement = true
+            Me.columnid.AutoIncrementSeed = -1
+            Me.columnid.AutoIncrementStep = -1
+            Me.columnid.AllowDBNull = false
+            Me.columnid.ReadOnly = true
+            Me.columnid.Unique = true
+            Me.columnUser_id.MaxLength = 50
+            Me.columnUser_NM.MaxLength = 100
+            Me.columnKengen.MaxLength = 10
+            Me.columnPassword.MaxLength = 50
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewDT_M_UserRow() As DT_M_UserRow
+            Return CType(Me.NewRow,DT_M_UserRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New DT_M_UserRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(DT_M_UserRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.DT_M_UserRowChangedEvent) Is Nothing) Then
+                RaiseEvent DT_M_UserRowChanged(Me, New DT_M_UserRowChangeEvent(CType(e.Row,DT_M_UserRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.DT_M_UserRowChangingEvent) Is Nothing) Then
+                RaiseEvent DT_M_UserRowChanging(Me, New DT_M_UserRowChangeEvent(CType(e.Row,DT_M_UserRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.DT_M_UserRowDeletedEvent) Is Nothing) Then
+                RaiseEvent DT_M_UserRowDeleted(Me, New DT_M_UserRowChangeEvent(CType(e.Row,DT_M_UserRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.DT_M_UserRowDeletingEvent) Is Nothing) Then
+                RaiseEvent DT_M_UserRowDeleting(Me, New DT_M_UserRowChangeEvent(CType(e.Row,DT_M_UserRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveDT_M_UserRow(ByVal row As DT_M_UserRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As DS_M = New DS_M()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "DT_M_UserDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -6331,1653 +5804,6 @@ Partial Public Class DS_M
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class DT_M_Buhin_Order_ListRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableDT_M_Buhin_Order_List As DT_M_Buhin_Order_ListDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableDT_M_Buhin_Order_List = CType(Me.Table,DT_M_Buhin_Order_ListDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property id() As Integer
-            Get
-                Return CType(Me(Me.tableDT_M_Buhin_Order_List.idColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.idColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property DIST() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.DISTColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'DIST' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.DISTColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property No() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.NoColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'No' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.NoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 変更フラグ() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.変更フラグColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '変更フラグ' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.変更フラグColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property GR() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.GRColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'GR' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.GRColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Basic_Part_No() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.Basic_Part_NoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'Basic_Part_No' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.Basic_Part_NoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Export_Name() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.Export_NameColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'Export_Name' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.Export_NameColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Order_Lot() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.Order_LotColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'Order_Lot' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.Order_LotColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property LOTカートン数() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.LOTカートン数Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'LOTカートン数' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.LOTカートン数Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 個装入数() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.個装入数Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '個装入数' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.個装入数Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property OS() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.OSColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'OS' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.OSColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 内装適用() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.内装適用Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '内装適用' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.内装適用Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property L() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.LColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'L' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.LColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property W() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.WColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'W' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.WColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property H() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.HColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 'H' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.HColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 防錆() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.防錆Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '防錆' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.防錆Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 個装適用袋() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.個装適用袋Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '個装適用袋' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.個装適用袋Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 袋必要数() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.袋必要数Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '袋必要数' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.袋必要数Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード1() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード1Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード1' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量1() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量1Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量1' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード2() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード2Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード2' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量2() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量2Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量2' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード3() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード3Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード3' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード3Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量3() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量3Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量3' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量3Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード4() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード4Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード4' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード4Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量4() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量4Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量4' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量4Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード5() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード5Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード5' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード5Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量5() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量5Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量5' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量5Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード6() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード6Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード6' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード6Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量6() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量6Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量6' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量6Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード7() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード7Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード7' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード7Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量7() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量7Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量7' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量7Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード8() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード8Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード8' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード8Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量8() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量8Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量8' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量8Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード9() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード9Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード9' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード9Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量9() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量9Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量9' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量9Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード10() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード10Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード10' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード10Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量10() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量10Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量10' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量10Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード11() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード11Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード11' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード11Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量11() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量11Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量11' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量11Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード12() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード12Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード12' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード12Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量12() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量12Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量12' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量12Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード13() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード13Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード13' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード13Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量13() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量13Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量13' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量13Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード14() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード14Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード14' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード14Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量14() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量14Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量14' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量14Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード15() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード15Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード15' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード15Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量15() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量15Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量15' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量15Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード16() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード16Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード16' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード16Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量16() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量16Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量16' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量16Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード17() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード17Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード17' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード17Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量17() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量17Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量17' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量17Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード18() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード18Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード18' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード18Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量18() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量18Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量18' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量18Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード19() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード19Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード19' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード19Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量19() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量19Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量19' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量19Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 資材コード20() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.資材コード20Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '資材コード20' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.資材コード20Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 数量20() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.数量20Column),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '数量20' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.数量20Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 単品重量() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.単品重量Column),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '単品重量' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.単品重量Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 内装重量() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.内装重量Column),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '内装重量' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.内装重量Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property 見積No() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableDT_M_Buhin_Order_List.見積NoColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Buhin_Order_List' にある列 '見積No' の値は DBNull です。", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableDT_M_Buhin_Order_List.見積NoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDISTNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.DISTColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDISTNull()
-            Me(Me.tableDT_M_Buhin_Order_List.DISTColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsNoNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.NoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetNoNull()
-            Me(Me.tableDT_M_Buhin_Order_List.NoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is変更フラグNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.変更フラグColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set変更フラグNull()
-            Me(Me.tableDT_M_Buhin_Order_List.変更フラグColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsGRNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.GRColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetGRNull()
-            Me(Me.tableDT_M_Buhin_Order_List.GRColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsBasic_Part_NoNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.Basic_Part_NoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetBasic_Part_NoNull()
-            Me(Me.tableDT_M_Buhin_Order_List.Basic_Part_NoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsExport_NameNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.Export_NameColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetExport_NameNull()
-            Me(Me.tableDT_M_Buhin_Order_List.Export_NameColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsOrder_LotNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.Order_LotColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetOrder_LotNull()
-            Me(Me.tableDT_M_Buhin_Order_List.Order_LotColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsLOTカートン数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.LOTカートン数Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetLOTカートン数Null()
-            Me(Me.tableDT_M_Buhin_Order_List.LOTカートン数Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is個装入数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.個装入数Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set個装入数Null()
-            Me(Me.tableDT_M_Buhin_Order_List.個装入数Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsOSNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.OSColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetOSNull()
-            Me(Me.tableDT_M_Buhin_Order_List.OSColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is内装適用Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.内装適用Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set内装適用Null()
-            Me(Me.tableDT_M_Buhin_Order_List.内装適用Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsLNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.LColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetLNull()
-            Me(Me.tableDT_M_Buhin_Order_List.LColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsWNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.WColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetWNull()
-            Me(Me.tableDT_M_Buhin_Order_List.WColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsHNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.HColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetHNull()
-            Me(Me.tableDT_M_Buhin_Order_List.HColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is防錆Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.防錆Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set防錆Null()
-            Me(Me.tableDT_M_Buhin_Order_List.防錆Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is個装適用袋Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.個装適用袋Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set個装適用袋Null()
-            Me(Me.tableDT_M_Buhin_Order_List.個装適用袋Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is袋必要数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.袋必要数Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set袋必要数Null()
-            Me(Me.tableDT_M_Buhin_Order_List.袋必要数Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード1Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード1Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量1Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量1Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード2Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード2Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード2Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量2Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量2Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量2Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード3Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード3Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード3Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード3Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量3Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量3Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量3Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量3Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード4Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード4Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード4Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード4Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量4Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量4Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量4Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量4Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード5Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード5Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード5Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード5Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量5Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量5Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量5Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量5Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード6Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード6Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード6Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード6Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量6Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量6Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量6Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量6Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード7Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード7Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード7Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード7Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量7Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量7Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量7Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量7Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード8Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード8Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード8Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード8Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量8Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量8Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量8Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量8Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード9Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード9Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード9Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード9Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量9Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量9Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量9Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量9Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード10Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード10Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード10Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード10Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量10Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量10Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量10Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量10Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード11Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード11Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード11Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード11Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量11Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量11Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量11Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量11Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード12Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード12Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード12Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード12Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量12Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量12Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量12Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量12Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード13Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード13Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード13Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード13Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量13Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量13Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量13Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量13Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード14Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード14Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード14Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード14Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量14Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量14Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量14Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量14Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード15Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード15Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード15Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード15Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量15Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量15Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量15Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量15Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード16Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード16Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード16Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード16Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量16Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量16Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量16Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量16Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード17Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード17Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード17Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード17Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量17Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量17Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量17Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量17Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード18Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード18Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード18Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード18Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量18Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量18Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量18Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量18Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード19Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード19Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード19Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード19Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量19Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量19Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量19Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量19Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is資材コード20Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.資材コード20Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set資材コード20Null()
-            Me(Me.tableDT_M_Buhin_Order_List.資材コード20Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is数量20Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.数量20Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set数量20Null()
-            Me(Me.tableDT_M_Buhin_Order_List.数量20Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is単品重量Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.単品重量Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set単品重量Null()
-            Me(Me.tableDT_M_Buhin_Order_List.単品重量Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is内装重量Null() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.内装重量Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set内装重量Null()
-            Me(Me.tableDT_M_Buhin_Order_List.内装重量Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function Is見積NoNull() As Boolean
-            Return Me.IsNull(Me.tableDT_M_Buhin_Order_List.見積NoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub Set見積NoNull()
-            Me(Me.tableDT_M_Buhin_Order_List.見積NoColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
     Partial Public Class DT_M_SecondRow
         Inherits Global.System.Data.DataRow
         
@@ -8091,6 +5917,184 @@ Partial Public Class DS_M
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set見積NoNull()
             Me(Me.tableDT_M_Second.見積NoColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class DT_M_BangouRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableDT_M_Bangou As DT_M_BangouDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableDT_M_Bangou = CType(Me.Table,DT_M_BangouDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 見積No() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_M_Bangou.見積NoColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Bangou' にある列 '見積No' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_M_Bangou.見積NoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is見積NoNull() As Boolean
+            Return Me.IsNull(Me.tableDT_M_Bangou.見積NoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set見積NoNull()
+            Me(Me.tableDT_M_Bangou.見積NoColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class DT_M_UserRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableDT_M_User As DT_M_UserDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableDT_M_User = CType(Me.Table,DT_M_UserDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property id() As Integer
+            Get
+                Return CType(Me(Me.tableDT_M_User.idColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableDT_M_User.idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property User_id() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_M_User.User_idColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_User' にある列 'User_id' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_M_User.User_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property User_NM() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_M_User.User_NMColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_User' にある列 'User_NM' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_M_User.User_NMColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Kengen() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_M_User.KengenColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_User' にある列 'Kengen' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_M_User.KengenColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Password() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_M_User.PasswordColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_User' にある列 'Password' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_M_User.PasswordColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsUser_idNull() As Boolean
+            Return Me.IsNull(Me.tableDT_M_User.User_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetUser_idNull()
+            Me(Me.tableDT_M_User.User_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsUser_NMNull() As Boolean
+            Return Me.IsNull(Me.tableDT_M_User.User_NMColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetUser_NMNull()
+            Me(Me.tableDT_M_User.User_NMColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsKengenNull() As Boolean
+            Return Me.IsNull(Me.tableDT_M_User.KengenColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetKengenNull()
+            Me(Me.tableDT_M_User.KengenColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPasswordNull() As Boolean
+            Return Me.IsNull(Me.tableDT_M_User.PasswordColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPasswordNull()
+            Me(Me.tableDT_M_User.PasswordColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8458,42 +6462,6 @@ Partial Public Class DS_M
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class DT_M_Buhin_Order_ListRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As DT_M_Buhin_Order_ListRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As DT_M_Buhin_Order_ListRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As DT_M_Buhin_Order_ListRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Class DT_M_SecondRowChangeEvent
         Inherits Global.System.EventArgs
         
@@ -8512,6 +6480,78 @@ Partial Public Class DS_M
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property Row() As DT_M_SecondRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class DT_M_BangouRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As DT_M_BangouRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As DT_M_BangouRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As DT_M_BangouRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class DT_M_UserRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As DT_M_UserRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As DT_M_UserRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As DT_M_UserRow
             Get
                 Return Me.eventRow
             End Get
@@ -14050,3617 +12090,6 @@ Namespace DS_MTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class TA_M_Buhin_Order_List
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
-        
-        Private _connection As Global.System.Data.SqlClient.SqlConnection
-        
-        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
-        
-        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "DT_M_Buhin_Order_List"
-            tableMapping.ColumnMappings.Add("id", "id")
-            tableMapping.ColumnMappings.Add("DIST", "DIST")
-            tableMapping.ColumnMappings.Add("No", "No")
-            tableMapping.ColumnMappings.Add("変更フラグ", "変更フラグ")
-            tableMapping.ColumnMappings.Add("GR", "GR")
-            tableMapping.ColumnMappings.Add("Basic_Part_No", "Basic_Part_No")
-            tableMapping.ColumnMappings.Add("Export_Name", "Export_Name")
-            tableMapping.ColumnMappings.Add("Order_Lot", "Order_Lot")
-            tableMapping.ColumnMappings.Add("LOTカートン数", "LOTカートン数")
-            tableMapping.ColumnMappings.Add("個装入数", "個装入数")
-            tableMapping.ColumnMappings.Add("OS", "OS")
-            tableMapping.ColumnMappings.Add("内装適用", "内装適用")
-            tableMapping.ColumnMappings.Add("L", "L")
-            tableMapping.ColumnMappings.Add("W", "W")
-            tableMapping.ColumnMappings.Add("H", "H")
-            tableMapping.ColumnMappings.Add("防錆", "防錆")
-            tableMapping.ColumnMappings.Add("個装適用袋", "個装適用袋")
-            tableMapping.ColumnMappings.Add("袋必要数", "袋必要数")
-            tableMapping.ColumnMappings.Add("資材コード1", "資材コード1")
-            tableMapping.ColumnMappings.Add("数量1", "数量1")
-            tableMapping.ColumnMappings.Add("資材コード2", "資材コード2")
-            tableMapping.ColumnMappings.Add("数量2", "数量2")
-            tableMapping.ColumnMappings.Add("資材コード3", "資材コード3")
-            tableMapping.ColumnMappings.Add("数量3", "数量3")
-            tableMapping.ColumnMappings.Add("資材コード4", "資材コード4")
-            tableMapping.ColumnMappings.Add("数量4", "数量4")
-            tableMapping.ColumnMappings.Add("資材コード5", "資材コード5")
-            tableMapping.ColumnMappings.Add("数量5", "数量5")
-            tableMapping.ColumnMappings.Add("資材コード6", "資材コード6")
-            tableMapping.ColumnMappings.Add("数量6", "数量6")
-            tableMapping.ColumnMappings.Add("資材コード7", "資材コード7")
-            tableMapping.ColumnMappings.Add("数量7", "数量7")
-            tableMapping.ColumnMappings.Add("資材コード8", "資材コード8")
-            tableMapping.ColumnMappings.Add("数量8", "数量8")
-            tableMapping.ColumnMappings.Add("資材コード9", "資材コード9")
-            tableMapping.ColumnMappings.Add("数量9", "数量9")
-            tableMapping.ColumnMappings.Add("資材コード10", "資材コード10")
-            tableMapping.ColumnMappings.Add("数量10", "数量10")
-            tableMapping.ColumnMappings.Add("資材コード11", "資材コード11")
-            tableMapping.ColumnMappings.Add("数量11", "数量11")
-            tableMapping.ColumnMappings.Add("資材コード12", "資材コード12")
-            tableMapping.ColumnMappings.Add("数量12", "数量12")
-            tableMapping.ColumnMappings.Add("資材コード13", "資材コード13")
-            tableMapping.ColumnMappings.Add("数量13", "数量13")
-            tableMapping.ColumnMappings.Add("資材コード14", "資材コード14")
-            tableMapping.ColumnMappings.Add("数量14", "数量14")
-            tableMapping.ColumnMappings.Add("資材コード15", "資材コード15")
-            tableMapping.ColumnMappings.Add("数量15", "数量15")
-            tableMapping.ColumnMappings.Add("資材コード16", "資材コード16")
-            tableMapping.ColumnMappings.Add("数量16", "数量16")
-            tableMapping.ColumnMappings.Add("資材コード17", "資材コード17")
-            tableMapping.ColumnMappings.Add("数量17", "数量17")
-            tableMapping.ColumnMappings.Add("資材コード18", "資材コード18")
-            tableMapping.ColumnMappings.Add("数量18", "数量18")
-            tableMapping.ColumnMappings.Add("資材コード19", "資材コード19")
-            tableMapping.ColumnMappings.Add("数量19", "数量19")
-            tableMapping.ColumnMappings.Add("資材コード20", "資材コード20")
-            tableMapping.ColumnMappings.Add("数量20", "数量20")
-            tableMapping.ColumnMappings.Add("単品重量", "単品重量")
-            tableMapping.ColumnMappings.Add("内装重量", "内装重量")
-            tableMapping.ColumnMappings.Add("見積No", "見積No")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [M_Buhin_Order_List] WHERE (([id] = @Original_id) AND ((@IsNull_DIST "& _ 
-                "= 1 AND [DIST] IS NULL) OR ([DIST] = @Original_DIST)) AND ((@IsNull_No = 1 AND ["& _ 
-                "No] IS NULL) OR ([No] = @Original_No)) AND ((@IsNull_変更フラグ = 1 AND [変更フラグ] IS NU"& _ 
-                "LL) OR ([変更フラグ] = @Original_変更フラグ)) AND ((@IsNull_GR = 1 AND [GR] IS NULL) OR (["& _ 
-                "GR] = @Original_GR)) AND ((@IsNull_Basic_Part_No = 1 AND [Basic_Part_No] IS NULL"& _ 
-                ") OR ([Basic_Part_No] = @Original_Basic_Part_No)) AND ((@IsNull_Export_Name = 1 "& _ 
-                "AND [Export_Name] IS NULL) OR ([Export_Name] = @Original_Export_Name)) AND ((@Is"& _ 
-                "Null_Order_Lot = 1 AND [Order_Lot] IS NULL) OR ([Order_Lot] = @Original_Order_Lo"& _ 
-                "t)) AND ((@IsNull_LOTカートン数 = 1 AND [LOTカートン数] IS NULL) OR ([LOTカートン数] = @Origina"& _ 
-                "l_LOTカートン数)) AND ((@IsNull_個装入数 = 1 AND [個装入数] IS NULL) OR ([個装入数] = @Original_個"& _ 
-                "装入数)) AND ((@IsNull_OS = 1 AND [OS] IS NULL) OR ([OS] = @Original_OS)) AND ((@Is"& _ 
-                "Null_内装適用 = 1 AND [内装適用] IS NULL) OR ([内装適用] = @Original_内装適用)) AND ((@IsNull_L "& _ 
-                "= 1 AND [L] IS NULL) OR ([L] = @Original_L)) AND ((@IsNull_W = 1 AND [W] IS NULL"& _ 
-                ") OR ([W] = @Original_W)) AND ((@IsNull_H = 1 AND [H] IS NULL) OR ([H] = @Origin"& _ 
-                "al_H)) AND ((@IsNull_防錆 = 1 AND [防錆] IS NULL) OR ([防錆] = @Original_防錆)) AND ((@I"& _ 
-                "sNull_個装適用袋 = 1 AND [個装適用袋] IS NULL) OR ([個装適用袋] = @Original_個装適用袋)) AND ((@IsNu"& _ 
-                "ll_袋必要数 = 1 AND [袋必要数] IS NULL) OR ([袋必要数] = @Original_袋必要数)) AND ((@IsNull_資材コー"& _ 
-                "ド1 = 1 AND [資材コード1] IS NULL) OR ([資材コード1] = @Original_資材コード1)) AND ((@IsNull_数量1"& _ 
-                " = 1 AND [数量1] IS NULL) OR ([数量1] = @Original_数量1)) AND ((@IsNull_資材コード2 = 1 AND"& _ 
-                " [資材コード2] IS NULL) OR ([資材コード2] = @Original_資材コード2)) AND ((@IsNull_数量2 = 1 AND ["& _ 
-                "数量2] IS NULL) OR ([数量2] = @Original_数量2)) AND ((@IsNull_資材コード3 = 1 AND [資材コード3] "& _ 
-                "IS NULL) OR ([資材コード3] = @Original_資材コード3)) AND ((@IsNull_数量3 = 1 AND [数量3] IS NU"& _ 
-                "LL) OR ([数量3] = @Original_数量3)) AND ((@IsNull_資材コード4 = 1 AND [資材コード4] IS NULL) O"& _ 
-                "R ([資材コード4] = @Original_資材コード4)) AND ((@IsNull_数量4 = 1 AND [数量4] IS NULL) OR ([数"& _ 
-                "量4] = @Original_数量4)) AND ((@IsNull_資材コード5 = 1 AND [資材コード5] IS NULL) OR ([資材コード5"& _ 
-                "] = @Original_資材コード5)) AND ((@IsNull_数量5 = 1 AND [数量5] IS NULL) OR ([数量5] = @Ori"& _ 
-                "ginal_数量5)) AND ((@IsNull_資材コード6 = 1 AND [資材コード6] IS NULL) OR ([資材コード6] = @Origi"& _ 
-                "nal_資材コード6)) AND ((@IsNull_数量6 = 1 AND [数量6] IS NULL) OR ([数量6] = @Original_数量6)"& _ 
-                ") AND ((@IsNull_資材コード7 = 1 AND [資材コード7] IS NULL) OR ([資材コード7] = @Original_資材コード7"& _ 
-                ")) AND ((@IsNull_数量7 = 1 AND [数量7] IS NULL) OR ([数量7] = @Original_数量7)) AND ((@I"& _ 
-                "sNull_資材コード8 = 1 AND [資材コード8] IS NULL) OR ([資材コード8] = @Original_資材コード8)) AND ((@"& _ 
-                "IsNull_数量8 = 1 AND [数量8] IS NULL) OR ([数量8] = @Original_数量8)) AND ((@IsNull_資材コー"& _ 
-                "ド9 = 1 AND [資材コード9] IS NULL) OR ([資材コード9] = @Original_資材コード9)) AND ((@IsNull_数量9"& _ 
-                " = 1 AND [数量9] IS NULL) OR ([数量9] = @Original_数量9)) AND ((@IsNull_資材コード10 = 1 AN"& _ 
-                "D [資材コード10] IS NULL) OR ([資材コード10] = @Original_資材コード10)) AND ((@IsNull_数量10 = 1 "& _ 
-                "AND [数量10] IS NULL) OR ([数量10] = @Original_数量10)) AND ((@IsNull_資材コード11 = 1 AND "& _ 
-                "[資材コード11] IS NULL) OR ([資材コード11] = @Original_資材コード11)) AND ((@IsNull_数量11 = 1 AN"& _ 
-                "D [数量11] IS NULL) OR ([数量11] = @Original_数量11)) AND ((@IsNull_資材コード12 = 1 AND [資"& _ 
-                "材コード12] IS NULL) OR ([資材コード12] = @Original_資材コード12)) AND ((@IsNull_数量12 = 1 AND "& _ 
-                "[数量12] IS NULL) OR ([数量12] = @Original_数量12)) AND ((@IsNull_資材コード13 = 1 AND [資材コ"& _ 
-                "ード13] IS NULL) OR ([資材コード13] = @Original_資材コード13)) AND ((@IsNull_数量13 = 1 AND [数"& _ 
-                "量13] IS NULL) OR ([数量13] = @Original_数量13)) AND ((@IsNull_資材コード14 = 1 AND [資材コード"& _ 
-                "14] IS NULL) OR ([資材コード14] = @Original_資材コード14)) AND ((@IsNull_数量14 = 1 AND [数量1"& _ 
-                "4] IS NULL) OR ([数量14] = @Original_数量14)) AND ((@IsNull_資材コード15 = 1 AND [資材コード15"& _ 
-                "] IS NULL) OR ([資材コード15] = @Original_資材コード15)) AND ((@IsNull_数量15 = 1 AND [数量15]"& _ 
-                " IS NULL) OR ([数量15] = @Original_数量15)) AND ((@IsNull_資材コード16 = 1 AND [資材コード16] "& _ 
-                "IS NULL) OR ([資材コード16] = @Original_資材コード16)) AND ((@IsNull_数量16 = 1 AND [数量16] I"& _ 
-                "S NULL) OR ([数量16] = @Original_数量16)) AND ((@IsNull_資材コード17 = 1 AND [資材コード17] IS"& _ 
-                " NULL) OR ([資材コード17] = @Original_資材コード17)) AND ((@IsNull_数量17 = 1 AND [数量17] IS "& _ 
-                "NULL) OR ([数量17] = @Original_数量17)) AND ((@IsNull_資材コード18 = 1 AND [資材コード18] IS N"& _ 
-                "ULL) OR ([資材コード18] = @Original_資材コード18)) AND ((@IsNull_数量18 = 1 AND [数量18] IS NU"& _ 
-                "LL) OR ([数量18] = @Original_数量18)) AND ((@IsNull_資材コード19 = 1 AND [資材コード19] IS NUL"& _ 
-                "L) OR ([資材コード19] = @Original_資材コード19)) AND ((@IsNull_数量19 = 1 AND [数量19] IS NULL"& _ 
-                ") OR ([数量19] = @Original_数量19)) AND ((@IsNull_資材コード20 = 1 AND [資材コード20] IS NULL)"& _ 
-                " OR ([資材コード20] = @Original_資材コード20)) AND ((@IsNull_数量20 = 1 AND [数量20] IS NULL) "& _ 
-                "OR ([数量20] = @Original_数量20)) AND ((@IsNull_単品重量 = 1 AND [単品重量] IS NULL) OR ([単品"& _ 
-                "重量] = @Original_単品重量)) AND ((@IsNull_内装重量 = 1 AND [内装重量] IS NULL) OR ([内装重量] = @"& _ 
-                "Original_内装重量)) AND ((@IsNull_見積No = 1 AND [見積No] IS NULL) OR ([見積No] = @Origina"& _ 
-                "l_見積No)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DIST", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DIST", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DIST", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DIST", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "No", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "No", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_変更フラグ", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "変更フラグ", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_変更フラグ", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "変更フラグ", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GR", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GR", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GR", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GR", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Basic_Part_No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Basic_Part_No", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Basic_Part_No", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Basic_Part_No", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Export_Name", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Export_Name", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Export_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Export_Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Order_Lot", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_Lot", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Order_Lot", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_Lot", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LOTカートン数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LOTカートン数", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LOTカートン数", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LOTカートン数", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_個装入数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装入数", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_個装入数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装入数", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_OS", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OS", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OS", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OS", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_内装適用", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "内装適用", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_内装適用", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "内装適用", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_L", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "L", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_L", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "L", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_W", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "W", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_W", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "W", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_H", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "H", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_H", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "H", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_防錆", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "防錆", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_防錆", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "防錆", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_個装適用袋", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装適用袋", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_個装適用袋", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装適用袋", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_袋必要数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "袋必要数", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_袋必要数", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "袋必要数", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード4", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量4", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード5", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード5", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード5", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード5", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量5", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量5", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量5", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量5", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード6", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード6", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード6", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード6", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量6", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量6", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量6", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量6", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード7", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード7", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード7", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード7", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量7", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量7", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量7", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量7", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード8", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード8", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード8", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード8", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量8", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量8", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量8", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量8", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード9", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード9", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード9", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード9", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量9", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量9", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量9", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量9", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード10", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード10", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード10", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード10", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量10", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量10", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量10", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量10", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード11", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード11", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード11", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード11", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量11", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量11", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量11", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量11", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード12", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード12", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード12", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード12", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量12", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量12", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量12", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量12", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード13", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード13", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード13", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード13", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量13", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量13", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量13", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量13", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード14", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード14", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード14", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード14", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量14", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量14", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量14", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量14", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード15", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード15", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード15", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード15", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量15", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量15", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量15", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量15", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード16", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード16", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード16", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード16", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量16", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量16", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量16", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量16", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード17", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード17", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード17", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード17", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量17", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量17", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量17", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量17", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード18", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード18", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード18", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード18", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量18", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量18", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量18", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量18", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード19", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード19", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード19", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード19", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量19", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量19", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量19", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量19", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード20", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード20", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード20", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード20", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量20", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量20", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量20", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量20", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_単品重量", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "単品重量", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_単品重量", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単品重量", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_内装重量", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "内装重量", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_内装重量", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 13, 5, "内装重量", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_見積No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_見積No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [M_Buhin_Order_List] ([DIST], [No], [変更フラグ], [GR], [Basic_Part_No], ["& _ 
-                "Export_Name], [Order_Lot], [LOTカートン数], [個装入数], [OS], [内装適用], [L], [W], [H], [防錆]"& _ 
-                ", [個装適用袋], [袋必要数], [資材コード1], [数量1], [資材コード2], [数量2], [資材コード3], [数量3], [資材コード4], "& _ 
-                "[数量4], [資材コード5], [数量5], [資材コード6], [数量6], [資材コード7], [数量7], [資材コード8], [数量8], [資材コー"& _ 
-                "ド9], [数量9], [資材コード10], [数量10], [資材コード11], [数量11], [資材コード12], [数量12], [資材コード13], "& _ 
-                "[数量13], [資材コード14], [数量14], [資材コード15], [数量15], [資材コード16], [数量16], [資材コード17], [数量1"& _ 
-                "7], [資材コード18], [数量18], [資材コード19], [数量19], [資材コード20], [数量20], [単品重量], [内装重量], [見積"& _ 
-                "No]) VALUES (@DIST, @No, @変更フラグ, @GR, @Basic_Part_No, @Export_Name, @Order_Lot, "& _ 
-                "@LOTカートン数, @個装入数, @OS, @内装適用, @L, @W, @H, @防錆, @個装適用袋, @袋必要数, @資材コード1, @数量1, @資材"& _ 
-                "コード2, @数量2, @資材コード3, @数量3, @資材コード4, @数量4, @資材コード5, @数量5, @資材コード6, @数量6, @資材コード7,"& _ 
-                " @数量7, @資材コード8, @数量8, @資材コード9, @数量9, @資材コード10, @数量10, @資材コード11, @数量11, @資材コード12,"& _ 
-                " @数量12, @資材コード13, @数量13, @資材コード14, @数量14, @資材コード15, @数量15, @資材コード16, @数量16, @資材コ"& _ 
-                "ード17, @数量17, @資材コード18, @数量18, @資材コード19, @数量19, @資材コード20, @数量20, @単品重量, @内装重量, @見"& _ 
-                "積No);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot, LO"& _ 
-                "Tカートン数, 個装入数, OS, 内装適用, L, W, H, 防錆, 個装適用袋, 袋必要数, 資材コード1, 数量1, 資材コード2, 数量2, 資材コー"& _ 
-                "ド3, 数量3, 資材コード4, 数量4, 資材コード5, 数量5, 資材コード6, 数量6, 資材コード7, 数量7, 資材コード8, 数量8, 資材コード9"& _ 
-                ", 数量9, 資材コード10, 数量10, 資材コード11, 数量11, 資材コード12, 数量12, 資材コード13, 数量13, 資材コード14, 数量14"& _ 
-                ", 資材コード15, 数量15, 資材コード16, 数量16, 資材コード17, 数量17, 資材コード18, 数量18, 資材コード19, 数量19, 資材コ"& _ 
-                "ード20, 数量20, 単品重量, 内装重量, 見積No FROM M_Buhin_Order_List WHERE (id = SCOPE_IDENTITY("& _ 
-                "))"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DIST", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DIST", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@変更フラグ", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "変更フラグ", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GR", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GR", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Basic_Part_No", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Basic_Part_No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Export_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Export_Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Order_Lot", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_Lot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LOTカートン数", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LOTカートン数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装入数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装入数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OS", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装適用", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "内装適用", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@L", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "L", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@W", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "W", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@H", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "H", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@防錆", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "防錆", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装適用袋", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装適用袋", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@袋必要数", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "袋必要数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード5", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量5", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード6", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量6", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード7", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量7", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード8", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量8", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード9", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量9", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード10", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量10", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード11", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード11", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量11", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量11", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード12", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード12", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量12", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量12", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード13", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード13", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量13", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量13", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード14", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード14", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量14", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量14", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード15", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード15", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量15", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量15", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード16", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード16", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量16", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量16", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード17", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード17", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量17", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量17", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード18", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード18", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量18", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量18", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード19", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード19", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量19", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量19", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード20", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量20", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単品重量", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単品重量", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装重量", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 13, 5, "内装重量", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [M_Buhin_Order_List] SET [DIST] = @DIST, [No] = @No, [変更フラグ] = @変更フラグ, [GR"& _ 
-                "] = @GR, [Basic_Part_No] = @Basic_Part_No, [Export_Name] = @Export_Name, [Order_"& _ 
-                "Lot] = @Order_Lot, [LOTカートン数] = @LOTカートン数, [個装入数] = @個装入数, [OS] = @OS, [内装適用] = "& _ 
-                "@内装適用, [L] = @L, [W] = @W, [H] = @H, [防錆] = @防錆, [個装適用袋] = @個装適用袋, [袋必要数] = @袋必要"& _ 
-                "数, [資材コード1] = @資材コード1, [数量1] = @数量1, [資材コード2] = @資材コード2, [数量2] = @数量2, [資材コード3] "& _ 
-                "= @資材コード3, [数量3] = @数量3, [資材コード4] = @資材コード4, [数量4] = @数量4, [資材コード5] = @資材コード5, ["& _ 
-                "数量5] = @数量5, [資材コード6] = @資材コード6, [数量6] = @数量6, [資材コード7] = @資材コード7, [数量7] = @数量7,"& _ 
-                " [資材コード8] = @資材コード8, [数量8] = @数量8, [資材コード9] = @資材コード9, [数量9] = @数量9, [資材コード10] ="& _ 
-                " @資材コード10, [数量10] = @数量10, [資材コード11] = @資材コード11, [数量11] = @数量11, [資材コード12] = @資材"& _ 
-                "コード12, [数量12] = @数量12, [資材コード13] = @資材コード13, [数量13] = @数量13, [資材コード14] = @資材コード1"& _ 
-                "4, [数量14] = @数量14, [資材コード15] = @資材コード15, [数量15] = @数量15, [資材コード16] = @資材コード16, ["& _ 
-                "数量16] = @数量16, [資材コード17] = @資材コード17, [数量17] = @数量17, [資材コード18] = @資材コード18, [数量18"& _ 
-                "] = @数量18, [資材コード19] = @資材コード19, [数量19] = @数量19, [資材コード20] = @資材コード20, [数量20] = "& _ 
-                "@数量20, [単品重量] = @単品重量, [内装重量] = @内装重量, [見積No] = @見積No WHERE (([id] = @Original_i"& _ 
-                "d) AND ((@IsNull_DIST = 1 AND [DIST] IS NULL) OR ([DIST] = @Original_DIST)) AND "& _ 
-                "((@IsNull_No = 1 AND [No] IS NULL) OR ([No] = @Original_No)) AND ((@IsNull_変更フラグ"& _ 
-                " = 1 AND [変更フラグ] IS NULL) OR ([変更フラグ] = @Original_変更フラグ)) AND ((@IsNull_GR = 1 A"& _ 
-                "ND [GR] IS NULL) OR ([GR] = @Original_GR)) AND ((@IsNull_Basic_Part_No = 1 AND ["& _ 
-                "Basic_Part_No] IS NULL) OR ([Basic_Part_No] = @Original_Basic_Part_No)) AND ((@I"& _ 
-                "sNull_Export_Name = 1 AND [Export_Name] IS NULL) OR ([Export_Name] = @Original_E"& _ 
-                "xport_Name)) AND ((@IsNull_Order_Lot = 1 AND [Order_Lot] IS NULL) OR ([Order_Lot"& _ 
-                "] = @Original_Order_Lot)) AND ((@IsNull_LOTカートン数 = 1 AND [LOTカートン数] IS NULL) OR "& _ 
-                "([LOTカートン数] = @Original_LOTカートン数)) AND ((@IsNull_個装入数 = 1 AND [個装入数] IS NULL) OR"& _ 
-                " ([個装入数] = @Original_個装入数)) AND ((@IsNull_OS = 1 AND [OS] IS NULL) OR ([OS] = @O"& _ 
-                "riginal_OS)) AND ((@IsNull_内装適用 = 1 AND [内装適用] IS NULL) OR ([内装適用] = @Original_内"& _ 
-                "装適用)) AND ((@IsNull_L = 1 AND [L] IS NULL) OR ([L] = @Original_L)) AND ((@IsNull"& _ 
-                "_W = 1 AND [W] IS NULL) OR ([W] = @Original_W)) AND ((@IsNull_H = 1 AND [H] IS N"& _ 
-                "ULL) OR ([H] = @Original_H)) AND ((@IsNull_防錆 = 1 AND [防錆] IS NULL) OR ([防錆] = @"& _ 
-                "Original_防錆)) AND ((@IsNull_個装適用袋 = 1 AND [個装適用袋] IS NULL) OR ([個装適用袋] = @Origin"& _ 
-                "al_個装適用袋)) AND ((@IsNull_袋必要数 = 1 AND [袋必要数] IS NULL) OR ([袋必要数] = @Original_袋必要"& _ 
-                "数)) AND ((@IsNull_資材コード1 = 1 AND [資材コード1] IS NULL) OR ([資材コード1] = @Original_資材コー"& _ 
-                "ド1)) AND ((@IsNull_数量1 = 1 AND [数量1] IS NULL) OR ([数量1] = @Original_数量1)) AND (("& _ 
-                "@IsNull_資材コード2 = 1 AND [資材コード2] IS NULL) OR ([資材コード2] = @Original_資材コード2)) AND ("& _ 
-                "(@IsNull_数量2 = 1 AND [数量2] IS NULL) OR ([数量2] = @Original_数量2)) AND ((@IsNull_資材"& _ 
-                "コード3 = 1 AND [資材コード3] IS NULL) OR ([資材コード3] = @Original_資材コード3)) AND ((@IsNull_数"& _ 
-                "量3 = 1 AND [数量3] IS NULL) OR ([数量3] = @Original_数量3)) AND ((@IsNull_資材コード4 = 1 A"& _ 
-                "ND [資材コード4] IS NULL) OR ([資材コード4] = @Original_資材コード4)) AND ((@IsNull_数量4 = 1 AND"& _ 
-                " [数量4] IS NULL) OR ([数量4] = @Original_数量4)) AND ((@IsNull_資材コード5 = 1 AND [資材コード5"& _ 
-                "] IS NULL) OR ([資材コード5] = @Original_資材コード5)) AND ((@IsNull_数量5 = 1 AND [数量5] IS "& _ 
-                "NULL) OR ([数量5] = @Original_数量5)) AND ((@IsNull_資材コード6 = 1 AND [資材コード6] IS NULL)"& _ 
-                " OR ([資材コード6] = @Original_資材コード6)) AND ((@IsNull_数量6 = 1 AND [数量6] IS NULL) OR ("& _ 
-                "[数量6] = @Original_数量6)) AND ((@IsNull_資材コード7 = 1 AND [資材コード7] IS NULL) OR ([資材コー"& _ 
-                "ド7] = @Original_資材コード7)) AND ((@IsNull_数量7 = 1 AND [数量7] IS NULL) OR ([数量7] = @O"& _ 
-                "riginal_数量7)) AND ((@IsNull_資材コード8 = 1 AND [資材コード8] IS NULL) OR ([資材コード8] = @Ori"& _ 
-                "ginal_資材コード8)) AND ((@IsNull_数量8 = 1 AND [数量8] IS NULL) OR ([数量8] = @Original_数量"& _ 
-                "8)) AND ((@IsNull_資材コード9 = 1 AND [資材コード9] IS NULL) OR ([資材コード9] = @Original_資材コー"& _ 
-                "ド9)) AND ((@IsNull_数量9 = 1 AND [数量9] IS NULL) OR ([数量9] = @Original_数量9)) AND (("& _ 
-                "@IsNull_資材コード10 = 1 AND [資材コード10] IS NULL) OR ([資材コード10] = @Original_資材コード10)) A"& _ 
-                "ND ((@IsNull_数量10 = 1 AND [数量10] IS NULL) OR ([数量10] = @Original_数量10)) AND ((@I"& _ 
-                "sNull_資材コード11 = 1 AND [資材コード11] IS NULL) OR ([資材コード11] = @Original_資材コード11)) AND"& _ 
-                " ((@IsNull_数量11 = 1 AND [数量11] IS NULL) OR ([数量11] = @Original_数量11)) AND ((@IsN"& _ 
-                "ull_資材コード12 = 1 AND [資材コード12] IS NULL) OR ([資材コード12] = @Original_資材コード12)) AND ("& _ 
-                "(@IsNull_数量12 = 1 AND [数量12] IS NULL) OR ([数量12] = @Original_数量12)) AND ((@IsNul"& _ 
-                "l_資材コード13 = 1 AND [資材コード13] IS NULL) OR ([資材コード13] = @Original_資材コード13)) AND ((@"& _ 
-                "IsNull_数量13 = 1 AND [数量13] IS NULL) OR ([数量13] = @Original_数量13)) AND ((@IsNull_"& _ 
-                "資材コード14 = 1 AND [資材コード14] IS NULL) OR ([資材コード14] = @Original_資材コード14)) AND ((@Is"& _ 
-                "Null_数量14 = 1 AND [数量14] IS NULL) OR ([数量14] = @Original_数量14)) AND ((@IsNull_資材"& _ 
-                "コード15 = 1 AND [資材コード15] IS NULL) OR ([資材コード15] = @Original_資材コード15)) AND ((@IsNu"& _ 
-                "ll_数量15 = 1 AND [数量15] IS NULL) OR ([数量15] = @Original_数量15)) AND ((@IsNull_資材コー"& _ 
-                "ド16 = 1 AND [資材コード16] IS NULL) OR ([資材コード16] = @Original_資材コード16)) AND ((@IsNull"& _ 
-                "_数量16 = 1 AND [数量16] IS NULL) OR ([数量16] = @Original_数量16)) AND ((@IsNull_資材コード1"& _ 
-                "7 = 1 AND [資材コード17] IS NULL) OR ([資材コード17] = @Original_資材コード17)) AND ((@IsNull_数"& _ 
-                "量17 = 1 AND [数量17] IS NULL) OR ([数量17] = @Original_数量17)) AND ((@IsNull_資材コード18 "& _ 
-                "= 1 AND [資材コード18] IS NULL) OR ([資材コード18] = @Original_資材コード18)) AND ((@IsNull_数量1"& _ 
-                "8 = 1 AND [数量18] IS NULL) OR ([数量18] = @Original_数量18)) AND ((@IsNull_資材コード19 = "& _ 
-                "1 AND [資材コード19] IS NULL) OR ([資材コード19] = @Original_資材コード19)) AND ((@IsNull_数量19 "& _ 
-                "= 1 AND [数量19] IS NULL) OR ([数量19] = @Original_数量19)) AND ((@IsNull_資材コード20 = 1 "& _ 
-                "AND [資材コード20] IS NULL) OR ([資材コード20] = @Original_資材コード20)) AND ((@IsNull_数量20 = "& _ 
-                "1 AND [数量20] IS NULL) OR ([数量20] = @Original_数量20)) AND ((@IsNull_単品重量 = 1 AND ["& _ 
-                "単品重量] IS NULL) OR ([単品重量] = @Original_単品重量)) AND ((@IsNull_内装重量 = 1 AND [内装重量] I"& _ 
-                "S NULL) OR ([内装重量] = @Original_内装重量)) AND ((@IsNull_見積No = 1 AND [見積No] IS NULL)"& _ 
-                " OR ([見積No] = @Original_見積No)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No,"& _ 
-                " Export_Name, Order_Lot, LOTカートン数, 個装入数, OS, 内装適用, L, W, H, 防錆, 個装適用袋, 袋必要数, 資材コ"& _ 
-                "ード1, 数量1, 資材コード2, 数量2, 資材コード3, 数量3, 資材コード4, 数量4, 資材コード5, 数量5, 資材コード6, 数量6, 資材コード"& _ 
-                "7, 数量7, 資材コード8, 数量8, 資材コード9, 数量9, 資材コード10, 数量10, 資材コード11, 数量11, 資材コード12, 数量12, 資"& _ 
-                "材コード13, 数量13, 資材コード14, 数量14, 資材コード15, 数量15, 資材コード16, 数量16, 資材コード17, 数量17, 資材コード1"& _ 
-                "8, 数量18, 資材コード19, 数量19, 資材コード20, 数量20, 単品重量, 内装重量, 見積No FROM M_Buhin_Order_List "& _ 
-                "WHERE (id = @id)"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DIST", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DIST", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@変更フラグ", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "変更フラグ", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GR", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GR", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Basic_Part_No", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Basic_Part_No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Export_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Export_Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Order_Lot", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_Lot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LOTカートン数", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LOTカートン数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装入数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装入数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OS", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装適用", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "内装適用", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@L", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "L", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@W", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "W", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@H", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "H", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@防錆", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "防錆", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装適用袋", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装適用袋", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@袋必要数", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "袋必要数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード5", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量5", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード6", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量6", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード7", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量7", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード8", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量8", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード9", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量9", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード10", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量10", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード11", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード11", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量11", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量11", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード12", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード12", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量12", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量12", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード13", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード13", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量13", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量13", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード14", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード14", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量14", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量14", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード15", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード15", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量15", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量15", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード16", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード16", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量16", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量16", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード17", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード17", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量17", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量17", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード18", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード18", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量18", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量18", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード19", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード19", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量19", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量19", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード20", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量20", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単品重量", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単品重量", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装重量", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 13, 5, "内装重量", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_DIST", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DIST", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DIST", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DIST", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "No", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "No", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_変更フラグ", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "変更フラグ", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_変更フラグ", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "変更フラグ", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GR", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GR", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GR", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GR", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Basic_Part_No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Basic_Part_No", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Basic_Part_No", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Basic_Part_No", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Export_Name", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Export_Name", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Export_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Export_Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Order_Lot", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_Lot", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Order_Lot", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_Lot", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LOTカートン数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LOTカートン数", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LOTカートン数", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LOTカートン数", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_個装入数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装入数", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_個装入数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装入数", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_OS", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OS", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OS", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OS", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_内装適用", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "内装適用", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_内装適用", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "内装適用", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_L", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "L", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_L", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "L", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_W", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "W", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_W", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "W", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_H", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "H", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_H", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "H", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_防錆", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "防錆", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_防錆", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "防錆", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_個装適用袋", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装適用袋", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_個装適用袋", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "個装適用袋", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_袋必要数", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "袋必要数", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_袋必要数", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "袋必要数", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード4", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量4", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード5", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード5", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード5", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード5", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量5", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量5", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量5", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量5", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード6", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード6", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード6", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード6", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量6", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量6", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量6", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量6", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード7", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード7", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード7", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード7", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量7", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量7", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量7", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量7", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード8", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード8", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード8", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード8", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量8", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量8", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量8", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量8", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード9", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード9", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード9", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード9", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量9", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量9", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量9", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量9", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード10", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード10", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード10", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード10", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量10", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量10", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量10", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量10", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード11", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード11", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード11", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード11", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量11", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量11", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量11", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量11", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード12", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード12", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード12", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード12", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量12", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量12", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量12", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量12", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード13", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード13", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード13", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード13", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量13", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量13", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量13", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量13", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード14", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード14", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード14", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード14", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量14", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量14", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量14", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量14", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード15", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード15", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード15", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード15", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量15", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量15", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量15", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量15", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード16", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード16", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード16", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード16", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量16", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量16", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量16", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量16", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード17", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード17", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード17", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード17", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量17", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量17", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量17", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量17", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード18", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード18", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード18", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード18", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量18", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量18", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量18", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量18", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード19", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード19", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード19", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード19", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量19", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量19", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量19", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量19", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード20", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード20", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード20", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード20", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_数量20", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量20", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_数量20", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "数量20", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_単品重量", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "単品重量", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_単品重量", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単品重量", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_内装重量", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "内装重量", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_内装重量", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 13, 5, "内装重量", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_見積No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_見積No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.Honda_Logi.My.MySettings.Default.Honda_LogiConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
-            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT                      id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, "& _ 
-                "Order_Lot, LOTカートン数, 個装入数, OS, 内装適用, L, W, H, 防錆, 個装適用袋, 袋必要数, 資材コード1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-                "                               数量1, 資材コード2, 数量2, 資材コード3, 数量3, 資材コード4, 数量4, 資材コード"& _ 
-                "5, 数量5, 資材コード6, 数量6, 資材コード7, 数量7, 資材コード8, 数量8, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               "& _ 
-                "       資材コード9, 数量9, 資材コード10, 数量10, 資材コード11, 数量11, 資材コード12, 数量12, 資材コード13, 数量13, "& _ 
-                "資材コード14, 数量14, 資材コード15, 数量15, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      資材コード16, 数"& _ 
-                "量16, 資材コード17, 数量17, 資材コード18, 数量18, 資材コード19, 数量19, 資材コード20, 数量20, 単品重量, 内装重量, 見積N"& _ 
-                "o"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         M_Buhin_Order_List"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "UPDATE                    M_Buhin_Order_List"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                              DI"& _ 
-                "ST = @DIST, No = @No, 変更フラグ = @変更フラグ, GR = @GR, Basic_Part_No = @Basic_Part_No, "& _ 
-                "Export_Name = @Export_Name, Order_Lot = @Order_Lot, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                          "& _ 
-                "            LOTカートン数 = @LOTカートン数, 個装入数 = @個装入数, OS = @OS, 内装適用 = @内装適用, L = @L, "& _ 
-                "W = @W, H = @H, 防錆 = @防錆, 個装適用袋 = @個装適用袋, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                    "& _ 
-                "  袋必要数 = @袋必要数, 資材コード1 = @資材コード1, 数量1 = @数量1, 資材コード2 = @資材コード2, 数量2 = @数量2, 資材コー"& _ 
-                "ド3 = @資材コード3, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      数量3 = @数量3, 資材コード4 = @資材コー"& _ 
-                "ド4, 数量4 = @数量4, 資材コード5 = @資材コード5, 数量5 = @数量5, 資材コード6 = @資材コード6, 数量6 = @数量6, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-                "                                    資材コード7 = @資材コード7, 数量7 = @数量7, 資材コード8 = @資材コー"& _ 
-                "ド8, 数量8 = @数量8, 資材コード9 = @資材コード9, 数量9 = @数量9, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                "& _ 
-                "      資材コード10 = @資材コード10, 数量10 = @数量10, 資材コード11 = @資材コード11, 数量11 = @数量11, 資材コード1"& _ 
-                "2 = @資材コード12, 数量12 = @数量12, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      資材コード13 = @資"& _ 
-                "材コード13, 数量13 = @数量13, 資材コード14 = @資材コード14, 数量14 = @数量14, 資材コード15 = @資材コード15, 数量15"& _ 
-                " = @数量15, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      資材コード16 = @資材コード16, 数量16 = @数量"& _ 
-                "16, 資材コード17 = @資材コード17, 数量17 = @数量17, 資材コード18 = @資材コード18, 数量18 = @数量18, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                                資材コード19 = @資材コード19, 数量19 = @数量19, 資材コード20 = @資材コ"& _ 
-                "ード20, 数量20 = @数量20, 単品重量 = @単品重量, 内装重量 = @内装重量"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (id "& _ 
-                "= @Original_id)"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DIST", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "DIST", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@変更フラグ", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "変更フラグ", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GR", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "GR", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Basic_Part_No", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Basic_Part_No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Export_Name", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Export_Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Order_Lot", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_Lot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LOTカートン数", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "LOTカートン数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装入数", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "個装入数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OS", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "OS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装適用", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "内装適用", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@L", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "L", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@W", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "W", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@H", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "H", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@防錆", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "防錆", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装適用袋", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "個装適用袋", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@袋必要数", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "袋必要数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード1", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量1", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード2", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量2", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード3", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量3", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード4", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量4", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード5", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量5", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード6", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量6", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード7", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量7", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード8", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量8", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード9", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量9", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード10", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量10", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード11", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード11", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量11", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量11", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード12", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード12", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量12", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量12", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード13", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード13", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量13", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量13", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード14", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード14", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量14", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量14", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード15", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード15", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量15", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量15", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード16", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード16", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量16", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量16", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード17", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード17", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量17", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量17", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード18", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード18", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量18", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量18", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード19", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード19", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量19", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量19", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード20", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量20", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単品重量", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "単品重量", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装重量", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 13, 5, "内装重量", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "DELETE FROM       M_Buhin_Order_List"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (id = @Original"& _ 
-                "_id)"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "INSERT INTO         M_Buhin_Order_List"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      (DI"& _ 
-                "ST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot, LOTカートン数, 個装入数, OS, 内装"& _ 
-                "適用, L, W, H, 防錆, 個装適用袋, 袋必要数, 資材コード1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      数量"& _ 
-                "1, 資材コード2, 数量2, 資材コード3, 数量3, 資材コード4, 数量4, 資材コード5, 数量5, 資材コード6, 数量6, 資材コード7, 数量7,"& _ 
-                " 資材コード8, 数量8, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      資材コード9, 数量9, 資材コード10, 数量10"& _ 
-                ", 資材コード11, 数量11, 資材コード12, 数量12, 資材コード13, 数量13, 資材コード14, 数量14, 資材コード15, 数量15, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                                     資材コード16, 数量16, 資材コード17, 数量17, 資材コード18, 数量18"& _ 
-                ", 資材コード19, 数量19, 資材コード20, 数量20, 単品重量, 内装重量)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES                    (@DIST,@N"& _ 
-                "o,@変更フラグ,@GR,@Basic_Part_No,@Export_Name,@Order_Lot,@LOTカートン数,@個装入数,@OS,@内装適用,@L"& _ 
-                ",@W,@H,@防錆,@個装適用袋,@袋必要数,@資材コード1,@数量1,@資材コード2,@数量2,@資材コード3,@数量3,@資材コード4,@数量4,@資材コ"& _ 
-                "ード5,@数量5,@資材コード6,@数量6,@資材コード7,@数量7,@資材コード8,@数量8,@資材コード9,@数量9,@資材コード10,@数量10,@資材コ"& _ 
-                "ード11,@数量11,@資材コード12,@数量12,@資材コード13,@数量13,@資材コード14,@数量14,@資材コード15,@数量15,@資材コード16,"& _ 
-                "@数量16,@資材コード17,@数量17,@資材コード18,@数量18,@資材コード19,@数量19,@資材コード20,@数量20,@単品重量,@内装重量)"
-            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DIST", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "DIST", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@変更フラグ", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "変更フラグ", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GR", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "GR", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Basic_Part_No", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Basic_Part_No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Export_Name", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "Export_Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Order_Lot", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Order_Lot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LOTカートン数", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "LOTカートン数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装入数", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "個装入数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OS", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "OS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装適用", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "内装適用", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@L", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "L", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@W", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "W", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@H", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "H", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@防錆", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "防錆", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装適用袋", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "個装適用袋", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@袋必要数", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "袋必要数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード1", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量1", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード2", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量2", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード3", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量3", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード4", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量4", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード5", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量5", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード6", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量6", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード7", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量7", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード8", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量8", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード9", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量9", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード10", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量10", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード11", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード11", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量11", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量11", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード12", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード12", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量12", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量12", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード13", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード13", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量13", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量13", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード14", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード14", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量14", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量14", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード15", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード15", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量15", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量15", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード16", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード16", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量16", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量16", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード17", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード17", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量17", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量17", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード18", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード18", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量18", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量18", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード19", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード19", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量19", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量19", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード20", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@数量20", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "数量20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単品重量", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "単品重量", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装重量", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 13, 5, "内装重量", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As DS_M.DT_M_Buhin_Order_ListDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As DS_M.DT_M_Buhin_Order_ListDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As DS_M.DT_M_Buhin_Order_ListDataTable = New DS_M.DT_M_Buhin_Order_ListDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As DS_M.DT_M_Buhin_Order_ListDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As DS_M) As Integer
-            Return Me.Adapter.Update(dataSet, "DT_M_Buhin_Order_List")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete( _
-                    ByVal Original_id As Integer,  _
-                    ByVal Original_DIST As String,  _
-                    ByVal Original_No As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_変更フラグ As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_GR As String,  _
-                    ByVal Original_Basic_Part_No As String,  _
-                    ByVal Original_Export_Name As String,  _
-                    ByVal Original_Order_Lot As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_LOTカートン数 As String,  _
-                    ByVal Original_個装入数 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_OS As String,  _
-                    ByVal Original_内装適用 As String,  _
-                    ByVal Original_L As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_W As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_H As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_防錆 As String,  _
-                    ByVal Original_個装適用袋 As String,  _
-                    ByVal Original_袋必要数 As String,  _
-                    ByVal Original_資材コード1 As String,  _
-                    ByVal Original_数量1 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード2 As String,  _
-                    ByVal Original_数量2 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード3 As String,  _
-                    ByVal Original_数量3 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード4 As String,  _
-                    ByVal Original_数量4 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード5 As String,  _
-                    ByVal Original_数量5 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード6 As String,  _
-                    ByVal Original_数量6 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード7 As String,  _
-                    ByVal Original_数量7 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード8 As String,  _
-                    ByVal Original_数量8 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード9 As String,  _
-                    ByVal Original_数量9 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード10 As String,  _
-                    ByVal Original_数量10 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード11 As String,  _
-                    ByVal Original_数量11 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード12 As String,  _
-                    ByVal Original_数量12 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード13 As String,  _
-                    ByVal Original_数量13 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード14 As String,  _
-                    ByVal Original_数量14 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード15 As String,  _
-                    ByVal Original_数量15 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード16 As String,  _
-                    ByVal Original_数量16 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード17 As String,  _
-                    ByVal Original_数量17 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード18 As String,  _
-                    ByVal Original_数量18 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード19 As String,  _
-                    ByVal Original_数量19 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード20 As String,  _
-                    ByVal Original_数量20 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_単品重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_内装重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_見積No As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id,Integer)
-            If (Original_DIST Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_DIST,String)
-            End If
-            If (Original_No.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_No.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (Original_変更フラグ.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_変更フラグ.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (Original_GR Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_GR,String)
-            End If
-            If (Original_Basic_Part_No Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_Basic_Part_No,String)
-            End If
-            If (Original_Export_Name Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Export_Name,String)
-            End If
-            If (Original_Order_Lot.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Order_Lot.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (Original_LOTカートン数 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_LOTカートン数,String)
-            End If
-            If (Original_個装入数.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_個装入数.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (Original_OS Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_OS,String)
-            End If
-            If (Original_内装適用 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_内装適用,String)
-            End If
-            If (Original_L.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_L.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
-            End If
-            If (Original_W.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_W.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (Original_H.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_H.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (Original_防錆 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_防錆,String)
-            End If
-            If (Original_個装適用袋 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_個装適用袋,String)
-            End If
-            If (Original_袋必要数 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_袋必要数,String)
-            End If
-            If (Original_資材コード1 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_資材コード1,String)
-            End If
-            If (Original_数量1.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_数量1.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード2 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(40).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_資材コード2,String)
-            End If
-            If (Original_数量2.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_数量2.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(42).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード3 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(44).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_資材コード3,String)
-            End If
-            If (Original_数量3.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(46).Value = CType(Original_数量3.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(45).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(46).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード4 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(47).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(48).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(48).Value = CType(Original_資材コード4,String)
-            End If
-            If (Original_数量4.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(Original_数量4.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(49).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(50).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード5 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(51).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(52).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(Original_資材コード5,String)
-            End If
-            If (Original_数量5.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(Original_数量5.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(53).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(54).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード6 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(56).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(56).Value = CType(Original_資材コード6,String)
-            End If
-            If (Original_数量6.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(57).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(58).Value = CType(Original_数量6.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(57).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(58).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード7 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(59).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(60).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(59).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(60).Value = CType(Original_資材コード7,String)
-            End If
-            If (Original_数量7.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(62).Value = CType(Original_数量7.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(61).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(62).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード8 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(63).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(64).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(64).Value = CType(Original_資材コード8,String)
-            End If
-            If (Original_数量8.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(66).Value = CType(Original_数量8.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(65).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(66).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード9 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(67).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(68).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(68).Value = CType(Original_資材コード9,String)
-            End If
-            If (Original_数量9.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(70).Value = CType(Original_数量9.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(69).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(70).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード10 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(71).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(72).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(72).Value = CType(Original_資材コード10,String)
-            End If
-            If (Original_数量10.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(74).Value = CType(Original_数量10.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(73).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(74).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード11 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(75).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(76).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(76).Value = CType(Original_資材コード11,String)
-            End If
-            If (Original_数量11.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(78).Value = CType(Original_数量11.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(77).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(78).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード12 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(79).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(80).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(80).Value = CType(Original_資材コード12,String)
-            End If
-            If (Original_数量12.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(82).Value = CType(Original_数量12.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(81).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(82).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード13 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(83).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(84).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(84).Value = CType(Original_資材コード13,String)
-            End If
-            If (Original_数量13.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(85).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(86).Value = CType(Original_数量13.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(85).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(86).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード14 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(87).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(88).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(87).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(88).Value = CType(Original_資材コード14,String)
-            End If
-            If (Original_数量14.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(89).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(90).Value = CType(Original_数量14.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(89).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(90).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード15 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(91).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(92).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(91).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(92).Value = CType(Original_資材コード15,String)
-            End If
-            If (Original_数量15.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(93).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(94).Value = CType(Original_数量15.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(93).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(94).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード16 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(95).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(96).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(95).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(96).Value = CType(Original_資材コード16,String)
-            End If
-            If (Original_数量16.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(97).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(98).Value = CType(Original_数量16.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(97).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(98).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード17 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(99).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(100).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(99).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(100).Value = CType(Original_資材コード17,String)
-            End If
-            If (Original_数量17.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(101).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(102).Value = CType(Original_数量17.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(101).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(102).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード18 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(103).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(104).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(103).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(104).Value = CType(Original_資材コード18,String)
-            End If
-            If (Original_数量18.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(105).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(106).Value = CType(Original_数量18.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(105).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(106).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード19 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(107).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(108).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(107).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(108).Value = CType(Original_資材コード19,String)
-            End If
-            If (Original_数量19.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(109).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(110).Value = CType(Original_数量19.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(109).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(110).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード20 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(111).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(112).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(111).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(112).Value = CType(Original_資材コード20,String)
-            End If
-            If (Original_数量20.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(113).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(114).Value = CType(Original_数量20.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(113).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(114).Value = Global.System.DBNull.Value
-            End If
-            If (Original_単品重量.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(115).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(116).Value = CType(Original_単品重量.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(115).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(116).Value = Global.System.DBNull.Value
-            End If
-            If (Original_内装重量.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(117).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(118).Value = CType(Original_内装重量.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(117).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(118).Value = Global.System.DBNull.Value
-            End If
-            If (Original_見積No.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(119).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(120).Value = CType(Original_見積No.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(119).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(120).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert( _
-                    ByVal DIST As String,  _
-                    ByVal No As Global.System.Nullable(Of Integer),  _
-                    ByVal 変更フラグ As Global.System.Nullable(Of Integer),  _
-                    ByVal GR As String,  _
-                    ByVal Basic_Part_No As String,  _
-                    ByVal Export_Name As String,  _
-                    ByVal Order_Lot As Global.System.Nullable(Of Integer),  _
-                    ByVal LOTカートン数 As String,  _
-                    ByVal 個装入数 As Global.System.Nullable(Of Integer),  _
-                    ByVal OS As String,  _
-                    ByVal 内装適用 As String,  _
-                    ByVal L As Global.System.Nullable(Of Integer),  _
-                    ByVal W As Global.System.Nullable(Of Integer),  _
-                    ByVal H As Global.System.Nullable(Of Integer),  _
-                    ByVal 防錆 As String,  _
-                    ByVal 個装適用袋 As String,  _
-                    ByVal 袋必要数 As String,  _
-                    ByVal 資材コード1 As String,  _
-                    ByVal 数量1 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード2 As String,  _
-                    ByVal 数量2 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード3 As String,  _
-                    ByVal 数量3 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード4 As String,  _
-                    ByVal 数量4 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード5 As String,  _
-                    ByVal 数量5 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード6 As String,  _
-                    ByVal 数量6 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード7 As String,  _
-                    ByVal 数量7 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード8 As String,  _
-                    ByVal 数量8 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード9 As String,  _
-                    ByVal 数量9 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード10 As String,  _
-                    ByVal 数量10 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード11 As String,  _
-                    ByVal 数量11 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード12 As String,  _
-                    ByVal 数量12 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード13 As String,  _
-                    ByVal 数量13 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード14 As String,  _
-                    ByVal 数量14 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード15 As String,  _
-                    ByVal 数量15 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード16 As String,  _
-                    ByVal 数量16 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード17 As String,  _
-                    ByVal 数量17 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード18 As String,  _
-                    ByVal 数量18 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード19 As String,  _
-                    ByVal 数量19 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード20 As String,  _
-                    ByVal 数量20 As Global.System.Nullable(Of Integer),  _
-                    ByVal 単品重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 内装重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 見積No As Global.System.Nullable(Of Integer)) As Integer
-            If (DIST Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(DIST,String)
-            End If
-            If (No.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(No.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (変更フラグ.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(変更フラグ.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (GR Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(GR,String)
-            End If
-            If (Basic_Part_No Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(Basic_Part_No,String)
-            End If
-            If (Export_Name Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Export_Name,String)
-            End If
-            If (Order_Lot.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(Order_Lot.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (LOTカートン数 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(LOTカートン数,String)
-            End If
-            If (個装入数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(個装入数.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (OS Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(OS,String)
-            End If
-            If (内装適用 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(内装適用,String)
-            End If
-            If (L.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(L.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (W.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(W.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (H.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(H.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (防錆 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(防錆,String)
-            End If
-            If (個装適用袋 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(個装適用袋,String)
-            End If
-            If (袋必要数 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(袋必要数,String)
-            End If
-            If (資材コード1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(資材コード1,String)
-            End If
-            If (数量1.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(数量1.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード2 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(19).Value = CType(資材コード2,String)
-            End If
-            If (数量2.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(数量2.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード3 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(21).Value = CType(資材コード3,String)
-            End If
-            If (数量3.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(22).Value = CType(数量3.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード4 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(23).Value = CType(資材コード4,String)
-            End If
-            If (数量4.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(24).Value = CType(数量4.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード5 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(25).Value = CType(資材コード5,String)
-            End If
-            If (数量5.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(26).Value = CType(数量5.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード6 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(27).Value = CType(資材コード6,String)
-            End If
-            If (数量6.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(28).Value = CType(数量6.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード7 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(29).Value = CType(資材コード7,String)
-            End If
-            If (数量7.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(30).Value = CType(数量7.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード8 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(31).Value = CType(資材コード8,String)
-            End If
-            If (数量8.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(32).Value = CType(数量8.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード9 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(33).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(33).Value = CType(資材コード9,String)
-            End If
-            If (数量9.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(34).Value = CType(数量9.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(34).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード10 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(35).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(35).Value = CType(資材コード10,String)
-            End If
-            If (数量10.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(36).Value = CType(数量10.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(36).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード11 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(37).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(37).Value = CType(資材コード11,String)
-            End If
-            If (数量11.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(38).Value = CType(数量11.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(38).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード12 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(39).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(39).Value = CType(資材コード12,String)
-            End If
-            If (数量12.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(40).Value = CType(数量12.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(40).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード13 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(41).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(41).Value = CType(資材コード13,String)
-            End If
-            If (数量13.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(42).Value = CType(数量13.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(42).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード14 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(43).Value = CType(資材コード14,String)
-            End If
-            If (数量14.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(44).Value = CType(数量14.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(44).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード15 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(45).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(45).Value = CType(資材コード15,String)
-            End If
-            If (数量15.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(46).Value = CType(数量15.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(46).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード16 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(47).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(47).Value = CType(資材コード16,String)
-            End If
-            If (数量16.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(48).Value = CType(数量16.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(48).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード17 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(49).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(49).Value = CType(資材コード17,String)
-            End If
-            If (数量17.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(50).Value = CType(数量17.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(50).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード18 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(51).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(51).Value = CType(資材コード18,String)
-            End If
-            If (数量18.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(52).Value = CType(数量18.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(52).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード19 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(53).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(53).Value = CType(資材コード19,String)
-            End If
-            If (数量19.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(54).Value = CType(数量19.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(54).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード20 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(55).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(55).Value = CType(資材コード20,String)
-            End If
-            If (数量20.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(56).Value = CType(数量20.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(56).Value = Global.System.DBNull.Value
-            End If
-            If (単品重量.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(57).Value = CType(単品重量.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(57).Value = Global.System.DBNull.Value
-            End If
-            If (内装重量.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(58).Value = CType(内装重量.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(58).Value = Global.System.DBNull.Value
-            End If
-            If (見積No.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(59).Value = CType(見積No.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(59).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal DIST As String,  _
-                    ByVal No As Global.System.Nullable(Of Integer),  _
-                    ByVal 変更フラグ As Global.System.Nullable(Of Integer),  _
-                    ByVal GR As String,  _
-                    ByVal Basic_Part_No As String,  _
-                    ByVal Export_Name As String,  _
-                    ByVal Order_Lot As Global.System.Nullable(Of Integer),  _
-                    ByVal LOTカートン数 As String,  _
-                    ByVal 個装入数 As Global.System.Nullable(Of Integer),  _
-                    ByVal OS As String,  _
-                    ByVal 内装適用 As String,  _
-                    ByVal L As Global.System.Nullable(Of Integer),  _
-                    ByVal W As Global.System.Nullable(Of Integer),  _
-                    ByVal H As Global.System.Nullable(Of Integer),  _
-                    ByVal 防錆 As String,  _
-                    ByVal 個装適用袋 As String,  _
-                    ByVal 袋必要数 As String,  _
-                    ByVal 資材コード1 As String,  _
-                    ByVal 数量1 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード2 As String,  _
-                    ByVal 数量2 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード3 As String,  _
-                    ByVal 数量3 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード4 As String,  _
-                    ByVal 数量4 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード5 As String,  _
-                    ByVal 数量5 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード6 As String,  _
-                    ByVal 数量6 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード7 As String,  _
-                    ByVal 数量7 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード8 As String,  _
-                    ByVal 数量8 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード9 As String,  _
-                    ByVal 数量9 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード10 As String,  _
-                    ByVal 数量10 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード11 As String,  _
-                    ByVal 数量11 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード12 As String,  _
-                    ByVal 数量12 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード13 As String,  _
-                    ByVal 数量13 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード14 As String,  _
-                    ByVal 数量14 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード15 As String,  _
-                    ByVal 数量15 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード16 As String,  _
-                    ByVal 数量16 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード17 As String,  _
-                    ByVal 数量17 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード18 As String,  _
-                    ByVal 数量18 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード19 As String,  _
-                    ByVal 数量19 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード20 As String,  _
-                    ByVal 数量20 As Global.System.Nullable(Of Integer),  _
-                    ByVal 単品重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 内装重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 見積No As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_id As Integer,  _
-                    ByVal Original_DIST As String,  _
-                    ByVal Original_No As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_変更フラグ As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_GR As String,  _
-                    ByVal Original_Basic_Part_No As String,  _
-                    ByVal Original_Export_Name As String,  _
-                    ByVal Original_Order_Lot As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_LOTカートン数 As String,  _
-                    ByVal Original_個装入数 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_OS As String,  _
-                    ByVal Original_内装適用 As String,  _
-                    ByVal Original_L As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_W As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_H As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_防錆 As String,  _
-                    ByVal Original_個装適用袋 As String,  _
-                    ByVal Original_袋必要数 As String,  _
-                    ByVal Original_資材コード1 As String,  _
-                    ByVal Original_数量1 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード2 As String,  _
-                    ByVal Original_数量2 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード3 As String,  _
-                    ByVal Original_数量3 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード4 As String,  _
-                    ByVal Original_数量4 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード5 As String,  _
-                    ByVal Original_数量5 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード6 As String,  _
-                    ByVal Original_数量6 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード7 As String,  _
-                    ByVal Original_数量7 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード8 As String,  _
-                    ByVal Original_数量8 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード9 As String,  _
-                    ByVal Original_数量9 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード10 As String,  _
-                    ByVal Original_数量10 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード11 As String,  _
-                    ByVal Original_数量11 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード12 As String,  _
-                    ByVal Original_数量12 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード13 As String,  _
-                    ByVal Original_数量13 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード14 As String,  _
-                    ByVal Original_数量14 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード15 As String,  _
-                    ByVal Original_数量15 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード16 As String,  _
-                    ByVal Original_数量16 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード17 As String,  _
-                    ByVal Original_数量17 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード18 As String,  _
-                    ByVal Original_数量18 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード19 As String,  _
-                    ByVal Original_数量19 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード20 As String,  _
-                    ByVal Original_数量20 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_単品重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_内装重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_見積No As Global.System.Nullable(Of Integer),  _
-                    ByVal id As Integer) As Integer
-            If (DIST Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(DIST,String)
-            End If
-            If (No.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(No.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (変更フラグ.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(変更フラグ.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (GR Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(GR,String)
-            End If
-            If (Basic_Part_No Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Basic_Part_No,String)
-            End If
-            If (Export_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Export_Name,String)
-            End If
-            If (Order_Lot.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Order_Lot.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (LOTカートン数 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(LOTカートン数,String)
-            End If
-            If (個装入数.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(個装入数.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (OS Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(OS,String)
-            End If
-            If (内装適用 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(内装適用,String)
-            End If
-            If (L.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(L.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (W.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(W.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (H.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(H.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (防錆 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(防錆,String)
-            End If
-            If (個装適用袋 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(個装適用袋,String)
-            End If
-            If (袋必要数 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(袋必要数,String)
-            End If
-            If (資材コード1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(資材コード1,String)
-            End If
-            If (数量1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(数量1.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(資材コード2,String)
-            End If
-            If (数量2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(数量2.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード3 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(資材コード3,String)
-            End If
-            If (数量3.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(数量3.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード4 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(資材コード4,String)
-            End If
-            If (数量4.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(数量4.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード5 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(資材コード5,String)
-            End If
-            If (数量5.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(数量5.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード6 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(資材コード6,String)
-            End If
-            If (数量6.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(数量6.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード7 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(資材コード7,String)
-            End If
-            If (数量7.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(数量7.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード8 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(資材コード8,String)
-            End If
-            If (数量8.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(数量8.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード9 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(資材コード9,String)
-            End If
-            If (数量9.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(数量9.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード10 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(資材コード10,String)
-            End If
-            If (数量10.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(数量10.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード11 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(資材コード11,String)
-            End If
-            If (数量11.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(数量11.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード12 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(資材コード12,String)
-            End If
-            If (数量12.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(数量12.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード13 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(資材コード13,String)
-            End If
-            If (数量13.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(数量13.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード14 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(資材コード14,String)
-            End If
-            If (数量14.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(数量14.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード15 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(資材コード15,String)
-            End If
-            If (数量15.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(数量15.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード16 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(資材コード16,String)
-            End If
-            If (数量16.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(数量16.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード17 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(資材コード17,String)
-            End If
-            If (数量17.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(数量17.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード18 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(資材コード18,String)
-            End If
-            If (数量18.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(数量18.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード19 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(資材コード19,String)
-            End If
-            If (数量19.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(数量19.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード20 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(資材コード20,String)
-            End If
-            If (数量20.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(数量20.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
-            End If
-            If (単品重量.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(単品重量.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
-            End If
-            If (内装重量.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(内装重量.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
-            End If
-            If (見積No.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(見積No.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_id,Integer)
-            If (Original_DIST Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_DIST,String)
-            End If
-            If (Original_No.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_No.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
-            End If
-            If (Original_変更フラグ.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_変更フラグ.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
-            End If
-            If (Original_GR Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_GR,String)
-            End If
-            If (Original_Basic_Part_No Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_Basic_Part_No,String)
-            End If
-            If (Original_Export_Name Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_Export_Name,String)
-            End If
-            If (Original_Order_Lot.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_Order_Lot.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
-            End If
-            If (Original_LOTカートン数 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_LOTカートン数,String)
-            End If
-            If (Original_個装入数.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_個装入数.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
-            End If
-            If (Original_OS Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_OS,String)
-            End If
-            If (Original_内装適用 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_内装適用,String)
-            End If
-            If (Original_L.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_L.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
-            End If
-            If (Original_W.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_W.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = Global.System.DBNull.Value
-            End If
-            If (Original_H.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Original_H.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = Global.System.DBNull.Value
-            End If
-            If (Original_防錆 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(Original_防錆,String)
-            End If
-            If (Original_個装適用袋 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(Original_個装適用袋,String)
-            End If
-            If (Original_袋必要数 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(Original_袋必要数,String)
-            End If
-            If (Original_資材コード1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(Original_資材コード1,String)
-            End If
-            If (Original_数量1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(Original_数量1.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(98).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(100).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(Original_資材コード2,String)
-            End If
-            If (Original_数量2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(Original_数量2.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(102).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード3 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(104).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(Original_資材コード3,String)
-            End If
-            If (Original_数量3.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(Original_数量3.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(106).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード4 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(108).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(108).Value = CType(Original_資材コード4,String)
-            End If
-            If (Original_数量4.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(110).Value = CType(Original_数量4.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(110).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード5 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(111).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(112).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(111).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(112).Value = CType(Original_資材コード5,String)
-            End If
-            If (Original_数量5.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(113).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(114).Value = CType(Original_数量5.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(113).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(114).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード6 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(115).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(116).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(115).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(116).Value = CType(Original_資材コード6,String)
-            End If
-            If (Original_数量6.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(117).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(118).Value = CType(Original_数量6.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(117).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(118).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード7 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(119).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(120).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(119).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(120).Value = CType(Original_資材コード7,String)
-            End If
-            If (Original_数量7.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(121).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(122).Value = CType(Original_数量7.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(121).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(122).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード8 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(123).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(124).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(123).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(124).Value = CType(Original_資材コード8,String)
-            End If
-            If (Original_数量8.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(125).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(126).Value = CType(Original_数量8.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(125).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(126).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード9 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(127).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(128).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(127).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(128).Value = CType(Original_資材コード9,String)
-            End If
-            If (Original_数量9.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(130).Value = CType(Original_数量9.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(130).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード10 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(131).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(132).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(131).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(132).Value = CType(Original_資材コード10,String)
-            End If
-            If (Original_数量10.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(133).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(134).Value = CType(Original_数量10.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(133).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(134).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード11 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(135).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(136).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(135).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(136).Value = CType(Original_資材コード11,String)
-            End If
-            If (Original_数量11.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(137).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(138).Value = CType(Original_数量11.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(137).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(138).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード12 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(139).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(140).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(139).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(140).Value = CType(Original_資材コード12,String)
-            End If
-            If (Original_数量12.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(141).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(142).Value = CType(Original_数量12.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(141).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(142).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード13 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(143).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(144).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(143).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(144).Value = CType(Original_資材コード13,String)
-            End If
-            If (Original_数量13.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(145).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(146).Value = CType(Original_数量13.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(145).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(146).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード14 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(147).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(148).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(147).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(148).Value = CType(Original_資材コード14,String)
-            End If
-            If (Original_数量14.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(149).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(150).Value = CType(Original_数量14.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(149).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(150).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード15 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(151).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(152).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(151).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(152).Value = CType(Original_資材コード15,String)
-            End If
-            If (Original_数量15.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(153).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(154).Value = CType(Original_数量15.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(153).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(154).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード16 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(155).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(156).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(155).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(156).Value = CType(Original_資材コード16,String)
-            End If
-            If (Original_数量16.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(157).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(158).Value = CType(Original_数量16.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(157).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(158).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード17 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(159).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(160).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(159).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(160).Value = CType(Original_資材コード17,String)
-            End If
-            If (Original_数量17.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(161).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(162).Value = CType(Original_数量17.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(161).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(162).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード18 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(163).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(164).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(163).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(164).Value = CType(Original_資材コード18,String)
-            End If
-            If (Original_数量18.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(165).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(166).Value = CType(Original_数量18.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(165).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(166).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード19 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(167).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(168).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(167).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(168).Value = CType(Original_資材コード19,String)
-            End If
-            If (Original_数量19.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(169).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(170).Value = CType(Original_数量19.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(169).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(170).Value = Global.System.DBNull.Value
-            End If
-            If (Original_資材コード20 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(171).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(172).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(171).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(172).Value = CType(Original_資材コード20,String)
-            End If
-            If (Original_数量20.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(173).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(174).Value = CType(Original_数量20.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(173).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(174).Value = Global.System.DBNull.Value
-            End If
-            If (Original_単品重量.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(175).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(176).Value = CType(Original_単品重量.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(175).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(176).Value = Global.System.DBNull.Value
-            End If
-            If (Original_内装重量.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(177).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(178).Value = CType(Original_内装重量.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(177).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(178).Value = Global.System.DBNull.Value
-            End If
-            If (Original_見積No.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(179).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(180).Value = CType(Original_見積No.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(179).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(180).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(181).Value = CType(id,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal DIST As String,  _
-                    ByVal No As Global.System.Nullable(Of Integer),  _
-                    ByVal 変更フラグ As Global.System.Nullable(Of Integer),  _
-                    ByVal GR As String,  _
-                    ByVal Basic_Part_No As String,  _
-                    ByVal Export_Name As String,  _
-                    ByVal Order_Lot As Global.System.Nullable(Of Integer),  _
-                    ByVal LOTカートン数 As String,  _
-                    ByVal 個装入数 As Global.System.Nullable(Of Integer),  _
-                    ByVal OS As String,  _
-                    ByVal 内装適用 As String,  _
-                    ByVal L As Global.System.Nullable(Of Integer),  _
-                    ByVal W As Global.System.Nullable(Of Integer),  _
-                    ByVal H As Global.System.Nullable(Of Integer),  _
-                    ByVal 防錆 As String,  _
-                    ByVal 個装適用袋 As String,  _
-                    ByVal 袋必要数 As String,  _
-                    ByVal 資材コード1 As String,  _
-                    ByVal 数量1 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード2 As String,  _
-                    ByVal 数量2 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード3 As String,  _
-                    ByVal 数量3 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード4 As String,  _
-                    ByVal 数量4 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード5 As String,  _
-                    ByVal 数量5 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード6 As String,  _
-                    ByVal 数量6 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード7 As String,  _
-                    ByVal 数量7 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード8 As String,  _
-                    ByVal 数量8 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード9 As String,  _
-                    ByVal 数量9 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード10 As String,  _
-                    ByVal 数量10 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード11 As String,  _
-                    ByVal 数量11 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード12 As String,  _
-                    ByVal 数量12 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード13 As String,  _
-                    ByVal 数量13 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード14 As String,  _
-                    ByVal 数量14 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード15 As String,  _
-                    ByVal 数量15 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード16 As String,  _
-                    ByVal 数量16 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード17 As String,  _
-                    ByVal 数量17 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード18 As String,  _
-                    ByVal 数量18 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード19 As String,  _
-                    ByVal 数量19 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード20 As String,  _
-                    ByVal 数量20 As Global.System.Nullable(Of Integer),  _
-                    ByVal 単品重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 内装重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 見積No As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_id As Integer,  _
-                    ByVal Original_DIST As String,  _
-                    ByVal Original_No As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_変更フラグ As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_GR As String,  _
-                    ByVal Original_Basic_Part_No As String,  _
-                    ByVal Original_Export_Name As String,  _
-                    ByVal Original_Order_Lot As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_LOTカートン数 As String,  _
-                    ByVal Original_個装入数 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_OS As String,  _
-                    ByVal Original_内装適用 As String,  _
-                    ByVal Original_L As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_W As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_H As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_防錆 As String,  _
-                    ByVal Original_個装適用袋 As String,  _
-                    ByVal Original_袋必要数 As String,  _
-                    ByVal Original_資材コード1 As String,  _
-                    ByVal Original_数量1 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード2 As String,  _
-                    ByVal Original_数量2 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード3 As String,  _
-                    ByVal Original_数量3 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード4 As String,  _
-                    ByVal Original_数量4 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード5 As String,  _
-                    ByVal Original_数量5 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード6 As String,  _
-                    ByVal Original_数量6 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード7 As String,  _
-                    ByVal Original_数量7 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード8 As String,  _
-                    ByVal Original_数量8 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード9 As String,  _
-                    ByVal Original_数量9 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード10 As String,  _
-                    ByVal Original_数量10 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード11 As String,  _
-                    ByVal Original_数量11 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード12 As String,  _
-                    ByVal Original_数量12 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード13 As String,  _
-                    ByVal Original_数量13 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード14 As String,  _
-                    ByVal Original_数量14 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード15 As String,  _
-                    ByVal Original_数量15 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード16 As String,  _
-                    ByVal Original_数量16 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード17 As String,  _
-                    ByVal Original_数量17 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード18 As String,  _
-                    ByVal Original_数量18 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード19 As String,  _
-                    ByVal Original_数量19 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_資材コード20 As String,  _
-                    ByVal Original_数量20 As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_単品重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_内装重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_見積No As Global.System.Nullable(Of Integer)) As Integer
-            Return Me.Update(DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot, LOTカートン数, 個装入数, OS, 内装適用, L, W, H, 防錆, 個装適用袋, 袋必要数, 資材コード1, 数量1, 資材コード2, 数量2, 資材コード3, 数量3, 資材コード4, 数量4, 資材コード5, 数量5, 資材コード6, 数量6, 資材コード7, 数量7, 資材コード8, 数量8, 資材コード9, 数量9, 資材コード10, 数量10, 資材コード11, 数量11, 資材コード12, 数量12, 資材コード13, 数量13, 資材コード14, 数量14, 資材コード15, 数量15, 資材コード16, 数量16, 資材コード17, 数量17, 資材コード18, 数量18, 資材コード19, 数量19, 資材コード20, 数量20, 単品重量, 内装重量, 見積No, Original_id, Original_DIST, Original_No, Original_変更フラグ, Original_GR, Original_Basic_Part_No, Original_Export_Name, Original_Order_Lot, Original_LOTカートン数, Original_個装入数, Original_OS, Original_内装適用, Original_L, Original_W, Original_H, Original_防錆, Original_個装適用袋, Original_袋必要数, Original_資材コード1, Original_数量1, Original_資材コード2, Original_数量2, Original_資材コード3, Original_数量3, Original_資材コード4, Original_数量4, Original_資材コード5, Original_数量5, Original_資材コード6, Original_数量6, Original_資材コード7, Original_数量7, Original_資材コード8, Original_数量8, Original_資材コード9, Original_数量9, Original_資材コード10, Original_数量10, Original_資材コード11, Original_数量11, Original_資材コード12, Original_数量12, Original_資材コード13, Original_数量13, Original_資材コード14, Original_数量14, Original_資材コード15, Original_数量15, Original_資材コード16, Original_数量16, Original_資材コード17, Original_数量17, Original_資材コード18, Original_数量18, Original_資材コード19, Original_数量19, Original_資材コード20, Original_数量20, Original_単品重量, Original_内装重量, Original_見積No, Original_id)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
-        Public Overloads Overridable Function Q_部品注文リスト更新( _
-                    ByVal DIST As String,  _
-                    ByVal No As Global.System.Nullable(Of Integer),  _
-                    ByVal 変更フラグ As Global.System.Nullable(Of Integer),  _
-                    ByVal GR As String,  _
-                    ByVal Basic_Part_No As String,  _
-                    ByVal Export_Name As String,  _
-                    ByVal Order_Lot As Global.System.Nullable(Of Integer),  _
-                    ByVal LOTカートン数 As String,  _
-                    ByVal 個装入数 As Global.System.Nullable(Of Integer),  _
-                    ByVal OS As String,  _
-                    ByVal 内装適用 As String,  _
-                    ByVal L As Global.System.Nullable(Of Integer),  _
-                    ByVal W As Global.System.Nullable(Of Integer),  _
-                    ByVal H As Global.System.Nullable(Of Integer),  _
-                    ByVal 防錆 As String,  _
-                    ByVal 個装適用袋 As String,  _
-                    ByVal 袋必要数 As String,  _
-                    ByVal 資材コード1 As String,  _
-                    ByVal 数量1 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード2 As String,  _
-                    ByVal 数量2 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード3 As String,  _
-                    ByVal 数量3 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード4 As String,  _
-                    ByVal 数量4 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード5 As String,  _
-                    ByVal 数量5 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード6 As String,  _
-                    ByVal 数量6 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード7 As String,  _
-                    ByVal 数量7 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード8 As String,  _
-                    ByVal 数量8 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード9 As String,  _
-                    ByVal 数量9 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード10 As String,  _
-                    ByVal 数量10 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード11 As String,  _
-                    ByVal 数量11 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード12 As String,  _
-                    ByVal 数量12 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード13 As String,  _
-                    ByVal 数量13 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード14 As String,  _
-                    ByVal 数量14 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード15 As String,  _
-                    ByVal 数量15 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード16 As String,  _
-                    ByVal 数量16 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード17 As String,  _
-                    ByVal 数量17 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード18 As String,  _
-                    ByVal 数量18 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード19 As String,  _
-                    ByVal 数量19 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード20 As String,  _
-                    ByVal 数量20 As Global.System.Nullable(Of Integer),  _
-                    ByVal 単品重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 内装重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_id As Integer) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
-            If (DIST Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(0).Value = CType(DIST,String)
-            End If
-            If (No.HasValue = true) Then
-                command.Parameters(1).Value = CType(No.Value,Integer)
-            Else
-                command.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (変更フラグ.HasValue = true) Then
-                command.Parameters(2).Value = CType(変更フラグ.Value,Integer)
-            Else
-                command.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (GR Is Nothing) Then
-                command.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(3).Value = CType(GR,String)
-            End If
-            If (Basic_Part_No Is Nothing) Then
-                command.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(4).Value = CType(Basic_Part_No,String)
-            End If
-            If (Export_Name Is Nothing) Then
-                command.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(5).Value = CType(Export_Name,String)
-            End If
-            If (Order_Lot.HasValue = true) Then
-                command.Parameters(6).Value = CType(Order_Lot.Value,Integer)
-            Else
-                command.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (LOTカートン数 Is Nothing) Then
-                command.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(7).Value = CType(LOTカートン数,String)
-            End If
-            If (個装入数.HasValue = true) Then
-                command.Parameters(8).Value = CType(個装入数.Value,Integer)
-            Else
-                command.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (OS Is Nothing) Then
-                command.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(9).Value = CType(OS,String)
-            End If
-            If (内装適用 Is Nothing) Then
-                command.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(10).Value = CType(内装適用,String)
-            End If
-            If (L.HasValue = true) Then
-                command.Parameters(11).Value = CType(L.Value,Integer)
-            Else
-                command.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (W.HasValue = true) Then
-                command.Parameters(12).Value = CType(W.Value,Integer)
-            Else
-                command.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (H.HasValue = true) Then
-                command.Parameters(13).Value = CType(H.Value,Integer)
-            Else
-                command.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (防錆 Is Nothing) Then
-                command.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(14).Value = CType(防錆,String)
-            End If
-            If (個装適用袋 Is Nothing) Then
-                command.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(15).Value = CType(個装適用袋,String)
-            End If
-            If (袋必要数 Is Nothing) Then
-                command.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(16).Value = CType(袋必要数,String)
-            End If
-            If (資材コード1 Is Nothing) Then
-                command.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(17).Value = CType(資材コード1,String)
-            End If
-            If (数量1.HasValue = true) Then
-                command.Parameters(18).Value = CType(数量1.Value,Integer)
-            Else
-                command.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード2 Is Nothing) Then
-                command.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(19).Value = CType(資材コード2,String)
-            End If
-            If (数量2.HasValue = true) Then
-                command.Parameters(20).Value = CType(数量2.Value,Integer)
-            Else
-                command.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード3 Is Nothing) Then
-                command.Parameters(21).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(21).Value = CType(資材コード3,String)
-            End If
-            If (数量3.HasValue = true) Then
-                command.Parameters(22).Value = CType(数量3.Value,Integer)
-            Else
-                command.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード4 Is Nothing) Then
-                command.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(23).Value = CType(資材コード4,String)
-            End If
-            If (数量4.HasValue = true) Then
-                command.Parameters(24).Value = CType(数量4.Value,Integer)
-            Else
-                command.Parameters(24).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード5 Is Nothing) Then
-                command.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(25).Value = CType(資材コード5,String)
-            End If
-            If (数量5.HasValue = true) Then
-                command.Parameters(26).Value = CType(数量5.Value,Integer)
-            Else
-                command.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード6 Is Nothing) Then
-                command.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(27).Value = CType(資材コード6,String)
-            End If
-            If (数量6.HasValue = true) Then
-                command.Parameters(28).Value = CType(数量6.Value,Integer)
-            Else
-                command.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード7 Is Nothing) Then
-                command.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(29).Value = CType(資材コード7,String)
-            End If
-            If (数量7.HasValue = true) Then
-                command.Parameters(30).Value = CType(数量7.Value,Integer)
-            Else
-                command.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード8 Is Nothing) Then
-                command.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(31).Value = CType(資材コード8,String)
-            End If
-            If (数量8.HasValue = true) Then
-                command.Parameters(32).Value = CType(数量8.Value,Integer)
-            Else
-                command.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード9 Is Nothing) Then
-                command.Parameters(33).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(33).Value = CType(資材コード9,String)
-            End If
-            If (数量9.HasValue = true) Then
-                command.Parameters(34).Value = CType(数量9.Value,Integer)
-            Else
-                command.Parameters(34).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード10 Is Nothing) Then
-                command.Parameters(35).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(35).Value = CType(資材コード10,String)
-            End If
-            If (数量10.HasValue = true) Then
-                command.Parameters(36).Value = CType(数量10.Value,Integer)
-            Else
-                command.Parameters(36).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード11 Is Nothing) Then
-                command.Parameters(37).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(37).Value = CType(資材コード11,String)
-            End If
-            If (数量11.HasValue = true) Then
-                command.Parameters(38).Value = CType(数量11.Value,Integer)
-            Else
-                command.Parameters(38).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード12 Is Nothing) Then
-                command.Parameters(39).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(39).Value = CType(資材コード12,String)
-            End If
-            If (数量12.HasValue = true) Then
-                command.Parameters(40).Value = CType(数量12.Value,Integer)
-            Else
-                command.Parameters(40).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード13 Is Nothing) Then
-                command.Parameters(41).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(41).Value = CType(資材コード13,String)
-            End If
-            If (数量13.HasValue = true) Then
-                command.Parameters(42).Value = CType(数量13.Value,Integer)
-            Else
-                command.Parameters(42).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード14 Is Nothing) Then
-                command.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(43).Value = CType(資材コード14,String)
-            End If
-            If (数量14.HasValue = true) Then
-                command.Parameters(44).Value = CType(数量14.Value,Integer)
-            Else
-                command.Parameters(44).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード15 Is Nothing) Then
-                command.Parameters(45).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(45).Value = CType(資材コード15,String)
-            End If
-            If (数量15.HasValue = true) Then
-                command.Parameters(46).Value = CType(数量15.Value,Integer)
-            Else
-                command.Parameters(46).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード16 Is Nothing) Then
-                command.Parameters(47).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(47).Value = CType(資材コード16,String)
-            End If
-            If (数量16.HasValue = true) Then
-                command.Parameters(48).Value = CType(数量16.Value,Integer)
-            Else
-                command.Parameters(48).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード17 Is Nothing) Then
-                command.Parameters(49).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(49).Value = CType(資材コード17,String)
-            End If
-            If (数量17.HasValue = true) Then
-                command.Parameters(50).Value = CType(数量17.Value,Integer)
-            Else
-                command.Parameters(50).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード18 Is Nothing) Then
-                command.Parameters(51).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(51).Value = CType(資材コード18,String)
-            End If
-            If (数量18.HasValue = true) Then
-                command.Parameters(52).Value = CType(数量18.Value,Integer)
-            Else
-                command.Parameters(52).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード19 Is Nothing) Then
-                command.Parameters(53).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(53).Value = CType(資材コード19,String)
-            End If
-            If (数量19.HasValue = true) Then
-                command.Parameters(54).Value = CType(数量19.Value,Integer)
-            Else
-                command.Parameters(54).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード20 Is Nothing) Then
-                command.Parameters(55).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(55).Value = CType(資材コード20,String)
-            End If
-            If (数量20.HasValue = true) Then
-                command.Parameters(56).Value = CType(数量20.Value,Integer)
-            Else
-                command.Parameters(56).Value = Global.System.DBNull.Value
-            End If
-            If (単品重量.HasValue = true) Then
-                command.Parameters(57).Value = CType(単品重量.Value,Decimal)
-            Else
-                command.Parameters(57).Value = Global.System.DBNull.Value
-            End If
-            If (内装重量.HasValue = true) Then
-                command.Parameters(58).Value = CType(内装重量.Value,Decimal)
-            Else
-                command.Parameters(58).Value = Global.System.DBNull.Value
-            End If
-            command.Parameters(59).Value = CType(Original_id,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Integer
-            Try 
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
-        Public Overloads Overridable Function Q_部品注文リスト削除(ByVal Original_id As Integer) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
-            command.Parameters(0).Value = CType(Original_id,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Integer
-            Try 
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function Q_部品注文リスト登録( _
-                    ByVal DIST As String,  _
-                    ByVal No As Global.System.Nullable(Of Integer),  _
-                    ByVal 変更フラグ As Global.System.Nullable(Of Integer),  _
-                    ByVal GR As String,  _
-                    ByVal Basic_Part_No As String,  _
-                    ByVal Export_Name As String,  _
-                    ByVal Order_Lot As Global.System.Nullable(Of Integer),  _
-                    ByVal LOTカートン数 As String,  _
-                    ByVal 個装入数 As Global.System.Nullable(Of Integer),  _
-                    ByVal OS As String,  _
-                    ByVal 内装適用 As String,  _
-                    ByVal L As Global.System.Nullable(Of Integer),  _
-                    ByVal W As Global.System.Nullable(Of Integer),  _
-                    ByVal H As Global.System.Nullable(Of Integer),  _
-                    ByVal 防錆 As String,  _
-                    ByVal 個装適用袋 As String,  _
-                    ByVal 袋必要数 As String,  _
-                    ByVal 資材コード1 As String,  _
-                    ByVal 数量1 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード2 As String,  _
-                    ByVal 数量2 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード3 As String,  _
-                    ByVal 数量3 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード4 As String,  _
-                    ByVal 数量4 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード5 As String,  _
-                    ByVal 数量5 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード6 As String,  _
-                    ByVal 数量6 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード7 As String,  _
-                    ByVal 数量7 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード8 As String,  _
-                    ByVal 数量8 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード9 As String,  _
-                    ByVal 数量9 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード10 As String,  _
-                    ByVal 数量10 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード11 As String,  _
-                    ByVal 数量11 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード12 As String,  _
-                    ByVal 数量12 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード13 As String,  _
-                    ByVal 数量13 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード14 As String,  _
-                    ByVal 数量14 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード15 As String,  _
-                    ByVal 数量15 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード16 As String,  _
-                    ByVal 数量16 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード17 As String,  _
-                    ByVal 数量17 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード18 As String,  _
-                    ByVal 数量18 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード19 As String,  _
-                    ByVal 数量19 As Global.System.Nullable(Of Integer),  _
-                    ByVal 資材コード20 As String,  _
-                    ByVal 数量20 As Global.System.Nullable(Of Integer),  _
-                    ByVal 単品重量 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 内装重量 As Global.System.Nullable(Of Decimal)) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
-            If (DIST Is Nothing) Then
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(0).Value = CType(DIST,String)
-            End If
-            If (No.HasValue = true) Then
-                command.Parameters(1).Value = CType(No.Value,Integer)
-            Else
-                command.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (変更フラグ.HasValue = true) Then
-                command.Parameters(2).Value = CType(変更フラグ.Value,Integer)
-            Else
-                command.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (GR Is Nothing) Then
-                command.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(3).Value = CType(GR,String)
-            End If
-            If (Basic_Part_No Is Nothing) Then
-                command.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(4).Value = CType(Basic_Part_No,String)
-            End If
-            If (Export_Name Is Nothing) Then
-                command.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(5).Value = CType(Export_Name,String)
-            End If
-            If (Order_Lot.HasValue = true) Then
-                command.Parameters(6).Value = CType(Order_Lot.Value,Integer)
-            Else
-                command.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (LOTカートン数 Is Nothing) Then
-                command.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(7).Value = CType(LOTカートン数,String)
-            End If
-            If (個装入数.HasValue = true) Then
-                command.Parameters(8).Value = CType(個装入数.Value,Integer)
-            Else
-                command.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (OS Is Nothing) Then
-                command.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(9).Value = CType(OS,String)
-            End If
-            If (内装適用 Is Nothing) Then
-                command.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(10).Value = CType(内装適用,String)
-            End If
-            If (L.HasValue = true) Then
-                command.Parameters(11).Value = CType(L.Value,Integer)
-            Else
-                command.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (W.HasValue = true) Then
-                command.Parameters(12).Value = CType(W.Value,Integer)
-            Else
-                command.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (H.HasValue = true) Then
-                command.Parameters(13).Value = CType(H.Value,Integer)
-            Else
-                command.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (防錆 Is Nothing) Then
-                command.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(14).Value = CType(防錆,String)
-            End If
-            If (個装適用袋 Is Nothing) Then
-                command.Parameters(15).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(15).Value = CType(個装適用袋,String)
-            End If
-            If (袋必要数 Is Nothing) Then
-                command.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(16).Value = CType(袋必要数,String)
-            End If
-            If (資材コード1 Is Nothing) Then
-                command.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(17).Value = CType(資材コード1,String)
-            End If
-            If (数量1.HasValue = true) Then
-                command.Parameters(18).Value = CType(数量1.Value,Integer)
-            Else
-                command.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード2 Is Nothing) Then
-                command.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(19).Value = CType(資材コード2,String)
-            End If
-            If (数量2.HasValue = true) Then
-                command.Parameters(20).Value = CType(数量2.Value,Integer)
-            Else
-                command.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード3 Is Nothing) Then
-                command.Parameters(21).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(21).Value = CType(資材コード3,String)
-            End If
-            If (数量3.HasValue = true) Then
-                command.Parameters(22).Value = CType(数量3.Value,Integer)
-            Else
-                command.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード4 Is Nothing) Then
-                command.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(23).Value = CType(資材コード4,String)
-            End If
-            If (数量4.HasValue = true) Then
-                command.Parameters(24).Value = CType(数量4.Value,Integer)
-            Else
-                command.Parameters(24).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード5 Is Nothing) Then
-                command.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(25).Value = CType(資材コード5,String)
-            End If
-            If (数量5.HasValue = true) Then
-                command.Parameters(26).Value = CType(数量5.Value,Integer)
-            Else
-                command.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード6 Is Nothing) Then
-                command.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(27).Value = CType(資材コード6,String)
-            End If
-            If (数量6.HasValue = true) Then
-                command.Parameters(28).Value = CType(数量6.Value,Integer)
-            Else
-                command.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード7 Is Nothing) Then
-                command.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(29).Value = CType(資材コード7,String)
-            End If
-            If (数量7.HasValue = true) Then
-                command.Parameters(30).Value = CType(数量7.Value,Integer)
-            Else
-                command.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード8 Is Nothing) Then
-                command.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(31).Value = CType(資材コード8,String)
-            End If
-            If (数量8.HasValue = true) Then
-                command.Parameters(32).Value = CType(数量8.Value,Integer)
-            Else
-                command.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード9 Is Nothing) Then
-                command.Parameters(33).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(33).Value = CType(資材コード9,String)
-            End If
-            If (数量9.HasValue = true) Then
-                command.Parameters(34).Value = CType(数量9.Value,Integer)
-            Else
-                command.Parameters(34).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード10 Is Nothing) Then
-                command.Parameters(35).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(35).Value = CType(資材コード10,String)
-            End If
-            If (数量10.HasValue = true) Then
-                command.Parameters(36).Value = CType(数量10.Value,Integer)
-            Else
-                command.Parameters(36).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード11 Is Nothing) Then
-                command.Parameters(37).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(37).Value = CType(資材コード11,String)
-            End If
-            If (数量11.HasValue = true) Then
-                command.Parameters(38).Value = CType(数量11.Value,Integer)
-            Else
-                command.Parameters(38).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード12 Is Nothing) Then
-                command.Parameters(39).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(39).Value = CType(資材コード12,String)
-            End If
-            If (数量12.HasValue = true) Then
-                command.Parameters(40).Value = CType(数量12.Value,Integer)
-            Else
-                command.Parameters(40).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード13 Is Nothing) Then
-                command.Parameters(41).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(41).Value = CType(資材コード13,String)
-            End If
-            If (数量13.HasValue = true) Then
-                command.Parameters(42).Value = CType(数量13.Value,Integer)
-            Else
-                command.Parameters(42).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード14 Is Nothing) Then
-                command.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(43).Value = CType(資材コード14,String)
-            End If
-            If (数量14.HasValue = true) Then
-                command.Parameters(44).Value = CType(数量14.Value,Integer)
-            Else
-                command.Parameters(44).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード15 Is Nothing) Then
-                command.Parameters(45).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(45).Value = CType(資材コード15,String)
-            End If
-            If (数量15.HasValue = true) Then
-                command.Parameters(46).Value = CType(数量15.Value,Integer)
-            Else
-                command.Parameters(46).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード16 Is Nothing) Then
-                command.Parameters(47).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(47).Value = CType(資材コード16,String)
-            End If
-            If (数量16.HasValue = true) Then
-                command.Parameters(48).Value = CType(数量16.Value,Integer)
-            Else
-                command.Parameters(48).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード17 Is Nothing) Then
-                command.Parameters(49).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(49).Value = CType(資材コード17,String)
-            End If
-            If (数量17.HasValue = true) Then
-                command.Parameters(50).Value = CType(数量17.Value,Integer)
-            Else
-                command.Parameters(50).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード18 Is Nothing) Then
-                command.Parameters(51).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(51).Value = CType(資材コード18,String)
-            End If
-            If (数量18.HasValue = true) Then
-                command.Parameters(52).Value = CType(数量18.Value,Integer)
-            Else
-                command.Parameters(52).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード19 Is Nothing) Then
-                command.Parameters(53).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(53).Value = CType(資材コード19,String)
-            End If
-            If (数量19.HasValue = true) Then
-                command.Parameters(54).Value = CType(数量19.Value,Integer)
-            Else
-                command.Parameters(54).Value = Global.System.DBNull.Value
-            End If
-            If (資材コード20 Is Nothing) Then
-                command.Parameters(55).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(55).Value = CType(資材コード20,String)
-            End If
-            If (数量20.HasValue = true) Then
-                command.Parameters(56).Value = CType(数量20.Value,Integer)
-            Else
-                command.Parameters(56).Value = Global.System.DBNull.Value
-            End If
-            If (単品重量.HasValue = true) Then
-                command.Parameters(57).Value = CType(単品重量.Value,Decimal)
-            Else
-                command.Parameters(57).Value = Global.System.DBNull.Value
-            End If
-            If (内装重量.HasValue = true) Then
-                command.Parameters(58).Value = CType(内装重量.Value,Decimal)
-            Else
-                command.Parameters(58).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Integer
-            Try 
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            Return returnValue
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
     Partial Public Class TA_M_Second
         Inherits Global.System.ComponentModel.Component
         
@@ -18085,6 +12514,985 @@ Namespace DS_MTableAdapters
     End Class
     
     '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class TA_M_Bangou
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "DT_M_Bangou"
+            tableMapping.ColumnMappings.Add("見積No", "見積No")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[M_Bangou] ([見積No]) VALUES (@見積No)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Honda_Logi.My.MySettings.Default.Honda_LogiConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT 見積No FROM dbo.M_Bangou"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "UPDATE                    M_Bangou"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                              見積No = @見積No"& _ 
+                ""
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT                      見積No AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         M_Bangou"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY              見積No"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As DS_M.DT_M_BangouDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As DS_M.DT_M_BangouDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DS_M.DT_M_BangouDataTable = New DS_M.DT_M_BangouDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As DS_M.DT_M_BangouDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As DS_M) As Integer
+            Return Me.Adapter.Update(dataSet, "DT_M_Bangou")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal 見積No As Global.System.Nullable(Of Integer)) As Integer
+            If (見積No.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(見積No.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function Q_見積No更新(ByVal 見積No As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (見積No.HasValue = true) Then
+                command.Parameters(0).Value = CType(見積No.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Q_見積No取得() As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)()
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class TA_M_User
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "DT_M_User"
+            tableMapping.ColumnMappings.Add("id", "id")
+            tableMapping.ColumnMappings.Add("User_id", "User_id")
+            tableMapping.ColumnMappings.Add("User_NM", "User_NM")
+            tableMapping.ColumnMappings.Add("Kengen", "Kengen")
+            tableMapping.ColumnMappings.Add("Password", "Password")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[M_User] WHERE (([id] = @Original_id) AND ((@IsNull_User_id = 1"& _ 
+                " AND [User_id] IS NULL) OR ([User_id] = @Original_User_id)) AND ((@IsNull_User_N"& _ 
+                "M = 1 AND [User_NM] IS NULL) OR ([User_NM] = @Original_User_NM)) AND ((@IsNull_K"& _ 
+                "engen = 1 AND [Kengen] IS NULL) OR ([Kengen] = @Original_Kengen)) AND ((@IsNull_"& _ 
+                "Password = 1 AND [Password] IS NULL) OR ([Password] = @Original_Password)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_User_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_User_id", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_User_NM", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_NM", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_User_NM", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_NM", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Kengen", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Kengen", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Kengen", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Kengen", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Password", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Password", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[M_User] ([User_id], [User_NM], [Kengen], [Password]) VALUES (@"& _ 
+                "User_id, @User_NM, @Kengen, @Password);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, User_id, User_NM, Kengen, Pa"& _ 
+                "ssword FROM M_User WHERE (id = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_id", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_NM", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_NM", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Kengen", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Kengen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[M_User] SET [User_id] = @User_id, [User_NM] = @User_NM, [Kengen] = "& _ 
+                "@Kengen, [Password] = @Password WHERE (([id] = @Original_id) AND ((@IsNull_User_"& _ 
+                "id = 1 AND [User_id] IS NULL) OR ([User_id] = @Original_User_id)) AND ((@IsNull_"& _ 
+                "User_NM = 1 AND [User_NM] IS NULL) OR ([User_NM] = @Original_User_NM)) AND ((@Is"& _ 
+                "Null_Kengen = 1 AND [Kengen] IS NULL) OR ([Kengen] = @Original_Kengen)) AND ((@I"& _ 
+                "sNull_Password = 1 AND [Password] IS NULL) OR ([Password] = @Original_Password))"& _ 
+                ");"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, User_id, User_NM, Kengen, Password FROM M_User WHERE (id = @id)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_id", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_NM", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_NM", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Kengen", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Kengen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_User_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_User_id", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_User_NM", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_NM", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_User_NM", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User_NM", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Kengen", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Kengen", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Kengen", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Kengen", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Password", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Password", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Honda_Logi.My.MySettings.Default.Honda_LogiConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT id, User_id, User_NM, Kengen, Password FROM dbo.M_User"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "UPDATE                    M_User"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                              User_id = @Use"& _ 
+                "r_id, User_NM = @User_NM, Kengen = @Kengen, Password = @Password"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE         "& _ 
+                "              (id = @Original_id)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_id", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_NM", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "User_NM", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Kengen", Global.System.Data.SqlDbType.NVarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "Kengen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "DELETE FROM       M_User"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (id = @Original_id)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "INSERT INTO         M_User"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      (User_id, User_"& _ 
+                "NM, Kengen, Password)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES                    (@User_id,@User_NM,@Kengen,@Pas"& _ 
+                "sword)"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_id", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_NM", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "User_NM", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Kengen", Global.System.Data.SqlDbType.NVarChar, 10, Global.System.Data.ParameterDirection.Input, 0, 0, "Kengen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT                      id, User_id, User_NM, Kengen, Password"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
+                "                M_User"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (User_id = @User_id) AND (Pa"& _ 
+                "ssword = @Password)"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_id", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Password", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Password", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT                      COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         M_Use"& _ 
+                "r"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (User_id = @User_id) AND (id <> @id)"
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_id", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "SELECT                      COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         M_Use"& _ 
+                "r"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (User_id = @User_id)"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User_id", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As DS_M.DT_M_UserDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As DS_M.DT_M_UserDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DS_M.DT_M_UserDataTable = New DS_M.DT_M_UserDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function Q_ログインチェック(ByVal dataTable As DS_M.DT_M_UserDataTable, ByVal User_id As String, ByVal Password As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            If (User_id Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(User_id,String)
+            End If
+            If (Password Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Password,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy(ByVal User_id As String, ByVal Password As String) As DS_M.DT_M_UserDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            If (User_id Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(User_id,String)
+            End If
+            If (Password Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Password,String)
+            End If
+            Dim dataTable As DS_M.DT_M_UserDataTable = New DS_M.DT_M_UserDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As DS_M.DT_M_UserDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As DS_M) As Integer
+            Return Me.Adapter.Update(dataSet, "DT_M_User")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_id As Integer, ByVal Original_User_id As String, ByVal Original_User_NM As String, ByVal Original_Kengen As String, ByVal Original_Password As String) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id,Integer)
+            If (Original_User_id Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_User_id,String)
+            End If
+            If (Original_User_NM Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_User_NM,String)
+            End If
+            If (Original_Kengen Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Kengen,String)
+            End If
+            If (Original_Password Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Password,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal User_id As String, ByVal User_NM As String, ByVal Kengen As String, ByVal Password As String) As Integer
+            If (User_id Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(User_id,String)
+            End If
+            If (User_NM Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(User_NM,String)
+            End If
+            If (Kengen Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Kengen,String)
+            End If
+            If (Password Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Password,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal User_id As String, ByVal User_NM As String, ByVal Kengen As String, ByVal Password As String, ByVal Original_id As Integer, ByVal Original_User_id As String, ByVal Original_User_NM As String, ByVal Original_Kengen As String, ByVal Original_Password As String, ByVal id As Integer) As Integer
+            If (User_id Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(User_id,String)
+            End If
+            If (User_NM Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(User_NM,String)
+            End If
+            If (Kengen Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Kengen,String)
+            End If
+            If (Password Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Password,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_id,Integer)
+            If (Original_User_id Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_User_id,String)
+            End If
+            If (Original_User_NM Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_User_NM,String)
+            End If
+            If (Original_Kengen Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_Kengen,String)
+            End If
+            If (Original_Password Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Password,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(id,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal User_id As String, ByVal User_NM As String, ByVal Kengen As String, ByVal Password As String, ByVal Original_id As Integer, ByVal Original_User_id As String, ByVal Original_User_NM As String, ByVal Original_Kengen As String, ByVal Original_Password As String) As Integer
+            Return Me.Update(User_id, User_NM, Kengen, Password, Original_id, Original_User_id, Original_User_NM, Original_Kengen, Original_Password, Original_id)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function Q_ユーザー更新(ByVal User_id As String, ByVal User_NM As String, ByVal Kengen As String, ByVal Password As String, ByVal Original_id As Integer) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (User_id Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(User_id,String)
+            End If
+            If (User_NM Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(User_NM,String)
+            End If
+            If (Kengen Is Nothing) Then
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(2).Value = CType(Kengen,String)
+            End If
+            If (Password Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(3).Value = CType(Password,String)
+            End If
+            command.Parameters(4).Value = CType(Original_id,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function Q_ユーザー削除(ByVal Original_id As Integer) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            command.Parameters(0).Value = CType(Original_id,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
+        Public Overloads Overridable Function Q_ユーザー登録(ByVal User_id As String, ByVal User_NM As String, ByVal Kengen As String, ByVal Password As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            If (User_id Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(User_id,String)
+            End If
+            If (User_NM Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(User_NM,String)
+            End If
+            If (Kengen Is Nothing) Then
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(2).Value = CType(Kengen,String)
+            End If
+            If (Password Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(3).Value = CType(Password,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Q_更新存在チェック(ByVal User_id As String, ByVal id As Integer) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(5)
+            If (User_id Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(User_id,String)
+            End If
+            command.Parameters(1).Value = CType(id,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)()
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Q_存在チェック(ByVal User_id As String) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            If (User_id Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(User_id,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)()
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+    End Class
+    
+    '''<summary>
     '''TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     '''</summary>
     <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -18117,9 +13525,11 @@ Namespace DS_MTableAdapters
         
         Private _tA_M_Tanka As TA_M_Tanka
         
-        Private _tA_M_Buhin_Order_List As TA_M_Buhin_Order_List
-        
         Private _tA_M_Second As TA_M_Second
+        
+        Private _tA_M_Bangou As TA_M_Bangou
+        
+        Private _tA_M_User As TA_M_User
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -18281,12 +13691,12 @@ Namespace DS_MTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property TA_M_Buhin_Order_List() As TA_M_Buhin_Order_List
+        Public Property TA_M_Second() As TA_M_Second
             Get
-                Return Me._tA_M_Buhin_Order_List
+                Return Me._tA_M_Second
             End Get
             Set
-                Me._tA_M_Buhin_Order_List = value
+                Me._tA_M_Second = value
             End Set
         End Property
         
@@ -18295,12 +13705,26 @@ Namespace DS_MTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property TA_M_Second() As TA_M_Second
+        Public Property TA_M_Bangou() As TA_M_Bangou
             Get
-                Return Me._tA_M_Second
+                Return Me._tA_M_Bangou
             End Get
             Set
-                Me._tA_M_Second = value
+                Me._tA_M_Bangou = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property TA_M_User() As TA_M_User
+            Get
+                Return Me._tA_M_User
+            End Get
+            Set
+                Me._tA_M_User = value
             End Set
         End Property
         
@@ -18363,13 +13787,17 @@ Namespace DS_MTableAdapters
                             AndAlso (Not (Me._tA_M_Tanka.Connection) Is Nothing)) Then
                     Return Me._tA_M_Tanka.Connection
                 End If
-                If ((Not (Me._tA_M_Buhin_Order_List) Is Nothing)  _
-                            AndAlso (Not (Me._tA_M_Buhin_Order_List.Connection) Is Nothing)) Then
-                    Return Me._tA_M_Buhin_Order_List.Connection
-                End If
                 If ((Not (Me._tA_M_Second) Is Nothing)  _
                             AndAlso (Not (Me._tA_M_Second.Connection) Is Nothing)) Then
                     Return Me._tA_M_Second.Connection
+                End If
+                If ((Not (Me._tA_M_Bangou) Is Nothing)  _
+                            AndAlso (Not (Me._tA_M_Bangou.Connection) Is Nothing)) Then
+                    Return Me._tA_M_Bangou.Connection
+                End If
+                If ((Not (Me._tA_M_User) Is Nothing)  _
+                            AndAlso (Not (Me._tA_M_User.Connection) Is Nothing)) Then
+                    Return Me._tA_M_User.Connection
                 End If
                 Return Nothing
             End Get
@@ -18414,10 +13842,13 @@ Namespace DS_MTableAdapters
                 If (Not (Me._tA_M_Tanka) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._tA_M_Buhin_Order_List) Is Nothing) Then
+                If (Not (Me._tA_M_Second) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._tA_M_Second) Is Nothing) Then
+                If (Not (Me._tA_M_Bangou) Is Nothing) Then
+                    count = (count + 1)
+                End If
+                If (Not (Me._tA_M_User) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -18521,21 +13952,30 @@ Namespace DS_MTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._tA_M_Buhin_Order_List) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.DT_M_Buhin_Order_List.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._tA_M_Buhin_Order_List.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._tA_M_Second) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.DT_M_Second.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._tA_M_Second.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._tA_M_Bangou) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.DT_M_Bangou.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._tA_M_Bangou.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._tA_M_User) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.DT_M_User.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._tA_M_User.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -18629,19 +14069,27 @@ Namespace DS_MTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._tA_M_Buhin_Order_List) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.DT_M_Buhin_Order_List.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._tA_M_Buhin_Order_List.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._tA_M_Second) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.DT_M_Second.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._tA_M_Second.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._tA_M_Bangou) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.DT_M_Bangou.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._tA_M_Bangou.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._tA_M_User) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.DT_M_User.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._tA_M_User.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -18655,19 +14103,27 @@ Namespace DS_MTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As DS_M, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._tA_M_User) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.DT_M_User.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._tA_M_User.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._tA_M_Bangou) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.DT_M_Bangou.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._tA_M_Bangou.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._tA_M_Second) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.DT_M_Second.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._tA_M_Second.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._tA_M_Buhin_Order_List) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.DT_M_Buhin_Order_List.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._tA_M_Buhin_Order_List.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -18832,12 +14288,16 @@ Namespace DS_MTableAdapters
                         AndAlso (Me.MatchTableAdapterConnection(Me._tA_M_Tanka.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。")
             End If
-            If ((Not (Me._tA_M_Buhin_Order_List) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._tA_M_Buhin_Order_List.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。")
-            End If
             If ((Not (Me._tA_M_Second) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._tA_M_Second.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。")
+            End If
+            If ((Not (Me._tA_M_Bangou) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._tA_M_Bangou.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。")
+            End If
+            If ((Not (Me._tA_M_User) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._tA_M_User.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。")
             End If
             Dim workConnection As Global.System.Data.IDbConnection = Me.Connection
@@ -18961,15 +14421,6 @@ Namespace DS_MTableAdapters
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._tA_M_Tanka.Adapter)
                     End If
                 End If
-                If (Not (Me._tA_M_Buhin_Order_List) Is Nothing) Then
-                    revertConnections.Add(Me._tA_M_Buhin_Order_List, Me._tA_M_Buhin_Order_List.Connection)
-                    Me._tA_M_Buhin_Order_List.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._tA_M_Buhin_Order_List.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._tA_M_Buhin_Order_List.Adapter.AcceptChangesDuringUpdate Then
-                        Me._tA_M_Buhin_Order_List.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tA_M_Buhin_Order_List.Adapter)
-                    End If
-                End If
                 If (Not (Me._tA_M_Second) Is Nothing) Then
                     revertConnections.Add(Me._tA_M_Second, Me._tA_M_Second.Connection)
                     Me._tA_M_Second.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
@@ -18977,6 +14428,24 @@ Namespace DS_MTableAdapters
                     If Me._tA_M_Second.Adapter.AcceptChangesDuringUpdate Then
                         Me._tA_M_Second.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._tA_M_Second.Adapter)
+                    End If
+                End If
+                If (Not (Me._tA_M_Bangou) Is Nothing) Then
+                    revertConnections.Add(Me._tA_M_Bangou, Me._tA_M_Bangou.Connection)
+                    Me._tA_M_Bangou.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._tA_M_Bangou.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._tA_M_Bangou.Adapter.AcceptChangesDuringUpdate Then
+                        Me._tA_M_Bangou.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tA_M_Bangou.Adapter)
+                    End If
+                End If
+                If (Not (Me._tA_M_User) Is Nothing) Then
+                    revertConnections.Add(Me._tA_M_User, Me._tA_M_User.Connection)
+                    Me._tA_M_User.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._tA_M_User.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._tA_M_User.Adapter.AcceptChangesDuringUpdate Then
+                        Me._tA_M_User.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tA_M_User.Adapter)
                     End If
                 End If
                 '
@@ -19079,13 +14548,17 @@ Namespace DS_MTableAdapters
                     Me._tA_M_Tanka.Connection = CType(revertConnections(Me._tA_M_Tanka),Global.System.Data.SqlClient.SqlConnection)
                     Me._tA_M_Tanka.Transaction = Nothing
                 End If
-                If (Not (Me._tA_M_Buhin_Order_List) Is Nothing) Then
-                    Me._tA_M_Buhin_Order_List.Connection = CType(revertConnections(Me._tA_M_Buhin_Order_List),Global.System.Data.SqlClient.SqlConnection)
-                    Me._tA_M_Buhin_Order_List.Transaction = Nothing
-                End If
                 If (Not (Me._tA_M_Second) Is Nothing) Then
                     Me._tA_M_Second.Connection = CType(revertConnections(Me._tA_M_Second),Global.System.Data.SqlClient.SqlConnection)
                     Me._tA_M_Second.Transaction = Nothing
+                End If
+                If (Not (Me._tA_M_Bangou) Is Nothing) Then
+                    Me._tA_M_Bangou.Connection = CType(revertConnections(Me._tA_M_Bangou),Global.System.Data.SqlClient.SqlConnection)
+                    Me._tA_M_Bangou.Transaction = Nothing
+                End If
+                If (Not (Me._tA_M_User) Is Nothing) Then
+                    Me._tA_M_User.Connection = CType(revertConnections(Me._tA_M_User),Global.System.Data.SqlClient.SqlConnection)
+                    Me._tA_M_User.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

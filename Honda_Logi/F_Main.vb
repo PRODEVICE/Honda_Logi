@@ -1,6 +1,17 @@
 ﻿Public Class F_Main
 
+    'ページクローズ時
+    Private Sub F_Main_Closed(sender As Object, e As EventArgs) Handles Me.Closed
 
+        'たまにゴミが残るので
+        Application.Exit()
+        Environment.Exit(0)
+
+    End Sub
+
+    '**********************************************************************************
+    'ボタンクリック時
+    '**********************************************************************************
 
     'データ取込ボタンクリック時
     Private Sub Btn_Receive_Click(sender As Object, e As EventArgs) Handles Btn_Receive.Click
@@ -25,4 +36,6 @@
         Dim OpenForm As New F_Make_1Lot
         OpenForm.ShowDialog()
     End Sub
+
+
 End Class

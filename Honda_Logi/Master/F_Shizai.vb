@@ -625,7 +625,6 @@ Public Class F_Shizai
                 From = "M_Gaisou_Box"
             End If
 
-
             '最終的なSQL文の作成
             Retstr = "SELECT  *
                         FROM " & From

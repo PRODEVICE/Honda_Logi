@@ -17,7 +17,6 @@
     '******************************************************************************
 
     '更新ボタンクリック時
-
     Private Sub Btn_Touroku_Click(sender As Object, e As EventArgs) Handles Btn_Touroku.Click
 
         Try
@@ -55,7 +54,6 @@
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Second_Btn_Touroku_Click")
             MessageBox.Show(ex.Message)
-
         End Try
 
     End Sub
@@ -94,7 +92,6 @@
             fnc.ERR_LOG(ex.Message, "F_Second_GV_Master_CellContentClick")
             MessageBox.Show(ex.Message)
         End Try
-
 
     End Sub
 

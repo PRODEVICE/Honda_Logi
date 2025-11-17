@@ -5,7 +5,7 @@ Public Class F_Buhin_Order_List
     'ページロード時
     Private Sub F_Buhin_Order_List_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: このコード行はデータを 'DS_M.DT_M_Buhin_Order_List' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.TA_M_Buhin_Order_List.Fill(Me.DS_M.DT_M_Buhin_Order_List)
+        'Me.TA_M_Buhin_Order_List.Fill(Me.DS_M.DT_M_Buhin_Order_List)
 
     End Sub
 
@@ -29,9 +29,9 @@ Public Class F_Buhin_Order_List
             Dim DataAdapter As New SqlClient.SqlDataAdapter(CommandString, con)
 
             'SQLを実行
-            Me.DS_M.DT_M_Mitsumori.Clear()
-            DataAdapter.Fill(Me.DS_M.DT_M_Mitsumori)
-            GV_Master.DataSource = Me.DS_M.DT_M_Mitsumori
+            'Me.DS_M.DT_M_Mitsumori.Clear()
+            'DataAdapter.Fill(Me.DS_M.DT_M_Mitsumori)
+            'GV_Master.DataSource = Me.DS_M.DT_M_Mitsumori
 
             ' 列幅を自動調整
             GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells

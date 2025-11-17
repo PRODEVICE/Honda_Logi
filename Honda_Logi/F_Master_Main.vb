@@ -57,4 +57,8 @@
         OpenForm.ShowDialog()
     End Sub
 
+    Private Sub Btn_Tantou_Click(sender As Object, e As EventArgs) Handles Btn_Tantou.Click
+        Dim OpenForm As New F_User
+        OpenForm.ShowDialog()
+    End Sub
 End Class

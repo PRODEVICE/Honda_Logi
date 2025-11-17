@@ -12,10 +12,8 @@
             Txt_Rate.Text = ta.Q_賃率取得
 
         Catch ex As Exception
-
             fnc.ERR_LOG(ex.Message, "F_Rate_F_Rate_Load")
             MessageBox.Show(ex.Message)
-
         End Try
 
     End Sub
@@ -48,11 +46,10 @@
             MessageBox.Show("更新完了しました。")
 
         Catch ex As Exception
-
             fnc.ERR_LOG(ex.Message, "F_Rate_Btn_Touroku_Click")
             MessageBox.Show(ex.Message)
-
         End Try
 
     End Sub
+
 End Class
