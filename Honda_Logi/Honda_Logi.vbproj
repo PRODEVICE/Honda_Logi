@@ -124,6 +124,14 @@
     <Compile Include="DS_M.vb">
       <DependentUpon>DS_M.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_M_BK.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_M_BK.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_M_BK.vb">
+      <DependentUpon>DS_M_BK.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS_T.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -296,6 +304,17 @@
     </None>
     <None Include="DS_M.xss">
       <DependentUpon>DS_M.xsd</DependentUpon>
+    </None>
+    <None Include="DS_M_BK.xsc">
+      <DependentUpon>DS_M_BK.xsd</DependentUpon>
+    </None>
+    <None Include="DS_M_BK.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_M_BK.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DS_M_BK.xss">
+      <DependentUpon>DS_M_BK.xsd</DependentUpon>
     </None>
     <None Include="DS_T.xsc">
       <DependentUpon>DS_T.xsd</DependentUpon>

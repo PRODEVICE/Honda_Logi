@@ -327,6 +327,251 @@ Update Order Option
 Used to sort self-referenced table's rows
 </summary>
 </member>
+<member name="T:Honda_Logi.DS_M_BK">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Bolt_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Gaisou_Box_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Gaisou_Danboru_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Housou_Kbn_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Kosou_Shizai_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Mitsumori_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Naisou_Shizai_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Rate_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Second_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Tanka_BKDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Bolt_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Gaisou_Box_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Gaisou_Danboru_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Housou_Kbn_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Kosou_Shizai_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Mitsumori_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Naisou_Shizai_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Rate_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Second_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Tanka_BKRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Bolt_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Gaisou_Box_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Gaisou_Danboru_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Housou_Kbn_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Kosou_Shizai_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Mitsumori_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Naisou_Shizai_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Rate_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Second_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BK.DT_M_Tanka_BKRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Bolt_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Gaisou_Box_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Gaisou_Danboru_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Housou_Kbn_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Kosou_Shizai_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Mitsumori_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Naisou_Shizai_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Rate_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Second_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TA_M_Tanka_BK">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_M_BKTableAdapters.TableAdapterManager.UpdateUpdatedRows(Honda_Logi.DS_M_BK,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_M_BKTableAdapters.TableAdapterManager.UpdateInsertedRows(Honda_Logi.DS_M_BK,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_M_BKTableAdapters.TableAdapterManager.UpdateDeletedRows(Honda_Logi.DS_M_BK,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_M_BKTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:Honda_Logi.DS_M_BKTableAdapters.TableAdapterManager.UpdateAll(Honda_Logi.DS_M_BK)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M_BKTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
 <member name="T:Honda_Logi.DS_T">
 <summary>
 Represents a strongly typed in-memory cache of data.
