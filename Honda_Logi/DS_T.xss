@@ -11,10 +11,10 @@
     <Shape ID="DesignTable:DT_T_KOW46" ZOrder="7" X="386" Y="407" Height="305" Width="217" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:DT_T_KIT60" ZOrder="6" X="872" Y="407" Height="305" Width="206" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:DT_T_CCC" ZOrder="5" X="387" Y="51" Height="326" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="256" />
-    <Shape ID="DesignTable:DT_T_CCC_Lot" ZOrder="2" X="572" Y="35" Height="345" Width="223" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="256" />
-    <Shape ID="DesignTable:DT_T_CCC_Work" ZOrder="4" X="821" Y="54" Height="324" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:DT_T_Inport_Rireki" ZOrder="3" X="1039" Y="55" Height="286" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
-    <Shape ID="DesignTable:DT_T_Buhin_Order_List" ZOrder="1" X="1139" Y="421" Height="305" Width="247" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:DT_T_CCC_Lot" ZOrder="3" X="572" Y="35" Height="364" Width="252" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="256" />
+    <Shape ID="DesignTable:DT_T_CCC_Work" ZOrder="1" X="851" Y="40" Height="324" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:DT_T_Inport_Rireki" ZOrder="4" X="1039" Y="55" Height="286" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
+    <Shape ID="DesignTable:DT_T_Buhin_Order_List" ZOrder="2" X="1139" Y="421" Height="305" Width="247" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

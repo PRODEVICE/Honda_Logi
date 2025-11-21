@@ -1781,7 +1781,7 @@ FROM                         T_CCC_Lot</CommandText>
               <Mapping SourceColumn="見積No" DataSetColumn="見積No" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_1lot_削除" Modifier="Public" Name="Q_1lot_削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_1lot_削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_1lot_削除" Modifier="Public" Name="Q_1lot_削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_1lot_削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       T_CCC_Lot
@@ -1792,7 +1792,46 @@ WHERE                       (見積No = @見積No)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_見積No_存在チェック" Modifier="Public" Name="Q_見積No_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_見積No_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.T_CCC_Lot" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Q_CCC_Lot取得" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="Q_CCC_Lot取得" GetMethodModifier="Public" GetMethodName="GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_CCC_Lot取得">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT                      id, 工程管理ｼｽﾃﾑ日付, 処理ID, 包装指示1, コンテンツ1, パッケージコンテンツ1, パッキングチェックシート1, ケースマーク1, 部品管理エフ1, 包装指示2, 
+                                      コンテンツ2, パッケージコンテンツ2, パッキングチェックシート2, ケースマーク2, 部品管理エフ2, 包装指示3, コンテンツ3, パッケージコンテンツ3, 
+                                      パッキングチェックシート3, ケースマーク3, 部品管理エフ3, 包装指示4, コンテンツ4, パッケージコンテンツ4, パッキングチェックシート4, ケースマーク4, 
+                                      部品管理エフ4, 予約1, 予約2, 予約3, 予約4, 予約5, アイテムNO表示, KD部番表示区分, C_M重量表示要否, A_Sフォーマット, A_S日本表示形式, A_S現地表示形式, 
+                                      A_S輸出部品名称, P_ﾘｽﾄ2ND記述, 包装資材表示要否, オプション表示区分, 機種コード表示区分, 予約6, 原産国表示要否, 対応要否_10_2, 対応要否_5品目, 包装SS, 
+                                      汎区分24, PC_NO, ｺﾝﾄﾛｰﾙNO, 年度1, モデル1, モデフNO, ケースNO1, レコードID, バッチ処理エラーコード, 量産_枠外区分, インボイスNO, 代表DIST, 部品群, 
+                                      包装ロットNO, 包装ロット連番, 現地工場コード, 現地ラインNO1, 年1, 月1, 連番1, サフィックス, K_Y_KD1, 年度2, モデル2, タイプ1, オプション1, 外装HES1, 
+                                      内装タイプ1, K_Y_KD2, 年度3, モデル3, タイプ2, 群, 外装HES2, 内装タイプ2, K_Y_KD3, 年度4, モデル4, タイプ3, オプション2, 外装HES3, 内装タイプ3, MIX区分, 
+                                      代表区分1, 包装仕様有無区分, 包装場, オーダー区分, オーダー経歴NO, 配送先DIST, オーダー元プラント, 現地ラインNO2, モデル年度, オーダー理由コード, 
+                                      オーダー年月日SEQ, シップメントNO, 基本生産計画区分, 計画年月, 計画改訂NO, 計画コード, 包装予定日, 計画確定区分, SS, 本社製品区分, 年2, 月2, 連番2, 
+                                      包装数量, 個装ライン, 内装ライン, 包装ライン_外装, ケース順位, 包装ロット台数, ケース保税区分, ケースグロスL, ケースグロスW, ケースグロスH, 
+                                      ケースグロス容量M3, ケースネットL, ケースネットW, ケースネットH, ケースネット容量M3, ケースネット重量, ケース重量計画値, ケース実績重量, 
+                                      ケース重量測定要求, 初物部品ケースサイン, エンジンASSYサイン, K_Y_KD4, 年度5, モデル5, タイプ4, オプション3, 外装HES4, 内装タイプ4, エンジン入り数, 
+                                      パッキングNO, FILLER1, オーダーアイテムNO, ITEM, 基本部番, 設変部番, KD部番, 部品色, 輸出部品名称, 第二外国語名称, 主管SS, 現地ロケーションNO, 
+                                      部品単位重量, 個装資材記号, 個装手順SEQ, 部品収容数, 個装担当NO, 内装資材記号, 内装手順SEQ, 内装NO, 個装入り数, 内装担当NO, 外装資材記号, 
+                                      モジュール手順SEQ, 内装入り数, 外装担当NO1, 外装担当NO2, 台当り使用個数, 包装指示数, ケース個内装荷姿必要, コンテンツ必要枚数, 要否区分, 
+                                      品質チェック要否, 取引先NO, 搬入ホーム, 海事専用機種名称, 包装特性1, 包装特性2, 包装特性3, 包装特性4, 包装特性5, FILLER2, 部品包装特性1, 部品包装特性2, 
+                                      部品包装特性3, 部品包装特性4, 部品包装特性5, 内装総重量, 代表区分2, 副資材1, 必要数1, 代表区分3, 副資材2, 必要数2, 代表区分4, 副資材3, 必要数3, 代表区分5, 
+                                      副資材4, 必要数4, 代表区分6, 副資材5, 必要数5, 代表区分7, 副資材6, 必要数6, 代表区分8, 副資材7, 必要数7, 代表区分9, 副資材8, 必要数8, 代表区分10, 副資材9, 
+                                      必要数9, 代表区分11, 副資材10, 必要数10, 代表区分12, 副資材11, 必要数11, 代表区分13, 副資材12, 必要数12, 代表区分14, 副資材13, 必要数13, 代表区分15, 
+                                      副資材14, 必要数14, 代表区分16, 副資材15, 必要数15, 代表区分17, 副資材16, 必要数16, 代表区分18, 副資材17, 必要数17, 代表区分19, 副資材18, 必要数18, 
+                                      代表区分20, 副資材19, 必要数19, 代表区分21, 副資材20, 必要数20, ダイレクト包装記号1, リターナブル区分1, ダイレクト包装記号2, リターナブル区分2, 
+                                      ダイレクト包装記号3, リターナブル区分3, HNS, 保税区分, エンジンASSY区分, 部品特性3, 部品特性4, 部品特性5, 部品特性6, 原産国コード1, 外産品区分1, 
+                                      部品特性10, FILLER3, DIST名称, 基本部番ハイフン付, 設変部番ハイフン付, 部品特性フラブ, 部品属性4, 輸送手段, 実績有無区分, 実績数量, 種別NO, 原産国コード2, 
+                                      外産品区分2, モジュールコード, ケースNO2, 転送日時, FILLER4, 取込年月, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, 
+                                      リターナブル容器数, ENG発泡材数, 積み付け回数, パネルケース数, スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 
+                                      外装用副資材使用数, 外直部品総数, 外直の防錆回数, 外装ケース数, 部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, 
+                                      個_内装資材, 外装資材, 資材計, 見積No
+FROM                         T_CCC_Lot
+WHERE                       (見積No = @見積No)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="見積No" ColumnName="見積No" DataSourceName="Honda_Logi.dbo.T_CCC_Lot" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@見積No" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="見積No" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_見積No_存在チェック" Modifier="Public" Name="Q_見積No_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_見積No_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -2474,7 +2513,7 @@ FROM                         T_Inport_Rireki</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_取込履歴更新" Modifier="Public" Name="Q_取込履歴更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_取込履歴更新">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_取込履歴更新" Modifier="Public" Name="Q_取込履歴更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_取込履歴更新">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE                    T_Inport_Rireki
@@ -2487,7 +2526,7 @@ WHERE                       (見積No = @見積No)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_取込履歴削除" Modifier="Public" Name="Q_取込履歴削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_取込履歴削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_取込履歴削除" Modifier="Public" Name="Q_取込履歴削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_取込履歴削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       T_Inport_Rireki
@@ -2498,7 +2537,7 @@ WHERE                       (見積No = @見積No)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_取込履歴登録" Modifier="Public" Name="Q_取込履歴登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_取込履歴登録">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_取込履歴登録" Modifier="Public" Name="Q_取込履歴登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_取込履歴登録">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[T_Inport_Rireki] ([見積No], [取込年月], [取込日時], [ユーザーid]) VALUES (@見積No, @取込年月, @取込日時, @ユーザーid)</CommandText>
@@ -2948,7 +2987,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
   <xs:element name="DS_T" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_T" msprop:Generator_UserDSName="DS_T">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DT_T_ERR_LOG" msprop:Generator_TableClassName="DT_T_ERR_LOGDataTable" msprop:Generator_TableVarName="tableDT_T_ERR_LOG" msprop:Generator_RowChangedName="DT_T_ERR_LOGRowChanged" msprop:Generator_TablePropName="DT_T_ERR_LOG" msprop:Generator_RowDeletingName="DT_T_ERR_LOGRowDeleting" msprop:Generator_RowChangingName="DT_T_ERR_LOGRowChanging" msprop:Generator_RowEvHandlerName="DT_T_ERR_LOGRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_ERR_LOGRowDeleted" msprop:Generator_RowClassName="DT_T_ERR_LOGRow" msprop:Generator_UserTableName="DT_T_ERR_LOG" msprop:Generator_RowEvArgName="DT_T_ERR_LOGRowChangeEvent">
+        <xs:element name="DT_T_ERR_LOG" msprop:Generator_TableClassName="DT_T_ERR_LOGDataTable" msprop:Generator_TableVarName="tableDT_T_ERR_LOG" msprop:Generator_TablePropName="DT_T_ERR_LOG" msprop:Generator_RowDeletingName="DT_T_ERR_LOGRowDeleting" msprop:Generator_RowChangingName="DT_T_ERR_LOGRowChanging" msprop:Generator_RowEvHandlerName="DT_T_ERR_LOGRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_ERR_LOGRowDeleted" msprop:Generator_UserTableName="DT_T_ERR_LOG" msprop:Generator_RowChangedName="DT_T_ERR_LOGRowChanged" msprop:Generator_RowEvArgName="DT_T_ERR_LOGRowChangeEvent" msprop:Generator_RowClassName="DT_T_ERR_LOGRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -2970,7 +3009,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Gyomu_Plan" msprop:Generator_TableClassName="DT_T_Gyomu_PlanDataTable" msprop:Generator_TableVarName="tableDT_T_Gyomu_Plan" msprop:Generator_RowChangedName="DT_T_Gyomu_PlanRowChanged" msprop:Generator_TablePropName="DT_T_Gyomu_Plan" msprop:Generator_RowDeletingName="DT_T_Gyomu_PlanRowDeleting" msprop:Generator_RowChangingName="DT_T_Gyomu_PlanRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Gyomu_PlanRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Gyomu_PlanRowDeleted" msprop:Generator_RowClassName="DT_T_Gyomu_PlanRow" msprop:Generator_UserTableName="DT_T_Gyomu_Plan" msprop:Generator_RowEvArgName="DT_T_Gyomu_PlanRowChangeEvent">
+        <xs:element name="DT_T_Gyomu_Plan" msprop:Generator_TableClassName="DT_T_Gyomu_PlanDataTable" msprop:Generator_TableVarName="tableDT_T_Gyomu_Plan" msprop:Generator_TablePropName="DT_T_Gyomu_Plan" msprop:Generator_RowDeletingName="DT_T_Gyomu_PlanRowDeleting" msprop:Generator_RowChangingName="DT_T_Gyomu_PlanRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Gyomu_PlanRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Gyomu_PlanRowDeleted" msprop:Generator_UserTableName="DT_T_Gyomu_Plan" msprop:Generator_RowChangedName="DT_T_Gyomu_PlanRowChanged" msprop:Generator_RowEvArgName="DT_T_Gyomu_PlanRowChangeEvent" msprop:Generator_RowClassName="DT_T_Gyomu_PlanRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -3531,7 +3570,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_KOW46" msprop:Generator_TableClassName="DT_T_KOW46DataTable" msprop:Generator_TableVarName="tableDT_T_KOW46" msprop:Generator_RowChangedName="DT_T_KOW46RowChanged" msprop:Generator_TablePropName="DT_T_KOW46" msprop:Generator_RowDeletingName="DT_T_KOW46RowDeleting" msprop:Generator_RowChangingName="DT_T_KOW46RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KOW46RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KOW46RowDeleted" msprop:Generator_RowClassName="DT_T_KOW46Row" msprop:Generator_UserTableName="DT_T_KOW46" msprop:Generator_RowEvArgName="DT_T_KOW46RowChangeEvent">
+        <xs:element name="DT_T_KOW46" msprop:Generator_TableClassName="DT_T_KOW46DataTable" msprop:Generator_TableVarName="tableDT_T_KOW46" msprop:Generator_TablePropName="DT_T_KOW46" msprop:Generator_RowDeletingName="DT_T_KOW46RowDeleting" msprop:Generator_RowChangingName="DT_T_KOW46RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KOW46RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KOW46RowDeleted" msprop:Generator_UserTableName="DT_T_KOW46" msprop:Generator_RowChangedName="DT_T_KOW46RowChanged" msprop:Generator_RowEvArgName="DT_T_KOW46RowChangeEvent" msprop:Generator_RowClassName="DT_T_KOW46Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -3686,7 +3725,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_KIT60" msprop:Generator_TableClassName="DT_T_KIT60DataTable" msprop:Generator_TableVarName="tableDT_T_KIT60" msprop:Generator_RowChangedName="DT_T_KIT60RowChanged" msprop:Generator_TablePropName="DT_T_KIT60" msprop:Generator_RowDeletingName="DT_T_KIT60RowDeleting" msprop:Generator_RowChangingName="DT_T_KIT60RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KIT60RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KIT60RowDeleted" msprop:Generator_RowClassName="DT_T_KIT60Row" msprop:Generator_UserTableName="DT_T_KIT60" msprop:Generator_RowEvArgName="DT_T_KIT60RowChangeEvent">
+        <xs:element name="DT_T_KIT60" msprop:Generator_TableClassName="DT_T_KIT60DataTable" msprop:Generator_TableVarName="tableDT_T_KIT60" msprop:Generator_TablePropName="DT_T_KIT60" msprop:Generator_RowDeletingName="DT_T_KIT60RowDeleting" msprop:Generator_RowChangingName="DT_T_KIT60RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KIT60RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KIT60RowDeleted" msprop:Generator_UserTableName="DT_T_KIT60" msprop:Generator_RowChangedName="DT_T_KIT60RowChanged" msprop:Generator_RowEvArgName="DT_T_KIT60RowChangeEvent" msprop:Generator_RowClassName="DT_T_KIT60Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -4079,7 +4118,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC" msprop:Generator_TableClassName="DT_T_CCCDataTable" msprop:Generator_TableVarName="tableDT_T_CCC" msprop:Generator_TablePropName="DT_T_CCC" msprop:Generator_RowDeletingName="DT_T_CCCRowDeleting" msprop:Generator_RowChangingName="DT_T_CCCRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCCRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCCRowDeleted" msprop:Generator_UserTableName="DT_T_CCC" msprop:Generator_RowChangedName="DT_T_CCCRowChanged" msprop:Generator_RowEvArgName="DT_T_CCCRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCCRow">
+        <xs:element name="DT_T_CCC" msprop:Generator_TableClassName="DT_T_CCCDataTable" msprop:Generator_TableVarName="tableDT_T_CCC" msprop:Generator_RowChangedName="DT_T_CCCRowChanged" msprop:Generator_TablePropName="DT_T_CCC" msprop:Generator_RowDeletingName="DT_T_CCCRowDeleting" msprop:Generator_RowChangingName="DT_T_CCCRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCCRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCCRowDeleted" msprop:Generator_RowClassName="DT_T_CCCRow" msprop:Generator_UserTableName="DT_T_CCC" msprop:Generator_RowEvArgName="DT_T_CCCRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -6068,7 +6107,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Lot" msprop:Generator_TableClassName="DT_T_CCC_LotDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot" msprop:Generator_TablePropName="DT_T_CCC_Lot" msprop:Generator_RowDeletingName="DT_T_CCC_LotRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_LotRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_LotRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_LotRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Lot" msprop:Generator_RowChangedName="DT_T_CCC_LotRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_LotRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_LotRow">
+        <xs:element name="DT_T_CCC_Lot" msprop:Generator_TableClassName="DT_T_CCC_LotDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot" msprop:Generator_RowChangedName="DT_T_CCC_LotRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Lot" msprop:Generator_RowDeletingName="DT_T_CCC_LotRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_LotRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_LotRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_LotRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_LotRow" msprop:Generator_UserTableName="DT_T_CCC_Lot" msprop:Generator_RowEvArgName="DT_T_CCC_LotRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -8086,7 +8125,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Work" msprop:Generator_TableClassName="DT_T_CCC_WorkDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Work" msprop:Generator_TablePropName="DT_T_CCC_Work" msprop:Generator_RowDeletingName="DT_T_CCC_WorkRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_WorkRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_WorkRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Work" msprop:Generator_RowChangedName="DT_T_CCC_WorkRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_WorkRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_WorkRow">
+        <xs:element name="DT_T_CCC_Work" msprop:Generator_TableClassName="DT_T_CCC_WorkDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Work" msprop:Generator_RowChangedName="DT_T_CCC_WorkRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Work" msprop:Generator_RowDeletingName="DT_T_CCC_WorkRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_WorkRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_WorkRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_WorkRow" msprop:Generator_UserTableName="DT_T_CCC_Work" msprop:Generator_RowEvArgName="DT_T_CCC_WorkRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -10075,7 +10114,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Inport_Rireki" msprop:Generator_TableClassName="DT_T_Inport_RirekiDataTable" msprop:Generator_TableVarName="tableDT_T_Inport_Rireki" msprop:Generator_RowChangedName="DT_T_Inport_RirekiRowChanged" msprop:Generator_TablePropName="DT_T_Inport_Rireki" msprop:Generator_RowDeletingName="DT_T_Inport_RirekiRowDeleting" msprop:Generator_RowChangingName="DT_T_Inport_RirekiRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Inport_RirekiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Inport_RirekiRowDeleted" msprop:Generator_RowClassName="DT_T_Inport_RirekiRow" msprop:Generator_UserTableName="DT_T_Inport_Rireki" msprop:Generator_RowEvArgName="DT_T_Inport_RirekiRowChangeEvent">
+        <xs:element name="DT_T_Inport_Rireki" msprop:Generator_TableClassName="DT_T_Inport_RirekiDataTable" msprop:Generator_TableVarName="tableDT_T_Inport_Rireki" msprop:Generator_TablePropName="DT_T_Inport_Rireki" msprop:Generator_RowDeletingName="DT_T_Inport_RirekiRowDeleting" msprop:Generator_RowChangingName="DT_T_Inport_RirekiRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Inport_RirekiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Inport_RirekiRowDeleted" msprop:Generator_UserTableName="DT_T_Inport_Rireki" msprop:Generator_RowChangedName="DT_T_Inport_RirekiRowChanged" msprop:Generator_RowEvArgName="DT_T_Inport_RirekiRowChangeEvent" msprop:Generator_RowClassName="DT_T_Inport_RirekiRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -10111,7 +10150,7 @@ SELECT id, DIST, No, 変更フラグ, GR, Basic_Part_No, Export_Name, Order_Lot,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Buhin_Order_List" msprop:Generator_TableClassName="DT_T_Buhin_Order_ListDataTable" msprop:Generator_TableVarName="tableDT_T_Buhin_Order_List" msprop:Generator_TablePropName="DT_T_Buhin_Order_List" msprop:Generator_RowDeletingName="DT_T_Buhin_Order_ListRowDeleting" msprop:Generator_RowChangingName="DT_T_Buhin_Order_ListRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Buhin_Order_ListRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Buhin_Order_ListRowDeleted" msprop:Generator_UserTableName="DT_T_Buhin_Order_List" msprop:Generator_RowChangedName="DT_T_Buhin_Order_ListRowChanged" msprop:Generator_RowEvArgName="DT_T_Buhin_Order_ListRowChangeEvent" msprop:Generator_RowClassName="DT_T_Buhin_Order_ListRow">
+        <xs:element name="DT_T_Buhin_Order_List" msprop:Generator_TableClassName="DT_T_Buhin_Order_ListDataTable" msprop:Generator_TableVarName="tableDT_T_Buhin_Order_List" msprop:Generator_RowChangedName="DT_T_Buhin_Order_ListRowChanged" msprop:Generator_TablePropName="DT_T_Buhin_Order_List" msprop:Generator_RowDeletingName="DT_T_Buhin_Order_ListRowDeleting" msprop:Generator_RowChangingName="DT_T_Buhin_Order_ListRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Buhin_Order_ListRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Buhin_Order_ListRowDeleted" msprop:Generator_RowClassName="DT_T_Buhin_Order_ListRow" msprop:Generator_UserTableName="DT_T_Buhin_Order_List" msprop:Generator_RowEvArgName="DT_T_Buhin_Order_ListRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
