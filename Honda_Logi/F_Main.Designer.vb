@@ -24,18 +24,18 @@ Partial Class F_Main
     Private Sub InitializeComponent()
         Me.Btn_Master = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Lbl_Data = New System.Windows.Forms.Label()
+        Me.Pnl_Data = New System.Windows.Forms.Panel()
         Me.Btn_Receive = New System.Windows.Forms.Button()
         Me.Btn_Change = New System.Windows.Forms.Button()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Pnl_Master = New System.Windows.Forms.Panel()
+        Me.Lbl_Master = New System.Windows.Forms.Label()
+        Me.Pnl_Output = New System.Windows.Forms.Panel()
         Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel3.SuspendLayout()
-        Me.Panel5.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.Pnl_Data.SuspendLayout()
+        Me.Pnl_Master.SuspendLayout()
+        Me.Pnl_Output.SuspendLayout()
         Me.SuspendLayout()
         '
         'Btn_Master
@@ -59,29 +59,29 @@ Partial Class F_Main
         Me.Label5.Text = "Honda_Logi"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label3
+        'Lbl_Data
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(86, 74)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 18)
-        Me.Label3.TabIndex = 43
-        Me.Label3.Text = "データ"
+        Me.Lbl_Data.AutoSize = True
+        Me.Lbl_Data.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Lbl_Data.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Lbl_Data.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Lbl_Data.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Lbl_Data.Location = New System.Drawing.Point(86, 74)
+        Me.Lbl_Data.Name = "Lbl_Data"
+        Me.Lbl_Data.Size = New System.Drawing.Size(50, 18)
+        Me.Lbl_Data.TabIndex = 43
+        Me.Lbl_Data.Text = "データ"
         '
-        'Panel3
+        'Pnl_Data
         '
-        Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel3.Controls.Add(Me.Btn_Receive)
-        Me.Panel3.Controls.Add(Me.Btn_Change)
-        Me.Panel3.Location = New System.Drawing.Point(86, 94)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(189, 207)
-        Me.Panel3.TabIndex = 38
+        Me.Pnl_Data.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.Pnl_Data.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Pnl_Data.Controls.Add(Me.Btn_Receive)
+        Me.Pnl_Data.Controls.Add(Me.Btn_Change)
+        Me.Pnl_Data.Location = New System.Drawing.Point(86, 94)
+        Me.Pnl_Data.Name = "Pnl_Data"
+        Me.Pnl_Data.Size = New System.Drawing.Size(189, 207)
+        Me.Pnl_Data.TabIndex = 38
         '
         'Btn_Receive
         '
@@ -103,38 +103,38 @@ Partial Class F_Main
         Me.Btn_Change.Text = "データ変換"
         Me.Btn_Change.UseVisualStyleBackColor = True
         '
-        'Panel5
+        'Pnl_Master
         '
-        Me.Panel5.BackColor = System.Drawing.Color.Thistle
-        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel5.Controls.Add(Me.Btn_Master)
-        Me.Panel5.Location = New System.Drawing.Point(406, 105)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(189, 79)
-        Me.Panel5.TabIndex = 57
+        Me.Pnl_Master.BackColor = System.Drawing.Color.Thistle
+        Me.Pnl_Master.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Pnl_Master.Controls.Add(Me.Btn_Master)
+        Me.Pnl_Master.Location = New System.Drawing.Point(406, 105)
+        Me.Pnl_Master.Name = "Pnl_Master"
+        Me.Pnl_Master.Size = New System.Drawing.Size(189, 79)
+        Me.Pnl_Master.TabIndex = 57
         '
-        'Label6
+        'Lbl_Master
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.BackColor = System.Drawing.Color.BlueViolet
-        Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label6.Location = New System.Drawing.Point(406, 85)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(82, 18)
-        Me.Label6.TabIndex = 56
-        Me.Label6.Text = "マスタ編集"
+        Me.Lbl_Master.AutoSize = True
+        Me.Lbl_Master.BackColor = System.Drawing.Color.BlueViolet
+        Me.Lbl_Master.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Lbl_Master.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Lbl_Master.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Lbl_Master.Location = New System.Drawing.Point(406, 85)
+        Me.Lbl_Master.Name = "Lbl_Master"
+        Me.Lbl_Master.Size = New System.Drawing.Size(82, 18)
+        Me.Lbl_Master.TabIndex = 56
+        Me.Lbl_Master.Text = "マスタ編集"
         '
-        'Panel1
+        'Pnl_Output
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Thistle
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.Btn_Output)
-        Me.Panel1.Location = New System.Drawing.Point(406, 222)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(189, 79)
-        Me.Panel1.TabIndex = 59
+        Me.Pnl_Output.BackColor = System.Drawing.Color.Thistle
+        Me.Pnl_Output.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Pnl_Output.Controls.Add(Me.Btn_Output)
+        Me.Pnl_Output.Location = New System.Drawing.Point(406, 222)
+        Me.Pnl_Output.Name = "Pnl_Output"
+        Me.Pnl_Output.Size = New System.Drawing.Size(189, 79)
+        Me.Pnl_Output.TabIndex = 59
         '
         'Btn_Output
         '
@@ -164,31 +164,31 @@ Partial Class F_Main
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(693, 368)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Pnl_Output)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Panel5)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Pnl_Master)
+        Me.Controls.Add(Me.Lbl_Master)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Lbl_Data)
+        Me.Controls.Add(Me.Pnl_Data)
         Me.Name = "F_Main"
         Me.Text = "メインメニュー"
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
+        Me.Pnl_Data.ResumeLayout(False)
+        Me.Pnl_Master.ResumeLayout(False)
+        Me.Pnl_Output.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents Btn_Master As Button
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Lbl_Data As Label
+    Friend WithEvents Pnl_Data As Panel
     Friend WithEvents Btn_Receive As Button
     Friend WithEvents Btn_Change As Button
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Pnl_Master As Panel
+    Friend WithEvents Lbl_Master As Label
+    Friend WithEvents Pnl_Output As Panel
     Friend WithEvents Btn_Output As Button
     Friend WithEvents Label1 As Label
 End Class

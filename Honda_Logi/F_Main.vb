@@ -1,5 +1,30 @@
 ﻿Public Class F_Main
 
+    'ページロード時
+    Private Sub F_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        Try
+
+            'ログイン画面の権限を参照して表示制御
+            If F_Login.kengen = "1" Then '管理者
+                Lbl_Data.Visible = True
+                Lbl_Master.Visible = True
+                Pnl_Data.Visible = True
+                Pnl_Master.Visible = True
+
+            Else '一般
+                Lbl_Data.Visible = False
+                Lbl_Master.Visible = False
+                Pnl_Data.Visible = False
+                Pnl_Master.Visible = False
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
     'ページクローズ時
     Private Sub F_Main_Closed(sender As Object, e As EventArgs) Handles Me.Closed
 
