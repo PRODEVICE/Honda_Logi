@@ -12,6 +12,9 @@ Public Class F_Make_1Lot
     '変換ボタンクリック時
     Private Sub Btn_Change_Click(sender As Object, e As EventArgs) Handles Btn_Change.Click
 
+        '待機状態
+        Cursor.Current = Cursors.WaitCursor
+
         Try
             Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC
             Dim ta_ccc_1lot As New DS_TTableAdapters.TA_T_CCC_Lot
@@ -31,10 +34,11 @@ Public Class F_Make_1Lot
 
             'SQL生成
             Dim sql As String = MakeSQL(target_mitsumori_no)
-            Dim sql2 As String = MakeSQL2(target_mitsumori_no)
+            Dim make_1lot_sql As String = MakeSQL2(target_mitsumori_no)
             Dim master_delete_sql As String = MakeSQL3(target_mitsumori_no)
             Dim master_insert_sql As String = MakeSQL4(target_mitsumori_no)
-            Dim master_update_sql As String = ""
+            Dim ccc_update_sql As String = ""
+            Dim kow_update_sql As String = ""
 
 
             ' SQL実行
@@ -67,7 +71,8 @@ Public Class F_Make_1Lot
                 Dim gaichoku_case As String = ta_second.Q_工数取得(18)
 
                 'Update用SQL作成
-                master_update_sql = MakeSQL5(target_mitsumori_no, panel_case, sukashi_case, gaisou_danboru, gaisou_pori, gaisou_bolt, gaisou_fukushizai, gaichoku_bousabi, gaichoku_case)
+                ccc_update_sql = MakeSQL5(target_mitsumori_no, panel_case, sukashi_case, gaisou_danboru, gaisou_pori, gaisou_bolt, gaisou_fukushizai, gaichoku_bousabi, gaichoku_case)
+                kow_update_sql = MakeSQL6(target_mitsumori_no)
 
                 Try
                     '*******************
@@ -110,24 +115,32 @@ Public Class F_Make_1Lot
                     End If
 
                     ' 必要情報を関連テーブルから収集して本番テーブルへインサート
-                    Using cmdIns2 As New SqlCommand(sql2, conn, transaction)
+                    Using cmdIns2 As New SqlCommand(make_1lot_sql, conn, transaction)
                         Dim rowsAffected As Integer = cmdIns2.ExecuteNonQuery()
                     End Using
 
 
                     'SQLでUpdate
-                    Using cmdUp1 As New SqlCommand(master_update_sql, conn, transaction)
+                    Using cmdUp1 As New SqlCommand(ccc_update_sql, conn, transaction)
                         Dim rowsAffected As Integer = cmdUp1.ExecuteNonQuery()
                     End Using
 
 
 
                     ' さらに複雑なものの更新処理
-                    'change_1lot(conn, transaction, target_mitsumori_no)
+                    change_1lot(conn, transaction, target_mitsumori_no)
 
 
                     '*******************
-                    '④取込履歴
+                    '④KOWテーブル
+                    '*******************
+                    Using cmdUp_kow As New SqlCommand(kow_update_sql, conn, transaction)
+                        Dim rowsAffected As Integer = cmdUp_kow.ExecuteNonQuery()
+                    End Using
+
+
+                    '*******************
+                    '⑤取込履歴
                     '*******************
 
                     '変換フラグを更新
@@ -149,7 +162,8 @@ Public Class F_Make_1Lot
             End Using
 
 
-
+            '元に戻す
+            Cursor.Current = Cursors.Default
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Make_1Lot_Btn_Change_Click")
@@ -197,6 +211,9 @@ Public Class F_Make_1Lot
             Dim ta_second As New DS_MTableAdapters.TA_M_Second
 
             Dim ta_M_naisou As New DS_MTableAdapters.TA_M_Naisou_Shizai
+            Dim dt_M_naisou As New DS_M.DT_M_Naisou_ShizaiDataTable
+
+
 
             'TAを使えるように接続とトランザクション情報をセットする
             ta_ccc_lot.Connection = conn
@@ -206,38 +223,446 @@ Public Class F_Make_1Lot
             ta_second.Connection = conn
             ta_second.Transaction = transaction
 
+            '変換対象の1lotデータを取得
             ta_ccc_lot.Q_CCC_Lot取得(dt_ccc_lot, _target_mitsumori_no)
+
+            '秒数取得
+            Dim carton_second As Decimal = ta_second.Q_工数取得(6)
+            Dim return_able_second As Decimal = ta_second.Q_工数取得(7)
+
+            ' ループ外でマスタと既存ロットを Dictionary に変換
+            ta_M_naisou.Fill(dt_M_naisou)
+            Dim naisouDict As New Dictionary(Of String, Decimal)
+            For Each dr As DataRow In dt_M_naisou.Rows
+                Dim key As String = dr("内装資材コード").ToString()
+                Dim value As Decimal = CDec(dr("数量"))
+                If Not naisouDict.ContainsKey(key) Then
+                    naisouDict(key) = value
+                End If
+            Next
+
+            ' 既存ロットのユニーク判定用辞書（ループ外で作る）
+            Dim lotDict As New Dictionary(Of String, Integer)(StringComparer.Ordinal)
+            ' まず DataRow 配列にする（高速化）
+            Dim rows As DataRow() = dt_ccc_lot.Select()
+            For Each dr As DataRow In rows
+                Dim key As String = String.Concat(
+                SafeGetString(dr, "ｺﾝﾄﾛｰﾙNO"),
+                SafeGetString(dr, "年度1"),
+                SafeGetString(dr, "モデル1"),
+                SafeGetString(dr, "モデフNO"),
+                SafeGetString(dr, "ケースNO1"),
+                SafeGetString(dr, "包装ロットNO"),
+                SafeGetString(dr, "包装ロット連番"),
+                SafeGetString(dr, "モジュール手順SEQ"),
+                SafeGetString(dr, "内装資材記号")
+            )
+                If lotDict.ContainsKey(key) Then
+                    lotDict(key) += 1
+                Else
+                    lotDict(key) = 1
+                End If
+            Next
+
+            ' 更新データを貯めるリスト（carton, id）
+            Dim updates As New List(Of KeyValuePair(Of Decimal, String))(rows.Length)
+            Dim updates2 As New List(Of KeyValuePair(Of Decimal, String))(rows.Length)
 
 
             For Each row In dt_ccc_lot
 
+                Dim carton_su As Decimal = 0
+                Dim return_able_su As Decimal = 0
+                Dim naisou_master_suryou As Decimal = 0
+                Dim naisou_master_cd As String = ""
+
+                '必要な材料をDTより取得
+                Dim target_id As String = row("id")
                 Dim controll_no As String = row("ｺﾝﾄﾛｰﾙNO") '50
-                Dim case_no As String = row("ケースNO1") '55
+                Dim nendo As String = row("年度1") '51
+                Dim model As String = row("モデル1") '52
+                Dim modefu As String = row("モデフNO") '53
+                Dim case_no As String = row("ケースNO1") '54
                 Dim housou_lot_no As String = row("包装ロットNO") '61
-
-
+                Dim housou_lot_eda_no As String = row("包装ロット連番") '62
                 Dim houzou_line_gaisou As String = row("包装ライン_外装") '117
-
                 Dim kosou_shizai_cd As String = row("個装資材記号") '156
                 Dim naisou_shizai_cd As String = row("内装資材記号") '160
                 Dim gaisou_shizai_cd As String = row("外装資材記号") '165
+                Dim module_seq As String = row("モジュール手順SEQ") '166
                 Dim naisou_irisu As String = row("内装入り数") '167
+
+                '225列目～249
+                Dim fuku_shizai12 As String = row("副資材12") '225
+                Dim hitsuyou_su12 As Decimal = row("必要数12") '226
+                Dim fuku_shizai13 As String = row("副資材13") '228
+                Dim hitsuyou_su13 As Decimal = row("必要数13") '229
+                Dim fuku_shizai14 As String = row("副資材14") '231
+                Dim hitsuyou_su14 As Decimal = row("必要数14") '232
+                Dim fuku_shizai15 As String = row("副資材15") '234
+                Dim hitsuyou_su15 As Decimal = row("必要数15") '235
+                Dim fuku_shizai16 As String = row("副資材16") '237
+                Dim hitsuyou_su16 As Decimal = row("必要数16") '238
+                Dim fuku_shizai17 As String = row("副資材17") '240
+                Dim hitsuyou_su17 As Decimal = row("必要数17") '241
+                Dim fuku_shizai18 As String = row("副資材18") '243
+                Dim hitsuyou_su18 As Decimal = row("必要数18") '244
+                Dim fuku_shizai19 As String = row("副資材19") '246
+                Dim hitsuyou_su19 As Decimal = row("必要数19") '247
+                Dim fuku_shizai20 As String = row("副資材20") '249
+                Dim hitsuyou_su20 As Decimal = row("必要数20") '250
+
+                Dim fuku_shizaiSmall(8) As String    ' 12～20 → 9個
+                Dim hitsuyou_suSmall(8) As Decimal
+
+                For i As Integer = 12 To 20
+                    fuku_shizaiSmall(i - 12) = row("副資材" & i)
+                    hitsuyou_suSmall(i - 12) = row("必要数" & i)
+                Next
 
 
                 'カートン数の計算
 
+                '包装ライン_外装にA0が含まれているか
+                If houzou_line_gaisou.Contains("A0") Then
+
+                    '含まれている場合、カートン数は0
+                    carton_su = 0
+
+                Else '含まれていない場合
+
+                    '各資材記号が内装資材マスタに存在するかチェック
+
+                    ' 内装資材マスタ参照
+                    If naisouDict.ContainsKey(kosou_shizai_cd) Then
+                        naisou_master_suryou = naisouDict(kosou_shizai_cd)
+                    Else
+                        naisou_master_suryou = -1
+                    End If
+
+                    If naisou_master_suryou = -1 Then
+
+                        If naisouDict.ContainsKey(naisou_shizai_cd) Then
+                            naisou_master_suryou = naisouDict(naisou_shizai_cd)
+                        Else
+                            naisou_master_suryou = -1
+                        End If
+
+                    End If
+
+                    If naisou_master_suryou = -1 Then
+
+                        If naisouDict.ContainsKey(gaisou_shizai_cd) Then
+                            naisou_master_suryou = naisouDict(gaisou_shizai_cd)
+                        Else
+                            naisou_master_suryou = -1
+                        End If
+
+                    End If
 
 
+                    If naisou_master_suryou = -1 Then
+
+                        '存在しない
+
+
+                    Else '存在する
+
+                        'ヒットした内装資材マスタをループでまわす？
+
+
+                        '1lotデータにユニーク条件に合致、かつ内装資材記号が一致するデータがあるか
+
+                        ' ユニークチェック
+                        Dim lotKey As String = row("ｺﾝﾄﾛｰﾙNO").ToString() & row("年度1").ToString() & row("モデル1").ToString() & row("モデフNO").ToString() _
+                            & row("ケースNO1").ToString() & row("包装ロットNO").ToString() & row("包装ロット連番").ToString() & row("モジュール手順SEQ").ToString() & row("内装資材記号").ToString()
+
+                        If Not lotDict.ContainsKey(lotKey) OrElse lotDict(lotKey) <= 1 Then
+                            carton_su = naisou_irisu * naisou_master_suryou * carton_second
+                        Else
+                            carton_su = naisou_master_suryou * carton_second
+                        End If
+
+                    End If
+
+                    '225列目～249列目の中に内装主資材データ記載の資材が存在するかチェック
+                    For i As Integer = 0 To fuku_shizaiSmall.Length - 1
+                        Dim shizai_cd As String = fuku_shizaiSmall(i)
+                        Dim qty As Decimal = hitsuyou_suSmall(i)
+                        Dim suryou As Decimal = 0
+                        ' 空チェック
+                        If Not String.IsNullOrEmpty(shizai_cd) AndAlso qty > 0 Then
+
+                            If naisouDict.ContainsKey(shizai_cd) Then
+                                suryou = naisouDict(shizai_cd)
+                            Else
+                                suryou = -1
+                            End If
+                            'suryou = ta_M_naisou.Q_数量取得(shizai_cd)
+
+                            If suryou <> -1 Then
+                                carton_su = carton_su + qty * suryou * carton_second
+                            End If
+
+
+                        End If
+                    Next
+
+                    ' 更新データを蓄積（後で一括的にプリペアドコマンドで更新）
+                    If carton_su <> 0 Then
+                        updates.Add(New KeyValuePair(Of Decimal, String)(carton_su, target_id))
+                    End If
+
+
+                    '1lotのカートン数を更新
+                    'ta_ccc_lot.Q_カートン数更新(carton_su, target_id)
+
+                End If
+
+
+                'リターナブル容器数の計算
+
+                '包装ライン_外装にA0が含まれているか
+                If houzou_line_gaisou.Contains("A0") Then
+
+                    '含まれている場合、リターナブル容器数は0
+                    return_able_su = 0
+
+                Else '含まれていない場合
+
+                    '各資材記号が内装資材マスタに存在するかチェック
+
+                    ' 内装資材マスタ参照
+                    If naisouDict.ContainsKey(kosou_shizai_cd) Then
+                        naisou_master_suryou = naisouDict(kosou_shizai_cd)
+                        naisou_master_cd = kosou_shizai_cd
+                    Else
+                        naisou_master_suryou = -1
+                    End If
+
+                    If naisou_master_suryou = -1 Then
+
+                        If naisouDict.ContainsKey(naisou_shizai_cd) Then
+                            naisou_master_suryou = naisouDict(naisou_shizai_cd)
+                            naisou_master_cd = naisou_shizai_cd
+                        Else
+                            naisou_master_suryou = -1
+                        End If
+
+                    End If
+
+                    If naisou_master_suryou = -1 Then
+
+                        If naisouDict.ContainsKey(gaisou_shizai_cd) Then
+                            naisou_master_suryou = naisouDict(gaisou_shizai_cd)
+                            naisou_master_cd = gaisou_shizai_cd
+                        Else
+                            naisou_master_suryou = -1
+                        End If
+
+                    End If
+
+                    If naisou_master_suryou = -1 Then
+
+                        '存在しない
+
+
+                    Else '存在する
+
+                        'マスタの数量を取得
+                        'naisou_master_suryou = dt_M_naisou.Rows(0)("数量")
+
+                        '資材コードにRTが含まれているか
+                        If Not String.IsNullOrEmpty(naisou_master_cd) AndAlso naisou_master_cd.Trim().ToUpper().Contains("RT") Then
+
+                                '含まれている場合
+
+                                ' ユニークチェック
+                                Dim lotKey As String = row("ｺﾝﾄﾛｰﾙNO").ToString() & row("年度1").ToString() & row("モデル1").ToString() & row("モデフNO").ToString() _
+                                & row("ケースNO1").ToString() & row("包装ロットNO").ToString() & row("包装ロット連番").ToString() & row("モジュール手順SEQ").ToString() & row("内装資材記号").ToString()
+
+                                If Not lotDict.ContainsKey(lotKey) OrElse lotDict(lotKey) <= 1 Then
+                                    carton_su = naisou_irisu * naisou_master_suryou * return_able_second
+                                Else
+                                    carton_su = naisou_master_suryou * return_able_second
+                                End If
+
+
+                                '1lotデータにユニーク条件に合致、かつ内装資材記号が一致するデータがあるか
+                                'ta_ccc_lot.Q_ユニークチェック(dt_ccc_lot_chk, controll_no, nendo, model, modefu, case_no, housou_lot_no, housou_lot_eda_no, module_seq, naisou_shizai_cd)
+
+                                'If dt_ccc_lot_chk.Rows.Count <= 1 Then '自身が必ず該当するので1以下なら
+
+                                '    '存在しない
+                                '    return_able_su = naisou_irisu * naisou_master_suryou * return_able_second
+
+                                'Else '存在する
+
+                                '    return_able_su = naisou_master_suryou * return_able_second
+
+                                'End If
+
+
+
+
+                            Else '含まれていない場合、リターナブル容器数は0
+
+                                return_able_su = 0
+
+                            End If
+
+
+
+
+
+
+                        End If
+
+                        '225列目～249列目の中に内装主資材データ記載の資材が存在するかチェック
+                        For i As Integer = 0 To fuku_shizaiSmall.Length - 1
+                        Dim shizai_cd As String = fuku_shizaiSmall(i)
+                        Dim qty As Decimal = hitsuyou_suSmall(i)
+                        Dim suryou As Decimal = 0
+                        ' 空チェック
+                        If Not String.IsNullOrEmpty(shizai_cd) AndAlso qty > 0 Then
+
+                            '資材コードにRTが含まれていれば
+                            If shizai_cd.Contains("RT") Then
+
+                                'suryou = ta_M_naisou.Q_数量取得(shizai_cd)
+                                If naisouDict.ContainsKey(shizai_cd) Then
+                                    suryou = naisouDict(shizai_cd)
+
+                                Else
+                                    suryou = -1
+                                End If
+
+                                If suryou <> -1 Then
+                                    return_able_su = return_able_su + qty * suryou * return_able_second
+                                End If
+
+                            End If
+
+                        End If
+                    Next
+
+                    '1lotのカートン数を更新
+                    'ta_ccc_lot.Q_リターナブル容器数更新(return_able_su, target_id)
+
+                    ' 更新データを蓄積（後で一括的にプリペアドコマンドで更新）
+                    If return_able_su <> 0 Then
+                        updates2.Add(New KeyValuePair(Of Decimal, String)(return_able_su, target_id))
+                    End If
+
+                End If
 
 
             Next
 
 
-            '
+            ' --- 一括更新（プリペアド SQL を再利用） ---
+            ' ここでは直接 SQL を実行して高速化（TA の個別呼び出しより速い）
+            'Using cmd As New SqlCommand("UPDATE T_CCC_Lot SET カートン数 = @carton WHERE id = @id", conn, transaction)
+            '    cmd.Parameters.Add("@carton", SqlDbType.Decimal)
+            '    cmd.Parameters("@carton").Precision = 16
+            '    cmd.Parameters("@carton").Scale = 2
+            '    cmd.Parameters.Add("@id", SqlDbType.VarChar, 50) ' id の型/長さに合わせる
+
+            '    For Each kvp In updates
+            '        cmd.Parameters("@carton").Value = kvp.Key
+            '        cmd.Parameters("@id").Value = kvp.Value
+            '        cmd.ExecuteNonQuery()
+            '    Next
+            'End Using
+
+
+            '1lotのカートン数を更新
+
+            ' 1. DataTable を作る
+            Dim dtUpdate As New DataTable()
+            dtUpdate.Columns.Add("id", GetType(String))
+            dtUpdate.Columns.Add("carton", GetType(Decimal))
+
+            For Each kvp In updates
+                dtUpdate.Rows.Add(kvp.Value, kvp.Key)
+            Next
+
+            ' 2. SQLServer の一時テーブル作成
+            Using cmd As New SqlCommand("
+                                        CREATE TABLE #TmpUpdate (
+                                            id VARCHAR(50),
+                                            carton DECIMAL(16,2)
+                                        )
+                                    ", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' 3. BulkCopy で #TmpUpdate に超高速挿入（数万件でも 0.1～0.3秒）
+            Using bulk As New SqlBulkCopy(conn, SqlBulkCopyOptions.Default, transaction)
+                bulk.DestinationTableName = "#TmpUpdate"
+                bulk.WriteToServer(dtUpdate)
+            End Using
+
+            ' 4. JOIN UPDATE で一括更新（SQL 1回）→ 爆速
+            Using cmd As New SqlCommand("
+                                        UPDATE C
+                                        SET C.カートン数 = T.carton
+                                        FROM T_CCC_Lot C
+                                        INNER JOIN #TmpUpdate T
+                                            ON C.id = T.id
+                                    ", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' 5. 一時テーブル削除
+            Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
 
 
 
-            Dim test = ""
+            '1lotのリターナブル容器数を更新
+
+            ' 1. DataTable を作る
+            Dim dtUpdate2 As New DataTable()
+            dtUpdate2.Columns.Add("id", GetType(String))
+            dtUpdate2.Columns.Add("return_able_su", GetType(Decimal))
+
+            For Each kvp In updates2
+                dtUpdate2.Rows.Add(kvp.Value, kvp.Key)
+            Next
+
+            ' 2. SQLServer の一時テーブル作成
+            Using cmd As New SqlCommand("
+                                        CREATE TABLE #TmpUpdate (
+                                            id VARCHAR(50),
+                                            return_able_su DECIMAL(16,2)
+                                        )
+                                    ", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' 3. BulkCopy で #TmpUpdate に超高速挿入（数万件でも 0.1～0.3秒）
+            Using bulk As New SqlBulkCopy(conn, SqlBulkCopyOptions.Default, transaction)
+                bulk.DestinationTableName = "#TmpUpdate"
+                bulk.WriteToServer(dtUpdate)
+            End Using
+
+            ' 4. JOIN UPDATE で一括更新（SQL 1回）→ 爆速
+            Using cmd As New SqlCommand("
+                                        UPDATE C
+                                        SET C.リターナブル容器数 = T.return_able_su
+                                        FROM T_CCC_Lot C
+                                        INNER JOIN #TmpUpdate T
+                                            ON C.id = T.id
+                                    ", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' 5. 一時テーブル削除
+            Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
 
         Catch ex As Exception
             Throw ex
@@ -250,14 +675,43 @@ Public Class F_Make_1Lot
 
         ' SQL文（INSERT文）
         Dim sql As String = "
-                            ;WITH Ranked AS (
-                                SELECT *,
-                                    ROW_NUMBER() OVER (
-                                        PARTITION BY ｺﾝﾄﾛｰﾙNO, ケースNO1, 代表DIST, 年度2, モデル2, タイプ1, オプション1, 群
-                                        ORDER BY 包装ロットNO ASC
-                                    ) AS RN
+                            ;WITH MinLot AS (
+                                SELECT
+                                    ｺﾝﾄﾛｰﾙNO,
+                                    ケースNO1,
+                                    代表DIST,
+                                    年度2,
+                                    モデル2,
+                                    タイプ1,
+                                    オプション1,
+                                    群,
+                                    MIN(包装ロットNO) AS MinLotNo
                                 FROM [dbo].[T_CCC]
                                 WHERE 見積No = '" & _target_mitsumori_no & "'
+                                GROUP BY
+                                    ｺﾝﾄﾛｰﾙNO,
+                                    ケースNO1,
+                                    代表DIST,
+                                    年度2,
+                                    モデル2,
+                                    タイプ1,
+                                    オプション1,
+                                    群
+                            ),
+                            TargetData AS (
+                                SELECT C.*
+                                FROM [dbo].[T_CCC] C
+                                INNER JOIN MinLot M ON
+                                    C.ｺﾝﾄﾛｰﾙNO = M.ｺﾝﾄﾛｰﾙNO AND
+                                    C.ケースNO1 = M.ケースNO1 AND
+                                    C.代表DIST = M.代表DIST AND
+                                    C.年度2 = M.年度2 AND
+                                    C.モデル2 = M.モデル2 AND
+                                    C.タイプ1 = M.タイプ1 AND
+                                    C.オプション1 = M.オプション1 AND
+                                    C.群 = M.群 AND
+                                    C.包装ロットNO = M.MinLotNo
+                                WHERE C.見積No = '" & _target_mitsumori_no & "'
                             )
 
                             INSERT INTO [dbo].[T_CCC_Work] (
@@ -832,8 +1286,7 @@ Public Class F_Make_1Lot
                                 FILLER4,
                                 取込年月,
                                 " & _target_mitsumori_no &
-                            "FROM Ranked
-                            WHERE RN = 1;"
+                            "FROM TargetData;"
 
         Return sql
 
@@ -1725,44 +2178,46 @@ Public Class F_Make_1Lot
         Dim sql As String = ""
 
         'パネルケース数
-        sql = " UPDATE t
-                SET t.パネルケース数 = " & _panel_case & "
-                FROM T_CCC_Lot t
-                WHERE EXISTS (
-                    SELECT 1
-                    FROM (
-                        SELECT DISTINCT
-                            tt.ｺﾝﾄﾛｰﾙNO,
-                            tt.ケースNO1,
-                            tt.包装ロットNO
-                        FROM T_CCC_Lot tt
-                        WHERE tt.外装資材記号 LIKE '%SP%'
-                    ) AS sp
-                    WHERE sp.ｺﾝﾄﾛｰﾙNO = t.ｺﾝﾄﾛｰﾙNO
-                    AND sp.ケースNO1 = t.ケースNO1
-                    AND sp.包装ロットNO = t.包装ロットNO
+        sql = "WITH cte AS (
+                    SELECT t.*,
+                           ROW_NUMBER() OVER (PARTITION BY t.ｺﾝﾄﾛｰﾙNO, t.ケースNO1, t.包装ロットNO
+                                              ORDER BY t.id) AS rn
+                    FROM T_CCC_Lot t
+                    WHERE t.見積No = " & _target_mitsumori_no & "
+                      AND EXISTS (
+                          SELECT 1
+                          FROM T_CCC_Lot tt
+                          WHERE tt.外装資材記号 LIKE '%SP%'
+                            AND tt.ｺﾝﾄﾛｰﾙNO = t.ｺﾝﾄﾛｰﾙNO
+                            AND tt.ケースNO1 = t.ケースNO1
+                            AND tt.包装ロットNO = t.包装ロットNO
+                      )
                 )
-                AND t.見積No = " & _target_mitsumori_no & ";"
+                UPDATE cte
+                SET パネルケース数 =  " & _panel_case & "
+                WHERE rn = 1;"
+
 
         'スカシケース数
-        sql = sql & " UPDATE t
-                SET t.スカシケース数 = " & _sukashi_case & "
-                FROM T_CCC_Lot t
-                WHERE EXISTS (
-                    SELECT 1
-                    FROM (
-                        SELECT DISTINCT
-                            tt.ｺﾝﾄﾛｰﾙNO,
-                            tt.ケースNO1,
-                            tt.包装ロットNO
-                        FROM T_CCC_Lot tt
-                        WHERE tt.外装資材記号 LIKE '%SC%' OR tt.外装資材記号 LIKE '%RC%' OR tt.外装資材記号 LIKE '%CY%'
-                    ) AS sp
-                    WHERE sp.ｺﾝﾄﾛｰﾙNO = t.ｺﾝﾄﾛｰﾙNO
-                    AND sp.ケースNO1 = t.ケースNO1
-                    AND sp.包装ロットNO = t.包装ロットNO
+        sql = "WITH cte AS (
+                    SELECT t.*,
+                           ROW_NUMBER() OVER (PARTITION BY t.ｺﾝﾄﾛｰﾙNO, t.ケースNO1, t.包装ロットNO
+                                              ORDER BY t.id) AS rn
+                    FROM T_CCC_Lot t
+                    WHERE t.見積No = " & _target_mitsumori_no & "
+                      AND EXISTS (
+                          SELECT 1
+                          FROM T_CCC_Lot tt
+                          WHERE tt.外装資材記号 LIKE '%SP%'
+                            AND tt.ｺﾝﾄﾛｰﾙNO = t.ｺﾝﾄﾛｰﾙNO
+                            AND tt.ケースNO1 = t.ケースNO1
+                            AND tt.包装ロットNO = t.包装ロットNO
+                      )
                 )
-                AND t.見積No = " & _target_mitsumori_no & ";"
+                UPDATE cte
+                SET スカシケース数 =  " & _sukashi_case & "
+                WHERE rn = 1;"
+
 
         '外装用段ボールパット使用数
         sql = sql & " UPDATE t
@@ -1923,7 +2378,7 @@ Public Class F_Make_1Lot
                         WHERE t.見積No = " & _target_mitsumori_no & ";"
 
 
-        '外装用ボルト使用数
+        '外直の防錆回数
         sql = sql & " UPDATE t
                         SET t.外直の防錆回数 = 
                             (CASE 
@@ -1980,14 +2435,97 @@ Public Class F_Make_1Lot
 
 
 
+        '内装資材費
+        sql = sql & " UPDATE t
+                        SET t.内装資材費 =
+                            CASE
+                                -- 内装が存在する場合のみ計算
+                                WHEN HK_naisou.DIST IS NOT NULL
+                                     AND NS.内装資材コード IS NOT NULL
+                                THEN 
+                                    (
+                                        ISNULL(TK1.単価, 0) * t.内装入り数
+                                    )
+                                    +
+                                    (
+                                        (ISNULL(TK2.単価, 0) * ISNULL(t.必要数2, 0)) +
+                                        (ISNULL(TK3.単価, 0) * ISNULL(t.必要数3, 0)) +
+                                        (ISNULL(TK4.単価, 0) * ISNULL(t.必要数4, 0)) +
+                                        (ISNULL(TK5.単価, 0) * ISNULL(t.必要数5, 0)) +
+                                        (ISNULL(TK6.単価, 0) * ISNULL(t.必要数6, 0)) +
+                                        (ISNULL(TK7.単価, 0) * ISNULL(t.必要数7, 0)) +
+                                        (ISNULL(TK8.単価, 0) * ISNULL(t.必要数8, 0)) +
+                                        (ISNULL(TK9.単価, 0) * ISNULL(t.必要数9, 0)) +
+                                        (ISNULL(TK10.単価, 0) * ISNULL(t.必要数10, 0))
+                                    ) * t.内装入り数
+                                ELSE 0
+                            END
+                        FROM T_CCC_Lot t
+
+                        LEFT JOIN M_Naisou_Shizai NS
+                        ON t.内装資材記号 = NS.内装資材コード
+
+                        LEFT JOIN M_Housou_Kbn HK_kosou
+                        ON t.代表DIST = HK_kosou.DIST
+                        AND HK_kosou.個装内装区分 = '個装'
+
+                        LEFT JOIN M_Housou_Kbn HK_naisou
+                        ON t.代表DIST = HK_naisou.DIST
+                        AND HK_naisou.個装内装区分 = '内装'
+
+                        LEFT JOIN M_Tanka TK1
+                        ON t.内装資材記号 = TK1.資材コード
+
+                        LEFT JOIN M_Tanka TK2  ON t.副資材2  = TK2.資材コード
+                        LEFT JOIN M_Tanka TK3  ON t.副資材3  = TK3.資材コード
+                        LEFT JOIN M_Tanka TK4  ON t.副資材4  = TK4.資材コード
+                        LEFT JOIN M_Tanka TK5  ON t.副資材5  = TK5.資材コード
+                        LEFT JOIN M_Tanka TK6  ON t.副資材6  = TK6.資材コード
+                        LEFT JOIN M_Tanka TK7  ON t.副資材7  = TK7.資材コード
+                        LEFT JOIN M_Tanka TK8  ON t.副資材8  = TK8.資材コード
+                        LEFT JOIN M_Tanka TK9  ON t.副資材9  = TK9.資材コード
+                        LEFT JOIN M_Tanka TK10 ON t.副資材10 = TK10.資材コード
+
+                        WHERE t.見積No = " & _target_mitsumori_no & "
+                          AND (
+                                (HK_kosou.DIST IS NOT NULL  -- 個装あり
+                                 AND HK_naisou.DIST IS NOT NULL  -- 内装あり
+                                 AND ISNULL(t.包装ライン_外装,'') NOT LIKE '%M%')
+                                OR HK_naisou.DIST IS NOT NULL  -- 内装のみもしくは両方
+                              );"
 
 
 
 
 
 
-
-
+        '外装資材費
+        sql = sql & " UPDATE t
+                        SET t.外装資材費 = 
+                            ISNULL(
+                                (CASE WHEN g11.資材コード IS NOT NULL THEN t.必要数11 * g11.単価 ELSE 0 END) +
+                                (CASE WHEN g12.資材コード IS NOT NULL THEN t.必要数12 * g12.単価 ELSE 0 END) +
+                                (CASE WHEN g13.資材コード IS NOT NULL THEN t.必要数13 * g13.単価 ELSE 0 END) +
+                                (CASE WHEN g14.資材コード IS NOT NULL THEN t.必要数14 * g14.単価 ELSE 0 END) +
+                                (CASE WHEN g15.資材コード IS NOT NULL THEN t.必要数15 * g15.単価 ELSE 0 END) +
+                                (CASE WHEN g16.資材コード IS NOT NULL THEN t.必要数16 * g16.単価 ELSE 0 END) +
+                                (CASE WHEN g17.資材コード IS NOT NULL THEN t.必要数17 * g17.単価 ELSE 0 END) +
+                                (CASE WHEN g18.資材コード IS NOT NULL THEN t.必要数18 * g18.単価 ELSE 0 END) +
+                                (CASE WHEN g19.資材コード IS NOT NULL THEN t.必要数19 * g19.単価 ELSE 0 END) +
+                                (CASE WHEN g20.資材コード IS NOT NULL THEN t.必要数20 * g20.単価 ELSE 0 END)
+                            , 0)
+                        FROM T_CCC_Lot t
+                        LEFT JOIN M_Tanka g11 ON t.副資材11 = g11.資材コード
+                        LEFT JOIN M_Tanka g12 ON t.副資材12 = g12.資材コード
+                        LEFT JOIN M_Tanka g13 ON t.副資材13 = g13.資材コード
+                        LEFT JOIN M_Tanka g14 ON t.副資材14 = g14.資材コード
+                        LEFT JOIN M_Tanka g15 ON t.副資材15 = g15.資材コード
+                        LEFT JOIN M_Tanka g16 ON t.副資材16 = g16.資材コード
+                        LEFT JOIN M_Tanka g17 ON t.副資材17 = g17.資材コード
+                        LEFT JOIN M_Tanka g18 ON t.副資材18 = g18.資材コード
+                        LEFT JOIN M_Tanka g19 ON t.副資材19 = g19.資材コード
+                        LEFT JOIN M_Tanka g20 ON t.副資材20 = g20.資材コード
+                        WHERE t.見積No = " & _target_mitsumori_no & ";"
 
         '個装作業
         sql = sql & " UPDATE T_CCC_Lot
@@ -2025,6 +2563,118 @@ Public Class F_Make_1Lot
         sql = sql & " UPDATE T_CCC_Lot
                         SET 資材計 = ISNULL(個_内装資材, 0)  + ISNULL(外装資材, 0)
                         WHERE 見積No = " & _target_mitsumori_no & ";"
+
+        Return sql
+
+    End Function
+
+    Function MakeSQL6(_target_mitsumori_no As String) As String
+
+        ' SQL文
+        Dim sql As String = ""
+
+        '年度
+        sql = " UPDATE K
+                    SET K.年度 = C.年度2
+                    FROM T_KOW46 K
+                    INNER JOIN T_CCC_Lot C
+                        ON K.MUDULE        = C.ｺﾝﾄﾛｰﾙNO   
+                        AND K.本C_No       = C.ケースNO1     
+                        AND K.内装手順     = C.モジュール手順SEQ     
+	                    AND C.見積No = " & _target_mitsumori_no & "
+                    WHERE K.見積No = " & _target_mitsumori_no & ";"
+
+        'モデル
+        sql = " UPDATE K
+                    SET K.年度 = C.モデル2
+                    FROM T_KOW46 K
+                    INNER JOIN T_CCC_Lot C
+                        ON K.MUDULE        = C.ｺﾝﾄﾛｰﾙNO   
+                        AND K.本C_No       = C.ケースNO1     
+                        AND K.内装手順     = C.モジュール手順SEQ     
+	                    AND C.見積No = " & _target_mitsumori_no & "
+                    WHERE K.見積No = " & _target_mitsumori_no & ";"
+
+        'タイプ
+        sql = " UPDATE K
+                    SET K.年度 = C.タイプ1
+                    FROM T_KOW46 K
+                    INNER JOIN T_CCC_Lot C
+                        ON K.MUDULE        = C.ｺﾝﾄﾛｰﾙNO   
+                        AND K.本C_No       = C.ケースNO1     
+                        AND K.内装手順     = C.モジュール手順SEQ     
+	                    AND C.見積No = " & _target_mitsumori_no & "
+                    WHERE K.見積No = " & _target_mitsumori_no & ";"
+
+        'オプション
+        sql = " UPDATE K
+                    SET K.年度 = C.オプション1
+                    FROM T_KOW46 K
+                    INNER JOIN T_CCC_Lot C
+                        ON K.MUDULE        = C.ｺﾝﾄﾛｰﾙNO   
+                        AND K.本C_No       = C.ケースNO1     
+                        AND K.内装手順     = C.モジュール手順SEQ     
+	                    AND C.見積No = " & _target_mitsumori_no & "
+                    WHERE K.見積No = " & _target_mitsumori_no & ";"
+
+        '資材単価表示
+        sql = " UPDATE K
+                    SET K.資材単価表示 = T.単価
+                    FROM T_KOW46 K
+                    INNER JOIN M_Tanka T
+                        ON K.資材規格        = T.資材コード   
+	                    AND K.見積No = " & _target_mitsumori_no & "
+                    WHERE K.見積No = " & _target_mitsumori_no & ";"
+
+        '資材費
+        sql = " UPDATE K
+                    SET K.資材費 =
+                        ISNULL(NULLIF(TRY_CAST(K.資材単価表示 AS DECIMAL(16,2)), 0), 0)
+                      * ISNULL(NULLIF(TRY_CAST(K.使用数 AS DECIMAL(16,0)), 0), 0)
+                    FROM T_KOW46 K
+                    WHERE K.見積No = " & _target_mitsumori_no & ";"
+
+
+
+
+
+
+        'ケース当たりの外装資材費
+        sql = " UPDATE K
+                    SET K.ケース当たりの外装資材費 = K.資材費
+                    FROM T_KOW46 K
+                    WHERE NOT EXISTS (
+                        SELECT 1
+                        FROM T_CCC_Lot C
+                        WHERE K.年度        = C.年度2
+                          AND K.モデル      = C.モデル2
+                          AND K.タイプ      = C.タイプ1
+                          AND K.MUDULE      = C.ｺﾝﾄﾛｰﾙNO
+                          AND K.内装手順    = C.モジュール手順SEQ   
+	                      AND C.見積No = " & _target_mitsumori_no & ")
+                    AND K.見積No = " & _target_mitsumori_no & ";"
+
+        '内装入数_カートン数
+        sql = " UPDATE K
+                    SET K.内装入数_カートン数 = C.内装入り数
+                    FROM T_KOW46 K
+                    INNER JOIN T_CCC_Lot C
+                        ON K.年度        = C.年度2   
+                        AND K.モデル       = C.モデル2     
+                        AND K.タイプ     = C.タイプ1     
+                        AND K.MUDULE     = C.ｺﾝﾄﾛｰﾙNO   
+                        AND K.内装手順     = C.モジュール手順SEQ     
+	                    AND C.見積No = " & _target_mitsumori_no & "
+                    WHERE K.見積No = " & _target_mitsumori_no & ";"
+
+        'ケース内必要資材数
+        sql = " UPDATE K
+                    SET K.ケース内必要資材数 =
+                        ISNULL(NULLIF(TRY_CAST(K.内装入数_カートン数 AS DECIMAL(16,2)), 0), 0)
+                      * ISNULL(NULLIF(TRY_CAST(K.使用数 AS DECIMAL(16,0)), 0), 0)
+                    FROM T_KOW46 K
+                    WHERE K.見積No = " & _target_mitsumori_no & ";"
+
 
         Return sql
 
@@ -2149,5 +2799,23 @@ dt As DataTable, csvPath As String, writeHeader As Boolean)
 
 #End Region
 
+
+    ' ---- ヘルパー関数（Null 安全に値を取り出す） ----
+    Private Function SafeGetString(row As DataRow, colName As String) As String
+        If row.Table.Columns.Contains(colName) = False Then Return String.Empty
+        If IsDBNull(row(colName)) Then Return String.Empty
+        Return row(colName).ToString().Trim()
+    End Function
+
+    Private Function SafeGetDecimal(row As DataRow, colName As String, Optional defaultValue As Decimal = 0D) As Decimal
+        If row.Table.Columns.Contains(colName) = False Then Return defaultValue
+        If IsDBNull(row(colName)) Then Return defaultValue
+        Dim v As Decimal = 0D
+        If Decimal.TryParse(row(colName).ToString(), v) Then
+            Return v
+        Else
+            Return defaultValue
+        End If
+    End Function
 
 End Class
