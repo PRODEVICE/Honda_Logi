@@ -536,7 +536,7 @@ Public Class F_Receive
                     Dim dr As DataRow = dtBatch.NewRow()
                     dr("包装ロットNo") = NormalizeString(Mid(line, 71, 12))
                     dr("MUDULE") = NormalizeString(Mid(line, 83, 4))
-                    dr("本C_No") = ""
+                    dr("本C_No") = NormalizeString(Mid(line, 95, 4))
                     dr("内装手順") = Mid(line, 109, 3).Trim
                     dr("手順識別") = Mid(line, 117, 4).Trim
                     dr("資材規格") = NormalizeString(Mid(line, 121, 5))
