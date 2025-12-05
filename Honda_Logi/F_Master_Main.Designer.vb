@@ -23,6 +23,7 @@ Partial Class F_Master_Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Btn_Tantou = New System.Windows.Forms.Button()
         Me.Btn_M_Keisu = New System.Windows.Forms.Button()
         Me.Btn_M_Tanka = New System.Windows.Forms.Button()
         Me.Btn_M_Order = New System.Windows.Forms.Button()
@@ -31,7 +32,6 @@ Partial Class F_Master_Main
         Me.Btn_M_Kousu = New System.Windows.Forms.Button()
         Me.Btn_M_Tinritsu = New System.Windows.Forms.Button()
         Me.Btn_M_Shizai = New System.Windows.Forms.Button()
-        Me.Btn_Tantou = New System.Windows.Forms.Button()
         Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -52,6 +52,16 @@ Partial Class F_Master_Main
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(600, 313)
         Me.Panel5.TabIndex = 58
+        '
+        'Btn_Tantou
+        '
+        Me.Btn_Tantou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Tantou.Location = New System.Drawing.Point(304, 189)
+        Me.Btn_Tantou.Name = "Btn_Tantou"
+        Me.Btn_Tantou.Size = New System.Drawing.Size(266, 53)
+        Me.Btn_Tantou.TabIndex = 16
+        Me.Btn_Tantou.Text = "担当者マスタ"
+        Me.Btn_Tantou.UseVisualStyleBackColor = True
         '
         'Btn_M_Keisu
         '
@@ -76,12 +86,13 @@ Partial Class F_Master_Main
         'Btn_M_Order
         '
         Me.Btn_M_Order.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_M_Order.Location = New System.Drawing.Point(304, 189)
+        Me.Btn_M_Order.Location = New System.Drawing.Point(176, 248)
         Me.Btn_M_Order.Name = "Btn_M_Order"
         Me.Btn_M_Order.Size = New System.Drawing.Size(266, 53)
         Me.Btn_M_Order.TabIndex = 11
         Me.Btn_M_Order.Text = "部品単位オーダーリスト"
         Me.Btn_M_Order.UseVisualStyleBackColor = True
+        Me.Btn_M_Order.Visible = False
         '
         'Btn_M_Hayami
         '
@@ -132,16 +143,6 @@ Partial Class F_Master_Main
         Me.Btn_M_Shizai.TabIndex = 2
         Me.Btn_M_Shizai.Text = "資材マスタ"
         Me.Btn_M_Shizai.UseVisualStyleBackColor = True
-        '
-        'Btn_Tantou
-        '
-        Me.Btn_Tantou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Tantou.Location = New System.Drawing.Point(304, 248)
-        Me.Btn_Tantou.Name = "Btn_Tantou"
-        Me.Btn_Tantou.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Tantou.TabIndex = 16
-        Me.Btn_Tantou.Text = "担当者マスタ"
-        Me.Btn_Tantou.UseVisualStyleBackColor = True
         '
         'F_Master_Main
         '

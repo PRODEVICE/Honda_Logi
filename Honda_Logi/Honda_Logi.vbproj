@@ -327,6 +327,18 @@
     <None Include="DS_T.xss">
       <DependentUpon>DS_T.xsd</DependentUpon>
     </None>
+    <None Include="Excel_Format\機種摘要モジュール一覧.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\見積書%28機種%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\見積書%28部単内装%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\見積書%28部単外装%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

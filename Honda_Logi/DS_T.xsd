@@ -2594,6 +2594,17 @@ FROM                         T_Inport_Rireki</CommandText>
               <Mapping SourceColumn="変換フラグ" DataSetColumn="変換フラグ" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.T_Inport_Rireki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Q_取込履歴_呼び出し" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy4" GeneratorSourceName="Q_取込履歴_呼び出し" GetMethodModifier="Public" GetMethodName="GetDataBy4" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_取込履歴_呼び出し">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT                      id, 見積No, 取込年月, 取込日時, ユーザーid, 変換フラグ
+FROM                         T_Inport_Rireki
+WHERE                       (変換フラグ = N'1')
+ORDER BY               取込日時 DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.T_Inport_Rireki" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Q_取込履歴_年月別呼び出し" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="Q_取込履歴_年月別呼び出し" GetMethodModifier="Public" GetMethodName="GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_取込履歴_年月別呼び出し">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -3095,7 +3106,7 @@ ORDER BY               id</CommandText>
   <xs:element name="DS_T" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_T" msprop:Generator_UserDSName="DS_T">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DT_T_ERR_LOG" msprop:Generator_TableClassName="DT_T_ERR_LOGDataTable" msprop:Generator_TableVarName="tableDT_T_ERR_LOG" msprop:Generator_TablePropName="DT_T_ERR_LOG" msprop:Generator_RowDeletingName="DT_T_ERR_LOGRowDeleting" msprop:Generator_RowChangingName="DT_T_ERR_LOGRowChanging" msprop:Generator_RowEvHandlerName="DT_T_ERR_LOGRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_ERR_LOGRowDeleted" msprop:Generator_UserTableName="DT_T_ERR_LOG" msprop:Generator_RowChangedName="DT_T_ERR_LOGRowChanged" msprop:Generator_RowEvArgName="DT_T_ERR_LOGRowChangeEvent" msprop:Generator_RowClassName="DT_T_ERR_LOGRow">
+        <xs:element name="DT_T_ERR_LOG" msprop:Generator_TableClassName="DT_T_ERR_LOGDataTable" msprop:Generator_TableVarName="tableDT_T_ERR_LOG" msprop:Generator_RowChangedName="DT_T_ERR_LOGRowChanged" msprop:Generator_TablePropName="DT_T_ERR_LOG" msprop:Generator_RowDeletingName="DT_T_ERR_LOGRowDeleting" msprop:Generator_RowChangingName="DT_T_ERR_LOGRowChanging" msprop:Generator_RowEvHandlerName="DT_T_ERR_LOGRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_ERR_LOGRowDeleted" msprop:Generator_RowClassName="DT_T_ERR_LOGRow" msprop:Generator_UserTableName="DT_T_ERR_LOG" msprop:Generator_RowEvArgName="DT_T_ERR_LOGRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -3117,7 +3128,7 @@ ORDER BY               id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Gyomu_Plan" msprop:Generator_TableClassName="DT_T_Gyomu_PlanDataTable" msprop:Generator_TableVarName="tableDT_T_Gyomu_Plan" msprop:Generator_TablePropName="DT_T_Gyomu_Plan" msprop:Generator_RowDeletingName="DT_T_Gyomu_PlanRowDeleting" msprop:Generator_RowChangingName="DT_T_Gyomu_PlanRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Gyomu_PlanRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Gyomu_PlanRowDeleted" msprop:Generator_UserTableName="DT_T_Gyomu_Plan" msprop:Generator_RowChangedName="DT_T_Gyomu_PlanRowChanged" msprop:Generator_RowEvArgName="DT_T_Gyomu_PlanRowChangeEvent" msprop:Generator_RowClassName="DT_T_Gyomu_PlanRow">
+        <xs:element name="DT_T_Gyomu_Plan" msprop:Generator_TableClassName="DT_T_Gyomu_PlanDataTable" msprop:Generator_TableVarName="tableDT_T_Gyomu_Plan" msprop:Generator_RowChangedName="DT_T_Gyomu_PlanRowChanged" msprop:Generator_TablePropName="DT_T_Gyomu_Plan" msprop:Generator_RowDeletingName="DT_T_Gyomu_PlanRowDeleting" msprop:Generator_RowChangingName="DT_T_Gyomu_PlanRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Gyomu_PlanRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Gyomu_PlanRowDeleted" msprop:Generator_RowClassName="DT_T_Gyomu_PlanRow" msprop:Generator_UserTableName="DT_T_Gyomu_Plan" msprop:Generator_RowEvArgName="DT_T_Gyomu_PlanRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -3678,7 +3689,7 @@ ORDER BY               id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_KOW46" msprop:Generator_TableClassName="DT_T_KOW46DataTable" msprop:Generator_TableVarName="tableDT_T_KOW46" msprop:Generator_TablePropName="DT_T_KOW46" msprop:Generator_RowDeletingName="DT_T_KOW46RowDeleting" msprop:Generator_RowChangingName="DT_T_KOW46RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KOW46RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KOW46RowDeleted" msprop:Generator_UserTableName="DT_T_KOW46" msprop:Generator_RowChangedName="DT_T_KOW46RowChanged" msprop:Generator_RowEvArgName="DT_T_KOW46RowChangeEvent" msprop:Generator_RowClassName="DT_T_KOW46Row">
+        <xs:element name="DT_T_KOW46" msprop:Generator_TableClassName="DT_T_KOW46DataTable" msprop:Generator_TableVarName="tableDT_T_KOW46" msprop:Generator_RowChangedName="DT_T_KOW46RowChanged" msprop:Generator_TablePropName="DT_T_KOW46" msprop:Generator_RowDeletingName="DT_T_KOW46RowDeleting" msprop:Generator_RowChangingName="DT_T_KOW46RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KOW46RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KOW46RowDeleted" msprop:Generator_RowClassName="DT_T_KOW46Row" msprop:Generator_UserTableName="DT_T_KOW46" msprop:Generator_RowEvArgName="DT_T_KOW46RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -3833,7 +3844,7 @@ ORDER BY               id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_KIT60" msprop:Generator_TableClassName="DT_T_KIT60DataTable" msprop:Generator_TableVarName="tableDT_T_KIT60" msprop:Generator_TablePropName="DT_T_KIT60" msprop:Generator_RowDeletingName="DT_T_KIT60RowDeleting" msprop:Generator_RowChangingName="DT_T_KIT60RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KIT60RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KIT60RowDeleted" msprop:Generator_UserTableName="DT_T_KIT60" msprop:Generator_RowChangedName="DT_T_KIT60RowChanged" msprop:Generator_RowEvArgName="DT_T_KIT60RowChangeEvent" msprop:Generator_RowClassName="DT_T_KIT60Row">
+        <xs:element name="DT_T_KIT60" msprop:Generator_TableClassName="DT_T_KIT60DataTable" msprop:Generator_TableVarName="tableDT_T_KIT60" msprop:Generator_RowChangedName="DT_T_KIT60RowChanged" msprop:Generator_TablePropName="DT_T_KIT60" msprop:Generator_RowDeletingName="DT_T_KIT60RowDeleting" msprop:Generator_RowChangingName="DT_T_KIT60RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KIT60RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KIT60RowDeleted" msprop:Generator_RowClassName="DT_T_KIT60Row" msprop:Generator_UserTableName="DT_T_KIT60" msprop:Generator_RowEvArgName="DT_T_KIT60RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -4226,7 +4237,7 @@ ORDER BY               id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC" msprop:Generator_TableClassName="DT_T_CCCDataTable" msprop:Generator_TableVarName="tableDT_T_CCC" msprop:Generator_RowChangedName="DT_T_CCCRowChanged" msprop:Generator_TablePropName="DT_T_CCC" msprop:Generator_RowDeletingName="DT_T_CCCRowDeleting" msprop:Generator_RowChangingName="DT_T_CCCRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCCRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCCRowDeleted" msprop:Generator_RowClassName="DT_T_CCCRow" msprop:Generator_UserTableName="DT_T_CCC" msprop:Generator_RowEvArgName="DT_T_CCCRowChangeEvent">
+        <xs:element name="DT_T_CCC" msprop:Generator_TableClassName="DT_T_CCCDataTable" msprop:Generator_TableVarName="tableDT_T_CCC" msprop:Generator_TablePropName="DT_T_CCC" msprop:Generator_RowDeletingName="DT_T_CCCRowDeleting" msprop:Generator_RowChangingName="DT_T_CCCRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCCRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCCRowDeleted" msprop:Generator_UserTableName="DT_T_CCC" msprop:Generator_RowChangedName="DT_T_CCCRowChanged" msprop:Generator_RowEvArgName="DT_T_CCCRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCCRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -6215,7 +6226,7 @@ ORDER BY               id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Lot" msprop:Generator_TableClassName="DT_T_CCC_LotDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot" msprop:Generator_RowChangedName="DT_T_CCC_LotRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Lot" msprop:Generator_RowDeletingName="DT_T_CCC_LotRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_LotRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_LotRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_LotRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_LotRow" msprop:Generator_UserTableName="DT_T_CCC_Lot" msprop:Generator_RowEvArgName="DT_T_CCC_LotRowChangeEvent">
+        <xs:element name="DT_T_CCC_Lot" msprop:Generator_TableClassName="DT_T_CCC_LotDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot" msprop:Generator_TablePropName="DT_T_CCC_Lot" msprop:Generator_RowDeletingName="DT_T_CCC_LotRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_LotRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_LotRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_LotRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Lot" msprop:Generator_RowChangedName="DT_T_CCC_LotRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_LotRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_LotRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -8233,7 +8244,7 @@ ORDER BY               id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Work" msprop:Generator_TableClassName="DT_T_CCC_WorkDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Work" msprop:Generator_RowChangedName="DT_T_CCC_WorkRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Work" msprop:Generator_RowDeletingName="DT_T_CCC_WorkRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_WorkRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_WorkRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_WorkRow" msprop:Generator_UserTableName="DT_T_CCC_Work" msprop:Generator_RowEvArgName="DT_T_CCC_WorkRowChangeEvent">
+        <xs:element name="DT_T_CCC_Work" msprop:Generator_TableClassName="DT_T_CCC_WorkDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Work" msprop:Generator_TablePropName="DT_T_CCC_Work" msprop:Generator_RowDeletingName="DT_T_CCC_WorkRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_WorkRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_WorkRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Work" msprop:Generator_RowChangedName="DT_T_CCC_WorkRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_WorkRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_WorkRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -10222,7 +10233,7 @@ ORDER BY               id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Inport_Rireki" msprop:Generator_TableClassName="DT_T_Inport_RirekiDataTable" msprop:Generator_TableVarName="tableDT_T_Inport_Rireki" msprop:Generator_TablePropName="DT_T_Inport_Rireki" msprop:Generator_RowDeletingName="DT_T_Inport_RirekiRowDeleting" msprop:Generator_RowChangingName="DT_T_Inport_RirekiRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Inport_RirekiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Inport_RirekiRowDeleted" msprop:Generator_UserTableName="DT_T_Inport_Rireki" msprop:Generator_RowChangedName="DT_T_Inport_RirekiRowChanged" msprop:Generator_RowEvArgName="DT_T_Inport_RirekiRowChangeEvent" msprop:Generator_RowClassName="DT_T_Inport_RirekiRow">
+        <xs:element name="DT_T_Inport_Rireki" msprop:Generator_TableClassName="DT_T_Inport_RirekiDataTable" msprop:Generator_TableVarName="tableDT_T_Inport_Rireki" msprop:Generator_RowChangedName="DT_T_Inport_RirekiRowChanged" msprop:Generator_TablePropName="DT_T_Inport_Rireki" msprop:Generator_RowDeletingName="DT_T_Inport_RirekiRowDeleting" msprop:Generator_RowChangingName="DT_T_Inport_RirekiRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Inport_RirekiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Inport_RirekiRowDeleted" msprop:Generator_RowClassName="DT_T_Inport_RirekiRow" msprop:Generator_UserTableName="DT_T_Inport_Rireki" msprop:Generator_RowEvArgName="DT_T_Inport_RirekiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -10258,7 +10269,7 @@ ORDER BY               id</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Buhin_Order_List" msprop:Generator_TableClassName="DT_T_Buhin_Order_ListDataTable" msprop:Generator_TableVarName="tableDT_T_Buhin_Order_List" msprop:Generator_RowChangedName="DT_T_Buhin_Order_ListRowChanged" msprop:Generator_TablePropName="DT_T_Buhin_Order_List" msprop:Generator_RowDeletingName="DT_T_Buhin_Order_ListRowDeleting" msprop:Generator_RowChangingName="DT_T_Buhin_Order_ListRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Buhin_Order_ListRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Buhin_Order_ListRowDeleted" msprop:Generator_RowClassName="DT_T_Buhin_Order_ListRow" msprop:Generator_UserTableName="DT_T_Buhin_Order_List" msprop:Generator_RowEvArgName="DT_T_Buhin_Order_ListRowChangeEvent">
+        <xs:element name="DT_T_Buhin_Order_List" msprop:Generator_TableClassName="DT_T_Buhin_Order_ListDataTable" msprop:Generator_TableVarName="tableDT_T_Buhin_Order_List" msprop:Generator_TablePropName="DT_T_Buhin_Order_List" msprop:Generator_RowDeletingName="DT_T_Buhin_Order_ListRowDeleting" msprop:Generator_RowChangingName="DT_T_Buhin_Order_ListRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Buhin_Order_ListRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Buhin_Order_ListRowDeleted" msprop:Generator_UserTableName="DT_T_Buhin_Order_List" msprop:Generator_RowChangedName="DT_T_Buhin_Order_ListRowChanged" msprop:Generator_RowEvArgName="DT_T_Buhin_Order_ListRowChangeEvent" msprop:Generator_RowClassName="DT_T_Buhin_Order_ListRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

@@ -36,6 +36,8 @@ Partial Class F_Print_Main
         Me.Btn_Output3 = New System.Windows.Forms.Button()
         Me.Btn_Output1 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Cmb_Target = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -55,7 +57,7 @@ Partial Class F_Print_Main
         Me.Panel5.Controls.Add(Me.Btn_Output2)
         Me.Panel5.Controls.Add(Me.Btn_Output3)
         Me.Panel5.Controls.Add(Me.Btn_Output1)
-        Me.Panel5.Location = New System.Drawing.Point(68, 68)
+        Me.Panel5.Location = New System.Drawing.Point(68, 111)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(600, 391)
         Me.Panel5.TabIndex = 55
@@ -187,17 +189,41 @@ Partial Class F_Print_Main
         Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label6.Location = New System.Drawing.Point(68, 48)
+        Me.Label6.Location = New System.Drawing.Point(68, 91)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(78, 18)
         Me.Label6.TabIndex = 54
         Me.Label6.Text = "帳票出力"
+        '
+        'Cmb_Target
+        '
+        Me.Cmb_Target.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Cmb_Target.FormattingEnabled = True
+        Me.Cmb_Target.Location = New System.Drawing.Point(272, 37)
+        Me.Cmb_Target.Name = "Cmb_Target"
+        Me.Cmb_Target.Size = New System.Drawing.Size(203, 24)
+        Me.Cmb_Target.TabIndex = 56
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label3.Location = New System.Drawing.Point(187, 39)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(79, 18)
+        Me.Label3.TabIndex = 57
+        Me.Label3.Text = "対象データ"
         '
         'F_Print_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(734, 523)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Cmb_Target)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Label6)
         Me.Name = "F_Print_Main"
@@ -222,4 +248,6 @@ Partial Class F_Print_Main
     Friend WithEvents Btn_Output3 As Button
     Friend WithEvents Btn_Output1 As Button
     Friend WithEvents Label6 As Label
+    Friend WithEvents Cmb_Target As ComboBox
+    Friend WithEvents Label3 As Label
 End Class

@@ -387,6 +387,10 @@ C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Tank
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Housou.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Buhin_Order_List.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Second.resources
-C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.AssemblyReference.cache
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Login.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_User.resources
+C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\Excel_Format\機種摘要モジュール一覧.xlsx
+C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\Excel_Format\見積書(機種).xlsx
+C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\Excel_Format\見積書(部単内装).xlsx
+C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.AssemblyReference.cache
+C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\Excel_Format\見積書(部単外装).xlsx
