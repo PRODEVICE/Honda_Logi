@@ -1,4 +1,5 @@
 ﻿Imports System.Configuration
+Imports System.IO
 
 Public Class F_Shizai
 
@@ -65,6 +66,13 @@ Public Class F_Shizai
                     Exit Sub
                 End If
 
+            End If
+
+            Dim qty As Integer
+
+            If Not Integer.TryParse(suryou, qty) Then
+                MessageBox.Show("数量は整数で入力してください。")
+                Exit Sub
             End If
 
             Dim chk_count As String = ""
@@ -349,6 +357,183 @@ Public Class F_Shizai
         clear()
     End Sub
 
+    'CSV取込ボタンクリック時
+    Private Sub Btn_Import_Click(sender As Object, e As EventArgs) Handles Btn_Import.Click
+
+        Try
+
+            Dim dt_From As DataTable
+            Dim ta
+            Dim target_file As String = ""
+
+            ' DataRow を作成
+            Dim dr As DataRow
+
+            '個装マスタ
+            If Cmb_Shurui.SelectedValue = "1" Then
+
+                dt_From = New DS_M.DT_M_Kosou_ShizaiDataTable
+                ta = New DS_MTableAdapters.TA_M_Kosou_Shizai
+                dr = dt_From.NewRow
+
+            ElseIf Cmb_Shurui.SelectedValue = "2" Then '内装マスタ
+
+                dt_From = New DS_M.DT_M_Naisou_ShizaiDataTable
+                ta = New DS_MTableAdapters.TA_M_Naisou_Shizai
+                dr = dt_From.NewRow
+
+            ElseIf Cmb_Shurui.SelectedValue = "3" Then 'ボルトマスタ
+
+                dt_From = New DS_M.DT_M_BoltDataTable
+                ta = New DS_MTableAdapters.TA_M_Bolt
+                dr = dt_From.NewRow
+
+            ElseIf Cmb_Shurui.SelectedValue = "4" Then 'ダンボール
+
+                dt_From = New DS_M.DT_M_Gaisou_DanboruDataTable
+                ta = New DS_MTableAdapters.TA_M_Gaisou_Danboru
+                dr = dt_From.NewRow
+
+            ElseIf Cmb_Shurui.SelectedValue = "5" Then '箱
+
+                dt_From = New DS_M.DT_M_Gaisou_BoxDataTable
+                ta = New DS_MTableAdapters.TA_M_Gaisou_Box
+                dr = dt_From.NewRow
+
+            End If
+
+            '取込ファイル選択ダイアログ
+            Using ofd As New OpenFileDialog()
+
+                'ダイアログのタイトル
+                ofd.Title = "ファイルを指定してください"
+
+                '初期フォルダ（テキストボックスにパスがある場合はそこを開く）
+                ofd.InitialDirectory = "C:\"
+
+                '選択できるファイルの種類（必要に応じて調整）
+                ofd.Filter = "すべてのファイル (*.*)|*.*"
+
+                '複数選択を許可する場合
+                ofd.Multiselect = False
+
+                'OKが押されたらファイルパスをテキストボックスに表示
+                If ofd.ShowDialog(Me) = DialogResult.OK Then
+                    target_file = ofd.FileName
+                End If
+
+            End Using
+
+            If target_file = "" Then
+                Exit Sub
+            End If
+
+
+            'CSVの取込
+            dt_From = Import_CSV(target_file, dt_From)
+
+            'トランザクションの始まり
+            Using scope As New System.Transactions.TransactionScope()
+
+                '全件削除
+                ta.Q_全件削除()
+
+                '新規インサート
+                ta.Update(dt_From)
+
+                'コミット処理
+                scope.Complete()
+
+                'トランザクション終了
+                scope.Dispose()
+
+            End Using
+
+            MessageBox.Show("取込完了しました。")
+
+            'GV更新
+            Chenge_Master(Cmb_Shurui.SelectedValue)
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Housou_Btn_Import_Click")
+            MessageBox.Show(ex.Message)
+        End Try
+
+
+
+
+
+
+    End Sub
+
+    'CSVファイル取り込み処理
+    Function Import_CSV(_file_path As String, dt As DataTable) As DataTable
+
+
+        Try
+
+            Using sr As New StreamReader(_file_path, System.Text.Encoding.Default) ' Shift-JIS等も自動判別されやすい
+                Dim isFirstLine As Boolean = True
+
+                While Not sr.EndOfStream
+                    Dim line As String = sr.ReadLine()
+
+                    ' CSV の1行をパース（ダブルクォート対応）
+                    Dim fields As String() = ParseCsvLine(line)
+
+                    ' 最初の行はヘッダー
+                    If isFirstLine Then
+
+                        isFirstLine = False
+
+                    Else
+                        Dim dr As DataRow = dt.NewRow()
+
+
+                        'CSV の各フィールドを id 以外の列に順にセット
+                        For i As Integer = 0 To fields.Length - 1
+                            dr(i + 1) = fields(i) ' ← +1 で id をスキップ
+                        Next
+
+                        dt.Rows.Add(dr)
+
+                    End If
+
+                End While
+
+            End Using
+
+            Return dt
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Function
+
+    Private Function ParseCsvLine(line As String) As String()
+        Dim result As New List(Of String)()
+        Dim current As String = ""
+        Dim inQuotes As Boolean = False
+
+        For i As Integer = 0 To line.Length - 1
+            Dim c As Char = line(i)
+
+            If c = """"c Then
+                ' ダブルクォートの開始/終了
+                inQuotes = Not inQuotes
+            ElseIf c = ","c AndAlso Not inQuotes Then
+                ' カンマ区切り（クォート外のみ）
+                result.Add(current)
+                current = ""
+            Else
+                current &= c
+            End If
+        Next
+
+        result.Add(current)
+        Return result.ToArray()
+    End Function
 
     '******************************************************************************
     'GVイベント

@@ -42,7 +42,6 @@ Partial Class F_Master_Main
         Me.Panel5.Controls.Add(Me.Btn_Tantou)
         Me.Panel5.Controls.Add(Me.Btn_M_Keisu)
         Me.Panel5.Controls.Add(Me.Btn_M_Tanka)
-        Me.Panel5.Controls.Add(Me.Btn_M_Order)
         Me.Panel5.Controls.Add(Me.Btn_M_Hayami)
         Me.Panel5.Controls.Add(Me.Btn_M_Mitsumori)
         Me.Panel5.Controls.Add(Me.Btn_M_Kousu)
@@ -50,7 +49,7 @@ Partial Class F_Master_Main
         Me.Panel5.Controls.Add(Me.Btn_M_Shizai)
         Me.Panel5.Location = New System.Drawing.Point(65, 44)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(600, 313)
+        Me.Panel5.Size = New System.Drawing.Size(600, 263)
         Me.Panel5.TabIndex = 58
         '
         'Btn_Tantou
@@ -86,7 +85,7 @@ Partial Class F_Master_Main
         'Btn_M_Order
         '
         Me.Btn_M_Order.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_M_Order.Location = New System.Drawing.Point(176, 248)
+        Me.Btn_M_Order.Location = New System.Drawing.Point(349, 313)
         Me.Btn_M_Order.Name = "Btn_M_Order"
         Me.Btn_M_Order.Size = New System.Drawing.Size(266, 53)
         Me.Btn_M_Order.TabIndex = 11
@@ -148,8 +147,9 @@ Partial Class F_Master_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(742, 396)
+        Me.ClientSize = New System.Drawing.Size(742, 358)
         Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.Btn_M_Order)
         Me.Name = "F_Master_Main"
         Me.Text = "F_Master_Main"
         Me.Panel5.ResumeLayout(False)

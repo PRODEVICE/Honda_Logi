@@ -23,8 +23,8 @@ Partial Class F_Tanka
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Txt_Maker = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Txt_Tanka = New System.Windows.Forms.TextBox()
@@ -50,6 +50,7 @@ Partial Class F_Tanka
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TA_M_Tanka = New Honda_Logi.DS_MTableAdapters.TA_M_Tanka()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Search = New System.Windows.Forms.Button()
         Me.Txt_S_Maker = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Txt_S_Tanka = New System.Windows.Forms.TextBox()
@@ -58,7 +59,7 @@ Partial Class F_Tanka
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Txt_S_Shizai_CD = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Btn_Search = New System.Windows.Forms.Button()
+        Me.Btn_Import = New System.Windows.Forms.Button()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMTankaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -172,22 +173,22 @@ Partial Class F_Tanka
         Me.GV_Master.AllowUserToAddRows = False
         Me.GV_Master.AllowUserToDeleteRows = False
         Me.GV_Master.AutoGenerateColumns = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.資材コード, Me.資材名, Me.単価, Me.メーカーコード, Me.削除})
         Me.GV_Master.DataSource = Me.DTMTankaBindingSource
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
         Me.GV_Master.Name = "GV_Master"
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.GV_Master.RowTemplate.Height = 31
         Me.GV_Master.Size = New System.Drawing.Size(935, 383)
         Me.GV_Master.TabIndex = 1
@@ -282,6 +283,7 @@ Partial Class F_Tanka
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Import)
         Me.Panel3.Controls.Add(Me.Btn_Search)
         Me.Panel3.Controls.Add(Me.Txt_S_Maker)
         Me.Panel3.Controls.Add(Me.Label5)
@@ -296,6 +298,16 @@ Partial Class F_Tanka
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(935, 115)
         Me.Panel3.TabIndex = 17
+        '
+        'Btn_Search
+        '
+        Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Search.Location = New System.Drawing.Point(686, 55)
+        Me.Btn_Search.Name = "Btn_Search"
+        Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
+        Me.Btn_Search.TabIndex = 25
+        Me.Btn_Search.Text = "検　索"
+        Me.Btn_Search.UseVisualStyleBackColor = True
         '
         'Txt_S_Maker
         '
@@ -369,15 +381,15 @@ Partial Class F_Tanka
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "資材コード"
         '
-        'Btn_Search
+        'Btn_Import
         '
-        Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Search.Location = New System.Drawing.Point(686, 55)
-        Me.Btn_Search.Name = "Btn_Search"
-        Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Search.TabIndex = 25
-        Me.Btn_Search.Text = "検　索"
-        Me.Btn_Search.UseVisualStyleBackColor = True
+        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Import.Location = New System.Drawing.Point(788, 55)
+        Me.Btn_Import.Name = "Btn_Import"
+        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.Text = "CSV取込"
+        Me.Btn_Import.UseVisualStyleBackColor = True
         '
         'F_Tanka
         '
@@ -434,4 +446,5 @@ Partial Class F_Tanka
     Friend WithEvents Txt_S_Shizai_CD As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents Btn_Search As Button
+    Friend WithEvents Btn_Import As Button
 End Class

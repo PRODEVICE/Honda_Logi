@@ -23,9 +23,10 @@ Partial Class F_Mitsumori
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Btn_Delete = New System.Windows.Forms.Button()
         Me.Txt_OP = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Txt_Type = New System.Windows.Forms.TextBox()
@@ -64,7 +65,7 @@ Partial Class F_Mitsumori
         Me.Btn_Search = New System.Windows.Forms.Button()
         Me.Txt_S_Mitsumori_CD = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Btn_Delete = New System.Windows.Forms.Button()
+        Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,6 +95,16 @@ Partial Class F_Mitsumori
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1013, 115)
         Me.Panel2.TabIndex = 14
+        '
+        'Btn_Delete
+        '
+        Me.Btn_Delete.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Delete.Location = New System.Drawing.Point(891, 63)
+        Me.Btn_Delete.Name = "Btn_Delete"
+        Me.Btn_Delete.Size = New System.Drawing.Size(110, 40)
+        Me.Btn_Delete.TabIndex = 19
+        Me.Btn_Delete.Text = "全件削除"
+        Me.Btn_Delete.UseVisualStyleBackColor = True
         '
         'Txt_OP
         '
@@ -227,22 +238,22 @@ Partial Class F_Mitsumori
         Me.GV_Master.AllowUserToAddRows = False
         Me.GV_Master.AllowUserToDeleteRows = False
         Me.GV_Master.AutoGenerateColumns = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.見積コード, Me.仕向, Me.機種, Me.タイプ, Me.OP, Me.削除})
         Me.GV_Master.DataSource = Me.DTMMitsumoriBindingSource
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
         Me.GV_Master.Name = "GV_Master"
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.GV_Master.RowTemplate.Height = 31
         Me.GV_Master.Size = New System.Drawing.Size(1013, 398)
         Me.GV_Master.TabIndex = 1
@@ -315,6 +326,7 @@ Partial Class F_Mitsumori
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Import)
         Me.Panel3.Controls.Add(Me.Txt_S_OP)
         Me.Panel3.Controls.Add(Me.Label9)
         Me.Panel3.Controls.Add(Me.Txt_S_Kishu)
@@ -432,15 +444,15 @@ Partial Class F_Mitsumori
         Me.Label6.TabIndex = 16
         Me.Label6.Text = "見積コード"
         '
-        'Btn_Delete
+        'Btn_Import
         '
-        Me.Btn_Delete.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Delete.Location = New System.Drawing.Point(891, 63)
-        Me.Btn_Delete.Name = "Btn_Delete"
-        Me.Btn_Delete.Size = New System.Drawing.Size(110, 40)
-        Me.Btn_Delete.TabIndex = 19
-        Me.Btn_Delete.Text = "全件削除"
-        Me.Btn_Delete.UseVisualStyleBackColor = True
+        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Import.Location = New System.Drawing.Point(788, 54)
+        Me.Btn_Import.Name = "Btn_Import"
+        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.Text = "CSV取込"
+        Me.Btn_Import.UseVisualStyleBackColor = True
         '
         'F_Mitsumori
         '
@@ -504,4 +516,5 @@ Partial Class F_Mitsumori
     Friend WithEvents Txt_S_Mitsumori_CD As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Btn_Delete As Button
+    Friend WithEvents Btn_Import As Button
 End Class

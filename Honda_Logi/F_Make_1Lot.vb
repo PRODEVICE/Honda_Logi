@@ -14,6 +14,8 @@ Public Class F_Make_1Lot
 
         '待機状態
         Cursor.Current = Cursors.WaitCursor
+        Lbl_Messege.Visible = True
+        Lbl_Messege.Text = "変換中"
 
         Try
             Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC
@@ -22,7 +24,6 @@ Public Class F_Make_1Lot
             Dim ta_rireki As New DS_TTableAdapters.TA_T_Inport_Rireki
             Dim ta_second As New DS_MTableAdapters.TA_M_Second
             Dim ta_M_naisou As New DS_MTableAdapters.TA_M_Naisou_Shizai
-
 
             '対象見積No取得　CCCから最大値取得（全トランの見積Noは揃っているはず）　
             Dim target_mitsumori_no As String = ta_ccc.Q_Max見積No取得
@@ -39,7 +40,6 @@ Public Class F_Make_1Lot
             Dim master_insert_sql As String = MakeSQL4(target_mitsumori_no)
             Dim ccc_update_sql As String = ""
             Dim kow_update_sql As String = ""
-
 
             ' SQL実行
             Using conn As New SqlConnection(connectionString)
@@ -118,17 +118,13 @@ Public Class F_Make_1Lot
                         Dim rowsAffected As Integer = cmdIns2.ExecuteNonQuery()
                     End Using
 
-
                     'SQLでUpdate
                     Using cmdUp1 As New SqlCommand(ccc_update_sql, conn, transaction)
                         Dim rowsAffected As Integer = cmdUp1.ExecuteNonQuery()
                     End Using
 
-
-
                     ' さらに複雑なものの更新処理
                     change_1lot(conn, transaction, target_mitsumori_no)
-
 
                     '*******************
                     '④KOWテーブル
@@ -158,17 +154,15 @@ Public Class F_Make_1Lot
                     Throw ex
                 End Try
 
-
-
             End Using
-
-
-            '元に戻す
-            Cursor.Current = Cursors.Default
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Make_1Lot_Btn_Change_Click")
             MessageBox.Show(ex.Message)
+        Finally
+            '元に戻す
+            Cursor.Current = Cursors.Default
+            Lbl_Messege.Visible = False
         End Try
 
     End Sub
@@ -177,6 +171,11 @@ Public Class F_Make_1Lot
     Private Sub Btn_Output_Click(sender As Object, e As EventArgs) Handles Btn_Output.Click
 
         Try
+
+            '待機状態
+            Cursor.Current = Cursors.WaitCursor
+            Lbl_Messege.Visible = True
+            Lbl_Messege.Text = "出力中"
 
             Dim dt As New DS_T.DT_T_CCC_LotDataTable
             Dim ta As New DS_TTableAdapters.TA_T_CCC_Lot
@@ -191,6 +190,11 @@ Public Class F_Make_1Lot
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Make_1Lot_Btn_Output_Click")
             MessageBox.Show(ex.Message)
+
+        Finally
+            '元に戻す
+            Cursor.Current = Cursors.Default
+            Lbl_Messege.Visible = False
         End Try
 
     End Sub

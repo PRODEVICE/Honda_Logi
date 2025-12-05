@@ -1,4 +1,5 @@
 ﻿Imports System.Configuration
+Imports System.IO
 
 Public Class F_User
 
@@ -132,6 +133,73 @@ Public Class F_User
         clear()
     End Sub
 
+    'CSV取込ボタンクリック時
+    Private Sub Btn_Import_Click(sender As Object, e As EventArgs) Handles Btn_Import.Click
+
+        Try
+
+            Dim dt_From As New DS_M.DT_M_UserDataTable
+            Dim ta As New DS_MTableAdapters.TA_M_User
+            Dim target_file As String = ""
+
+            '取込ファイル選択ダイアログ
+            Using ofd As New OpenFileDialog()
+
+                'ダイアログのタイトル
+                ofd.Title = "ファイルを指定してください"
+
+                '初期フォルダ（テキストボックスにパスがある場合はそこを開く）
+                ofd.InitialDirectory = "C:\"
+
+                '選択できるファイルの種類（必要に応じて調整）
+                ofd.Filter = "すべてのファイル (*.*)|*.*"
+
+                '複数選択を許可する場合
+                ofd.Multiselect = False
+
+                'OKが押されたらファイルパスをテキストボックスに表示
+                If ofd.ShowDialog(Me) = DialogResult.OK Then
+                    target_file = ofd.FileName
+                End If
+
+            End Using
+
+            If target_file = "" Then
+                Exit Sub
+            End If
+
+            'CSVの取込
+            dt_From = Import_CSV(target_file)
+
+            'トランザクションの始まり
+            Using scope As New System.Transactions.TransactionScope()
+
+                '全件削除
+                ta.Q_全件削除()
+
+                '新規インサート
+                ta.Update(dt_From)
+
+                'コミット処理
+                scope.Complete()
+
+                'トランザクション終了
+                scope.Dispose()
+
+            End Using
+
+            MessageBox.Show("取込完了しました。")
+
+            'GV更新
+            Me.TA_M_User.Fill(Me.DS_M.DT_M_User)
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Housou_Btn_Import_Click")
+            MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+
     '******************************************************************************
     'GVイベント
     '******************************************************************************
@@ -263,6 +331,77 @@ Public Class F_User
             Throw New Exception(ex.Message)
         End Try
 
+    End Function
+
+    'CSVファイル取り込み処理
+    Function Import_CSV(_file_path As String) As DataTable
+
+        Dim dt As New DS_M.DT_M_UserDataTable
+
+        Try
+
+            Using sr As New StreamReader(_file_path, System.Text.Encoding.Default) ' Shift-JIS等も自動判別されやすい
+                Dim isFirstLine As Boolean = True
+
+                While Not sr.EndOfStream
+                    Dim line As String = sr.ReadLine()
+
+                    ' CSV の1行をパース（ダブルクォート対応）
+                    Dim fields As String() = ParseCsvLine(line)
+
+                    ' 最初の行はヘッダー
+                    If isFirstLine Then
+
+                        isFirstLine = False
+
+                    Else
+
+                        ' DataRow を作成
+                        Dim dr As DataRow = dt.NewDT_M_UserRow()
+
+                        'CSV の各フィールドを id 以外の列に順にセット
+                        For i As Integer = 0 To fields.Length - 1
+                            dr(i + 1) = fields(i) ' ← +1 で id をスキップ
+                        Next
+
+                        dt.Rows.Add(dr)
+
+                    End If
+
+                End While
+
+            End Using
+
+            Return dt
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Function
+
+    Private Function ParseCsvLine(line As String) As String()
+        Dim result As New List(Of String)()
+        Dim current As String = ""
+        Dim inQuotes As Boolean = False
+
+        For i As Integer = 0 To line.Length - 1
+            Dim c As Char = line(i)
+
+            If c = """"c Then
+                ' ダブルクォートの開始/終了
+                inQuotes = Not inQuotes
+            ElseIf c = ","c AndAlso Not inQuotes Then
+                ' カンマ区切り（クォート外のみ）
+                result.Add(current)
+                current = ""
+            Else
+                current &= c
+            End If
+        Next
+
+        result.Add(current)
+        Return result.ToArray()
     End Function
 
 End Class

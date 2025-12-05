@@ -1,107 +1,20 @@
 ﻿Imports System.Configuration
 Imports System.IO
 
-Public Class F_Mitsumori
+Public Class F_Keisu
 
     Dim fnc As New Function_Class
 
     'ページロード時
-    Private Sub F_Mitsumori_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        'TODO: このコード行はデータを 'DS_M.DT_M_Mitsumori' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.TA_M_Mitsumori.Fill(Me.DS_M.DT_M_Mitsumori)
-
-        'ヘッダーとすべてのセルの内容に合わせて、列の幅を自動調整する
-        GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+    Private Sub F_Keisu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: このコード行はデータを 'DS_M.DT_M_Keisu' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+        Me.TA_M_Keisu.Fill(Me.DS_M.DT_M_Keisu)
 
     End Sub
 
-    '******************************************************************************
-    'ボタンクリックイベント
-    '******************************************************************************
-
-    '登録ボタンクリック時
-    Private Sub Btn_Touroku_Click(sender As Object, e As EventArgs) Handles Btn_Touroku.Click
-
-        Try
-
-            Dim ta_mitsumori As New DS_MTableAdapters.TA_M_Mitsumori
-
-            Dim mitsumori_cd As String = Txt_Mitsumori_CD.Text.Trim
-            Dim shimuke As String = Txt_Shimuke.Text.Trim
-            Dim kishu As String = Txt_Kishu.Text.Trim
-            Dim type As String = Txt_Type.Text.Trim
-            Dim op As String = Txt_OP.Text.Trim
-            Dim id As String = Txt_id.Text.Trim
-
-            '入力チェック
-            If mitsumori_cd = "" Or shimuke = "" Or kishu = "" Or type = "" Or op = "" Then
-
-                MessageBox.Show("全項目入力してください")
-                Exit Sub
-
-            End If
-
-            Dim chk_count As String = ""
-
-            '新規モード
-            If Btn_Touroku.Text = "登　録" Then
-
-                '存在チェック
-                chk_count = ta_mitsumori.Q_存在チェック(mitsumori_cd)
-
-                If chk_count <> 0 Then
-                    MessageBox.Show("既に登録済みの見積コードです。")
-                    Exit Sub
-                End If
-
-                '存在チェック2
-                chk_count = ta_mitsumori.Q_存在チェック2(shimuke, kishu, type, op)
-
-                If chk_count <> 0 Then
-                    MessageBox.Show("既に登録済みの内容です。")
-                    Exit Sub
-                End If
-
-                '登録処理
-                ta_mitsumori.Q_見積登録(mitsumori_cd, shimuke, kishu, type, op)
-
-            Else '更新モード
-
-                '存在チェック
-                chk_count = ta_mitsumori.Q_更新存在チェック(mitsumori_cd, id)
-
-                If chk_count <> 0 Then
-                    MessageBox.Show("既に登録済みの見積コードです。")
-                    Exit Sub
-                End If
-
-                '存在チェック2
-                chk_count = ta_mitsumori.Q_更新存在チェック2(shimuke, kishu, type, op, id)
-
-                If chk_count <> 0 Then
-                    MessageBox.Show("既に登録済みの内容です。")
-                    Exit Sub
-                End If
-
-                ta_mitsumori.Q_見積更新(mitsumori_cd, shimuke, kishu, type, op, id)
-
-            End If
-
-            'GV更新
-            Me.TA_M_Mitsumori.Fill(Me.DS_M.DT_M_Mitsumori)
-
-            'クリア
-            clear()
-
-            MessageBox.Show("完了しました。")
-
-        Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Mitsumori_Btn_Touroku_Click")
-            MessageBox.Show(ex.Message)
-        End Try
-
-    End Sub
+    '**********************************************************************************
+    'ボタンクリック時
+    '**********************************************************************************
 
     '検索ボタンクリック時
     Private Sub Btn_Search_Click(sender As Object, e As EventArgs) Handles Btn_Search.Click
@@ -124,9 +37,9 @@ Public Class F_Mitsumori
             Dim DataAdapter As New SqlClient.SqlDataAdapter(CommandString, con)
 
             'SQLを実行
-            Me.DS_M.DT_M_Mitsumori.Clear()
-            DataAdapter.Fill(Me.DS_M.DT_M_Mitsumori)
-            GV_Master.DataSource = Me.DS_M.DT_M_Mitsumori
+            Me.DS_M.DT_M_Keisu.Clear()
+            DataAdapter.Fill(Me.DS_M.DT_M_Keisu)
+            GV_Master.DataSource = Me.DS_M.DT_M_Keisu
 
             ' 列幅を自動調整
             GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
@@ -136,30 +49,76 @@ Public Class F_Mitsumori
             clear()
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Mitsumori_Master_Btn_Search_Click")
+            fnc.ERR_LOG(ex.Message, "F_Keisu_Btn_Search_Click")
             MessageBox.Show(ex.Message)
         End Try
 
     End Sub
 
-    '全件削除ボタンクリック時
-    Private Sub Btn_Delete_Click(sender As Object, e As EventArgs) Handles Btn_Delete.Click
+    '登録ボタンクリック時
+    Private Sub Btn_Touroku_Click(sender As Object, e As EventArgs) Handles Btn_Touroku.Click
 
         Try
 
-            If MessageBox.Show("本当に削除しますか？", "確認", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
 
-                Dim ta_mitsumori As New DS_MTableAdapters.TA_M_Mitsumori
+            Dim kishu As String = Txt_Kishu.Text.Trim
+            Dim type As String = Txt_Type.Text.Trim
+            Dim keisu As String = Txt_Keisu.Text.Trim
+            Dim id As String = Txt_id.Text.Trim
+            Dim qty As Decimal
 
-                'DBからも削除
-                ta_mitsumori.Q_見積全件削除()
+            '入力チェック
+            If kishu = "" Or type = "" Or keisu = "" Then
+                MessageBox.Show("全項目入力してください")
+                Exit Sub
+            End If
 
-                MessageBox.Show("削除完了しました。")
+            If Not Decimal.TryParse(keisu, qty) Then
+                MessageBox.Show("係数は数値で入力してください。")
+                Exit Sub
+            End If
+
+            Dim chk_count As String = ""
+
+            '新規モード
+            If Btn_Touroku.Text = "登　録" Then
+
+                '存在チェック
+                chk_count = ta_keisu.Q_存在チェック(kishu, type)
+
+                If chk_count <> 0 Then
+                    MessageBox.Show("既に登録済みの機種、タイプです。")
+                    Exit Sub
+                End If
+
+                '登録処理
+                ta_keisu.Q_係数登録(kishu, type, keisu)
+
+            Else '更新モード
+
+                '存在チェック
+                chk_count = ta_keisu.Q_更新存在チェック(kishu, type, id)
+
+                If chk_count <> 0 Then
+                    MessageBox.Show("既に登録済みの機種、タイプです。")
+                    Exit Sub
+                End If
+
+                ta_keisu.Q_係数更新(kishu, type, keisu, id)
 
             End If
 
+            'GV更新
+            ta_keisu.Fill(Me.DS_M.DT_M_Keisu)
+
+            'クリア
+            clear()
+
+            MessageBox.Show("完了しました。")
+
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Mitsumori_Master_Btn_Delete_Click")
+            fnc.ERR_LOG(ex.Message, "F_Keisu_Btn_Touroku_Click")
             MessageBox.Show(ex.Message)
         End Try
 
@@ -167,7 +126,14 @@ Public Class F_Mitsumori
 
     'クリアボタンクリック時
     Private Sub Btn_Clear_Click(sender As Object, e As EventArgs) Handles Btn_Clear.Click
-        clear()
+
+        Try
+            clear()
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Keisu_Btn_Clear_Click")
+            MessageBox.Show(ex.Message)
+        End Try
+
     End Sub
 
     'CSV取込ボタンクリック時
@@ -175,8 +141,8 @@ Public Class F_Mitsumori
 
         Try
 
-            Dim dt_From As New DS_M.DT_M_MitsumoriDataTable
-            Dim ta As New DS_MTableAdapters.TA_M_Mitsumori
+            Dim dt_From As New DS_M.DT_M_KeisuDataTable
+            Dim ta As New DS_MTableAdapters.TA_M_Keisu
             Dim target_file As String = ""
 
             '取込ファイル選択ダイアログ
@@ -228,10 +194,10 @@ Public Class F_Mitsumori
             MessageBox.Show("取込完了しました。")
 
             'GV更新
-            Me.TA_M_Mitsumori.Fill(Me.DS_M.DT_M_Mitsumori)
+            Me.TA_M_Keisu.Fill(Me.DS_M.DT_M_Keisu)
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Mitsumori_Btn_Import_Click")
+            fnc.ERR_LOG(ex.Message, "F_Keisu_Btn_Import_Click")
             MessageBox.Show(ex.Message)
         End Try
 
@@ -246,7 +212,7 @@ Public Class F_Mitsumori
 
         Try
 
-            Dim ta_mitsumori As New DS_MTableAdapters.TA_M_Mitsumori
+            Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
 
             'ヘッダークリックは無視
             If e.RowIndex < 0 Then
@@ -263,11 +229,9 @@ Public Class F_Mitsumori
 
                 Txt_id.Text = target_id
 
-                Txt_Mitsumori_CD.Text = grid.Rows(e.RowIndex).Cells("見積コード").Value.ToString()
-                Txt_Shimuke.Text = grid.Rows(e.RowIndex).Cells("仕向").Value.ToString()
                 Txt_Kishu.Text = grid.Rows(e.RowIndex).Cells("機種").Value.ToString()
                 Txt_Type.Text = grid.Rows(e.RowIndex).Cells("タイプ").Value.ToString()
-                Txt_OP.Text = grid.Rows(e.RowIndex).Cells("OP").Value.ToString()
+                Txt_Keisu.Text = grid.Rows(e.RowIndex).Cells("係数").Value.ToString()
 
                 Btn_Touroku.Text = "更　新"
 
@@ -282,7 +246,7 @@ Public Class F_Mitsumori
                     grid.Rows.RemoveAt(e.RowIndex)
 
                     'DBからも削除
-                    ta_mitsumori.Q_見積削除(target_id)
+                    ta_keisu.Q_係数削除(target_id)
 
                     MessageBox.Show("削除完了しました。")
 
@@ -291,61 +255,27 @@ Public Class F_Mitsumori
             End If
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Mitsumori_GV_Master_CellContentClick")
+            fnc.ERR_LOG(ex.Message, "F_Keisu_GV_Master_CellContentClick")
             MessageBox.Show(ex.Message)
         End Try
 
     End Sub
 
-
     '******************************************************************************
     '関数
     '******************************************************************************
 
-    '画面項目クリア処理
-    Sub clear()
-
-        Txt_id.Text = ""
-        Txt_Kishu.Text = ""
-        Txt_Mitsumori_CD.Text = ""
-        Txt_OP.Text = ""
-        Txt_Shimuke.Text = ""
-        Txt_Type.Text = ""
-
-        Btn_Touroku.Text = "登　録"
-    End Sub
-
     Function MakeSQL_Search() As String
 
         Try
-            Dim mitsumori_cd As String = Txt_S_Mitsumori_CD.Text.Trim
-            Dim shimuke As String = Txt_S_Shimuke.Text.Trim
+
             Dim kishu As String = Txt_S_Kishu.Text.Trim
             Dim type As String = Txt_S_Type.Text.Trim
-            Dim op As String = Txt_S_OP.Text.Trim
 
             Dim Retstr As String = Nothing
             Dim strtemp As String = Nothing
 
             'Where区作成区作成
-
-            '見積コード
-            If (mitsumori_cd.Length > 0) Then
-                If strtemp = Nothing Then
-                    strtemp = "見積コード like '%" & mitsumori_cd & "%'"
-                Else
-                    strtemp = strtemp & " AND 見積コード like '%" & mitsumori_cd & "%'"
-                End If
-            End If
-
-            '仕向
-            If (shimuke.Length > 0) Then
-                If strtemp = Nothing Then
-                    strtemp = "仕向 like '%" & shimuke & "%'"
-                Else
-                    strtemp = strtemp & " AND 仕向 like '%" & shimuke & "%'"
-                End If
-            End If
 
             '機種
             If (kishu.Length > 0) Then
@@ -365,15 +295,6 @@ Public Class F_Mitsumori
                 End If
             End If
 
-            'OP
-            If (op.Length > 0) Then
-                If strtemp = Nothing Then
-                    strtemp = "OP like '%" & op & "%'"
-                Else
-                    strtemp = strtemp & " AND OP like '%" & op & "%'"
-                End If
-            End If
-
             'Where句の完成
             If strtemp <> Nothing Then
                 strtemp = " WHERE " & strtemp
@@ -381,7 +302,7 @@ Public Class F_Mitsumori
 
             '最終的なSQL文の作成
             Retstr = "SELECT  *
-                        FROM M_Mitsumori "
+                        FROM M_Keisu "
             Retstr = Retstr & strtemp       'Where句
 
             Return Retstr
@@ -392,10 +313,22 @@ Public Class F_Mitsumori
 
     End Function
 
+    '画面項目クリア処理
+    Sub clear()
+
+        Txt_id.Text = ""
+        Txt_Kishu.Text = ""
+        Txt_Type.Text = ""
+        Txt_Keisu.Text = ""
+
+        Btn_Touroku.Text = "登　録"
+
+    End Sub
+
     'CSVファイル取り込み処理
     Function Import_CSV(_file_path As String) As DataTable
 
-        Dim dt As New DS_M.DT_M_MitsumoriDataTable
+        Dim dt As New DS_M.DT_M_KeisuDataTable
 
         Try
 
@@ -416,7 +349,7 @@ Public Class F_Mitsumori
                     Else
 
                         ' DataRow を作成
-                        Dim dr As DataRow = dt.NewDT_M_MitsumoriRow()
+                        Dim dr As DataRow = dt.NewDT_M_KeisuRow()
 
                         'CSV の各フィールドを id 以外の列に順にセット
                         For i As Integer = 0 To fields.Length - 1

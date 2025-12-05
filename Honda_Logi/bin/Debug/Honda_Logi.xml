@@ -92,6 +92,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:Honda_Logi.DS_M.DT_M_KeisuDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:Honda_Logi.DS_M.DT_M_BoltRow">
 <summary>
 Represents strongly named DataRow class.
@@ -153,6 +158,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:Honda_Logi.DS_M.DT_M_UserRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_M.DT_M_KeisuRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -222,6 +232,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:Honda_Logi.DS_M.DT_M_KeisuRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Bolt">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -283,6 +298,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:Honda_Logi.DS_MTableAdapters.TA_M_User">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_MTableAdapters.TA_M_Keisu">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

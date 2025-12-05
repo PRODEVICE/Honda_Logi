@@ -26,12 +26,13 @@ Partial Class F_Make_1Lot
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Btn_Change = New System.Windows.Forms.Button()
         Me.Btn_Output = New System.Windows.Forms.Button()
+        Me.Lbl_Messege = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Dtp_Nengetu
         '
         Me.Dtp_Nengetu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Dtp_Nengetu.Location = New System.Drawing.Point(204, 52)
+        Me.Dtp_Nengetu.Location = New System.Drawing.Point(204, 94)
         Me.Dtp_Nengetu.Name = "Dtp_Nengetu"
         Me.Dtp_Nengetu.Size = New System.Drawing.Size(200, 23)
         Me.Dtp_Nengetu.TabIndex = 34
@@ -43,7 +44,7 @@ Partial Class F_Make_1Lot
         Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(204, 30)
+        Me.Label3.Location = New System.Drawing.Point(204, 72)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(74, 18)
         Me.Label3.TabIndex = 33
@@ -69,11 +70,24 @@ Partial Class F_Make_1Lot
         Me.Btn_Output.Text = "出　力"
         Me.Btn_Output.UseVisualStyleBackColor = True
         '
+        'Lbl_Messege
+        '
+        Me.Lbl_Messege.AutoSize = True
+        Me.Lbl_Messege.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_Messege.ForeColor = System.Drawing.Color.Red
+        Me.Lbl_Messege.Location = New System.Drawing.Point(258, 24)
+        Me.Lbl_Messege.Name = "Lbl_Messege"
+        Me.Lbl_Messege.Size = New System.Drawing.Size(96, 27)
+        Me.Lbl_Messege.TabIndex = 64
+        Me.Lbl_Messege.Text = "出力中"
+        Me.Lbl_Messege.Visible = False
+        '
         'F_Make_1Lot
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(615, 296)
+        Me.Controls.Add(Me.Lbl_Messege)
         Me.Controls.Add(Me.Btn_Output)
         Me.Controls.Add(Me.Dtp_Nengetu)
         Me.Controls.Add(Me.Label3)
@@ -89,4 +103,5 @@ Partial Class F_Make_1Lot
     Friend WithEvents Label3 As Label
     Friend WithEvents Btn_Change As Button
     Friend WithEvents Btn_Output As Button
+    Friend WithEvents Lbl_Messege As Label
 End Class

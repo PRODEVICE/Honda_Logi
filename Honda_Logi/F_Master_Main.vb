@@ -48,15 +48,11 @@
 
     '機種係数マスタボタンクリック時
     Private Sub Btn_M_Keisu_Click(sender As Object, e As EventArgs) Handles Btn_M_Keisu.Click
-
-    End Sub
-
-    '部品単位オーダーリストボタンクリック時
-    Private Sub Btn_M_Order_Click(sender As Object, e As EventArgs) Handles Btn_M_Order.Click
-        Dim OpenForm As New F_Buhin_Order_List
+        Dim OpenForm As New F_Keisu
         OpenForm.ShowDialog()
     End Sub
 
+    '担当者マスタボタンクリック時
     Private Sub Btn_Tantou_Click(sender As Object, e As EventArgs) Handles Btn_Tantou.Click
         Dim OpenForm As New F_User
         OpenForm.ShowDialog()

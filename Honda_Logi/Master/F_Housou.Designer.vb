@@ -50,13 +50,14 @@ Partial Class F_Housou
         Me.TA_M_Housou_Kbn = New Honda_Logi.DS_MTableAdapters.TA_M_Housou_Kbn()
         Me.TA_M_Kubun = New Honda_Logi.DS_MTableAdapters.TA_M_Kubun()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Txt_S_Housou = New System.Windows.Forms.TextBox()
+        Me.Txt_S_Line = New System.Windows.Forms.TextBox()
         Me.Btn_Search = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Txt_S_DIST = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Txt_S_Line = New System.Windows.Forms.TextBox()
-        Me.Txt_S_Housou = New System.Windows.Forms.TextBox()
+        Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMHousouKbnBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -281,6 +282,7 @@ Partial Class F_Housou
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Import)
         Me.Panel3.Controls.Add(Me.Txt_S_Housou)
         Me.Panel3.Controls.Add(Me.Txt_S_Line)
         Me.Panel3.Controls.Add(Me.Btn_Search)
@@ -294,10 +296,26 @@ Partial Class F_Housou
         Me.Panel3.Size = New System.Drawing.Size(673, 123)
         Me.Panel3.TabIndex = 19
         '
+        'Txt_S_Housou
+        '
+        Me.Txt_S_Housou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Housou.Location = New System.Drawing.Point(148, 73)
+        Me.Txt_S_Housou.Name = "Txt_S_Housou"
+        Me.Txt_S_Housou.Size = New System.Drawing.Size(121, 23)
+        Me.Txt_S_Housou.TabIndex = 27
+        '
+        'Txt_S_Line
+        '
+        Me.Txt_S_Line.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Line.Location = New System.Drawing.Point(148, 22)
+        Me.Txt_S_Line.Name = "Txt_S_Line"
+        Me.Txt_S_Line.Size = New System.Drawing.Size(121, 23)
+        Me.Txt_S_Line.TabIndex = 26
+        '
         'Btn_Search
         '
         Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Search.Location = New System.Drawing.Point(499, 61)
+        Me.Btn_Search.Location = New System.Drawing.Point(401, 63)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
         Me.Btn_Search.TabIndex = 25
@@ -342,21 +360,15 @@ Partial Class F_Housou
         Me.Label6.TabIndex = 18
         Me.Label6.Text = "ライン"
         '
-        'Txt_S_Line
+        'Btn_Import
         '
-        Me.Txt_S_Line.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_S_Line.Location = New System.Drawing.Point(148, 22)
-        Me.Txt_S_Line.Name = "Txt_S_Line"
-        Me.Txt_S_Line.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_S_Line.TabIndex = 26
-        '
-        'Txt_S_Housou
-        '
-        Me.Txt_S_Housou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_S_Housou.Location = New System.Drawing.Point(148, 73)
-        Me.Txt_S_Housou.Name = "Txt_S_Housou"
-        Me.Txt_S_Housou.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_S_Housou.TabIndex = 27
+        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Import.Location = New System.Drawing.Point(499, 63)
+        Me.Btn_Import.Name = "Btn_Import"
+        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Import.TabIndex = 28
+        Me.Btn_Import.Text = "CSV取込"
+        Me.Btn_Import.UseVisualStyleBackColor = True
         '
         'F_Housou
         '
@@ -414,4 +426,5 @@ Partial Class F_Housou
     Friend WithEvents Btn_Search As Button
     Friend WithEvents Txt_S_Housou As TextBox
     Friend WithEvents Txt_S_Line As TextBox
+    Friend WithEvents Btn_Import As Button
 End Class
