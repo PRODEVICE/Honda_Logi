@@ -33,9 +33,21 @@
                 tantou_nm = dt_user.Rows(0)("User_NM")
                 kengen = dt_user.Rows(0)("Kengen")
 
-                'メインメニューへ遷移
-                Dim OpenForm As New F_Main
-                OpenForm.Show()
+                If kengen = "1" Then
+
+
+                    '管理者ならメインメニューへ遷移
+                    Dim OpenForm As New F_Main
+                    OpenForm.Show()
+
+                Else
+
+                    'メインメニューへ遷移
+                    Dim OpenForm As New F_Print_Main
+                    OpenForm.Show()
+
+                End If
+
 
                 Me.Close() ' ログイン成功で閉じる
 

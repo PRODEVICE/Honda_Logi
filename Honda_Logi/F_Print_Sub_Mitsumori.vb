@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 Imports ClosedXML.Excel
 
-Public Class F_Print_Sub
+Public Class F_Print_Sub_Mitsumori
 
     Dim fnc As New Function_Class
 
@@ -33,6 +33,7 @@ Public Class F_Print_Sub
             '待機状態
             Cursor.Current = Cursors.WaitCursor
             Lbl_Messege.Visible = True
+            Application.DoEvents()    ' ★ UIを即時更新
 
             Dim target_mitsumori As String = Cmb_Target.SelectedValue
             Dim keisu_flg As Boolean = Chk_Keisu_Flg.Checked
@@ -184,7 +185,7 @@ Public Class F_Print_Sub
                 Dim currentRow As Integer = startRow
 
                 'ヘッダ項目を書き込む
-                ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString)
+                ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString & "　見積書(機種)")
 
                 ' DataTable の中身を Excel に書き込む
                 For Each row As DataRow In dt.Rows
@@ -330,7 +331,7 @@ Public Class F_Print_Sub
                 Dim currentRow As Integer = startRow
 
                 'ヘッダ項目を書き込む
-                ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString)
+                ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString & "　見積書(部単内装)")
 
                 ' DataTable の中身を Excel に書き込む
                 For Each row As DataRow In dt.Rows
@@ -443,7 +444,7 @@ Public Class F_Print_Sub
                 Dim currentRow As Integer = startRow
 
                 'ヘッダ項目を書き込む
-                ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString)
+                ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString & "　見積書(部単外装)")
 
                 ' DataTable の中身を Excel に書き込む
                 For Each row As DataRow In dt.Rows

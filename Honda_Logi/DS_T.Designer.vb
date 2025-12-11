@@ -55630,7 +55630,7 @@ Namespace DS_TTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(8) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT                      id, 工程管理ｼｽﾃﾑ日付, 処理ID, 包装指示1, コンテンツ1, パッケージコンテンツ1, パッキ"& _ 
@@ -55811,10 +55811,36 @@ Namespace DS_TTableAdapters
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = Me.Connection
-            Me._commandCollection(6).CommandText = "SELECT                      COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CCC"& _ 
-                "_Lot"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (見積No = @見積No)"
+            Me._commandCollection(6).CommandText = "SELECT                      COUNT(id) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CC"& _ 
+                "C_Lot"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (見積No = @QuoteNo) AND (代表DIST + 年度2 + モデル2 + "& _ 
+                "タイプ1 + オプション1 = @Dist + @Year + @Model + @Type + @Op)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QuoteNo", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Dist", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Year", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Model", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Type", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Op", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(7).Connection = Me.Connection
+            Me._commandCollection(7).CommandText = "SELECT                      COUNT(id) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CC"& _ 
+                "C_Lot"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (見積No = @QuoteNo) AND (代表DIST + 年度2 + モデル2 + "& _ 
+                "タイプ1 + オプション1 = @Dist + @Year + @Model + @Type + @Op) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
+                "                  (包装ロットNO = @包装ロットNO)"
+            Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@QuoteNo", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Dist", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Year", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Model", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Type", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Op", Global.System.Data.SqlDbType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@包装ロットNO", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "包装ロットNO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(8).Connection = Me.Connection
+            Me._commandCollection(8).CommandText = "SELECT                      COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CCC"& _ 
+                "_Lot"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (見積No = @見積No)"
+            Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -58001,8 +58027,125 @@ Namespace DS_TTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Q_見積No_存在チェック(ByVal 見積No As Global.System.Nullable(Of Integer)) As Global.System.Nullable(Of Integer)
+        Public Overloads Overridable Function Q_印刷__存在チェック(ByVal QuoteNo As Global.System.Nullable(Of Integer), ByVal Dist As String, ByVal Year As String, ByVal Model As String, ByVal Type As String, ByVal Op As String) As Object
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
+            If (QuoteNo.HasValue = true) Then
+                command.Parameters(0).Value = CType(QuoteNo.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Dist Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Dist")
+            Else
+                command.Parameters(1).Value = CType(Dist,String)
+            End If
+            If (Year Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Year")
+            Else
+                command.Parameters(2).Value = CType(Year,String)
+            End If
+            If (Model Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Model")
+            Else
+                command.Parameters(3).Value = CType(Model,String)
+            End If
+            If (Type Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Type")
+            Else
+                command.Parameters(4).Value = CType(Type,String)
+            End If
+            If (Op Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Op")
+            Else
+                command.Parameters(5).Value = CType(Op,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,Object)
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Q_印刷__存在チェック_包装ロット(ByVal QuoteNo As Global.System.Nullable(Of Integer), ByVal Dist As String, ByVal Year As String, ByVal Model As String, ByVal Type As String, ByVal Op As String, ByVal 包装ロットNO As String) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(7)
+            If (QuoteNo.HasValue = true) Then
+                command.Parameters(0).Value = CType(QuoteNo.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Dist Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Dist")
+            Else
+                command.Parameters(1).Value = CType(Dist,String)
+            End If
+            If (Year Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Year")
+            Else
+                command.Parameters(2).Value = CType(Year,String)
+            End If
+            If (Model Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Model")
+            Else
+                command.Parameters(3).Value = CType(Model,String)
+            End If
+            If (Type Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Type")
+            Else
+                command.Parameters(4).Value = CType(Type,String)
+            End If
+            If (Op Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Op")
+            Else
+                command.Parameters(5).Value = CType(Op,String)
+            End If
+            If (包装ロットNO Is Nothing) Then
+                command.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(6).Value = CType(包装ロットNO,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)()
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Q_見積No_存在チェック(ByVal 見積No As Global.System.Nullable(Of Integer)) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
             If (見積No.HasValue = true) Then
                 command.Parameters(0).Value = CType(見積No.Value,Integer)
             Else
