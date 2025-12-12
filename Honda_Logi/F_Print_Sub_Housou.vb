@@ -28,16 +28,16 @@ Public Class F_Print_Sub_Housou
             '呼び出し元によってタイトル変更
             If _mode = 1 Then
                 Me.Text = "包装仕様一覧_印刷"
+                GV_Search.Columns("包装ロットNo").Visible = False
             Else
                 Me.Text = "包装資材明細(定量、不定量共通)_印刷"
+                GV_Search.Columns("包装ロットNo").Visible = True
             End If
-
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Print_Sub_Housou_F_Print_Sub_Housou_Load")
             MessageBox.Show(ex.Message)
         End Try
-
 
     End Sub
 

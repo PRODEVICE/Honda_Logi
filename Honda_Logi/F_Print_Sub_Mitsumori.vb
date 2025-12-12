@@ -16,8 +16,14 @@ Public Class F_Print_Sub_Mitsumori
 
     'ページロード時
     Private Sub F_Print_Sub_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: このコード行はデータを 'DS_M.DT_M_Kubun' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.TA_M_Kubun.Fill(Me.DS_M.DT_M_Kubun)
+
+        Try
+
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Mitsumori_Load")
+            MessageBox.Show(ex.Message)
+        End Try
 
     End Sub
 
@@ -25,8 +31,8 @@ Public Class F_Print_Sub_Mitsumori
     'ボタンクリックイベント
     '******************************************************************************
 
-    '印刷ボタンクリック時
-    Private Sub Btn_Print_Click(sender As Object, e As EventArgs) Handles Btn_Print.Click
+    '2R/ATVボタンクリック時
+    Private Sub Btn_Output1_Click(sender As Object, e As EventArgs) Handles Btn_Output1.Click
 
         Try
 
@@ -35,92 +41,36 @@ Public Class F_Print_Sub_Mitsumori
             Lbl_Messege.Visible = True
             Application.DoEvents()    ' ★ UIを即時更新
 
-            Dim target_mitsumori As String = Cmb_Target.SelectedValue
             Dim keisu_flg As Boolean = Chk_Keisu_Flg.Checked
 
             Dim dt As New DataTable
             Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
 
-            If target_mitsumori = "1" Then '見積書_2輪ATV
+            ' ストアド実行
+            Using conn As New SqlConnection(connectionString)
 
+                Using cmd As New SqlCommand("Proc2_1_見積書_機種", conn)
 
+                    'タイムアウト設定
+                    cmd.CommandTimeout = 1200
+                    cmd.CommandType = CommandType.StoredProcedure
 
-            ElseIf target_mitsumori = "2" Then '見積書_汎用機種
+                    ' ★ 必要なら引数を追加
+                    cmd.Parameters.AddWithValue("@Debug", 0)
+                    cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
 
-                ' ストアド実行
-                Using conn As New SqlConnection(connectionString)
-
-                    Using cmd As New SqlCommand("Proc2_1_見積書_機種", conn)
-
-                        'タイムアウト設定
-                        cmd.CommandTimeout = 1200
-                        cmd.CommandType = CommandType.StoredProcedure
-
-                        ' ★ 必要なら引数を追加
-                        'cmd.Parameters.AddWithValue("@Param1", 値)
-
-                        Dim da As New SqlDataAdapter(cmd)
-                        da.Fill(dt)
-
-                    End Using
-
-                    'Excelに描画
-                    ExportToExcel2(dt, keisu_flg)
+                    Dim da As New SqlDataAdapter(cmd)
+                    da.Fill(dt)
 
                 End Using
 
-            ElseIf target_mitsumori = "3" Then '見積書_部単内装
+                'Excelに描画
+                ExportToExcel2(dt, keisu_flg)
 
-                ' ストアド実行
-                Using conn As New SqlConnection(connectionString)
-
-                    Using cmd As New SqlCommand("Proc2_2_見積書_部単内装", conn)
-
-                        'タイムアウト設定
-                        cmd.CommandTimeout = 1200
-                        cmd.CommandType = CommandType.StoredProcedure
-
-                        ' ★ 必要なら引数を追加
-                        cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
-
-                        Dim da As New SqlDataAdapter(cmd)
-                        da.Fill(dt)
-
-                    End Using
-
-                    'Excelに描画
-                    ExportToExcel3(dt)
-
-                End Using
-
-            ElseIf target_mitsumori = "4" Then '見積書_部単外装
-
-                ' ストアド実行
-                Using conn As New SqlConnection(connectionString)
-
-                    Using cmd As New SqlCommand("Proc2_3_見積書_部単外装", conn)
-
-                        'タイムアウト設定
-                        cmd.CommandTimeout = 1200
-                        cmd.CommandType = CommandType.StoredProcedure
-
-                        ' ★ 必要なら引数を追加
-                        cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
-
-                        Dim da As New SqlDataAdapter(cmd)
-                        da.Fill(dt)
-
-                    End Using
-
-                    'Excelに描画
-                    ExportToExcel4(dt)
-
-                End Using
-
-            End If
+            End Using
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Btn_Print_Click")
+            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Mitsumori_Btn_Output1_Click")
             MessageBox.Show(ex.Message)
         Finally
             '元に戻す
@@ -130,11 +80,159 @@ Public Class F_Print_Sub_Mitsumori
 
     End Sub
 
+    '汎用機種ボタンクリック時
+    Private Sub Btn_Output2_Click(sender As Object, e As EventArgs) Handles Btn_Output2.Click
+
+        Try
+
+            '待機状態
+            Cursor.Current = Cursors.WaitCursor
+            Lbl_Messege.Visible = True
+            Application.DoEvents()    ' ★ UIを即時更新
+
+            Dim keisu_flg As Boolean = Chk_Keisu_Flg.Checked
+
+            Dim dt As New DataTable
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+            ' ストアド実行
+            Using conn As New SqlConnection(connectionString)
+
+                Using cmd As New SqlCommand("Proc2_1_見積書_機種", conn)
+
+                    'タイムアウト設定
+                    cmd.CommandTimeout = 1200
+                    cmd.CommandType = CommandType.StoredProcedure
+
+                    ' ★ 必要なら引数を追加
+                    cmd.Parameters.AddWithValue("@Debug", 0)
+                    cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
+
+                    Dim da As New SqlDataAdapter(cmd)
+                    da.Fill(dt)
+
+                End Using
+
+                'Excelに描画
+                ExportToExcel2(dt, keisu_flg)
+
+            End Using
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Mitsumori_Btn_Output1_Click")
+            MessageBox.Show(ex.Message)
+        Finally
+            '元に戻す
+            Cursor.Current = Cursors.Default
+            Lbl_Messege.Visible = False
+        End Try
+
+
+    End Sub
+
+    '部単内装ボタンクリック時
+    Private Sub Btn_Output3_Click(sender As Object, e As EventArgs) Handles Btn_Output3.Click
+
+        Try
+
+            '待機状態
+            Cursor.Current = Cursors.WaitCursor
+            Lbl_Messege.Visible = True
+            Application.DoEvents()    ' ★ UIを即時更新
+
+            Dim keisu_flg As Boolean = Chk_Keisu_Flg.Checked
+
+            Dim dt As New DataTable
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+            ' ストアド実行
+            Using conn As New SqlConnection(connectionString)
+
+                Using cmd As New SqlCommand("Proc2_2_見積書_部単内装", conn)
+
+                    'タイムアウト設定
+                    cmd.CommandTimeout = 1200
+                    cmd.CommandType = CommandType.StoredProcedure
+
+                    ' ★ 必要なら引数を追加
+                    cmd.Parameters.AddWithValue("@Debug", 0)
+                    cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
+
+                    Dim da As New SqlDataAdapter(cmd)
+                    da.Fill(dt)
+
+                End Using
+
+                'Excelに描画
+                ExportToExcel3(dt, keisu_flg)
+
+            End Using
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Mitsumori_Btn_Output1_Click")
+            MessageBox.Show(ex.Message)
+        Finally
+            '元に戻す
+            Cursor.Current = Cursors.Default
+            Lbl_Messege.Visible = False
+        End Try
+
+
+    End Sub
+
+    '部単外装ボタンクリック時
+    Private Sub Btn_Output4_Click(sender As Object, e As EventArgs) Handles Btn_Output4.Click
+
+        Try
+
+            '待機状態
+            Cursor.Current = Cursors.WaitCursor
+            Lbl_Messege.Visible = True
+            Application.DoEvents()    ' ★ UIを即時更新
+
+            Dim keisu_flg As Boolean = Chk_Keisu_Flg.Checked
+
+            Dim dt As New DataTable
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
+            ' ストアド実行
+            Using conn As New SqlConnection(connectionString)
+
+                Using cmd As New SqlCommand("Proc2_3_見積書_部単外装", conn)
+
+                    'タイムアウト設定
+                    cmd.CommandTimeout = 1200
+                    cmd.CommandType = CommandType.StoredProcedure
+
+                    ' ★ 必要なら引数を追加
+                    cmd.Parameters.AddWithValue("@Debug", 0)
+                    cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
+
+                    Dim da As New SqlDataAdapter(cmd)
+                    da.Fill(dt)
+
+                End Using
+
+                'Excelに描画
+                ExportToExcel4(dt, keisu_flg)
+
+            End Using
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Mitsumori_Btn_Output1_Click")
+            MessageBox.Show(ex.Message)
+        Finally
+            '元に戻す
+            Cursor.Current = Cursors.Default
+            Lbl_Messege.Visible = False
+        End Try
+
+
+    End Sub
 
     '******************************************************************************
     '関数
     '******************************************************************************
-
 
     '見積書(機種)作成処理
     Private Sub ExportToExcel2(dt As DataTable, _keisu_flg As Boolean)
@@ -145,7 +243,9 @@ Public Class F_Print_Sub_Mitsumori
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(機種).xlsx")
             Dim dt_keisu As New DS_M.DT_M_KeisuDataTable
             Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
+            Dim ta_rate As New DS_MTableAdapters.TA_M_Rate
             Dim keisu As Decimal = 0
+            Dim rate As Decimal = ta_rate.Q_賃率取得
 
             ' -------------------------
             ' 保存ダイアログ
@@ -173,7 +273,6 @@ Public Class F_Print_Sub_Mitsumori
                 End If
             Next
 
-
             ' Excel 読み込み
             Using wb As New XLWorkbook(templatePath)
 
@@ -199,6 +298,11 @@ Public Class F_Print_Sub_Mitsumori
                     Dim gaisou_kousu As Decimal = If(IsDBNull(row("Col15")), 0, Decimal.Parse(row("Col15").ToString))
                     Dim choku_kousu As Decimal = If(IsDBNull(row("Col11")), 0, Decimal.Parse(row("Col11").ToString))
 
+                    Dim shizai_hi As Decimal = If(IsDBNull(row("Col16")), 0, Decimal.Parse(row("Col16").ToString))
+                    Dim koutin As Decimal = If(IsDBNull(row("Col17")), 0, Decimal.Parse(row("Col17").ToString))
+                    Dim koutin_kanri_hi As Decimal = If(IsDBNull(row("Col18")), 0, Decimal.Parse(row("Col18").ToString))
+                    Dim total_sum As Decimal = If(IsDBNull(row("Col19")), 0, Decimal.Parse(row("Col19").ToString))
+
                     '係数フラグが立っている場合
                     If _keisu_flg = True Then
 
@@ -216,6 +320,9 @@ Public Class F_Print_Sub_Mitsumori
                             '直接工数の計算をやり直す
                             choku_kousu = junbi_kousu + kosou_kousu + naisou_kousu + gaisou_kousu
 
+                            koutin = Math.Round(choku_kousu * 1.1D * rate / 60D, 2, MidpointRounding.AwayFromZero)
+                            koutin_kanri_hi = Math.Round(choku_kousu * 0.1D * rate / 60D, 2, MidpointRounding.AwayFromZero)
+                            total_sum = shizai_hi + koutin + koutin_kanri_hi
                         End If
 
                     End If
@@ -233,10 +340,10 @@ Public Class F_Print_Sub_Mitsumori
                     ws.Cell(currentRow, 12).Value = kosou_kousu
                     ws.Cell(currentRow, 13).Value = naisou_kousu
                     ws.Cell(currentRow, 14).Value = gaisou_kousu
-                    ws.Cell(currentRow, 15).Value = If(IsDBNull(row("Col16")), 0, Decimal.Parse(row("Col16").ToString))
-                    ws.Cell(currentRow, 16).Value = If(IsDBNull(row("Col17")), 0, Decimal.Parse(row("Col17").ToString))
-                    ws.Cell(currentRow, 17).Value = If(IsDBNull(row("Col18")), 0, Decimal.Parse(row("Col18").ToString))
-                    ws.Cell(currentRow, 18).Value = If(IsDBNull(row("Col19")), 0, Decimal.Parse(row("Col19").ToString))
+                    ws.Cell(currentRow, 15).Value = shizai_hi
+                    ws.Cell(currentRow, 16).Value = koutin
+                    ws.Cell(currentRow, 17).Value = koutin_kanri_hi
+                    ws.Cell(currentRow, 18).Value = total_sum
 
                     currentRow += 1
 
@@ -297,7 +404,7 @@ Public Class F_Print_Sub_Mitsumori
     End Sub
 
     '見積書(部単内装)作成処理
-    Private Sub ExportToExcel3(dt As DataTable)
+    Private Sub ExportToExcel3(dt As DataTable, _keisu_flg As Boolean)
 
         Try
 
@@ -410,7 +517,7 @@ Public Class F_Print_Sub_Mitsumori
     End Sub
 
     '見積書(部単外装)作成処理
-    Private Sub ExportToExcel4(dt As DataTable)
+    Private Sub ExportToExcel4(dt As DataTable, _keisu_flg As Boolean)
 
         Try
 
@@ -524,5 +631,6 @@ Public Class F_Print_Sub_Mitsumori
         End Try
 
     End Sub
+
 
 End Class

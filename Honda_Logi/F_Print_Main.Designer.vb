@@ -65,7 +65,7 @@ Partial Class F_Print_Main
         Me.Btn_Output11.Location = New System.Drawing.Point(304, 189)
         Me.Btn_Output11.Name = "Btn_Output11"
         Me.Btn_Output11.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output11.TabIndex = 15
+        Me.Btn_Output11.TabIndex = 10
         Me.Btn_Output11.Text = "請求明細"
         Me.Btn_Output11.UseVisualStyleBackColor = True
         '
@@ -75,7 +75,7 @@ Partial Class F_Print_Main
         Me.Btn_Output8.Location = New System.Drawing.Point(304, 12)
         Me.Btn_Output8.Name = "Btn_Output8"
         Me.Btn_Output8.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output8.TabIndex = 13
+        Me.Btn_Output8.TabIndex = 7
         Me.Btn_Output8.Text = "包装仕様一覧"
         Me.Btn_Output8.UseVisualStyleBackColor = True
         '
@@ -95,7 +95,7 @@ Partial Class F_Print_Main
         Me.Btn_Output5.Location = New System.Drawing.Point(18, 130)
         Me.Btn_Output5.Name = "Btn_Output5"
         Me.Btn_Output5.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output5.TabIndex = 12
+        Me.Btn_Output5.TabIndex = 4
         Me.Btn_Output5.Text = "部品単位包装費一覧(内装)"
         Me.Btn_Output5.UseVisualStyleBackColor = True
         '
@@ -105,7 +105,7 @@ Partial Class F_Print_Main
         Me.Btn_Output9.Location = New System.Drawing.Point(304, 71)
         Me.Btn_Output9.Name = "Btn_Output9"
         Me.Btn_Output9.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output9.TabIndex = 10
+        Me.Btn_Output9.TabIndex = 8
         Me.Btn_Output9.Text = "包装資材明細(定量、不定量共通)"
         Me.Btn_Output9.UseVisualStyleBackColor = True
         '
@@ -115,7 +115,7 @@ Partial Class F_Print_Main
         Me.Btn_Output6.Location = New System.Drawing.Point(18, 189)
         Me.Btn_Output6.Name = "Btn_Output6"
         Me.Btn_Output6.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output6.TabIndex = 14
+        Me.Btn_Output6.TabIndex = 5
         Me.Btn_Output6.Text = "部品単位包装費一覧(外装)"
         Me.Btn_Output6.UseVisualStyleBackColor = True
         '
@@ -135,7 +135,7 @@ Partial Class F_Print_Main
         Me.Btn_Output7.Location = New System.Drawing.Point(18, 248)
         Me.Btn_Output7.Name = "Btn_Output7"
         Me.Btn_Output7.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output7.TabIndex = 11
+        Me.Btn_Output7.TabIndex = 6
         Me.Btn_Output7.Text = "包装費変動表"
         Me.Btn_Output7.UseVisualStyleBackColor = True
         '
@@ -145,7 +145,7 @@ Partial Class F_Print_Main
         Me.Btn_Output2.Location = New System.Drawing.Point(18, 71)
         Me.Btn_Output2.Name = "Btn_Output2"
         Me.Btn_Output2.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output2.TabIndex = 10
+        Me.Btn_Output2.TabIndex = 3
         Me.Btn_Output2.Text = "見積書"
         Me.Btn_Output2.UseVisualStyleBackColor = True
         '
@@ -179,7 +179,7 @@ Partial Class F_Print_Main
         Me.Cmb_Target.Location = New System.Drawing.Point(274, 66)
         Me.Cmb_Target.Name = "Cmb_Target"
         Me.Cmb_Target.Size = New System.Drawing.Size(203, 24)
-        Me.Cmb_Target.TabIndex = 56
+        Me.Cmb_Target.TabIndex = 1
         '
         'Label3
         '
