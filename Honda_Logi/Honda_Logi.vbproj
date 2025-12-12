@@ -366,13 +366,22 @@
     <None Include="Excel_Format\機種摘要モジュール一覧.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Excel_Format\見積書%28機種%29.xlsx">
+    <None Include="Excel_Format\見積書%28汎用機種%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\見積書%282R_ATV%29.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Excel_Format\見積書%28部単内装%29.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Excel_Format\見積書%28部単外装%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\部品単位包装費一覧%28内装%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\部品単位包装費一覧%28外装%29.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="My Project\Application.myapp">

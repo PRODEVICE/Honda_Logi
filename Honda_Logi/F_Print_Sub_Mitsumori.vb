@@ -65,7 +65,7 @@ Public Class F_Print_Sub_Mitsumori
                 End Using
 
                 'Excelに描画
-                ExportToExcel2(dt, keisu_flg)
+                ExportToExcel2(dt, keisu_flg, 1)
 
             End Using
 
@@ -114,7 +114,7 @@ Public Class F_Print_Sub_Mitsumori
                 End Using
 
                 'Excelに描画
-                ExportToExcel2(dt, keisu_flg)
+                ExportToExcel2(dt, keisu_flg, 2)
 
             End Using
 
@@ -235,12 +235,22 @@ Public Class F_Print_Sub_Mitsumori
     '******************************************************************************
 
     '見積書(機種)作成処理
-    Private Sub ExportToExcel2(dt As DataTable, _keisu_flg As Boolean)
+    Private Sub ExportToExcel2(dt As DataTable, _keisu_flg As Boolean, _mode As Integer)
 
         Try
 
             ' プロジェクト内テンプレートのパス
-            Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(機種).xlsx")
+            Dim templatePath As String
+            Dim file_name As String
+
+            If _mode = 1 Then
+                templatePath = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(2R_ATV).xlsx")
+                file_name = "見積書(2R_ATV)_出力.xlsx"
+            Else
+                templatePath = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(汎用機種).xlsx")
+                file_name = "見積書(汎用機種)_出力.xlsx"
+            End If
+
             Dim dt_keisu As New DS_M.DT_M_KeisuDataTable
             Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
             Dim ta_rate As New DS_MTableAdapters.TA_M_Rate
@@ -253,7 +263,7 @@ Public Class F_Print_Sub_Mitsumori
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "見積書(汎用機種)_出力.xlsx",
+            .FileName = file_name,
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}
 
             If sfd.ShowDialog() <> DialogResult.OK Then
@@ -284,7 +294,12 @@ Public Class F_Print_Sub_Mitsumori
                 Dim currentRow As Integer = startRow
 
                 'ヘッダ項目を書き込む
-                ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString & "　見積書(機種)")
+                If _mode = 1 Then
+                    ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString & "　見積書(2R_ATV)")
+                Else
+                    ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString & "　見積書(汎用機種)")
+                End If
+
 
                 ' DataTable の中身を Excel に書き込む
                 For Each row As DataRow In dt.Rows
@@ -566,7 +581,7 @@ Public Class F_Print_Sub_Mitsumori
                     ws.Cell(currentRow, 7).Value = If(IsDBNull(row("Col7")), 0, Decimal.Parse(row("Col7").ToString))
                     ws.Cell(currentRow, 8).Value = If(IsDBNull(row("Col8")), 0, Decimal.Parse(row("Col8").ToString))
                     ws.Cell(currentRow, 9).Value = If(IsDBNull(row("Col9")), 0, Decimal.Parse(row("Col9").ToString))
-
+                    ws.Cell(currentRow, 10).Value = If(IsDBNull(row("Col9")), 0, Decimal.Parse(row("Col9").ToString))
                     currentRow += 1
 
                 Next
