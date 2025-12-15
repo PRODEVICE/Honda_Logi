@@ -51727,7 +51727,7 @@ Namespace DS_TTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT                      id, 包装SS, 汎24, ModelYear, Dist, 機種, TYPE, ｵﾌﾟｼｮﾝ, 部品群"& _ 
@@ -51737,6 +51737,17 @@ Namespace DS_TTableAdapters
                 "量_不定量コード, 機種2, M3, 個装数, ｶｰﾄﾝ, 工数, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      部品点数, "& _ 
                 "部品総数, 材料費, 機種コード_Module, 取込年月, 見積No"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_KIT60"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT                      id, 包装SS, 汎24, ModelYear, Dist, 機種, TYPE, ｵﾌﾟｼｮﾝ, 部品群"& _ 
+                ", Lot_no, 枝, Module, ﾓﾃﾞﾌ, 仮C_no, 定量f_不定量x区分, P_C_No, 包装日, 包装Lot台数, 外装Line, 係, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      Line, その他1, その他2, 包装場, GWT, 外装規格, Ｌ, W, Ｈ"& _ 
+                ", 計画年, 計画月, オーダーロットNo, 計画確定Bit, ケースマーク発行Bit, 部品群機種コード, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "               ベース機種コード, 包装ロットNo, オーダー区分, 予備１, 予備２, 予備３, 予備４, 予備５, 本C_No, 予備７, 定"& _ 
+                "量_不定量コード, 機種2, M3, 個装数, ｶｰﾄﾝ, 工数, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      部品点数, "& _ 
+                "部品総数, 材料費, 機種コード_Module, 取込年月, 見積No"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_KIT60"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE"& _ 
+                "                       (見積No = @見積No)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -51758,6 +51769,40 @@ Namespace DS_TTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData() As DS_T.DT_T_KIT60DataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DS_T.DT_T_KIT60DataTable = New DS_T.DT_T_KIT60DataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function Q_KIT情報取得(ByVal dataTable As DS_T.DT_T_KIT60DataTable, ByVal 見積No As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (見積No.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(見積No.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy(ByVal 見積No As Global.System.Nullable(Of Integer)) As DS_T.DT_T_KIT60DataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (見積No.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(見積No.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
             Dim dataTable As DS_T.DT_T_KIT60DataTable = New DS_T.DT_T_KIT60DataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable

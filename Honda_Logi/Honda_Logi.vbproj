@@ -354,6 +354,12 @@
     <None Include="DS_T.xss">
       <DependentUpon>DS_T.xsd</DependentUpon>
     </None>
+    <None Include="Excel_Format\KIT60%28最終加工%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\モジュール別包装費明細.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Excel_Format\包装仕様一覧.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -376,6 +382,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Excel_Format\見積書%28部単外装%29.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\請求明細.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Excel_Format\部品単位包装費一覧%28内装%29.xlsx">

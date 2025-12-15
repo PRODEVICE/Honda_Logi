@@ -635,6 +635,7 @@ Public Class F_Receive
                         '最後に取込年月をセット
                         dr("取込年月") = _nengetu
                         dr("見積No") = _mitsumori_no
+                        dr("材料費") = row.Cell(54).Value
 
                         dt_kit.Rows.Add(dr)
                     End If
