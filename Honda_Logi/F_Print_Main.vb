@@ -285,6 +285,10 @@ Public Class F_Print_Main
     'モジュール別包装費明細クリック時
     Private Sub Btn_Output12_Click(sender As Object, e As EventArgs) Handles Btn_Output12.Click
 
+        Dim mitsumori_no As Integer = Cmb_Target.SelectedValue
+        Dim OpenForm As New F_Print_Sub_Module_Housou(mitsumori_no)
+        OpenForm.ShowDialog()
+
     End Sub
 
     '機種摘要モジュール一覧

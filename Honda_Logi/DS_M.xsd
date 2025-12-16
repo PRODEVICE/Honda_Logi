@@ -92,7 +92,7 @@ VALUES                    (@個装資材コード)</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Bolt</CommandText>
@@ -100,7 +100,7 @@ VALUES                    (@個装資材コード)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -163,7 +163,7 @@ SELECT id, 内装資材コード FROM M_Gaisou_Box WHERE (id = @id)</CommandText
               <Mapping SourceColumn="内装資材コード" DataSetColumn="内装資材コード" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Gaisou_Box</CommandText>
@@ -171,7 +171,7 @@ SELECT id, 内装資材コード FROM M_Gaisou_Box WHERE (id = @id)</CommandText
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -183,7 +183,7 @@ WHERE                       (内装資材コード = @内装資材コード)</Co
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_箱更新" Modifier="Public" Name="Q_箱更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_箱更新">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_箱更新" Modifier="Public" Name="Q_箱更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_箱更新">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE                    M_Gaisou_Box
@@ -196,7 +196,7 @@ WHERE                       (id = @Original_id)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_箱削除" Modifier="Public" Name="Q_箱削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_箱削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_箱削除" Modifier="Public" Name="Q_箱削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_箱削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Gaisou_Box
@@ -207,7 +207,7 @@ WHERE                       (id = @Original_id)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_箱登録" Modifier="Public" Name="Q_箱登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_箱登録">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_箱登録" Modifier="Public" Name="Q_箱登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_箱登録">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO         M_Gaisou_Box
@@ -306,7 +306,7 @@ VALUES                    (@内装資材コード)</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Gaisou_Danboru</CommandText>
@@ -314,7 +314,7 @@ VALUES                    (@内装資材コード)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -405,7 +405,7 @@ WHERE                       (DIST = @DIST) AND (個装内装区分 = @個装内�
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Housou_Kbn</CommandText>
@@ -413,7 +413,7 @@ WHERE                       (DIST = @DIST) AND (個装内装区分 = @個装内�
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -426,7 +426,7 @@ WHERE                       (DIST = @DIST) AND (個装内装区分 = @個装内�
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_包装更新" Modifier="Public" Name="Q_包装更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_包装更新">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_包装更新" Modifier="Public" Name="Q_包装更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_包装更新">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE                    M_Housou_Kbn
@@ -441,7 +441,7 @@ WHERE                       (id = @Original_id)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_包装削除" Modifier="Public" Name="Q_包装削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_包装削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_包装削除" Modifier="Public" Name="Q_包装削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_包装削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Housou_Kbn
@@ -452,7 +452,7 @@ WHERE                       (id = @Original_id)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_包装登録" Modifier="Public" Name="Q_包装登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_包装登録">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_包装登録" Modifier="Public" Name="Q_包装登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_包装登録">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO         M_Housou_Kbn
@@ -553,7 +553,7 @@ VALUES                    (@個装資材コード)</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Kosou_Shizai</CommandText>
@@ -561,7 +561,7 @@ VALUES                    (@個装資材コード)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -816,7 +816,7 @@ WHERE                       (仕向 = @仕向) AND (機種 = @機種) AND (タ�
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Mitsumori</CommandText>
@@ -824,7 +824,7 @@ WHERE                       (仕向 = @仕向) AND (機種 = @機種) AND (タ�
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -836,7 +836,7 @@ WHERE                       (見積コード = @見積コード)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック2" Modifier="Public" Name="Q_存在チェック2" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="Q_存在チェック2">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック2" Modifier="Public" Name="Q_存在チェック2" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="Q_存在チェック2">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -934,7 +934,7 @@ WHERE                       (内装資材コード = @内装資材コード)</Co
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Naisou_Shizai</CommandText>
@@ -942,7 +942,7 @@ WHERE                       (内装資材コード = @内装資材コード)</Co
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -954,7 +954,7 @@ WHERE                       (内装資材コード = @内装資材コード)</Co
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_内装資材更新" Modifier="Public" Name="Q_内装資材更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_内装資材更新">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_内装資材更新" Modifier="Public" Name="Q_内装資材更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_内装資材更新">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE                    M_Naisou_Shizai
@@ -968,7 +968,7 @@ WHERE                       (id = @Original_id)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_内装資材削除" Modifier="Public" Name="Q_内装資材削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_内装資材削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_内装資材削除" Modifier="Public" Name="Q_内装資材削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_内装資材削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Naisou_Shizai
@@ -979,7 +979,7 @@ WHERE                       (id = @Original_id)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_内装資材登録" Modifier="Public" Name="Q_内装資材登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_内装資材登録">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_内装資材登録" Modifier="Public" Name="Q_内装資材登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="Q_内装資材登録">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO         M_Naisou_Shizai
@@ -1148,7 +1148,7 @@ WHERE                       (資材コード = @資材コード) AND (id &lt;&gt
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Tanka</CommandText>
@@ -1156,7 +1156,7 @@ WHERE                       (資材コード = @資材コード) AND (id &lt;&gt
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -1168,7 +1168,7 @@ WHERE                       (資材コード = @資材コード)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_単価更新" Modifier="Public" Name="Q_単価更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_単価更新">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_単価更新" Modifier="Public" Name="Q_単価更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_単価更新">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE                    M_Tanka
@@ -1184,7 +1184,7 @@ WHERE                       (id = @Original_id)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_単価削除" Modifier="Public" Name="Q_単価削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="Q_単価削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_単価削除" Modifier="Public" Name="Q_単価削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_単価削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Tanka
@@ -1195,7 +1195,7 @@ WHERE                       (id = @Original_id)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_単価登録" Modifier="Public" Name="Q_単価登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_単価登録">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_単価登録" Modifier="Public" Name="Q_単価登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_単価登録">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO         M_Tanka
@@ -1272,6 +1272,16 @@ SELECT id, 作業区分, 作業単位, 秒数 FROM M_Second WHERE (作業区分 
               <Mapping SourceColumn="秒数" DataSetColumn="秒数" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.M_Second" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Q_工数一覧取得" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="Q_工数一覧取得" GetMethodModifier="Public" GetMethodName="GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_工数一覧取得">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT                      id, 作業区分, 作業単位, 秒数
+FROM                         M_Second
+ORDER BY               作業区分</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_工数更新" Modifier="Public" Name="Q_工数更新" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_工数更新">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -1483,7 +1493,7 @@ WHERE                       (User_id = @User_id) AND (id &lt;&gt; @id)</CommandT
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_User</CommandText>
@@ -1491,7 +1501,7 @@ WHERE                       (User_id = @User_id) AND (id &lt;&gt; @id)</CommandT
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(*) AS Expr1
@@ -1621,7 +1631,7 @@ WHERE                       (id = @id) AND (機種 = @機種) AND (タイプ = @
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_全件削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_全件削除" Modifier="Public" Name="Q_全件削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_全件削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       M_Keisu</CommandText>
@@ -1629,7 +1639,7 @@ WHERE                       (id = @id) AND (機種 = @機種) AND (タイプ = @
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy3" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="Q_存在チェック">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy3" GeneratorSourceName="Q_存在チェック" Modifier="Public" Name="Q_存在チェック" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="Q_存在チェック">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      COUNT(id) AS Expr1
@@ -1652,7 +1662,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
   <xs:element name="DS_M" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_M" msprop:Generator_UserDSName="DS_M">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DT_M_Bolt" msprop:Generator_TableClassName="DT_M_BoltDataTable" msprop:Generator_TableVarName="tableDT_M_Bolt" msprop:Generator_TablePropName="DT_M_Bolt" msprop:Generator_RowDeletingName="DT_M_BoltRowDeleting" msprop:Generator_RowChangingName="DT_M_BoltRowChanging" msprop:Generator_RowEvHandlerName="DT_M_BoltRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_BoltRowDeleted" msprop:Generator_UserTableName="DT_M_Bolt" msprop:Generator_RowChangedName="DT_M_BoltRowChanged" msprop:Generator_RowEvArgName="DT_M_BoltRowChangeEvent" msprop:Generator_RowClassName="DT_M_BoltRow">
+        <xs:element name="DT_M_Bolt" msprop:Generator_TableClassName="DT_M_BoltDataTable" msprop:Generator_TableVarName="tableDT_M_Bolt" msprop:Generator_RowChangedName="DT_M_BoltRowChanged" msprop:Generator_TablePropName="DT_M_Bolt" msprop:Generator_RowDeletingName="DT_M_BoltRowDeleting" msprop:Generator_RowChangingName="DT_M_BoltRowChanging" msprop:Generator_RowEvHandlerName="DT_M_BoltRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_BoltRowDeleted" msprop:Generator_RowClassName="DT_M_BoltRow" msprop:Generator_UserTableName="DT_M_Bolt" msprop:Generator_RowEvArgName="DT_M_BoltRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1666,7 +1676,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Gaisou_Box" msprop:Generator_TableClassName="DT_M_Gaisou_BoxDataTable" msprop:Generator_TableVarName="tableDT_M_Gaisou_Box" msprop:Generator_TablePropName="DT_M_Gaisou_Box" msprop:Generator_RowDeletingName="DT_M_Gaisou_BoxRowDeleting" msprop:Generator_RowChangingName="DT_M_Gaisou_BoxRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Gaisou_BoxRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Gaisou_BoxRowDeleted" msprop:Generator_UserTableName="DT_M_Gaisou_Box" msprop:Generator_RowChangedName="DT_M_Gaisou_BoxRowChanged" msprop:Generator_RowEvArgName="DT_M_Gaisou_BoxRowChangeEvent" msprop:Generator_RowClassName="DT_M_Gaisou_BoxRow">
+        <xs:element name="DT_M_Gaisou_Box" msprop:Generator_TableClassName="DT_M_Gaisou_BoxDataTable" msprop:Generator_TableVarName="tableDT_M_Gaisou_Box" msprop:Generator_RowChangedName="DT_M_Gaisou_BoxRowChanged" msprop:Generator_TablePropName="DT_M_Gaisou_Box" msprop:Generator_RowDeletingName="DT_M_Gaisou_BoxRowDeleting" msprop:Generator_RowChangingName="DT_M_Gaisou_BoxRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Gaisou_BoxRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Gaisou_BoxRowDeleted" msprop:Generator_RowClassName="DT_M_Gaisou_BoxRow" msprop:Generator_UserTableName="DT_M_Gaisou_Box" msprop:Generator_RowEvArgName="DT_M_Gaisou_BoxRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1680,7 +1690,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Gaisou_Danboru" msprop:Generator_TableClassName="DT_M_Gaisou_DanboruDataTable" msprop:Generator_TableVarName="tableDT_M_Gaisou_Danboru" msprop:Generator_TablePropName="DT_M_Gaisou_Danboru" msprop:Generator_RowDeletingName="DT_M_Gaisou_DanboruRowDeleting" msprop:Generator_RowChangingName="DT_M_Gaisou_DanboruRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Gaisou_DanboruRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Gaisou_DanboruRowDeleted" msprop:Generator_UserTableName="DT_M_Gaisou_Danboru" msprop:Generator_RowChangedName="DT_M_Gaisou_DanboruRowChanged" msprop:Generator_RowEvArgName="DT_M_Gaisou_DanboruRowChangeEvent" msprop:Generator_RowClassName="DT_M_Gaisou_DanboruRow">
+        <xs:element name="DT_M_Gaisou_Danboru" msprop:Generator_TableClassName="DT_M_Gaisou_DanboruDataTable" msprop:Generator_TableVarName="tableDT_M_Gaisou_Danboru" msprop:Generator_RowChangedName="DT_M_Gaisou_DanboruRowChanged" msprop:Generator_TablePropName="DT_M_Gaisou_Danboru" msprop:Generator_RowDeletingName="DT_M_Gaisou_DanboruRowDeleting" msprop:Generator_RowChangingName="DT_M_Gaisou_DanboruRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Gaisou_DanboruRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Gaisou_DanboruRowDeleted" msprop:Generator_RowClassName="DT_M_Gaisou_DanboruRow" msprop:Generator_UserTableName="DT_M_Gaisou_Danboru" msprop:Generator_RowEvArgName="DT_M_Gaisou_DanboruRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1694,7 +1704,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Housou_Kbn" msprop:Generator_TableClassName="DT_M_Housou_KbnDataTable" msprop:Generator_TableVarName="tableDT_M_Housou_Kbn" msprop:Generator_TablePropName="DT_M_Housou_Kbn" msprop:Generator_RowDeletingName="DT_M_Housou_KbnRowDeleting" msprop:Generator_RowChangingName="DT_M_Housou_KbnRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Housou_KbnRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Housou_KbnRowDeleted" msprop:Generator_UserTableName="DT_M_Housou_Kbn" msprop:Generator_RowChangedName="DT_M_Housou_KbnRowChanged" msprop:Generator_RowEvArgName="DT_M_Housou_KbnRowChangeEvent" msprop:Generator_RowClassName="DT_M_Housou_KbnRow">
+        <xs:element name="DT_M_Housou_Kbn" msprop:Generator_TableClassName="DT_M_Housou_KbnDataTable" msprop:Generator_TableVarName="tableDT_M_Housou_Kbn" msprop:Generator_RowChangedName="DT_M_Housou_KbnRowChanged" msprop:Generator_TablePropName="DT_M_Housou_Kbn" msprop:Generator_RowDeletingName="DT_M_Housou_KbnRowDeleting" msprop:Generator_RowChangingName="DT_M_Housou_KbnRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Housou_KbnRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Housou_KbnRowDeleted" msprop:Generator_RowClassName="DT_M_Housou_KbnRow" msprop:Generator_UserTableName="DT_M_Housou_Kbn" msprop:Generator_RowEvArgName="DT_M_Housou_KbnRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1722,7 +1732,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Kosou_Shizai" msprop:Generator_TableClassName="DT_M_Kosou_ShizaiDataTable" msprop:Generator_TableVarName="tableDT_M_Kosou_Shizai" msprop:Generator_TablePropName="DT_M_Kosou_Shizai" msprop:Generator_RowDeletingName="DT_M_Kosou_ShizaiRowDeleting" msprop:Generator_RowChangingName="DT_M_Kosou_ShizaiRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Kosou_ShizaiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Kosou_ShizaiRowDeleted" msprop:Generator_UserTableName="DT_M_Kosou_Shizai" msprop:Generator_RowChangedName="DT_M_Kosou_ShizaiRowChanged" msprop:Generator_RowEvArgName="DT_M_Kosou_ShizaiRowChangeEvent" msprop:Generator_RowClassName="DT_M_Kosou_ShizaiRow">
+        <xs:element name="DT_M_Kosou_Shizai" msprop:Generator_TableClassName="DT_M_Kosou_ShizaiDataTable" msprop:Generator_TableVarName="tableDT_M_Kosou_Shizai" msprop:Generator_RowChangedName="DT_M_Kosou_ShizaiRowChanged" msprop:Generator_TablePropName="DT_M_Kosou_Shizai" msprop:Generator_RowDeletingName="DT_M_Kosou_ShizaiRowDeleting" msprop:Generator_RowChangingName="DT_M_Kosou_ShizaiRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Kosou_ShizaiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Kosou_ShizaiRowDeleted" msprop:Generator_RowClassName="DT_M_Kosou_ShizaiRow" msprop:Generator_UserTableName="DT_M_Kosou_Shizai" msprop:Generator_RowEvArgName="DT_M_Kosou_ShizaiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1736,7 +1746,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Kubun" msprop:Generator_TableClassName="DT_M_KubunDataTable" msprop:Generator_TableVarName="tableDT_M_Kubun" msprop:Generator_TablePropName="DT_M_Kubun" msprop:Generator_RowDeletingName="DT_M_KubunRowDeleting" msprop:Generator_RowChangingName="DT_M_KubunRowChanging" msprop:Generator_RowEvHandlerName="DT_M_KubunRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_KubunRowDeleted" msprop:Generator_UserTableName="DT_M_Kubun" msprop:Generator_RowChangedName="DT_M_KubunRowChanged" msprop:Generator_RowEvArgName="DT_M_KubunRowChangeEvent" msprop:Generator_RowClassName="DT_M_KubunRow">
+        <xs:element name="DT_M_Kubun" msprop:Generator_TableClassName="DT_M_KubunDataTable" msprop:Generator_TableVarName="tableDT_M_Kubun" msprop:Generator_RowChangedName="DT_M_KubunRowChanged" msprop:Generator_TablePropName="DT_M_Kubun" msprop:Generator_RowDeletingName="DT_M_KubunRowDeleting" msprop:Generator_RowChangingName="DT_M_KubunRowChanging" msprop:Generator_RowEvHandlerName="DT_M_KubunRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_KubunRowDeleted" msprop:Generator_RowClassName="DT_M_KubunRow" msprop:Generator_UserTableName="DT_M_Kubun" msprop:Generator_RowEvArgName="DT_M_KubunRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1772,7 +1782,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Mitsumori" msprop:Generator_TableClassName="DT_M_MitsumoriDataTable" msprop:Generator_TableVarName="tableDT_M_Mitsumori" msprop:Generator_TablePropName="DT_M_Mitsumori" msprop:Generator_RowDeletingName="DT_M_MitsumoriRowDeleting" msprop:Generator_RowChangingName="DT_M_MitsumoriRowChanging" msprop:Generator_RowEvHandlerName="DT_M_MitsumoriRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_MitsumoriRowDeleted" msprop:Generator_UserTableName="DT_M_Mitsumori" msprop:Generator_RowChangedName="DT_M_MitsumoriRowChanged" msprop:Generator_RowEvArgName="DT_M_MitsumoriRowChangeEvent" msprop:Generator_RowClassName="DT_M_MitsumoriRow">
+        <xs:element name="DT_M_Mitsumori" msprop:Generator_TableClassName="DT_M_MitsumoriDataTable" msprop:Generator_TableVarName="tableDT_M_Mitsumori" msprop:Generator_RowChangedName="DT_M_MitsumoriRowChanged" msprop:Generator_TablePropName="DT_M_Mitsumori" msprop:Generator_RowDeletingName="DT_M_MitsumoriRowDeleting" msprop:Generator_RowChangingName="DT_M_MitsumoriRowChanging" msprop:Generator_RowEvHandlerName="DT_M_MitsumoriRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_MitsumoriRowDeleted" msprop:Generator_RowClassName="DT_M_MitsumoriRow" msprop:Generator_UserTableName="DT_M_Mitsumori" msprop:Generator_RowEvArgName="DT_M_MitsumoriRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1814,7 +1824,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Naisou_Shizai" msprop:Generator_TableClassName="DT_M_Naisou_ShizaiDataTable" msprop:Generator_TableVarName="tableDT_M_Naisou_Shizai" msprop:Generator_TablePropName="DT_M_Naisou_Shizai" msprop:Generator_RowDeletingName="DT_M_Naisou_ShizaiRowDeleting" msprop:Generator_RowChangingName="DT_M_Naisou_ShizaiRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Naisou_ShizaiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Naisou_ShizaiRowDeleted" msprop:Generator_UserTableName="DT_M_Naisou_Shizai" msprop:Generator_RowChangedName="DT_M_Naisou_ShizaiRowChanged" msprop:Generator_RowEvArgName="DT_M_Naisou_ShizaiRowChangeEvent" msprop:Generator_RowClassName="DT_M_Naisou_ShizaiRow">
+        <xs:element name="DT_M_Naisou_Shizai" msprop:Generator_TableClassName="DT_M_Naisou_ShizaiDataTable" msprop:Generator_TableVarName="tableDT_M_Naisou_Shizai" msprop:Generator_RowChangedName="DT_M_Naisou_ShizaiRowChanged" msprop:Generator_TablePropName="DT_M_Naisou_Shizai" msprop:Generator_RowDeletingName="DT_M_Naisou_ShizaiRowDeleting" msprop:Generator_RowChangingName="DT_M_Naisou_ShizaiRowChanging" msprop:Generator_RowEvHandlerName="DT_M_Naisou_ShizaiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_Naisou_ShizaiRowDeleted" msprop:Generator_RowClassName="DT_M_Naisou_ShizaiRow" msprop:Generator_UserTableName="DT_M_Naisou_Shizai" msprop:Generator_RowEvArgName="DT_M_Naisou_ShizaiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1829,7 +1839,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Rate" msprop:Generator_TableClassName="DT_M_RateDataTable" msprop:Generator_TableVarName="tableDT_M_Rate" msprop:Generator_TablePropName="DT_M_Rate" msprop:Generator_RowDeletingName="DT_M_RateRowDeleting" msprop:Generator_RowChangingName="DT_M_RateRowChanging" msprop:Generator_RowEvHandlerName="DT_M_RateRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_RateRowDeleted" msprop:Generator_UserTableName="DT_M_Rate" msprop:Generator_RowChangedName="DT_M_RateRowChanged" msprop:Generator_RowEvArgName="DT_M_RateRowChangeEvent" msprop:Generator_RowClassName="DT_M_RateRow">
+        <xs:element name="DT_M_Rate" msprop:Generator_TableClassName="DT_M_RateDataTable" msprop:Generator_TableVarName="tableDT_M_Rate" msprop:Generator_RowChangedName="DT_M_RateRowChanged" msprop:Generator_TablePropName="DT_M_Rate" msprop:Generator_RowDeletingName="DT_M_RateRowDeleting" msprop:Generator_RowChangingName="DT_M_RateRowChanging" msprop:Generator_RowEvHandlerName="DT_M_RateRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_RateRowDeleted" msprop:Generator_RowClassName="DT_M_RateRow" msprop:Generator_UserTableName="DT_M_Rate" msprop:Generator_RowEvArgName="DT_M_RateRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1837,7 +1847,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Tanka" msprop:Generator_TableClassName="DT_M_TankaDataTable" msprop:Generator_TableVarName="tableDT_M_Tanka" msprop:Generator_TablePropName="DT_M_Tanka" msprop:Generator_RowDeletingName="DT_M_TankaRowDeleting" msprop:Generator_RowChangingName="DT_M_TankaRowChanging" msprop:Generator_RowEvHandlerName="DT_M_TankaRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_TankaRowDeleted" msprop:Generator_UserTableName="DT_M_Tanka" msprop:Generator_RowChangedName="DT_M_TankaRowChanged" msprop:Generator_RowEvArgName="DT_M_TankaRowChangeEvent" msprop:Generator_RowClassName="DT_M_TankaRow">
+        <xs:element name="DT_M_Tanka" msprop:Generator_TableClassName="DT_M_TankaDataTable" msprop:Generator_TableVarName="tableDT_M_Tanka" msprop:Generator_RowChangedName="DT_M_TankaRowChanged" msprop:Generator_TablePropName="DT_M_Tanka" msprop:Generator_RowDeletingName="DT_M_TankaRowDeleting" msprop:Generator_RowChangingName="DT_M_TankaRowChanging" msprop:Generator_RowEvHandlerName="DT_M_TankaRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_TankaRowDeleted" msprop:Generator_RowClassName="DT_M_TankaRow" msprop:Generator_UserTableName="DT_M_Tanka" msprop:Generator_RowEvArgName="DT_M_TankaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1866,7 +1876,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Second" msprop:Generator_TableClassName="DT_M_SecondDataTable" msprop:Generator_TableVarName="tableDT_M_Second" msprop:Generator_TablePropName="DT_M_Second" msprop:Generator_RowDeletingName="DT_M_SecondRowDeleting" msprop:Generator_RowChangingName="DT_M_SecondRowChanging" msprop:Generator_RowEvHandlerName="DT_M_SecondRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_SecondRowDeleted" msprop:Generator_UserTableName="DT_M_Second" msprop:Generator_RowChangedName="DT_M_SecondRowChanged" msprop:Generator_RowEvArgName="DT_M_SecondRowChangeEvent" msprop:Generator_RowClassName="DT_M_SecondRow">
+        <xs:element name="DT_M_Second" msprop:Generator_TableClassName="DT_M_SecondDataTable" msprop:Generator_TableVarName="tableDT_M_Second" msprop:Generator_RowChangedName="DT_M_SecondRowChanged" msprop:Generator_TablePropName="DT_M_Second" msprop:Generator_RowDeletingName="DT_M_SecondRowDeleting" msprop:Generator_RowChangingName="DT_M_SecondRowChanging" msprop:Generator_RowEvHandlerName="DT_M_SecondRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_SecondRowDeleted" msprop:Generator_RowClassName="DT_M_SecondRow" msprop:Generator_UserTableName="DT_M_Second" msprop:Generator_RowEvArgName="DT_M_SecondRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1882,14 +1892,14 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Bangou" msprop:Generator_TableClassName="DT_M_BangouDataTable" msprop:Generator_TableVarName="tableDT_M_Bangou" msprop:Generator_RowChangedName="DT_M_BangouRowChanged" msprop:Generator_TablePropName="DT_M_Bangou" msprop:Generator_RowDeletingName="DT_M_BangouRowDeleting" msprop:Generator_RowChangingName="DT_M_BangouRowChanging" msprop:Generator_RowEvHandlerName="DT_M_BangouRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_BangouRowDeleted" msprop:Generator_RowClassName="DT_M_BangouRow" msprop:Generator_UserTableName="DT_M_Bangou" msprop:Generator_RowEvArgName="DT_M_BangouRowChangeEvent">
+        <xs:element name="DT_M_Bangou" msprop:Generator_TableClassName="DT_M_BangouDataTable" msprop:Generator_TableVarName="tableDT_M_Bangou" msprop:Generator_TablePropName="DT_M_Bangou" msprop:Generator_RowDeletingName="DT_M_BangouRowDeleting" msprop:Generator_RowChangingName="DT_M_BangouRowChanging" msprop:Generator_RowEvHandlerName="DT_M_BangouRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_BangouRowDeleted" msprop:Generator_UserTableName="DT_M_Bangou" msprop:Generator_RowChangedName="DT_M_BangouRowChanged" msprop:Generator_RowEvArgName="DT_M_BangouRowChangeEvent" msprop:Generator_RowClassName="DT_M_BangouRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="見積No" msprop:Generator_ColumnVarNameInTable="column見積No" msprop:Generator_ColumnPropNameInRow="見積No" msprop:Generator_ColumnPropNameInTable="見積NoColumn" msprop:Generator_UserColumnName="見積No" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_User" msprop:Generator_TableClassName="DT_M_UserDataTable" msprop:Generator_TableVarName="tableDT_M_User" msprop:Generator_TablePropName="DT_M_User" msprop:Generator_RowDeletingName="DT_M_UserRowDeleting" msprop:Generator_RowChangingName="DT_M_UserRowChanging" msprop:Generator_RowEvHandlerName="DT_M_UserRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_UserRowDeleted" msprop:Generator_UserTableName="DT_M_User" msprop:Generator_RowChangedName="DT_M_UserRowChanged" msprop:Generator_RowEvArgName="DT_M_UserRowChangeEvent" msprop:Generator_RowClassName="DT_M_UserRow">
+        <xs:element name="DT_M_User" msprop:Generator_TableClassName="DT_M_UserDataTable" msprop:Generator_TableVarName="tableDT_M_User" msprop:Generator_RowChangedName="DT_M_UserRowChanged" msprop:Generator_TablePropName="DT_M_User" msprop:Generator_RowDeletingName="DT_M_UserRowDeleting" msprop:Generator_RowChangingName="DT_M_UserRowChanging" msprop:Generator_RowEvHandlerName="DT_M_UserRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_UserRowDeleted" msprop:Generator_RowClassName="DT_M_UserRow" msprop:Generator_UserTableName="DT_M_User" msprop:Generator_RowEvArgName="DT_M_UserRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -1924,7 +1934,7 @@ WHERE                       (機種 = @機種) AND (タイプ = @タイプ)</Com
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_M_Keisu" msprop:Generator_TableClassName="DT_M_KeisuDataTable" msprop:Generator_TableVarName="tableDT_M_Keisu" msprop:Generator_TablePropName="DT_M_Keisu" msprop:Generator_RowDeletingName="DT_M_KeisuRowDeleting" msprop:Generator_RowChangingName="DT_M_KeisuRowChanging" msprop:Generator_RowEvHandlerName="DT_M_KeisuRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_KeisuRowDeleted" msprop:Generator_UserTableName="DT_M_Keisu" msprop:Generator_RowChangedName="DT_M_KeisuRowChanged" msprop:Generator_RowEvArgName="DT_M_KeisuRowChangeEvent" msprop:Generator_RowClassName="DT_M_KeisuRow">
+        <xs:element name="DT_M_Keisu" msprop:Generator_TableClassName="DT_M_KeisuDataTable" msprop:Generator_TableVarName="tableDT_M_Keisu" msprop:Generator_RowChangedName="DT_M_KeisuRowChanged" msprop:Generator_TablePropName="DT_M_Keisu" msprop:Generator_RowDeletingName="DT_M_KeisuRowDeleting" msprop:Generator_RowChangingName="DT_M_KeisuRowChanging" msprop:Generator_RowEvHandlerName="DT_M_KeisuRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_M_KeisuRowDeleted" msprop:Generator_RowClassName="DT_M_KeisuRow" msprop:Generator_UserTableName="DT_M_Keisu" msprop:Generator_RowEvArgName="DT_M_KeisuRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />

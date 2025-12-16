@@ -178,6 +178,12 @@
     <Compile Include="F_Print_Sub_Housou.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_Print_Sub_Module_Housou.Designer.vb">
+      <DependentUpon>F_Print_Sub_Module_Housou.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Print_Sub_Module_Housou.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Print_Sub_Module.Designer.vb">
       <DependentUpon>F_Print_Sub_Module.vb</DependentUpon>
     </Compile>
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_Print_Sub_Housou.resx">
       <DependentUpon>F_Print_Sub_Housou.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Print_Sub_Module_Housou.resx">
+      <DependentUpon>F_Print_Sub_Module_Housou.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Print_Sub_Module.resx">
       <DependentUpon>F_Print_Sub_Module.vb</DependentUpon>
