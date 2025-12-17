@@ -33,6 +33,7 @@ Partial Class F_Receive
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Dtp_Nengetu = New System.Windows.Forms.DateTimePicker()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.Lbl_Messege = New System.Windows.Forms.Label()
         CType(Me.DTMKubunBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -51,7 +52,7 @@ Partial Class F_Receive
         'Btn_Sanshou
         '
         Me.Btn_Sanshou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Sanshou.Location = New System.Drawing.Point(698, 160)
+        Me.Btn_Sanshou.Location = New System.Drawing.Point(697, 212)
         Me.Btn_Sanshou.Name = "Btn_Sanshou"
         Me.Btn_Sanshou.Size = New System.Drawing.Size(75, 38)
         Me.Btn_Sanshou.TabIndex = 27
@@ -61,7 +62,7 @@ Partial Class F_Receive
         'Txt_File_Path
         '
         Me.Txt_File_Path.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_File_Path.Location = New System.Drawing.Point(63, 131)
+        Me.Txt_File_Path.Location = New System.Drawing.Point(62, 183)
         Me.Txt_File_Path.Name = "Txt_File_Path"
         Me.Txt_File_Path.Size = New System.Drawing.Size(710, 23)
         Me.Txt_File_Path.TabIndex = 26
@@ -73,7 +74,7 @@ Partial Class F_Receive
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(63, 101)
+        Me.Label1.Location = New System.Drawing.Point(62, 153)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(112, 18)
         Me.Label1.TabIndex = 25
@@ -100,7 +101,7 @@ Partial Class F_Receive
         Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(63, 9)
+        Me.Label3.Location = New System.Drawing.Point(62, 61)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(74, 18)
         Me.Label3.TabIndex = 30
@@ -109,16 +110,29 @@ Partial Class F_Receive
         'Dtp_Nengetu
         '
         Me.Dtp_Nengetu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Dtp_Nengetu.Location = New System.Drawing.Point(63, 31)
+        Me.Dtp_Nengetu.Location = New System.Drawing.Point(62, 83)
         Me.Dtp_Nengetu.Name = "Dtp_Nengetu"
         Me.Dtp_Nengetu.Size = New System.Drawing.Size(200, 23)
         Me.Dtp_Nengetu.TabIndex = 31
+        '
+        'Lbl_Messege
+        '
+        Me.Lbl_Messege.AutoSize = True
+        Me.Lbl_Messege.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Bold)
+        Me.Lbl_Messege.ForeColor = System.Drawing.Color.Red
+        Me.Lbl_Messege.Location = New System.Drawing.Point(363, 25)
+        Me.Lbl_Messege.Name = "Lbl_Messege"
+        Me.Lbl_Messege.Size = New System.Drawing.Size(96, 27)
+        Me.Lbl_Messege.TabIndex = 65
+        Me.Lbl_Messege.Text = "取込中"
+        Me.Lbl_Messege.Visible = False
         '
         'F_Receive
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 346)
+        Me.Controls.Add(Me.Lbl_Messege)
         Me.Controls.Add(Me.Dtp_Nengetu)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Btn_Receive)
@@ -143,4 +157,5 @@ Partial Class F_Receive
     Friend WithEvents Label3 As Label
     Friend WithEvents Dtp_Nengetu As DateTimePicker
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents Lbl_Messege As Label
 End Class

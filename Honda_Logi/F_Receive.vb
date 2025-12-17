@@ -68,6 +68,11 @@ Public Class F_Receive
 
         Try
 
+            '待機状態
+            Cursor.Current = Cursors.WaitCursor
+            Lbl_Messege.Visible = True
+            Application.DoEvents()    ' ★ UIを即時更新
+
             Dim targetFolder As String = Txt_File_Path.Text.Trim
             Dim nengetu As String = Dtp_Nengetu.Value.Year.ToString & "/" & Dtp_Nengetu.Value.Month.ToString.PadLeft(2, "0")
 
@@ -169,6 +174,10 @@ Public Class F_Receive
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Receive_Btn_Receive_Click")
             MessageBox.Show(ex.Message)
+        Finally
+            '元に戻す
+            Cursor.Current = Cursors.Default
+            Lbl_Messege.Visible = False
         End Try
 
     End Sub

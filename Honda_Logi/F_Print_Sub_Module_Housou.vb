@@ -169,7 +169,7 @@ Public Class F_Print_Sub_Module_Housou
                 ws.Cell(6, 3).Value = Txt_Modefu.Text.Trim
 
                 Dim colNames As String() = {"Col6", "Col7", "Col8", "Col9", "Col10", "Col11", "Col12", "Col13", "Col13_1", "Col14", "Col15", "Col16",
-                                            "Col17", "Col18", "Col19", "Col20", "Col21", "Col22", "Col23", "Col24", "Col25", "Col25_1"}
+                                            "Col17", "Col18", "Col19", "Col20", "Col21", "Col22", "Col23", "Col24", "Col25", "Col25_1", "Col26", "Col27"}
 
                 Dim col As Integer = 6
 

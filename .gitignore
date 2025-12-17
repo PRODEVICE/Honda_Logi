@@ -1,31 +1,27 @@
-# Build results
-[Bb]in/
-[Oo]bj/
-*.exe
-*.dll
-*.pdb
-
-# Visual Studio cache/options directory
+# Visual Studio
 .vs/
-
-# User-specific files
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-# Auto-generated files
-Generated\ Files/
+# Build results
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
 
-# ReSharper
-_ReSharper*/
-*.[Rr]e[Ss]harper
+# Debug / Release
+Debug/
+Release/
+x64/
+x86/
 
-# NuGet packages
-packages/
-*.nupkg
-
-# Others
-*.log
+# Cache / temp
 *.cache
-*.tmp
+*.pdb
+*.log
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user

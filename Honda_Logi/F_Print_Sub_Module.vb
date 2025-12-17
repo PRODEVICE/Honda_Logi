@@ -59,6 +59,11 @@ Public Class F_Print_Sub_Module
 
         Try
 
+            '待機状態
+            Cursor.Current = Cursors.WaitCursor
+            Lbl_Messege.Visible = True
+            Application.DoEvents()    ' ★ UIを即時更新
+
             'Excelに描画
             ExportToExcel1(2)
 

@@ -259,9 +259,9 @@ Public Class F_Print_Sub_Housou
 
                 'ヘッダ項目を書き込む
                 ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString)
-                ws.Cell(2, 6).Value = If(IsDBNull(dt.Rows(0)(1)), "", dt.Rows(0)(1).ToString)
-                ws.Cell(2, 9).Value = If(IsDBNull(dt.Rows(0)(2)), "", dt.Rows(0)(2).ToString)
-                ws.Cell(2, 12).Value = If(IsDBNull(dt.Rows(0)(3)), "", dt.Rows(0)(3).ToString)
+                ws.Cell(2, 7).Value = If(IsDBNull(dt.Rows(0)(1)), "", dt.Rows(0)(1).ToString)
+                ws.Cell(2, 10).Value = If(IsDBNull(dt.Rows(0)(2)), "", dt.Rows(0)(2).ToString)
+                ws.Cell(2, 13).Value = If(IsDBNull(dt.Rows(0)(3)), "", dt.Rows(0)(3).ToString)
 
                 Dim old_value As String = ""
                 Dim new_value As String = ""

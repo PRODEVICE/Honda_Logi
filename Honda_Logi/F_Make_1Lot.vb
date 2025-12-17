@@ -16,6 +16,7 @@ Public Class F_Make_1Lot
         Cursor.Current = Cursors.WaitCursor
         Lbl_Messege.Visible = True
         Lbl_Messege.Text = "変換中"
+        Application.DoEvents()    ' ★ UIを即時更新
 
         Try
             Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC
@@ -176,6 +177,7 @@ Public Class F_Make_1Lot
             Cursor.Current = Cursors.WaitCursor
             Lbl_Messege.Visible = True
             Lbl_Messege.Text = "出力中"
+            Application.DoEvents()    ' ★ UIを即時更新
 
             Dim dt As New DS_T.DT_T_CCC_LotDataTable
             Dim ta As New DS_TTableAdapters.TA_T_CCC_Lot
@@ -2983,7 +2985,7 @@ Public Class F_Make_1Lot
                       AND EXISTS (
                           SELECT 1
                           FROM T_CCC_Lot tt
-                          WHERE tt.外装資材記号 LIKE '%SP%'
+                          WHERE tt.外装資材記号 LIKE '%SP%' OR tt.外装資材記号 LIKE '%RC%' OR tt.外装資材記号 LIKE '%CY%'
                             AND tt.ｺﾝﾄﾛｰﾙNO = t.ｺﾝﾄﾛｰﾙNO
                             AND tt.ケースNO1 = t.ケースNO1
                             AND tt.包装ロットNO = t.包装ロットNO
