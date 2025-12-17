@@ -63,13 +63,14 @@ Public Class F_Keisu
             Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
 
             Dim kishu As String = Txt_Kishu.Text.Trim
-            Dim type As String = Txt_Type.Text.Trim
+            Dim gun As String = Txt_Gun.Text.Trim
             Dim keisu As String = Txt_Keisu.Text.Trim
+            Dim shimuke As String = Txt_Shimuke.Text.Trim
             Dim id As String = Txt_id.Text.Trim
             Dim qty As Decimal
 
             '入力チェック
-            If kishu = "" Or type = "" Or keisu = "" Then
+            If kishu = "" Or gun = "" Or keisu = "" Or shimuke = "" Then
                 MessageBox.Show("全項目入力してください")
                 Exit Sub
             End If
@@ -85,7 +86,7 @@ Public Class F_Keisu
             If Btn_Touroku.Text = "登　録" Then
 
                 '存在チェック
-                chk_count = ta_keisu.Q_存在チェック(kishu, type)
+                chk_count = ta_keisu.Q_存在チェック(kishu, shimuke, gun)
 
                 If chk_count <> 0 Then
                     MessageBox.Show("既に登録済みの機種、タイプです。")
@@ -93,19 +94,19 @@ Public Class F_Keisu
                 End If
 
                 '登録処理
-                ta_keisu.Q_係数登録(kishu, type, keisu)
+                ta_keisu.Q_係数登録(kishu, keisu, shimuke, gun)
 
             Else '更新モード
 
                 '存在チェック
-                chk_count = ta_keisu.Q_更新存在チェック(kishu, type, id)
+                chk_count = ta_keisu.Q_更新存在チェック(id, kishu, shimuke, gun)
 
                 If chk_count <> 0 Then
                     MessageBox.Show("既に登録済みの機種、タイプです。")
                     Exit Sub
                 End If
 
-                ta_keisu.Q_係数更新(kishu, type, keisu, id)
+                ta_keisu.Q_係数更新(kishu, keisu, shimuke, gun, id)
 
             End If
 
@@ -230,7 +231,8 @@ Public Class F_Keisu
                 Txt_id.Text = target_id
 
                 Txt_Kishu.Text = grid.Rows(e.RowIndex).Cells("機種").Value.ToString()
-                Txt_Type.Text = grid.Rows(e.RowIndex).Cells("タイプ").Value.ToString()
+                Txt_Gun.Text = grid.Rows(e.RowIndex).Cells("群").Value.ToString()
+                Txt_Shimuke.Text = grid.Rows(e.RowIndex).Cells("仕向").Value.ToString()
                 Txt_Keisu.Text = grid.Rows(e.RowIndex).Cells("係数").Value.ToString()
 
                 Btn_Touroku.Text = "更　新"
@@ -270,7 +272,8 @@ Public Class F_Keisu
         Try
 
             Dim kishu As String = Txt_S_Kishu.Text.Trim
-            Dim type As String = Txt_S_Type.Text.Trim
+            Dim gun As String = Txt_S_Gun.Text.Trim
+            Dim shimuke As String = Txt_S_Shimuke.Text.Trim
 
             Dim Retstr As String = Nothing
             Dim strtemp As String = Nothing
@@ -287,11 +290,20 @@ Public Class F_Keisu
             End If
 
             'タイプ
-            If (type.Length > 0) Then
+            If (gun.Length > 0) Then
                 If strtemp = Nothing Then
-                    strtemp = "タイプ like '%" & type & "%'"
+                    strtemp = "群 like '%" & gun & "%'"
                 Else
-                    strtemp = strtemp & " AND タイプ like '%" & type & "%'"
+                    strtemp = strtemp & " AND 群 like '%" & gun & "%'"
+                End If
+            End If
+
+            '仕向
+            If (shimuke.Length > 0) Then
+                If strtemp = Nothing Then
+                    strtemp = "仕向 like '%" & shimuke & "%'"
+                Else
+                    strtemp = strtemp & " AND 仕向 like '%" & shimuke & "%'"
                 End If
             End If
 
@@ -318,8 +330,9 @@ Public Class F_Keisu
 
         Txt_id.Text = ""
         Txt_Kishu.Text = ""
-        Txt_Type.Text = ""
+        Txt_Gun.Text = ""
         Txt_Keisu.Text = ""
+        Txt_Shimuke.Text = ""
 
         Btn_Touroku.Text = "登　録"
 

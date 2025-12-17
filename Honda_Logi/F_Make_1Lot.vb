@@ -179,8 +179,10 @@ Public Class F_Make_1Lot
 
             Dim dt As New DS_T.DT_T_CCC_LotDataTable
             Dim ta As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC
 
-            ta.Fill(dt)
+            Dim target_mitsumori_no As String = ta_ccc.Q_Max見積No取得
+            ta.Q_CCC_Lot取得(dt, target_mitsumori_no)
 
             Dim out_path As String = MakeOutPath()
             ConvertDataTableToCsv(dt, out_path, True)
@@ -2932,14 +2934,14 @@ Public Class F_Make_1Lot
         sql = "INSERT INTO M_Bolt_BK (個装資材コード, 見積No) SELECT 個装資材コード, " & _target_mitsumori_no & " FROM M_Bolt;"
         sql = sql & " INSERT INTO M_Gaisou_Box_BK (内装資材コード, 見積No) SELECT 内装資材コード, " & _target_mitsumori_no & " FROM M_Gaisou_Box;"
         sql = sql & " INSERT INTO M_Gaisou_Danboru_BK (内装資材コード, 見積No) SELECT 内装資材コード, " & _target_mitsumori_no & " FROM M_Gaisou_Danboru;"
-        sql = sql & " INSERT INTO M_Housou_Kbn_BK (ライン,DIST,個装内装区分, 見積No) SELECT ライン,DIST,個装内装区分, " & _target_mitsumori_no & " FROM M_Housou_Kbn;"
+        sql = sql & " INSERT INTO M_Housou_Kbn_BK (ライン,DIST,個装内装区分,区分,定量_不定量, 見積No) SELECT ライン,DIST,個装内装区分,区分,定量_不定量, " & _target_mitsumori_no & " FROM M_Housou_Kbn;"
         sql = sql & " INSERT INTO M_Kosou_Shizai_BK (個装資材コード, 見積No) SELECT 個装資材コード, " & _target_mitsumori_no & " FROM M_Kosou_Shizai;"
         sql = sql & " INSERT INTO M_Mitsumori_BK (見積コード,仕向,機種,タイプ,OP, 見積No) SELECT 見積コード,仕向,機種,タイプ,OP, " & _target_mitsumori_no & " FROM M_Mitsumori;"
         sql = sql & " INSERT INTO M_Naisou_Shizai_BK (内装資材コード,数量, 見積No) SELECT 内装資材コード,数量, " & _target_mitsumori_no & " FROM M_Naisou_Shizai;"
         sql = sql & " INSERT INTO M_Rate_BK (賃率, 見積No) SELECT 賃率, " & _target_mitsumori_no & " FROM M_Rate;"
         sql = sql & " INSERT INTO M_Second_BK (作業区分,作業単位,秒数, 見積No) SELECT 作業区分,作業単位,秒数, " & _target_mitsumori_no & " FROM M_Second;"
         sql = sql & " INSERT INTO M_Tanka_BK (資材コード,資材名,単価,メーカーコード, 見積No) SELECT 資材コード,資材名,単価,メーカーコード, " & _target_mitsumori_no & " FROM M_Tanka;"
-
+        sql = sql & " INSERT INTO M_Keisu_BK (仕向,機種,群,係数, 見積No) SELECT 仕向,機種,群,係数, " & _target_mitsumori_no & " FROM M_Keisu;"
         Return sql
 
     End Function

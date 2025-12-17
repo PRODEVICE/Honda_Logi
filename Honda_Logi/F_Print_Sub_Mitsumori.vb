@@ -58,11 +58,13 @@ Public Class F_Print_Sub_Mitsumori
                     ' ★ 必要なら引数を追加
                     cmd.Parameters.AddWithValue("@Debug", 0)
                     cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
-
+                    cmd.Parameters.AddWithValue("@Kbn", "2R/ATV")
                     Dim da As New SqlDataAdapter(cmd)
                     da.Fill(dt)
 
                 End Using
+
+                '受け取った
 
                 'Excelに描画
                 ExportToExcel2(dt, keisu_flg, 1)
@@ -107,6 +109,7 @@ Public Class F_Print_Sub_Mitsumori
                     ' ★ 必要なら引数を追加
                     cmd.Parameters.AddWithValue("@Debug", 0)
                     cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
+                    cmd.Parameters.AddWithValue("@Kbn", "汎用機種")
 
                     Dim da As New SqlDataAdapter(cmd)
                     da.Fill(dt)
@@ -251,6 +254,7 @@ Public Class F_Print_Sub_Mitsumori
                 file_name = "見積書(汎用機種)_出力.xlsx"
             End If
 
+            Dim dt_mitsumori As New DataTable
             Dim dt_keisu As New DS_M.DT_M_KeisuDataTable
             Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
             Dim ta_rate As New DS_MTableAdapters.TA_M_Rate
@@ -276,7 +280,7 @@ Public Class F_Print_Sub_Mitsumori
             ta_keisu.Fill(dt_keisu)
             Dim keisuDict As New Dictionary(Of String, Decimal)
             For Each dr As DataRow In dt_keisu.Rows
-                Dim key As String = dr("機種").ToString() & dr("タイプ").ToString()
+                Dim key As String = dr("仕向").ToString() & dr("機種").ToString() & dr("群").ToString()
                 Dim value As Decimal = CDec(dr("係数"))
                 If Not keisuDict.ContainsKey(key) Then
                     keisuDict(key) = value
@@ -304,8 +308,10 @@ Public Class F_Print_Sub_Mitsumori
                 ' DataTable の中身を Excel に書き込む
                 For Each row As DataRow In dt.Rows
 
+                    Dim shimuke As String = If(IsDBNull(row("Col2")), "", row("Col2").ToString)
                     Dim kishu As String = If(IsDBNull(row("Col3")), "", row("Col3").ToString)
                     Dim type As String = If(IsDBNull(row("Col4")), "", row("Col4").ToString)
+                    Dim gun As String = If(IsDBNull(row("Col6")), "", row("Col6").ToString)
 
                     Dim junbi_kousu As Decimal = If(IsDBNull(row("Col12")), 0, Decimal.Parse(row("Col12").ToString))
                     Dim kosou_kousu As Decimal = If(IsDBNull(row("Col13")), 0, Decimal.Parse(row("Col13").ToString))
@@ -322,9 +328,9 @@ Public Class F_Print_Sub_Mitsumori
                     If _keisu_flg = True Then
 
                         '係数マスタを参照して存在すれば係数をかける
-                        If keisuDict.ContainsKey(kishu & type) Then
+                        If keisuDict.ContainsKey(shimuke & kishu & gun) Then
 
-                            keisu = keisuDict(kishu & type)
+                            keisu = keisuDict(shimuke & kishu & gun)
 
                             '各工数に係数をかける
                             junbi_kousu = junbi_kousu * keisu
@@ -423,6 +429,12 @@ Public Class F_Print_Sub_Mitsumori
 
         Try
 
+            Dim dt_keisu As New DS_M.DT_M_KeisuDataTable
+            Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
+            Dim ta_rate As New DS_MTableAdapters.TA_M_Rate
+            Dim keisu As Decimal = 0
+            Dim rate As Decimal = ta_rate.Q_賃率取得
+
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(部単内装).xlsx")
 
@@ -441,6 +453,17 @@ Public Class F_Print_Sub_Mitsumori
             End If
 
             Dim savePath As String = sfd.FileName
+
+            '機種係数マスタの辞書作成
+            ta_keisu.Fill(dt_keisu)
+            Dim keisuDict As New Dictionary(Of String, Decimal)
+            For Each dr As DataRow In dt_keisu.Rows
+                Dim key As String = dr("仕向").ToString() & dr("機種").ToString() & dr("群").ToString()
+                Dim value As Decimal = CDec(dr("係数"))
+                If Not keisuDict.ContainsKey(key) Then
+                    keisuDict(key) = value
+                End If
+            Next
 
             ' Excel 読み込み
             Using wb As New XLWorkbook(templatePath)
@@ -536,6 +559,12 @@ Public Class F_Print_Sub_Mitsumori
 
         Try
 
+            Dim dt_keisu As New DS_M.DT_M_KeisuDataTable
+            Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
+            Dim ta_rate As New DS_MTableAdapters.TA_M_Rate
+            Dim keisu As Decimal = 0
+            Dim rate As Decimal = ta_rate.Q_賃率取得
+
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(部単外装).xlsx")
 
@@ -554,6 +583,17 @@ Public Class F_Print_Sub_Mitsumori
             End If
 
             Dim savePath As String = sfd.FileName
+
+            '機種係数マスタの辞書作成
+            ta_keisu.Fill(dt_keisu)
+            Dim keisuDict As New Dictionary(Of String, Decimal)
+            For Each dr As DataRow In dt_keisu.Rows
+                Dim key As String = dr("仕向").ToString() & dr("機種").ToString() & dr("群").ToString()
+                Dim value As Decimal = CDec(dr("係数"))
+                If Not keisuDict.ContainsKey(key) Then
+                    keisuDict(key) = value
+                End If
+            Next
 
             ' Excel 読み込み
             Using wb As New XLWorkbook(templatePath)

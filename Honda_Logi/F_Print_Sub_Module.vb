@@ -111,6 +111,25 @@ Public Class F_Print_Sub_Module
             Dim dt2 As New DataTable
             Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
 
+            'クリックしたボタンによってファイル名を変更する
+            Dim file_nm As String = ""
+            Dim kbn1 As String = ""
+            Dim kbn2 As String = ""
+
+            If _mode = 1 Then '定量/不定量
+                file_nm = "機種摘要モジュール一覧_出力.xlsx"
+                kbn1 = "定量"
+                kbn2 = "不定量"
+            ElseIf _mode = 2 Then '定量のみ
+                file_nm = "機種摘要モジュール一覧_定量_出力.xlsx"
+                kbn1 = "定量"
+                kbn2 = "定量"
+            Else '不定量のみ
+                file_nm = "機種摘要モジュール一覧_不定量_出力.xlsx"
+                kbn1 = "不定量"
+                kbn2 = "不定量"
+            End If
+
             ' ストアド実行
             Using conn As New SqlConnection(connectionString)
 
@@ -123,6 +142,8 @@ Public Class F_Print_Sub_Module
                     ' ★ 必要なら引数を追加
                     cmd.Parameters.AddWithValue("@Debug", 0)
                     cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
+                    cmd.Parameters.AddWithValue("@kbn1", kbn1)
+                    cmd.Parameters.AddWithValue("@kbn2", kbn2)
 
                     Dim da As New SqlDataAdapter(cmd)
                     da.Fill(dt)
@@ -130,39 +151,6 @@ Public Class F_Print_Sub_Module
                 End Using
 
             End Using
-
-
-            '************************************************************************************************************
-            'クリックしたボタンによってDTの中身を絞り込む
-            '************************************************************************************************************
-
-            If _mode = 1 Then '定量/不定量
-
-            ElseIf _mode = 2 Then '定量のみ
-                'Dim filtered = From r1 In dt.AsEnumerable()
-                '               Join r2 In dt2.AsEnumerable()
-                '               On r1("ID") Equals r2("ID")
-                '               Select r1
-
-                'Dim dtResult As DataTable = filtered.CopyToDataTable()
-            Else '不定量のみ
-
-            End If
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\機種摘要モジュール一覧.xlsx")
@@ -173,7 +161,7 @@ Public Class F_Print_Sub_Module
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "機種摘要モジュール一覧_出力.xlsx",
+            .FileName = file_nm,
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         }
 

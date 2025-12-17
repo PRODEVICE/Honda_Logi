@@ -4,20 +4,28 @@ Imports System.Text
 
 Public Class F_Housou
 
-    Dim fnc As New Function_Class
+    Dim fnc As Function_Class
 
     'ページロード時
     Private Sub F_Housou_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: このコード行はデータを 'DS_M.DT_M_Kubun' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.TA_M_Kubun.Fill(Me.DS_M.DT_M_Kubun)
-        'TODO: このコード行はデータを 'DS_M.DT_M_Kubun' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.TA_M_Kubun.Fill(Me.DS_M.DT_M_Kubun)
 
-        'TODO: このコード行はデータを 'DS_M.DT_M_Housou_Kbn' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-        Me.TA_M_Housou_Kbn.Fill(Me.DS_M.DT_M_Housou_Kbn)
+        Try
 
-        'ヘッダーとすべてのセルの内容に合わせて、列の幅を自動調整する
-        GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+            'TODO: このコード行はデータを 'DS_M.DT_M_Kubun' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            Me.TA_M_Kubun.Fill(Me.DS_M.DT_M_Kubun)
+
+            'TODO: このコード行はデータを 'DS_M.DT_M_Housou_Kbn' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            Me.TA_M_Housou_Kbn.Fill(Me.DS_M.DT_M_Housou_Kbn)
+
+            fnc = New Function_Class
+
+            'ヘッダーとすべてのセルの内容に合わせて、列の幅を自動調整する
+            GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Housou_Load")
+            MessageBox.Show(ex.Message)
+        End Try
 
     End Sub
 
@@ -32,9 +40,11 @@ Public Class F_Housou
 
             Dim ta_housou As New DS_MTableAdapters.TA_M_Housou_Kbn
 
-            Dim line As String = Cmb_Line.SelectedValue
+            Dim line As String = Cmb_Line.Text
             Dim DIST As String = Txt_DIST.Text.Trim
-            Dim housou_kbn As String = Cmb_Housou_Kbn.SelectedValue
+            Dim housou_kbn As String = Cmb_Housou_Kbn.Text
+            Dim kbn As String = Cmb_Kubun.Text
+            Dim teiryou As String = Cmb_Teiryou.Text
             Dim id As String = Txt_id.Text.Trim
 
             '入力チェック
@@ -59,7 +69,7 @@ Public Class F_Housou
                 End If
 
                 '登録処理
-                ta_housou.Q_包装登録(line, DIST, housou_kbn)
+                ta_housou.Q_包装登録(line, DIST, housou_kbn, kbn, teiryou)
 
             Else '更新モード
 
@@ -71,7 +81,7 @@ Public Class F_Housou
                     Exit Sub
                 End If
 
-                ta_housou.Q_包装更新(line, DIST, housou_kbn, id)
+                ta_housou.Q_包装更新(line, DIST, housou_kbn, kbn, teiryou, id)
 
             End If
 
@@ -301,6 +311,8 @@ Public Class F_Housou
                 Txt_DIST.Text = grid.Rows(e.RowIndex).Cells("DIST").Value.ToString()
                 Cmb_Line.SelectedValue = grid.Rows(e.RowIndex).Cells("ライン").Value.ToString()
                 Cmb_Housou_Kbn.SelectedValue = grid.Rows(e.RowIndex).Cells("個装内装区分").Value.ToString()
+                Cmb_Kubun.SelectedValue = grid.Rows(e.RowIndex).Cells("区分").Value.ToString()
+                Cmb_Teiryou.SelectedValue = grid.Rows(e.RowIndex).Cells("定量_不定量").Value.ToString()
 
                 Btn_Touroku.Text = "更　新"
 
@@ -340,27 +352,9 @@ Public Class F_Housou
         Txt_id.Text = ""
         Cmb_Line.SelectedIndex = 0
         Txt_DIST.Text = ""
-        Cmb_Housou_Kbn.SelectedIndex = 0
+        'Cmb_Housou_Kbn.SelectedIndex = 0
 
         Btn_Touroku.Text = "登　録"
-
-    End Sub
-
-    Private Sub FillByToolStripButton_Click(sender As Object, e As EventArgs)
-        Try
-            Me.TA_M_Kubun.FillBy(Me.DS_M.DT_M_Kubun)
-        Catch ex As System.Exception
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
-
-    End Sub
-
-    Private Sub FillByToolStripButton1_Click(sender As Object, e As EventArgs)
-        Try
-            Me.TA_M_Kubun.FillBy(Me.DS_M.DT_M_Kubun)
-        Catch ex As System.Exception
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
 
     End Sub
 
@@ -370,7 +364,9 @@ Public Class F_Housou
 
             Dim line As String = Txt_S_Line.Text.Trim
             Dim DIST As String = Txt_S_DIST.Text.Trim
-            Dim housou_kbn As String = Txt_S_Housou.Text.Trim
+            Dim housou_kbn As String = Cmb_S_Housou_Kbn.Text
+            Dim kbn As String = Cmb_S_Kubun.Text
+            Dim teiryou As String = Cmb_S_Teiryou.Text
 
             Dim Retstr As String = Nothing
             Dim strtemp As String = Nothing
@@ -401,6 +397,24 @@ Public Class F_Housou
                     strtemp = "個装内装区分 like '%" & housou_kbn & "%'"
                 Else
                     strtemp = strtemp & " AND 個装内装区分 like '%" & housou_kbn & "%'"
+                End If
+            End If
+
+            '区分
+            If (kbn.Length > 0) Then
+                If strtemp = Nothing Then
+                    strtemp = "区分 like '%" & kbn & "%'"
+                Else
+                    strtemp = strtemp & " AND 区分 like '%" & kbn & "%'"
+                End If
+            End If
+
+            '定量
+            If (teiryou.Length > 0) Then
+                If strtemp = Nothing Then
+                    strtemp = "定量_不定量 like '%" & teiryou & "%'"
+                Else
+                    strtemp = strtemp & " AND 定量_不定量 like '%" & teiryou & "%'"
                 End If
             End If
 
