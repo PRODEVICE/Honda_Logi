@@ -52,11 +52,11 @@ Partial Class F_Main
         '
         Me.Label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label5.Font = New System.Drawing.Font("HGｺﾞｼｯｸE", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(208, 15)
+        Me.Label5.Location = New System.Drawing.Point(220, 18)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(254, 36)
         Me.Label5.TabIndex = 37
-        Me.Label5.Text = "Honda_Logi"
+        Me.Label5.Text = "Honda Logistics"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Lbl_Data
