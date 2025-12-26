@@ -144,7 +144,9 @@ Public Class F_Print_Main
             Cursor.Current = Cursors.WaitCursor
 
 
-            Dim dt As New DataTable
+            Dim dt_result As New DataTable
+            Dim dt_module As New DataTable
+            Dim ds As New DataSet()
             Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
 
             ' ストアド実行
@@ -161,12 +163,15 @@ Public Class F_Print_Main
                     cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
 
                     Dim da As New SqlDataAdapter(cmd)
-                    da.Fill(dt)
+                    da.Fill(ds)
 
                 End Using
 
+                dt_result = ds.Tables(0)
+                dt_module = ds.Tables(1)
+
                 'Excelに描画
-                ExportToExcel7(dt)
+                ExportToExcel7(dt_result, dt_module)
 
             End Using
 
@@ -583,7 +588,7 @@ Public Class F_Print_Main
     End Sub
 
     '包装費変動表作成処理
-    Private Sub ExportToExcel7(dt As DataTable)
+    Private Sub ExportToExcel7(dt As DataTable, dt_module As DataTable)
 
         Try
 
@@ -604,6 +609,13 @@ Public Class F_Print_Main
                 Return ' キャンセル
             End If
 
+            'dt_moduleのGroupNoのカウントを取得して、その最大値をもらう
+            Dim maxCount As Integer =
+                                    dt_module.AsEnumerable().
+                                       GroupBy(Function(r) r.Field(Of Integer)("GroupNo")).
+                                       Select(Function(g) g.Count()).
+                                       Max()
+
             Dim savePath As String = sfd.FileName
 
             ' Excel 読み込み
@@ -612,16 +624,17 @@ Public Class F_Print_Main
                 Dim ws = wb.Worksheet(1)    ' 1枚目のシートと仮定
 
                 'DTにカラム数によってExcelのヘッダ欄を増やす
-                Dim col_count As Integer = dt.Columns.Count
+                'Dim col_count As Integer = dt.Columns.Count
+                Dim max_col As Integer = 23
 
                 '初期セットしてあるヘッダより多ければ
-                If col_count >= 23 Then
+                If maxCount >= 4 Then
 
                     '増加するブロック数を計算
-                    Dim add_count As Integer = (col_count - 22) / 4
+                    Dim add_count As Integer = maxCount
                     Dim add_col As Integer = 24
 
-                    For i = 4 To add_count + 3
+                    For i = 4 To add_count
 
                         ws.Cell(3, add_col).Value = "モジュール" & i
                         ws.Cell(4, add_col).Value = "モジュール№"
@@ -647,11 +660,18 @@ Public Class F_Print_Main
                         add_col = add_col + 4
                     Next
 
+                    max_col = add_col - 1
+
                 End If
 
                 Dim startRow As Integer = 5 ' データ開始行（ヘッダが1行目なら2）
+
+                'Excelの書き込みターゲット行数
                 Dim currentRow As Integer = startRow
 
+                '親DTの行数
+                Dim dt_row_count As Integer = 1
+                Dim select_modual_dt As New DataTable
 
                 'ヘッダ項目を書き込む
                 ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■ " & dt.Rows(0)(0).ToString)
@@ -665,7 +685,7 @@ Public Class F_Print_Main
 
                         ws.Cell(currentRow, currentCol).Value = If(IsDBNull(row("Col" & currentCol).ToString), "", row("Col" & currentCol).ToString)
 
-                        If col_count = currentCol Then
+                        If 11 = currentCol Then
                             Exit For
                         End If
 
@@ -673,8 +693,44 @@ Public Class F_Print_Main
 
                     Next
 
-                    currentRow += 1
+                    'ModualDTより対象行を取得してExcelに書き込む
+                    currentCol = currentCol + 1
 
+                    Dim childRows = dt_module.AsEnumerable().
+                    Where(Function(r) r.Field(Of Integer)("GroupNo") = dt_row_count)
+
+                    For Each cRow In childRows
+
+                        ' 子DTの値を取得
+                        Dim val1 As String = cRow("Col1")
+                        Dim val2 As Decimal = cRow("Col2")
+                        Dim val3 As Decimal = cRow("Col3")
+                        Dim val4 As Decimal = cRow("Col4")
+
+                        ' 処理
+                        ws.Cell(currentRow, currentCol).Value = val1
+                        ws.Cell(currentRow, currentCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left
+
+                        currentCol = currentCol + 1
+                        ws.Cell(currentRow, currentCol).Value = val2
+                        ws.Cell(currentRow, currentCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right
+
+                        currentCol = currentCol + 1
+                        ws.Cell(currentRow, currentCol).Value = val3
+                        ws.Cell(currentRow, currentCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right
+
+                        currentCol = currentCol + 1
+                        ws.Cell(currentRow, currentCol).Value = val4
+                        ws.Cell(currentRow, currentCol).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right
+
+                        currentCol = currentCol + 1
+
+                    Next
+
+
+
+                    currentRow += 1
+                    dt_row_count += 1
                 Next
 
                 ' -------------------------------
@@ -683,8 +739,8 @@ Public Class F_Print_Main
                 Dim endRow As Integer = currentRow - 1
                 Dim range
 
-                If col_count >= 23 Then
-                    range = ws.Range(startRow, 2, endRow, col_count)
+                If max_col >= 23 Then
+                    range = ws.Range(startRow, 2, endRow, max_col)
                 Else
                     range = ws.Range(startRow, 2, endRow, 23)
                 End If

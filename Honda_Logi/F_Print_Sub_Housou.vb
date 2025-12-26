@@ -59,6 +59,12 @@ Public Class F_Print_Sub_Housou
 
             Dim chk_flg As Boolean = True
             Dim chk_data As Integer = 0
+            Dim chk_dt_ccc As New DataTable
+            Dim chk_dt_kow As New DataTable
+            Dim gv_flg As Boolean = False
+
+            'コンフィグのコネクトストリング取得
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
 
             'GVに入力された条件でそもそも1Lotに存在するかチェック
             For Each row As DataGridViewRow In GV_Search.Rows
@@ -72,6 +78,8 @@ Public Class F_Print_Sub_Housou
                 Dim OP As String = ""
                 Dim housou_lot_no As String = ""
 
+                gv_flg = True
+
                 If row.Cells("DIST").Value Is Nothing Then DIST = "" Else DIST = row.Cells("DIST").Value
                 If row.Cells("年度").Value Is Nothing Then nendo = "" Else nendo = row.Cells("年度").Value
                 If row.Cells("モデル").Value Is Nothing Then model = "" Else model = row.Cells("モデル").Value
@@ -79,26 +87,65 @@ Public Class F_Print_Sub_Housou
                 If row.Cells("OP").Value Is Nothing Then OP = "" Else OP = row.Cells("OP").Value
                 If row.Cells("包装ロットNo").Value Is Nothing Then housou_lot_no = "" Else housou_lot_no = row.Cells("包装ロットNo").Value
 
-                If _mode = 1 Then
-                    chk_data = ta_1lot.Q_印刷__存在チェック(_mitsumoriNo, DIST, nendo, model, type, OP)
-                Else
-                    If housou_lot_no = "" Then
-                        chk_data = ta_1lot.Q_印刷__存在チェック(_mitsumoriNo, DIST, nendo, model, type, OP)
-                    Else
-                        chk_data = ta_1lot.Q_印刷__存在チェック_包装ロット(_mitsumoriNo, DIST, nendo, model, type, OP, housou_lot_no)
-                    End If
-
+                '検索条件の必須チェック
+                If DIST = "" Or nendo = "" Or model = "" Then
+                    MessageBox.Show("DIST、年度、モデルは必須項目です。")
+                    Exit Sub
                 End If
 
-                If chk_data = 0 Then
+
+
+                Dim CommandString As String
+
+                'CCC1Lotの存在チェック
+                'SQL作成
+                If _mode = 1 Then
+                    CommandString = MakeSQL_search(DIST, nendo, model, type, OP, "")
+                Else
+                    CommandString = MakeSQL_search(DIST, nendo, model, type, OP, housou_lot_no)
+                End If
+
+                'テーブルアダプター作成
+                Dim DataAdapter As New SqlClient.SqlDataAdapter(CommandString, connectionString)
+
+                'SQLを実行
+                DataAdapter.Fill(chk_dt_ccc)
+
+                If chk_dt_ccc.Rows.Count = 0 Then
 
                     MessageBox.Show("条件に一致する1Lotデータが存在しません。" & vbLf & "DIST: " & DIST & vbLf & "年度: " & nendo & vbLf & "モデル: " & model & vbLf & "タイプ: " & type & vbLf & "OP: " & OP)
                     Exit Sub
                 End If
+
+                ''Kowの存在チェック
+                ''SQL作成
+                'If _mode = 1 Then
+                '    CommandString = MakeSQL_search_kow(nendo, model, type, OP, "")
+                'Else
+                '    CommandString = MakeSQL_search_kow(nendo, model, type, OP, housou_lot_no)
+                'End If
+
+                ''テーブルアダプター作成
+                'Dim DataAdapter2 As New SqlClient.SqlDataAdapter(CommandString, connectionString)
+
+                ''SQLを実行
+                'DataAdapter2.Fill(chk_dt_kow)
+
+                'If chk_dt_kow.Rows.Count = 0 Then
+
+                '    MessageBox.Show("条件に一致するKowデータが存在しません。" & vbLf & "DIST: " & DIST & vbLf & "年度: " & nendo & vbLf & "モデル: " & model & vbLf & "タイプ: " & type & vbLf & "OP: " & OP)
+                '    Exit Sub
+                'End If
+
             Next
 
+            If gv_flg = False Then
+                MessageBox.Show("条件を入力してください。")
+                Exit Sub
+            End If
+
             Dim dt As New DataTable
-            Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+
 
             '呼び出し元によってキックするストアドを変更
             If _mode = 1 Then
@@ -462,7 +509,99 @@ Public Class F_Print_Sub_Housou
 
     End Sub
 
+    '**********************************************************************************
+    '共通関数
+    '**********************************************************************************
+
+    'ccc_検索用SQL作成処理
+    Function MakeSQL_search(_DIST, _nendo, _model, _type, _OP, _housou_lot_no) As String
+        Try
+
+            Dim strtemp As String = Nothing
+            Dim Retstr As String = Nothing
+
+            'Where区作成
+            strtemp = " 見積No = " & _mitsumoriNo & " AND 代表DIST = '" & _DIST & "' AND 年度2 = '" & _nendo & "' AND モデル2 = '" & _model & "'"
 
 
+            'タイプ
+            If (_type.Length > 0) Then
+                strtemp = strtemp & " AND タイプ1 = '" & _type & "'"
+            End If
+
+            'OP
+            If (_OP.Length > 0) Then
+                strtemp = strtemp & " AND オプション1 = '" & _OP & "'"
+            End If
+
+            '包装ロットNo
+            If (_housou_lot_no.Length > 0) Then
+                strtemp = strtemp & " AND 包装ロットNo = '" & _housou_lot_no & "'"
+            End If
+
+            'Where句の完成
+            If strtemp <> Nothing Then
+                strtemp = " WHERE " & strtemp
+            End If
+
+            '最終的なSQL文の作成
+            Retstr = "SELECT  *
+                        FROM T_CCC_Lot"
+            Retstr = Retstr & strtemp       'Where句
+
+
+            Return Retstr
+
+        Catch ex As Exception
+            Throw New Exception("SQL作成時にエラーが発生しました。")
+
+        End Try
+
+    End Function
+
+    'kow_検索用SQL作成処理
+    Function MakeSQL_search_kow( _nendo, _model, _type, _OP, _housou_lot_no) As String
+        Try
+
+            Dim strtemp As String = Nothing
+            Dim Retstr As String = Nothing
+
+            'Where区作成
+            strtemp = " 見積No = " & _mitsumoriNo & " AND 年度 = '" & _nendo & "' AND モデル = '" & _model & "'"
+
+            'タイプ
+            If (_type.Length > 0) Then
+                strtemp = strtemp & " AND タイプ = '" & _type & "'"
+            End If
+
+            'OP
+            If (_OP.Length > 0) Then
+                strtemp = strtemp & " AND オプション = '" & _OP & "'"
+            End If
+
+            '包装ロットNo
+            If (_housou_lot_no.Length > 0) Then
+                strtemp = strtemp & " AND 包装ロットNo = '" & _housou_lot_no & "'"
+            End If
+
+            'Where句の完成
+            If strtemp <> Nothing Then
+                strtemp = " WHERE " & strtemp
+            End If
+
+            '最終的なSQL文の作成
+            Retstr = "SELECT  *
+                        FROM T_KOW46"
+            Retstr = Retstr & strtemp       'Where句
+
+
+            Return Retstr
+
+        Catch ex As Exception
+            Throw New Exception("SQL作成時にエラーが発生しました。")
+
+        End Try
+
+    End Function
 
 End Class

@@ -128,11 +128,11 @@ Public Class F_Print_Sub_Module
             ElseIf _mode = 2 Then '定量のみ
                 file_nm = "機種摘要モジュール一覧_定量_出力.xlsx"
                 kbn1 = "定量"
-                kbn2 = "定量"
+                kbn2 = Nothing
             Else '不定量のみ
                 file_nm = "機種摘要モジュール一覧_不定量_出力.xlsx"
                 kbn1 = "不定量"
-                kbn2 = "不定量"
+                kbn2 = Nothing
             End If
 
             ' ストアド実行
@@ -148,7 +148,12 @@ Public Class F_Print_Sub_Module
                     cmd.Parameters.AddWithValue("@Debug", 0)
                     cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
                     cmd.Parameters.AddWithValue("@kbn1", kbn1)
-                    cmd.Parameters.AddWithValue("@kbn2", kbn2)
+                    'cmd.Parameters.AddWithValue("@kbn2", kbn2)
+                    If kbn2 Is Nothing Then
+                        cmd.Parameters.Add("@kbn2", SqlDbType.NVarChar, 20).Value = DBNull.Value
+                    Else
+                        cmd.Parameters.Add("@kbn2", SqlDbType.NVarChar, 20).Value = kbn2
+                    End If
 
                     Dim da As New SqlDataAdapter(cmd)
                     da.Fill(dt)

@@ -140,13 +140,17 @@ Public Class F_Receive
                         '取り込んでいないファイルがある場合は、直前の見積Noの値をインサートする
                         If ccc_flg = False Then
                             Copy_Tran(conn, tran, "T_CCC", mitsumori_no_old, mitsumori_no)
-                        ElseIf kow46_flg = False Then
+                        End If
+                        If kow46_flg = False Then
                             Copy_Tran(conn, tran, "T_KOW46", mitsumori_no_old, mitsumori_no)
-                        ElseIf kit60_flg = False Then
+                        End If
+                        If kit60_flg = False Then
                             Copy_Tran(conn, tran, "T_KIT60", mitsumori_no_old, mitsumori_no)
-                        ElseIf gyoumu_flg = False Then
+                        End If
+                        If gyoumu_flg = False Then
                             Copy_Tran(conn, tran, "T_Gyomu_Plan", mitsumori_no_old, mitsumori_no)
-                        ElseIf order_flg = False Then
+                        End If
+                        If order_flg = False Then
                             Copy_Tran(conn, tran, "T_Buhin_Order_List", mitsumori_no_old, mitsumori_no)
                         End If
 
@@ -636,7 +640,7 @@ Public Class F_Receive
                         Dim i As Integer = 1
 
 
-                        For Each cell In row.Cells(2, 44)
+                        For Each cell In row.Cells(2, 47)
                             dr(i) = cell.Value
                             i += 1
                         Next
