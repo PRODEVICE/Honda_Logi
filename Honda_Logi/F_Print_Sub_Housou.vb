@@ -145,7 +145,11 @@ Public Class F_Print_Sub_Housou
             End If
 
             Dim dt As New DataTable
-
+            Dim ds As New DataSet()
+            Dim dt_result As New DataTable
+            Dim dt_kosou As New DataTable
+            Dim dt_naisou As New DataTable
+            Dim dt_gaisou As New DataTable
 
             '呼び出し元によってキックするストアドを変更
             If _mode = 1 Then
@@ -172,14 +176,19 @@ Public Class F_Print_Sub_Housou
                             cmd.Parameters.Add("@Op", SqlDbType.NVarChar, 100).Value = If(row.Cells("OP").Value Is Nothing, DBNull.Value, row.Cells("OP").Value)
 
                             Dim da As New SqlDataAdapter(cmd)
-                            da.Fill(dt)
+                            da.Fill(ds)
 
                         End Using
 
                     Next
 
+                    dt_result = ds.Tables(0)
+                    dt_kosou = ds.Tables(1)
+                    dt_naisou = ds.Tables(2)
+                    dt_gaisou = ds.Tables(3)
+
                     'Excelに描画
-                    ExportToExcel1(dt)
+                    ExportToExcel1(dt_result, dt_kosou, dt_naisou, dt_gaisou)
 
                 End Using
             Else
@@ -272,7 +281,7 @@ Public Class F_Print_Sub_Housou
     '******************************************************************************
 
     '包装仕様一覧作成処理
-    Private Sub ExportToExcel1(dt As DataTable)
+    Private Sub ExportToExcel1(_dt_result As DataTable, _dt_kosou As DataTable, _dt_naisou As DataTable, _dt_gaisou As DataTable)
 
         Try
 
@@ -305,16 +314,19 @@ Public Class F_Print_Sub_Housou
                 Dim currentRow As Integer = startRow
 
                 'ヘッダ項目を書き込む
-                ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", "■" & dt.Rows(0)(0).ToString)
-                ws.Cell(2, 7).Value = If(IsDBNull(dt.Rows(0)(1)), "", dt.Rows(0)(1).ToString)
-                ws.Cell(2, 10).Value = If(IsDBNull(dt.Rows(0)(2)), "", dt.Rows(0)(2).ToString)
-                ws.Cell(2, 13).Value = If(IsDBNull(dt.Rows(0)(3)), "", dt.Rows(0)(3).ToString)
+                ws.Cell(2, 2).Value = If(IsDBNull(_dt_result.Rows(0)(0)), "", "■" & _dt_result.Rows(0)(0).ToString)
+                ws.Cell(2, 7).Value = If(IsDBNull(_dt_result.Rows(0)(1)), "", _dt_result.Rows(0)(1).ToString)
+                ws.Cell(2, 10).Value = If(IsDBNull(_dt_result.Rows(0)(2)), "", _dt_result.Rows(0)(2).ToString)
+                ws.Cell(2, 13).Value = If(IsDBNull(_dt_result.Rows(0)(3)), "", _dt_result.Rows(0)(3).ToString)
 
                 Dim old_value As String = ""
                 Dim new_value As String = ""
 
+                '親DTの行数
+                Dim dt_row_count As Integer = 1
+
                 ' DataTable の中身を Excel に書き込む
-                For Each row As DataRow In dt.Rows
+                For Each row As DataRow In _dt_result.Rows
 
                     new_value = If(IsDBNull(row("Col2")), "", row("Col2").ToString) &
                         If(IsDBNull(row("Col3")), "", row("Col3").ToString) &
@@ -349,6 +361,51 @@ Public Class F_Print_Sub_Housou
                     'ws.Cell(currentRow, 16).Value = If(IsDBNull(row("Col20")), "", row("Col20").ToString)
                     'ws.Cell(currentRow, 17).Value = If(IsDBNull(row("Col21")), 0, Integer.Parse(row("Col21").ToString))
 
+                    Dim kosou_row = 0
+                    Dim naisou_row = 0
+                    Dim gaisou_row = 0
+                    Dim meisai_max_row = 0
+
+                    '個装の明細表示
+                    kosou_row = currentRow
+
+                    Dim childRows = _dt_kosou.AsEnumerable().
+                    Where(Function(r) r.Field(Of Integer)("GroupNo") = dt_row_count)
+
+                    For Each cRow In childRows
+
+                        ' 子DTの値を取得
+                        Dim val1 As String = cRow("Col1")
+                        Dim val2 As Decimal = cRow("Col2")
+                        Dim val3 As Decimal = cRow("Col3")
+                        Dim val4 As Decimal = cRow("Col4")
+
+                        ' 処理
+                        ws.Cell(kosou_row, 8).Value = val1
+                        ws.Cell(kosou_row, 9).Value = val2
+                        ws.Cell(kosou_row, 10).Value = val3
+                        ws.Cell(kosou_row, 11).Value = val4
+
+                        kosou_row += 1
+
+                    Next
+
+                    meisai_max_row = kosou_row
+
+
+
+                    '内装の明細表示
+
+
+
+                    '外装の明細表示
+
+
+
+                    '書き込む行数を再設定する
+                    If currentRow < meisai_max_row Then
+                        currentRow = meisai_max_row
+                    End If
 
                     currentRow += 1
 
