@@ -372,13 +372,17 @@ Public Class F_Print_Main
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\部品単位包装費一覧(内装).xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(Cmb_Target.SelectedValue)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "部品単位包装費一覧(内装)_出力.xlsx",
+            .FileName = "部品単位包装費一覧(内装)_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         }
 
@@ -481,13 +485,17 @@ Public Class F_Print_Main
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\部品単位包装費一覧(外装).xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(Cmb_Target.SelectedValue)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "部品単位包装費一覧(外装)_出力.xlsx",
+            .FileName = "部品単位包装費一覧(外装)_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         }
 
@@ -595,13 +603,17 @@ Public Class F_Print_Main
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\包装費変動表.xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(Cmb_Target.SelectedValue)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "包装費変動表_出力.xlsx",
+            .FileName = "包装費変動表_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         }
 
@@ -774,13 +786,17 @@ Public Class F_Print_Main
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\KIT60(最終加工).xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(Cmb_Target.SelectedValue)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "KIT60(最終加工)_出力.xlsx",
+            .FileName = "KIT60(最終加工)_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         }
 
@@ -890,13 +906,17 @@ Public Class F_Print_Main
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\請求明細.xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(Cmb_Target.SelectedValue)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "請求明細_出力.xlsx",
+            .FileName = "請求明細_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}
 
             If sfd.ShowDialog() <> DialogResult.OK Then

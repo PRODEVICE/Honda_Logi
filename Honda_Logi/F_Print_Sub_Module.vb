@@ -121,16 +121,21 @@ Public Class F_Print_Sub_Module
             Dim kbn1 As String = ""
             Dim kbn2 As String = ""
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
+
+
             If _mode = 1 Then '定量/不定量
-                file_nm = "機種摘要モジュール一覧_出力.xlsx"
+                file_nm = "機種摘要モジュール一覧_" & nendo & "年度.xlsx"
                 kbn1 = "定量"
                 kbn2 = "不定量"
             ElseIf _mode = 2 Then '定量のみ
-                file_nm = "機種摘要モジュール一覧_定量_出力.xlsx"
+                file_nm = "機種摘要モジュール一覧_定量_" & nendo & "年度.xlsx"
                 kbn1 = "定量"
                 kbn2 = Nothing
             Else '不定量のみ
-                file_nm = "機種摘要モジュール一覧_不定量_出力.xlsx"
+                file_nm = "機種摘要モジュール一覧_不定量_" & nendo & "年度.xlsx"
                 kbn1 = "不定量"
                 kbn2 = Nothing
             End If

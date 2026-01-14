@@ -246,12 +246,16 @@ Public Class F_Print_Sub_Mitsumori
             Dim templatePath As String
             Dim file_name As String
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
+
             If _mode = 1 Then
                 templatePath = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(2R_ATV).xlsx")
-                file_name = "見積書(2R_ATV)_出力.xlsx"
+                file_name = "見積書(2R_ATV)_" & nendo & "年度.xlsx"
             Else
                 templatePath = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(汎用機種).xlsx")
-                file_name = "見積書(汎用機種)_出力.xlsx"
+                file_name = "見積書(汎用機種)__" & nendo & "年度.xlsx"
             End If
 
             Dim dt_mitsumori As New DataTable
@@ -438,13 +442,17 @@ Public Class F_Print_Sub_Mitsumori
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(部単内装).xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "見積書(部単内装)_出力.xlsx",
+            .FileName = "見積書(部単内装)_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         }
 
@@ -568,13 +576,17 @@ Public Class F_Print_Sub_Mitsumori
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\見積書(部単外装).xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "見積書(部単外装)_出力.xlsx",
+            .FileName = "見積書(部単外装)_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         }
 

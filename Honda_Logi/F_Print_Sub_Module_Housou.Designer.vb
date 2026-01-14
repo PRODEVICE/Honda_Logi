@@ -37,6 +37,10 @@ Partial Class F_Print_Sub_Module_Housou
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Txt_Month = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.Txt_Nendo = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Txt_Type = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Lbl_Messege
@@ -54,10 +58,10 @@ Partial Class F_Print_Sub_Module_Housou
         'Txt_Kishu
         '
         Me.Txt_Kishu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Kishu.Location = New System.Drawing.Point(102, 133)
+        Me.Txt_Kishu.Location = New System.Drawing.Point(350, 139)
         Me.Txt_Kishu.Name = "Txt_Kishu"
         Me.Txt_Kishu.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_Kishu.TabIndex = 73
+        Me.Txt_Kishu.TabIndex = 5
         '
         'Txt_Year
         '
@@ -65,7 +69,7 @@ Partial Class F_Print_Sub_Module_Housou
         Me.Txt_Year.Location = New System.Drawing.Point(102, 79)
         Me.Txt_Year.Name = "Txt_Year"
         Me.Txt_Year.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_Year.TabIndex = 72
+        Me.Txt_Year.TabIndex = 1
         '
         'Label6
         '
@@ -83,10 +87,10 @@ Partial Class F_Print_Sub_Module_Housou
         'Btn_Print
         '
         Me.Btn_Print.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Print.Location = New System.Drawing.Point(350, 205)
+        Me.Btn_Print.Location = New System.Drawing.Point(350, 273)
         Me.Btn_Print.Name = "Btn_Print"
         Me.Btn_Print.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Print.TabIndex = 71
+        Me.Btn_Print.TabIndex = 9
         Me.Btn_Print.Text = "印　刷"
         Me.Btn_Print.UseVisualStyleBackColor = True
         '
@@ -94,7 +98,7 @@ Partial Class F_Print_Sub_Module_Housou
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label4.Location = New System.Drawing.Point(38, 136)
+        Me.Label4.Location = New System.Drawing.Point(286, 142)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(40, 16)
         Me.Label4.TabIndex = 70
@@ -106,7 +110,7 @@ Partial Class F_Print_Sub_Module_Housou
         Me.Txt_DIST.Location = New System.Drawing.Point(591, 82)
         Me.Txt_DIST.Name = "Txt_DIST"
         Me.Txt_DIST.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_DIST.TabIndex = 69
+        Me.Txt_DIST.TabIndex = 3
         '
         'Label5
         '
@@ -122,7 +126,7 @@ Partial Class F_Print_Sub_Module_Housou
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(38, 82)
+        Me.Label1.Location = New System.Drawing.Point(54, 82)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(24, 16)
         Me.Label1.TabIndex = 67
@@ -131,16 +135,16 @@ Partial Class F_Print_Sub_Module_Housou
         'Txt_Module
         '
         Me.Txt_Module.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Module.Location = New System.Drawing.Point(350, 133)
+        Me.Txt_Module.Location = New System.Drawing.Point(102, 201)
         Me.Txt_Module.Name = "Txt_Module"
         Me.Txt_Module.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_Module.TabIndex = 77
+        Me.Txt_Module.TabIndex = 7
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(263, 136)
+        Me.Label2.Location = New System.Drawing.Point(8, 201)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 16)
         Me.Label2.TabIndex = 76
@@ -149,16 +153,16 @@ Partial Class F_Print_Sub_Module_Housou
         'Txt_Modefu
         '
         Me.Txt_Modefu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Modefu.Location = New System.Drawing.Point(591, 133)
+        Me.Txt_Modefu.Location = New System.Drawing.Point(350, 201)
         Me.Txt_Modefu.Name = "Txt_Modefu"
         Me.Txt_Modefu.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_Modefu.TabIndex = 79
+        Me.Txt_Modefu.TabIndex = 8
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.Location = New System.Drawing.Point(522, 136)
+        Me.Label3.Location = New System.Drawing.Point(282, 204)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(44, 16)
         Me.Label3.TabIndex = 78
@@ -170,23 +174,63 @@ Partial Class F_Print_Sub_Module_Housou
         Me.Txt_Month.Location = New System.Drawing.Point(350, 82)
         Me.Txt_Month.Name = "Txt_Month"
         Me.Txt_Month.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_Month.TabIndex = 81
+        Me.Txt_Month.TabIndex = 2
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(286, 85)
+        Me.Label7.Location = New System.Drawing.Point(302, 86)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(24, 16)
         Me.Label7.TabIndex = 80
         Me.Label7.Text = "月"
         '
+        'Txt_Nendo
+        '
+        Me.Txt_Nendo.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Nendo.Location = New System.Drawing.Point(102, 139)
+        Me.Txt_Nendo.Name = "Txt_Nendo"
+        Me.Txt_Nendo.Size = New System.Drawing.Size(121, 23)
+        Me.Txt_Nendo.TabIndex = 4
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label8.Location = New System.Drawing.Point(38, 142)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(40, 16)
+        Me.Label8.TabIndex = 82
+        Me.Label8.Text = "年度"
+        '
+        'Txt_Type
+        '
+        Me.Txt_Type.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Type.Location = New System.Drawing.Point(591, 139)
+        Me.Txt_Type.Name = "Txt_Type"
+        Me.Txt_Type.Size = New System.Drawing.Size(121, 23)
+        Me.Txt_Type.TabIndex = 6
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label9.Location = New System.Drawing.Point(523, 142)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(43, 16)
+        Me.Label9.TabIndex = 84
+        Me.Label9.Text = "タイプ"
+        '
         'F_Print_Sub_Module_Housou
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(766, 270)
+        Me.ClientSize = New System.Drawing.Size(766, 335)
+        Me.Controls.Add(Me.Txt_Type)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Txt_Nendo)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Txt_Month)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Txt_Modefu)
@@ -223,4 +267,8 @@ Partial Class F_Print_Sub_Module_Housou
     Friend WithEvents Label3 As Label
     Friend WithEvents Txt_Month As TextBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents Txt_Nendo As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Txt_Type As TextBox
+    Friend WithEvents Label9 As Label
 End Class

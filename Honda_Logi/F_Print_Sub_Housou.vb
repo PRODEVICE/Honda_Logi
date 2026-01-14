@@ -288,13 +288,17 @@ Public Class F_Print_Sub_Housou
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\包装仕様一覧.xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "包装仕様一覧_出力.xlsx",
+            .FileName = "包装仕様一覧_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}
 
             If sfd.ShowDialog() <> DialogResult.OK Then
@@ -444,13 +448,17 @@ Public Class F_Print_Sub_Housou
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\包装資材明細(定量、不定量共通).xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "包装資材明細(定量、不定量共通)_出力.xlsx",
+            .FileName = "包装資材明細(定量、不定量共通)_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}
 
             If sfd.ShowDialog() <> DialogResult.OK Then

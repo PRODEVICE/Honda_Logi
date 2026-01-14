@@ -43,6 +43,8 @@ Public Class F_Print_Sub_Module_Housou
             Dim dt As New DataTable
             Dim dt_second As New DS_M.DT_M_SecondDataTable
             Dim ta_second As New DS_MTableAdapters.TA_M_Second
+            Dim dt_ccc_chk As New DS_T.DT_T_CCC_LotDataTable
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
 
             '秒数取得
             ta_second.Q_工数一覧取得(dt_second)
@@ -55,6 +57,20 @@ Public Class F_Print_Sub_Module_Housou
             Dim kishu As String = Txt_Kishu.Text.Trim
             Dim module_str As String = Txt_Module.Text.Trim
             Dim modefu As String = Txt_Modefu.Text.Trim
+            Dim type As String = Txt_Type.Text.Trim
+            Dim nendo As String = Txt_Nendo.Text.Trim
+            Dim nengetu As String = yeat & month
+
+            '必須チェック_一旦保留
+
+
+            'CCC1Lotに存在するかチェック
+            ta_ccc.Q_印刷_存在チェック_モジュール別包装費用(dt_ccc_chk, nengetu, dist, nendo, kishu, type, module_str, modefu)
+
+            If dt_ccc_chk.Rows.Count = 0 Then
+                MessageBox.Show("条件に一致する1Lotデータが存在しません。")
+                Exit Sub
+            End If
 
             ' ストアド実行
             Using conn As New SqlConnection(connectionString)
@@ -71,7 +87,7 @@ Public Class F_Print_Sub_Module_Housou
                     cmd.Parameters.AddWithValue("@Year", yeat)
                     cmd.Parameters.AddWithValue("@Month", month)
                     cmd.Parameters.AddWithValue("@Dist", dist)
-                    cmd.Parameters.AddWithValue("@Kishu", kishu)
+                    cmd.Parameters.AddWithValue("@Kishu", nendo & kishu & type)
                     cmd.Parameters.AddWithValue("@Module", module_str)
                     cmd.Parameters.AddWithValue("@Modefu", modefu)
 
@@ -110,13 +126,17 @@ Public Class F_Print_Sub_Module_Housou
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\モジュール別包装費明細.xlsx")
 
+            'ファイル名に付ける年度の取得
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
+
             ' -------------------------
             ' 保存ダイアログ
             ' -------------------------
             Dim sfd As New SaveFileDialog With {
             .Title = "Excelファイルの保存",
             .Filter = "Excelファイル (*.xlsx)|*.xlsx",
-            .FileName = "モジュール別包装費明細_出力.xlsx",
+            .FileName = "モジュール別包装費明細_" & nendo & "年度.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
         }
 
@@ -164,7 +184,7 @@ Public Class F_Print_Sub_Module_Housou
                 'ヘッダ項目を書き込む
                 ws.Cell(2, 2).Value = If(IsDBNull(dt.Rows(0)(0)), "", dt.Rows(0)(0).ToString)
                 ws.Cell(3, 3).Value = Txt_DIST.Text.Trim
-                ws.Cell(4, 3).Value = Txt_Kishu.Text.Trim
+                ws.Cell(4, 3).Value = Txt_Nendo.Text.Trim & Txt_Kishu.Text.Trim & " " & Txt_Type.Text.Trim
                 ws.Cell(5, 3).Value = Txt_Module.Text.Trim
                 ws.Cell(6, 3).Value = Txt_Modefu.Text.Trim
 

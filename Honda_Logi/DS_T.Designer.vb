@@ -55675,7 +55675,7 @@ Namespace DS_TTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(8) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(10) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT                      id, 工程管理ｼｽﾃﾑ日付, 処理ID, 包装指示1, コンテンツ1, パッケージコンテンツ1, パッキ"& _ 
@@ -55882,10 +55882,74 @@ Namespace DS_TTableAdapters
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@包装ロットNO", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "包装ロットNO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(8).Connection = Me.Connection
-            Me._commandCollection(8).CommandText = "SELECT                      COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CCC"& _ 
-                "_Lot"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (見積No = @見積No)"
+            Me._commandCollection(8).CommandText = "SELECT                      id, 工程管理ｼｽﾃﾑ日付, 処理ID, 包装指示1, コンテンツ1, パッケージコンテンツ1, パッキ"& _ 
+                "ングチェックシート1, ケースマーク1, 部品管理エフ1, 包装指示2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      コンテ"& _ 
+                "ンツ2, パッケージコンテンツ2, パッキングチェックシート2, ケースマーク2, 部品管理エフ2, 包装指示3, コンテンツ3, パッケージコンテンツ3, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      パッキングチェックシート3, ケースマーク3, 部品管理エフ3, 包装指示4, コ"& _ 
+                "ンテンツ4, パッケージコンテンツ4, パッキングチェックシート4, ケースマーク4, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                  "& _ 
+                "    部品管理エフ4, 予約1, 予約2, 予約3, 予約4, 予約5, アイテムNO表示, KD部番表示区分, C_M重量表示要否, A_Sフォーマット, "& _ 
+                "A_S日本表示形式, A_S現地表示形式, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      A_S輸出部品名称, P_ﾘｽﾄ2N"& _ 
+                "D記述, 包装資材表示要否, オプション表示区分, 機種コード表示区分, 予約6, 原産国表示要否, 対応要否_10_2, 対応要否_5品目, 包装SS, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "                                      汎区分24, PC_NO, ｺﾝﾄﾛｰﾙNO, 年度1, モデル1, モデフNO, "& _ 
+                "ケースNO1, レコードID, バッチ処理エラーコード, 量産_枠外区分, インボイスNO, 代表DIST, 部品群, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
+                "                    包装ロットNO, 包装ロット連番, 現地工場コード, 現地ラインNO1, 年1, 月1, 連番1, サフィックス, K_"& _ 
+                "Y_KD1, 年度2, モデル2, タイプ1, オプション1, 外装HES1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      "& _ 
+                "内装タイプ1, K_Y_KD2, 年度3, モデル3, タイプ2, 群, 外装HES2, 内装タイプ2, K_Y_KD3, 年度4, モデル4, タイプ3, オ"& _ 
+                "プション2, 外装HES3, 内装タイプ3, MIX区分, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      代表区分1, 包装仕"& _ 
+                "様有無区分, 包装場, オーダー区分, オーダー経歴NO, 配送先DIST, オーダー元プラント, 現地ラインNO2, モデル年度, オーダー理由コード, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "                                      オーダー年月日SEQ, シップメントNO, 基本生産計画区分, 計画年月, 計画改訂"& _ 
+                "NO, 計画コード, 包装予定日, 計画確定区分, SS, 本社製品区分, 年2, 月2, 連番2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                           "& _ 
+                "           包装数量, 個装ライン, 内装ライン, 包装ライン_外装, ケース順位, 包装ロット台数, ケース保税区分, ケースグロスL, ケースグロ"& _ 
+                "スW, ケースグロスH, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      ケースグロス容量M3, ケースネットL, ケースネット"& _ 
+                "W, ケースネットH, ケースネット容量M3, ケースネット重量, ケース重量計画値, ケース実績重量, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
+                "             ケース重量測定要求, 初物部品ケースサイン, エンジンASSYサイン, K_Y_KD4, 年度5, モデル5, タイプ4, オプション"& _ 
+                "3, 外装HES4, 内装タイプ4, エンジン入り数, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      パッキングNO, FIL"& _ 
+                "LER1, オーダーアイテムNO, ITEM, 基本部番, 設変部番, KD部番, 部品色, 輸出部品名称, 第二外国語名称, 主管SS, 現地ロケーションNO"& _ 
+                ", "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      部品単位重量, 個装資材記号, 個装手順SEQ, 部品収容数, 個装担当NO"& _ 
+                ", 内装資材記号, 内装手順SEQ, 内装NO, 個装入り数, 内装担当NO, 外装資材記号, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                              "& _ 
+                "        モジュール手順SEQ, 内装入り数, 外装担当NO1, 外装担当NO2, 台当り使用個数, 包装指示数, ケース個内装荷姿必要, コンテンツ必要"& _ 
+                "枚数, 要否区分, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      品質チェック要否, 取引先NO, 搬入ホーム, 海事専用機種"& _ 
+                "名称, 包装特性1, 包装特性2, 包装特性3, 包装特性4, 包装特性5, FILLER2, 部品包装特性1, 部品包装特性2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "                          部品包装特性3, 部品包装特性4, 部品包装特性5, 内装総重量, 代表区分2, 副資材1, 必要数1, 代"& _ 
+                "表区分3, 副資材2, 必要数2, 代表区分4, 副資材3, 必要数3, 代表区分5, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                  "& _ 
+                "    副資材4, 必要数4, 代表区分6, 副資材5, 必要数5, 代表区分7, 副資材6, 必要数6, 代表区分8, 副資材7, 必要数7, 代表区分9, "& _ 
+                "副資材8, 必要数8, 代表区分10, 副資材9, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      必要数9, 代表区分11, "& _ 
+                "副資材10, 必要数10, 代表区分12, 副資材11, 必要数11, 代表区分13, 副資材12, 必要数12, 代表区分14, 副資材13, 必要数13, "& _ 
+                "代表区分15, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      副資材14, 必要数14, 代表区分16, 副資材15, 必要数"& _ 
+                "15, 代表区分17, 副資材16, 必要数16, 代表区分18, 副資材17, 必要数17, 代表区分19, 副資材18, 必要数18, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                              代表区分20, 副資材19, 必要数19, 代表区分21, 副資材20, 必要数20, ダイレクト包"& _ 
+                "装記号1, リターナブル区分1, ダイレクト包装記号2, リターナブル区分2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      "& _ 
+                "ダイレクト包装記号3, リターナブル区分3, HNS, 保税区分, エンジンASSY区分, 部品特性3, 部品特性4, 部品特性5, 部品特性6, 原産国コード"& _ 
+                "1, 外産品区分1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      部品特性10, FILLER3, DIST名称, 基本部番"& _ 
+                "ハイフン付, 設変部番ハイフン付, 部品特性フラブ, 部品属性4, 輸送手段, 実績有無区分, 実績数量, 種別NO, 原産国コード2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                             外産品区分2, モジュールコード, ケースNO2, 転送日時, FILLER4, 取込年月, 単品部品"& _ 
+                "総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      リターナブ"& _ 
+                "ル容器数, ENG発泡材数, 積み付け回数, パネルケース数, スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                                     外装用副資材使用数, 外直部品総数, 外直の防錆回数, 外装ケース数, 部品点数_集計"& _ 
+                ", 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                "& _ 
+                "      個_内装資材, 外装資材, 資材計, 見積No"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CCC_Lot"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE    "& _ 
+                "                   (計画年月 = @計画年月) AND (代表DIST = @代表DIST) AND (年度2 = @年度2) AND (モ"& _ 
+                "デル2 = @モデル2) AND (タイプ1 = @タイプ1) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      (ｺﾝﾄ"& _ 
+                "ﾛｰﾙNO = @ｺﾝﾄﾛｰﾙNO) AND (モデフNO = @モデフNO)"
             Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@計画年月", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "計画年月", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@代表DIST", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "代表DIST", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@年度2", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "年度2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@モデル2", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "モデル2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@タイプ1", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "タイプ1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ｺﾝﾄﾛｰﾙNO", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "ｺﾝﾄﾛｰﾙNO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@モデフNO", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "モデフNO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(9).Connection = Me.Connection
+            Me._commandCollection(9).CommandText = "SELECT                      COUNT(*) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CCC"& _ 
+                "_Lot"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (見積No = @見積No)"
+            Me._commandCollection(9).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(10).Connection = Me.Connection
+            Me._commandCollection(10).CommandText = "SELECT                      MAX(計画年月) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CC"& _ 
+                "C_Lot"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (見積No = @見積No)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY              見積No"
+            Me._commandCollection(10).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -56054,6 +56118,100 @@ Namespace DS_TTableAdapters
                 Me.Adapter.SelectCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(8).Value = CType(内装資材記号,String)
+            End If
+            Dim dataTable As DS_T.DT_T_CCC_LotDataTable = New DS_T.DT_T_CCC_LotDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function Q_印刷_存在チェック_モジュール別包装費用(ByVal dataTable As DS_T.DT_T_CCC_LotDataTable, ByVal 計画年月 As String, ByVal 代表DIST As String, ByVal 年度2 As String, ByVal モデル2 As String, ByVal タイプ1 As String, ByVal ｺﾝﾄﾛｰﾙNO As String, ByVal モデフNO As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(8)
+            If (計画年月 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(計画年月,String)
+            End If
+            If (代表DIST Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(代表DIST,String)
+            End If
+            If (年度2 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(年度2,String)
+            End If
+            If (モデル2 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(モデル2,String)
+            End If
+            If (タイプ1 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(タイプ1,String)
+            End If
+            If (ｺﾝﾄﾛｰﾙNO Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(ｺﾝﾄﾛｰﾙNO,String)
+            End If
+            If (モデフNO Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(6).Value = CType(モデフNO,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy9(ByVal 計画年月 As String, ByVal 代表DIST As String, ByVal 年度2 As String, ByVal モデル2 As String, ByVal タイプ1 As String, ByVal ｺﾝﾄﾛｰﾙNO As String, ByVal モデフNO As String) As DS_T.DT_T_CCC_LotDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(8)
+            If (計画年月 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(計画年月,String)
+            End If
+            If (代表DIST Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(代表DIST,String)
+            End If
+            If (年度2 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(年度2,String)
+            End If
+            If (モデル2 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(モデル2,String)
+            End If
+            If (タイプ1 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(タイプ1,String)
+            End If
+            If (ｺﾝﾄﾛｰﾙNO Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(ｺﾝﾄﾛｰﾙNO,String)
+            End If
+            If (モデフNO Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(6).Value = CType(モデフNO,String)
             End If
             Dim dataTable As DS_T.DT_T_CCC_LotDataTable = New DS_T.DT_T_CCC_LotDataTable()
             Me.Adapter.Fill(dataTable)
@@ -58190,7 +58348,7 @@ Namespace DS_TTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Q_見積No_存在チェック(ByVal 見積No As Global.System.Nullable(Of Integer)) As Global.System.Nullable(Of Integer)
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(8)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(9)
             If (見積No.HasValue = true) Then
                 command.Parameters(0).Value = CType(見積No.Value,Integer)
             Else
@@ -58214,6 +58372,37 @@ Namespace DS_TTableAdapters
                 Return New Global.System.Nullable(Of Integer)()
             Else
                 Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Q_年度取得(ByVal 見積No As Global.System.Nullable(Of Integer)) As String
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(10)
+            If (見積No.HasValue = true) Then
+                command.Parameters(0).Value = CType(見積No.Value,Integer)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return Nothing
+            Else
+                Return CType(returnValue,String)
             End If
         End Function
     End Class
