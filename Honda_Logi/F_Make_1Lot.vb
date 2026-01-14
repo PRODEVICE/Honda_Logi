@@ -1462,7 +1462,8 @@ Public Class F_Make_1Lot
                                     タイプ1,
                                     オプション1,
                                     群,
-                                    MIN(包装ロットNO) AS MinLotNo
+                                    MIN(包装ロットNO) AS MinLotNo,
+                                    基本部番ハイフン付
                                 FROM [dbo].[T_CCC]
                                 WHERE 見積No = '" & _target_mitsumori_no & "'
                                 GROUP BY
@@ -1473,7 +1474,8 @@ Public Class F_Make_1Lot
                                     モデル2,
                                     タイプ1,
                                     オプション1,
-                                    群
+                                    群,
+                                    基本部番ハイフン付
                             ),
                             TargetData AS (
                                 SELECT C.*
@@ -1487,7 +1489,8 @@ Public Class F_Make_1Lot
                                     C.タイプ1 = M.タイプ1 AND
                                     C.オプション1 = M.オプション1 AND
                                     C.群 = M.群 AND
-                                    C.包装ロットNO = M.MinLotNo
+                                    C.包装ロットNO = M.MinLotNo AND
+                                    C.基本部番ハイフン付 = M.基本部番ハイフン付
                                 WHERE C.見積No = '" & _target_mitsumori_no & "'
                             )
 

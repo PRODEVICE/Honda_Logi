@@ -498,6 +498,45 @@ Public Class F_Receive
                     dr("取込年月") = _nengetu
                     dr("見積No") = _mitsumori_no
 
+                    '群の変換処理
+                    Dim gun As String = ""
+                    Dim last_moji As String = ""
+                    Dim result As Integer
+
+                    '代表DISTが157、321以外
+                    If dr("代表DIST") <> "157" And dr("代表DIST") <> "321" Then
+
+                        '60列目の部品群から=と@を除外した値を群としてセット
+                        gun = dr("部品群").ToString.Replace("=", "").Replace("@", "")
+
+                    Else '代表DISTが157、321の場合
+
+                        '60列目の部品群から=と@を除外した値を群としてセット
+                        gun = dr("部品群").ToString.Replace("=", "").Replace("@", "")
+
+                        '先頭の3桁を取得
+                        gun = gun.Substring(0, 3)
+                        last_moji = gun.Substring(2, 1)
+
+                        '3桁目が数値の場合は-2をする　0の場合はスルー
+                        If Integer.TryParse(last_moji, result) Then
+
+                            ' 数値の場合
+                            If result = 0 Or result = 1 Then
+                                '何もしない
+                            Else
+                                result = result - 2
+                                gun = gun.Substring(0, 2) & result.ToString
+                            End If
+
+                        Else ' 数値ではない
+                            '何もしない
+                            result = 0
+                        End If
+                    End If
+
+                    dr("群") = gun
+
                     dtBatch.Rows.Add(dr)
                     batchCount += 1
 
