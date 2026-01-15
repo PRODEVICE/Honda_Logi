@@ -3704,6 +3704,8 @@ dt As DataTable, csvPath As String, writeHeader As Boolean)
         Public Property モジュール手順SEQ As String
         Public Property 個装入り数 As String
         Public Property 内装入り数 As String
+        Public Property 部品収容数 As String
+        Public Property オプション1 As String
 
     End Class
 
