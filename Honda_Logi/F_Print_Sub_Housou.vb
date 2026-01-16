@@ -199,12 +199,18 @@ Public Class F_Print_Sub_Housou
                         no += 1
                     Next
 
-                    '個装、内装、外装の各データを検索する
-                    lord_data(distinctDT, dt_kosou, dt_naisou, dt_gaisou)
+                    '個装の各データを収集
+                    lord_data_kosou(distinctDT, dt_kosou)
+
+                    '内装の各データを収集
+                    lord_data_naisou(distinctDT, dt_naisou, dt_kosou)
+
+                    '外装の各データを収集
+                    lord_data_gaisou(distinctDT, dt_gaisou)
 
 
                     'Excelに描画
-                    ExportToExcel1(dt_result, dt_kosou, dt_naisou, dt_gaisou)
+                    ExportToExcel1(distinctDT, dt_kosou, dt_naisou, dt_gaisou)
 
                 End Using
             Else
@@ -292,13 +298,13 @@ Public Class F_Print_Sub_Housou
         End Try
 
     End Sub
+
     '******************************************************************************
     '関数
     '******************************************************************************
 
-
-    '包装資材明細(定量、不定量共通)作成処理
-    Private Sub lord_data(_dt_ccc As DataTable, ByRef dt_kosou As DataTable, ByRef dt_naisou As DataTable, ByRef dt_gaisou As DataTable)
+    '個装データの収集処理
+    Private Sub lord_data_kosou(_dt_ccc As DataTable, ByRef dt_kosou As DataTable)
 
         Try
 
@@ -311,8 +317,7 @@ Public Class F_Print_Sub_Housou
             Dim dt_M_kosou As New DS_M.DT_M_Kosou_ShizaiDataTable
             Dim ta_M_kosou As New DS_MTableAdapters.TA_M_Kosou_Shizai
 
-
-            'CCC辞書
+            'CCC辞書 部品収容数取得用
             Dim search_ccc_Dict As New Dictionary(Of String, List(Of F_Make_1Lot.CCCInfo))(StringComparer.Ordinal)
 
             ' まず DataRow 配列にする（高速化）
@@ -326,8 +331,7 @@ Public Class F_Print_Sub_Housou
                 SafeGetString(dr, "タイプ"),
                 SafeGetString(dr, "オプション"),
                 SafeGetString(dr, "MUDULE"),
-                SafeGetString(dr, "モジュール手順SEQ")
-            )
+                SafeGetString(dr, "モジュール手順SEQ"))
 
                 Dim info As New F_Make_1Lot.CCCInfo With {
                     .年度2 = SafeGetString(dr, "年度"),
@@ -336,8 +340,7 @@ Public Class F_Print_Sub_Housou
                     .オプション1 = SafeGetString(dr, "オプション"),
                     .ｺﾝﾄﾛｰﾙNO = SafeGetString(dr, "MUDULE"),
                     .モジュール手順SEQ = SafeGetString(dr, "モジュール手順SEQ"),
-                    .部品収容数 = SafeGetString(dr, "部品収容数")
-                }
+                    .部品収容数 = SafeGetString(dr, "部品収容数")}
 
                 ' 辞書に追加
                 If Not search_ccc_Dict.ContainsKey(key) Then
@@ -352,7 +355,6 @@ Public Class F_Print_Sub_Housou
             ta_kow.Q_KOW取得(dt_kow, _mitsumoriNo)
             Dim search_KOW_Dict As New Dictionary(Of String, List(Of F_Make_1Lot.KowInfo))(StringComparer.Ordinal)
 
-            ' まず DataRow 配列にする（高速化）
             Dim rows_kow As DataRow() = dt_kow.Select()
             For Each dr As DataRow In rows_kow
                 Dim key As String = String.Concat(
@@ -387,8 +389,6 @@ Public Class F_Print_Sub_Housou
                     .見積No = SafeGetString(dr, "見積No")
                 }
 
-
-
                 ' 辞書に追加
                 If Not search_KOW_Dict.ContainsKey(key) Then
                     search_KOW_Dict(key) = New List(Of F_Make_1Lot.KowInfo)
@@ -396,7 +396,6 @@ Public Class F_Print_Sub_Housou
 
                 search_KOW_Dict(key).Add(info)
             Next
-
 
             'KOW辞書_存在チェック用
             Dim kowExistSet As New HashSet(Of String)(StringComparer.Ordinal)
@@ -410,7 +409,6 @@ Public Class F_Print_Sub_Housou
                                                         SafeGetString(dr, "MUDULE"),
                                                         SafeGetString(dr, "内装手順")
                                                       )
-
                 kowExistSet.Add(existKey)
             Next
 
@@ -451,8 +449,7 @@ Public Class F_Print_Sub_Housou
                 End If
             Next
 
-
-
+            '個装データの収集スタート
             For Each row In _dt_ccc.Rows
 
                 '内装か外装かを判別する
@@ -463,7 +460,6 @@ Public Class F_Print_Sub_Housou
                     ' 複数件をカンマ区切りで連結
                     housou_kbn = String.Join(",", housouDict(distKey))
                 End If
-
 
                 '個装内装両方登録されている場合
                 If housou_kbn = "個装,内装" Or housou_kbn = "内装,個装" Then
@@ -478,10 +474,6 @@ Public Class F_Print_Sub_Housou
                     End If
 
                 End If
-
-                '********************************************************
-                '個装データの収集処理
-                '********************************************************
 
                 Dim kowKey As String = String.Concat(
                                                         SafeGetString(row, "年度"),
@@ -499,16 +491,11 @@ Public Class F_Print_Sub_Housou
                                                         SafeGetString(row, "モジュール手順SEQ")
                                                     )
 
-                If housou_kbn = "個装" Then
-
-
-
+                If housou_kbn = "内装" Then
 
                     If Not kowExistSet.Contains(kowKey_exit) Then
                         Continue For ' KOWなし
                     End If
-
-
 
                     If Not search_KOW_Dict.ContainsKey(kowKey) Then Continue For
 
@@ -516,8 +503,6 @@ Public Class F_Print_Sub_Housou
                     ' KOW抽出 → 最小包装ロット
                     '========================
                     Dim kowList = search_KOW_Dict(kowKey)
-
-
                     Dim minLot As String = kowList.Min(Function(x) x.包装ロットNo)
 
                     Dim targetKow =
@@ -549,7 +534,6 @@ Public Class F_Print_Sub_Housou
                             Continue While
                         End If
 
-
                         '元ネタのCCCより部品収容数を逆引き
                         Dim hitList As List(Of F_Make_1Lot.CCCInfo) = Nothing
 
@@ -579,10 +563,6 @@ Public Class F_Print_Sub_Housou
 
                         End If
 
-
-
-
-
                         '========================
                         ' 上段（主資材）表示
                         '========================
@@ -591,10 +571,10 @@ Public Class F_Print_Sub_Housou
                         '--- 上段行追加 ---
                         Dim rowTop As DataRow = dt_kosou.NewRow()
                         rowTop("GroupNo") = row("Col11")
-                        rowTop("Col11") = ""
+                        rowTop("Col11") = row("Col11")
                         rowTop("Col12") = k.資材規格
                         rowTop("Col13") = buhin_shuyou_su
-                        rowTop("Col14") = ""
+                        rowTop("Col14") = row("Col14")
                         dt_kosou.Rows.Add(rowTop)
 
                         i += 1
@@ -615,7 +595,7 @@ Public Class F_Print_Sub_Housou
                             '--- 下段行追加 ---
                             Dim rowSub As DataRow = dt_kosou.NewRow()
                             rowSub("GroupNo") = row("Col11")
-                            rowSub("Col11") = ""
+                            rowSub("Col11") = row("Col11")
                             rowSub("Col12") = nextK.資材規格
                             rowSub("Col13") = nextK.使用数
                             rowSub("Col14") = ""
@@ -624,32 +604,617 @@ Public Class F_Print_Sub_Housou
                             i += 1
                         End While
 
+                    End While
+
+                End If
+
+            Next
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Housou_lord_data_kosou")
+            Throw
+        End Try
+
+    End Sub
+
+    '内装データの収集処理
+    Private Sub lord_data_naisou(_dt_ccc As DataTable, ByRef dt_naisou As DataTable, dt_kosou As DataTable)
+
+        Try
+
+            Dim dt_ccc As New DS_T.DT_T_CCC_LotDataTable
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim dt_housou_kbn As New DS_M.DT_M_Housou_KbnDataTable
+            Dim ta_housou_kbn As New DS_MTableAdapters.TA_M_Housou_Kbn
+
+            'CCC辞書
+            ta_ccc.Q_CCC_Lot取得(dt_ccc, _mitsumoriNo)
+            Dim search_ccc_Dict As New Dictionary(Of String, List(Of F_Make_1Lot.CCCInfo))(StringComparer.Ordinal)
+
+            Dim rows_ccc As DataRow() = dt_ccc.Select()
+
+            For Each dr As DataRow In rows_ccc
+
+                Dim key As String = String.Concat(
+                SafeGetString(dr, "代表DIST"),
+                SafeGetString(dr, "年度2"),
+                SafeGetString(dr, "モデル2"),
+                SafeGetString(dr, "タイプ1"),
+                SafeGetString(dr, "オプション1"),
+                SafeGetString(dr, "群"),
+                SafeGetString(dr, "ｺﾝﾄﾛｰﾙNO"),
+                SafeGetString(dr, "基本部番ハイフン付")
+            )
+                'モジュール手順SEQ違いはセットしたいので、重複チェック用キーを別途作成
+                Dim key_exit As String = String.Concat(
+                SafeGetString(dr, "代表DIST"),
+                SafeGetString(dr, "年度2"),
+                SafeGetString(dr, "モデル2"),
+                SafeGetString(dr, "タイプ1"),
+                SafeGetString(dr, "オプション1"),
+                SafeGetString(dr, "群"),
+                SafeGetString(dr, "ｺﾝﾄﾛｰﾙNO"),
+                SafeGetString(dr, "基本部番ハイフン付"),
+                SafeGetString(dr, "モジュール手順SEQ")
+            )
+
+                Dim info As New F_Make_1Lot.CCCInfo With {
+                    .代表DIST = SafeGetString(dr, "代表DIST"),
+                    .年度2 = SafeGetString(dr, "年度2"),
+                    .モデル2 = SafeGetString(dr, "モデル2"),
+                    .タイプ1 = SafeGetString(dr, "タイプ1"),
+                    .オプション1 = SafeGetString(dr, "オプション1"),
+                    .群 = SafeGetString(dr, "群"),
+                    .ｺﾝﾄﾛｰﾙNO = SafeGetString(dr, "ｺﾝﾄﾛｰﾙNO"),
+                    .モジュール手順SEQ = SafeGetString(dr, "モジュール手順SEQ"),
+                    .基本部番ハイフン付 = SafeGetString(dr, "基本部番ハイフン付"),
+                    .部品収容数 = SafeGetString(dr, "部品収容数")
+                }
+
+                ' 辞書に追加　ここでケースNo違いもはじける
+                If Not search_ccc_Dict.ContainsKey(key_exit) Then
+                    search_ccc_Dict(key) = New List(Of F_Make_1Lot.CCCInfo)
+                    search_ccc_Dict(key).Add(info)
+                End If
+
+            Next
+
+            'CCC辞書2 副資材の値取得用
+            Dim search_ccc_Dict2 As New Dictionary(Of String, List(Of F_Make_1Lot.CCCInfo))(StringComparer.Ordinal)
+
+            Dim rows_ccc2 As DataRow() = dt_ccc.Select()
+
+            For Each dr As DataRow In rows_ccc2
+
+                Dim key As String = String.Concat(
+                SafeGetString(dr, "年度2"),
+                SafeGetString(dr, "モデル2"),
+                SafeGetString(dr, "タイプ1"),
+                SafeGetString(dr, "オプション1"),
+                SafeGetString(dr, "ｺﾝﾄﾛｰﾙNO"),
+                SafeGetString(dr, "基本部番ハイフン付"),
+                SafeGetString(dr, "モジュール手順SEQ")
+            )
+
+                Dim info As New F_Make_1Lot.CCCInfo With {
+                    .年度2 = SafeGetString(dr, "年度2"),
+                    .モデル2 = SafeGetString(dr, "モデル2"),
+                    .タイプ1 = SafeGetString(dr, "タイプ1"),
+                    .オプション1 = SafeGetString(dr, "オプション1"),
+                    .ｺﾝﾄﾛｰﾙNO = SafeGetString(dr, "ｺﾝﾄﾛｰﾙNO"),
+                    .基本部番ハイフン付 = SafeGetString(dr, "基本部番ハイフン付"),
+                    .モジュール手順SEQ = SafeGetString(dr, "モジュール手順SEQ"),
+                    .副資材1 = SafeGetString(dr, "副資材1"),
+                    .副資材2 = SafeGetString(dr, "副資材2"),
+                    .副資材3 = SafeGetString(dr, "副資材3"),
+                    .副資材4 = SafeGetString(dr, "副資材4"),
+                    .副資材5 = SafeGetString(dr, "副資材5"),
+                    .副資材6 = SafeGetString(dr, "副資材6"),
+                    .副資材7 = SafeGetString(dr, "副資材7"),
+                    .副資材8 = SafeGetString(dr, "副資材8"),
+                    .副資材9 = SafeGetString(dr, "副資材9"),
+                    .副資材10 = SafeGetString(dr, "副資材10"),
+                    .必要数1 = SafeGetString(dr, "必要数1"),
+                    .必要数2 = SafeGetString(dr, "必要数2"),
+                    .必要数3 = SafeGetString(dr, "必要数3"),
+                    .必要数4 = SafeGetString(dr, "必要数4"),
+                    .必要数5 = SafeGetString(dr, "必要数5"),
+                    .必要数6 = SafeGetString(dr, "必要数6"),
+                    .必要数7 = SafeGetString(dr, "必要数7"),
+                    .必要数8 = SafeGetString(dr, "必要数8"),
+                    .必要数9 = SafeGetString(dr, "必要数9"),
+                    .必要数10 = SafeGetString(dr, "必要数10"),
+                    .部品収容数 = SafeGetString(dr, "部品収容数"),
+                    .内装入り数 = SafeGetString(dr, "内装入り数"),
+                    .内装資材記号 = SafeGetString(dr, "内装資材記号")
+                }
+
+                ' 辞書に追加　ここでケースNo違いもはじける
+                If Not search_ccc_Dict2.ContainsKey(key) Then
+                    search_ccc_Dict2(key) = New List(Of F_Make_1Lot.CCCInfo)
+                    search_ccc_Dict2(key).Add(info)
+                End If
+
+            Next
+
+            'CCC辞書3 内装入数の値取得用
+            Dim search_ccc_Dict3 As New Dictionary(Of String, List(Of F_Make_1Lot.CCCInfo))(StringComparer.Ordinal)
+
+            Dim rows_ccc3 As DataRow() = dt_ccc.Select()
+
+            For Each dr As DataRow In rows_ccc3
+
+                Dim key As String = String.Concat(
+                SafeGetString(dr, "内装資材記号"),
+                SafeGetString(dr, "基本部番ハイフン付"),
+                SafeGetString(dr, "モジュール手順SEQ")
+            )
+
+                Dim info As New F_Make_1Lot.CCCInfo With {
+                    .内装資材記号 = SafeGetString(dr, "内装資材記号"),
+                    .基本部番ハイフン付 = SafeGetString(dr, "基本部番ハイフン付"),
+                    .モジュール手順SEQ = SafeGetString(dr, "モジュール手順SEQ"),
+                    .内装入り数 = SafeGetString(dr, "内装入り数")
+                }
+
+                ' 辞書に追加　ここでケースNo違いもはじける
+                If Not search_ccc_Dict3.ContainsKey(key) Then
+                    search_ccc_Dict3(key) = New List(Of F_Make_1Lot.CCCInfo)
+                    search_ccc_Dict3(key).Add(info)
+                End If
+
+            Next
+
+            '個装辞書_存在チェック用
+            Dim kosouExistSet As New HashSet(Of String)(StringComparer.Ordinal)
+
+            For Each dr As DataRow In dt_kosou.Rows
+                Dim existKey As String = String.Concat(
+                                                        SafeGetString(dr, "GroupNo")
+                                                      )
+                kosouExistSet.Add(existKey)
+            Next
+
+            '個装内装登録早見表マスタの辞書作成
+            ta_housou_kbn.Fill(dt_housou_kbn)
+            Dim housouDict As New Dictionary(Of String, List(Of String))()
+
+            For Each dr As DataRow In dt_housou_kbn.Rows
+                Dim key As String = dr("DIST").ToString()
+                Dim value As String = dr("個装内装区分").ToString()
+
+                If Not housouDict.ContainsKey(key) Then
+                    housouDict(key) = New List(Of String)
+                End If
+
+                housouDict(key).Add(value)
+            Next
+
+
+            '内装データの収集スタート
+            For Each row In _dt_ccc.Rows
+
+                '内装か外装かを判別する
+                Dim housou_kbn As String = ""
+                Dim distKey As String = row("Col2").ToString
+
+                If Not String.IsNullOrEmpty(distKey) AndAlso housouDict.ContainsKey(distKey) Then
+                    ' 複数件をカンマ区切りで連結
+                    housou_kbn = String.Join(",", housouDict(distKey))
+                End If
+
+                '個装内装両方登録されている場合
+                If housou_kbn = "個装,内装" Or housou_kbn = "内装,個装" Then
+
+                    '117:「包装ライン/外装」にMが含まれていれば個装
+                    Dim housou_line As String = SafeGetString(row, "包装ライン_外装")
+
+                    If housou_line.Contains("M") Then
+                        housou_kbn = "個装"
+                    Else
+                        housou_kbn = "内装"
+                    End If
+
+                End If
+
+
+                If housou_kbn = "内装" Then
+
+                    '検索用のKey作成
+                    Dim cccKey As String = String.Concat(
+                                                        SafeGetString(row, "Col2"),
+                                                        SafeGetString(row, "Col3"),
+                                                        SafeGetString(row, "Col5"),
+                                                        SafeGetString(row, "Col6"),
+                                                        SafeGetString(row, "Col8")
+                                                    )
+                    '改めてCCC1lotよりデータを取得
+                    Dim cccList = search_ccc_Dict(cccKey)
+
+                    'モジュール手順No違いのデータがあるのでループ処理
+                    Dim i As Integer = 0
+                    While i < cccList.Count
+
+                        Dim ccc_data = cccList(i)
+
+                        '検索用のKey作成
+                        Dim cccKey2 As String = String.Concat(
+                                    SafeGetString(row, "Col3"),
+                                    SafeGetString(row, "Col6"),
+                                    SafeGetString(row, "Col8"),
+                                    ccc_data.モジュール手順SEQ
+                                )
+
+                        '副資材データを取得
+                        Dim cccList2 As List(Of F_Make_1Lot.CCCInfo) = Nothing
+
+                        If search_ccc_Dict2.TryGetValue(cccKey2, cccList2) Then
+                            ' 副資材が取得できる
+
+                            Dim j As Integer = 0
+                            While j < cccList2.Count
+
+                                Dim ccc_data2 = cccList2(j)
+
+                                Dim fuku_shizai1 As String = ccc_data2.副資材1
+                                Dim fuku_shizai2 As String = ccc_data2.副資材2
+                                Dim fuku_shizai3 As String = ccc_data2.副資材3
+                                Dim fuku_shizai4 As String = ccc_data2.副資材4
+                                Dim fuku_shizai5 As String = ccc_data2.副資材5
+                                Dim fuku_shizai6 As String = ccc_data2.副資材6
+                                Dim fuku_shizai7 As String = ccc_data2.副資材7
+                                Dim fuku_shizai8 As String = ccc_data2.副資材8
+                                Dim fuku_shizai9 As String = ccc_data2.副資材9
+                                Dim fuku_shizai10 As String = ccc_data2.副資材10
+
+                                Dim hituyou_su1 As String = ccc_data2.必要数1
+                                Dim hituyou_su2 As String = ccc_data2.必要数2
+                                Dim hituyou_su3 As String = ccc_data2.必要数3
+                                Dim hituyou_su4 As String = ccc_data2.必要数4
+                                Dim hituyou_su5 As String = ccc_data2.必要数5
+                                Dim hituyou_su6 As String = ccc_data2.必要数6
+                                Dim hituyou_su7 As String = ccc_data2.必要数7
+                                Dim hituyou_su8 As String = ccc_data2.必要数8
+                                Dim hituyou_su9 As String = ccc_data2.必要数9
+                                Dim hituyou_su10 As String = ccc_data2.必要数10
+
+                                If fuku_shizai1 <> "" Then
+
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ccc_data.モジュール手順SEQ
+                                    rowSub("Col17") = fuku_shizai1
+
+                                    '最初の行になるので個装データをチェック
+                                    If Not kosouExistSet.Contains(row("Col11").ToString) Then
+
+                                        '存在しなければ
+                                        rowSub("Col18") = ccc_data2.部品収容数
+                                    Else
+                                        rowSub("Col18") = hituyou_su1
+                                    End If
+
+                                    Dim cccList3 As List(Of F_Make_1Lot.CCCInfo) = Nothing
+                                    Dim cccKey3 As String = String.Concat(
+                                    fuku_shizai1,
+                                    ccc_data2.基本部番ハイフン付,
+                                    ccc_data2.モジュール手順SEQ)
+
+                                    rowSub("Col19") = DBNull.Value
+                                    If search_ccc_Dict3.TryGetValue(cccKey3, cccList3) Then
+
+                                        Dim k As Integer = 0
+                                        While k < cccList3.Count
+
+                                            Dim ccc_data3 = cccList3(k)
+                                            rowSub("Col19") = ccc_data3.内装入り数
+
+                                            k += 1
+                                        End While
+
+                                    End If
+
+                                    dt_naisou.Rows.Add(rowSub)
+
+                                End If
+
+                                If fuku_shizai2 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai2
+                                    rowSub("Col18") = hituyou_su2
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+                                If fuku_shizai3 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai3
+                                    rowSub("Col18") = hituyou_su3
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+                                If fuku_shizai4 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai4
+                                    rowSub("Col18") = hituyou_su4
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+                                If fuku_shizai5 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai5
+                                    rowSub("Col18") = hituyou_su5
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+                                If fuku_shizai6 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai6
+                                    rowSub("Col18") = hituyou_su6
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+                                If fuku_shizai7 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai7
+                                    rowSub("Col18") = hituyou_su7
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+                                If fuku_shizai8 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai8
+                                    rowSub("Col18") = hituyou_su8
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+                                If fuku_shizai9 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai9
+                                    rowSub("Col18") = hituyou_su9
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+                                If fuku_shizai10 <> "" Then
+                                    Dim rowSub As DataRow = dt_naisou.NewRow()
+                                    rowSub("GroupNo") = row("Col11")
+                                    rowSub("Col15") = ""
+                                    rowSub("Col17") = fuku_shizai10
+                                    rowSub("Col18") = hituyou_su10
+                                    rowSub("Col19") = DBNull.Value
+                                    dt_naisou.Rows.Add(rowSub)
+                                End If
+
+                                j += 1
+
+                            End While
+                        Else
+                            ' 存在しない → 副資材なし扱い
+                            i += 1
+                            Continue For
+                        End If
+
+                        i += 1
 
                     End While
 
                 End If
 
+            Next
 
-                Dim test = 123
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Housou_lord_data_naisou")
+            Throw
+        End Try
 
-                '********************************************************
-                '内装データの収集処理
-                '********************************************************
+    End Sub
+
+    '外装データの収集処理
+    Private Sub lord_data_gaisou(_dt_ccc As DataTable, ByRef dt_gaisou As DataTable)
+
+        Try
+
+            Dim dt_ccc As New DS_T.DT_T_CCC_LotDataTable
+            Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            Dim dt_housou_kbn As New DS_M.DT_M_Housou_KbnDataTable
+            Dim ta_housou_kbn As New DS_MTableAdapters.TA_M_Housou_Kbn
+
+            'CCC辞書 副資材の値取得用
+            Dim search_ccc_Dict As New Dictionary(Of String, List(Of F_Make_1Lot.CCCInfo))(StringComparer.Ordinal)
+
+            ta_ccc.Q_CCC_Lot取得(dt_ccc, _mitsumoriNo)
+            Dim rows_ccc As DataRow() = dt_ccc.Select()
+
+            For Each dr As DataRow In rows_ccc
+
+                Dim key As String = String.Concat(
+                SafeGetString(dr, "代表DIST"),
+                SafeGetString(dr, "年度2"),
+                SafeGetString(dr, "モデル2"),
+                SafeGetString(dr, "タイプ1"),
+                SafeGetString(dr, "オプション1"),
+                SafeGetString(dr, "モデフNO")).PadLeft(3, "0"c)
+
+                Dim info As New F_Make_1Lot.CCCInfo With {
+                    .代表DIST = SafeGetString(dr, "代表DIST"),
+                    .年度2 = SafeGetString(dr, "年度2"),
+                    .モデル2 = SafeGetString(dr, "モデル2"),
+                    .タイプ1 = SafeGetString(dr, "タイプ1"),
+                    .オプション1 = SafeGetString(dr, "オプション1"),
+                    .モデフNO = SafeGetString(dr, "モデフNO").PadLeft(3, "0"c),
+                    .副資材11 = SafeGetString(dr, "副資材11"),
+                    .副資材12 = SafeGetString(dr, "副資材12"),
+                    .副資材13 = SafeGetString(dr, "副資材13"),
+                    .副資材14 = SafeGetString(dr, "副資材14"),
+                    .副資材15 = SafeGetString(dr, "副資材15"),
+                    .副資材16 = SafeGetString(dr, "副資材16"),
+                    .副資材17 = SafeGetString(dr, "副資材17"),
+                    .副資材18 = SafeGetString(dr, "副資材18"),
+                    .副資材19 = SafeGetString(dr, "副資材19"),
+                    .副資材20 = SafeGetString(dr, "副資材20"),
+                    .必要数11 = SafeGetString(dr, "必要数11"),
+                    .必要数12 = SafeGetString(dr, "必要数12"),
+                    .必要数13 = SafeGetString(dr, "必要数13"),
+                    .必要数14 = SafeGetString(dr, "必要数14"),
+                    .必要数15 = SafeGetString(dr, "必要数15"),
+                    .必要数16 = SafeGetString(dr, "必要数16"),
+                    .必要数17 = SafeGetString(dr, "必要数17"),
+                    .必要数18 = SafeGetString(dr, "必要数18"),
+                    .必要数19 = SafeGetString(dr, "必要数19"),
+                    .必要数20 = SafeGetString(dr, "必要数20"),
+                    .部品収容数 = SafeGetString(dr, "部品収容数"),
+                    .内装入り数 = SafeGetString(dr, "内装入り数"),
+                    .内装資材記号 = SafeGetString(dr, "内装資材記号")
+                }
+
+                ' 辞書に追加　ここでケースNo違いもはじける
+                If Not search_ccc_Dict.ContainsKey(key) Then
+                    search_ccc_Dict(key) = New List(Of F_Make_1Lot.CCCInfo)
+                    search_ccc_Dict(key).Add(info)
+                End If
+
+            Next
+
+            '外装データの収集スタート
+            For Each row In _dt_ccc.Rows
+
+                '検索用のKey作成
+                Dim cccKey As String = String.Concat(
+                                                    SafeGetString(row, "Col2"),
+                                                    SafeGetString(row, "Col3"),
+                                                    SafeGetString(row, "Col7").PadLeft(3, "0"c)
+                                                )
+                'CCC1lotよりデータを取得
+                Dim cccList As List(Of F_Make_1Lot.CCCInfo) = Nothing
+
+                If search_ccc_Dict.TryGetValue(cccKey, cccList) Then
+
+                    Dim i As Integer = 0
+
+                    While i < cccList.Count
+
+                        Dim ccc_data = cccList(i)
+
+                        Dim fuku_shizai1 As String = ccc_data.副資材11
+                        Dim fuku_shizai2 As String = ccc_data.副資材12
+                        Dim fuku_shizai3 As String = ccc_data.副資材13
+                        Dim fuku_shizai4 As String = ccc_data.副資材14
+                        Dim fuku_shizai5 As String = ccc_data.副資材15
+                        Dim fuku_shizai6 As String = ccc_data.副資材16
+                        Dim fuku_shizai7 As String = ccc_data.副資材17
+                        Dim fuku_shizai8 As String = ccc_data.副資材18
+                        Dim fuku_shizai9 As String = ccc_data.副資材19
+                        Dim fuku_shizai10 As String = ccc_data.副資材20
+
+                        Dim hituyou_su1 As String = ccc_data.必要数11
+                        Dim hituyou_su2 As String = ccc_data.必要数12
+                        Dim hituyou_su3 As String = ccc_data.必要数13
+                        Dim hituyou_su4 As String = ccc_data.必要数14
+                        Dim hituyou_su5 As String = ccc_data.必要数15
+                        Dim hituyou_su6 As String = ccc_data.必要数16
+                        Dim hituyou_su7 As String = ccc_data.必要数17
+                        Dim hituyou_su8 As String = ccc_data.必要数18
+                        Dim hituyou_su9 As String = ccc_data.必要数19
+                        Dim hituyou_su10 As String = ccc_data.必要数20
+
+                        If fuku_shizai1 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai1
+                            rowSub("Col21") = hituyou_su1
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+
+                        If fuku_shizai2 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai2
+                            rowSub("Col21") = hituyou_su2
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+                        If fuku_shizai3 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai3
+                            rowSub("Col21") = hituyou_su3
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+                        If fuku_shizai4 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai4
+                            rowSub("Col21") = hituyou_su4
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+                        If fuku_shizai5 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai5
+                            rowSub("Col21") = hituyou_su5
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+                        If fuku_shizai6 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai6
+                            rowSub("Col21") = hituyou_su6
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+                        If fuku_shizai7 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai7
+                            rowSub("Col21") = hituyou_su7
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+                        If fuku_shizai8 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai8
+                            rowSub("Col21") = hituyou_su8
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+                        If fuku_shizai9 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai9
+                            rowSub("Col21") = hituyou_su9
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+                        If fuku_shizai10 <> "" Then
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = row("Col11")
+                            rowSub("Col20") = fuku_shizai10
+                            rowSub("Col21") = hituyou_su10
+                            dt_gaisou.Rows.Add(rowSub)
+                        End If
+
+                        i += 1
+
+                    End While
 
 
-
-
-                '********************************************************
-                '外装データの収集処理
-                '********************************************************
-
-
-
+                End If
 
             Next
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Housou_lord_data")
+            fnc.ERR_LOG(ex.Message, "F_Print_Sub_Housou_lord_data_naisou")
             Throw
         End Try
 
@@ -728,17 +1293,6 @@ Public Class F_Print_Sub_Housou
                     ws.Cell(currentRow, 5).Value = If(IsDBNull(row("Col8")), "", row("Col8").ToString)
                     ws.Cell(currentRow, 6).Value = If(IsDBNull(row("Col9")), "", row("Col9").ToString)
                     ws.Cell(currentRow, 7).Value = If(IsDBNull(row("Col10")), 0, Integer.Parse(row("Col10").ToString))
-                    'ws.Cell(currentRow, 8).Value = If(IsDBNull(row("Col11")), 0, Integer.Parse(row("Col11").ToString))
-                    'ws.Cell(currentRow, 9).Value = If(IsDBNull(row("Col12")), "", row("Col12").ToString)
-                    'ws.Cell(currentRow, 10).Value = If(IsDBNull(row("Col13")), 0, Integer.Parse(row("Col13").ToString))
-                    'ws.Cell(currentRow, 11).Value = If(IsDBNull(row("Col14")), "", row("Col14").ToString)
-                    'ws.Cell(currentRow, 12).Value = If(IsDBNull(row("Col15")), "", row("Col15").ToString)
-
-                    'ws.Cell(currentRow, 13).Value = If(IsDBNull(row("Col17")), "", row("Col17").ToString)
-                    'ws.Cell(currentRow, 14).Value = If(IsDBNull(row("Col18")), 0, Integer.Parse(row("Col18").ToString))
-                    'ws.Cell(currentRow, 15).Value = If(IsDBNull(row("Col19")), 0, Integer.Parse(row("Col19").ToString))
-                    'ws.Cell(currentRow, 16).Value = If(IsDBNull(row("Col20")), "", row("Col20").ToString)
-                    'ws.Cell(currentRow, 17).Value = If(IsDBNull(row("Col21")), 0, Integer.Parse(row("Col21").ToString))
 
                     Dim kosou_row = 0
                     Dim naisou_row = 0
@@ -754,16 +1308,24 @@ Public Class F_Print_Sub_Housou
                     For Each cRow In childRows
 
                         ' 子DTの値を取得
-                        Dim val1 As String = cRow("Col1")
-                        Dim val2 As Decimal = cRow("Col2")
-                        Dim val3 As Decimal = cRow("Col3")
-                        Dim val4 As Decimal = cRow("Col4")
+                        Dim val1 As String = cRow("Col11")
+                        Dim val2 As String = cRow("Col12")
+                        Dim val3 As Decimal
+                        Dim val4 As String = cRow("Col14")
+
+                        If cRow("Col13").ToString = Nothing Then val3 = 9999 Else val3 = cRow("Col13")
 
                         ' 処理
-                        ws.Cell(kosou_row, 8).Value = val1
                         ws.Cell(kosou_row, 9).Value = val2
-                        ws.Cell(kosou_row, 10).Value = val3
-                        ws.Cell(kosou_row, 11).Value = val4
+                        If val3 <> 9999 Then
+                            ws.Cell(kosou_row, 10).Value = val3
+                        End If
+
+                        If val4 <> "" Then
+                            ws.Cell(kosou_row, 8).Value = val1
+                            ws.Cell(kosou_row, 11).Value = val4
+                        End If
+
 
                         kosou_row += 1
 
@@ -787,7 +1349,7 @@ Public Class F_Print_Sub_Housou
                     End If
 
                     currentRow += 1
-
+                    dt_row_count += 1
                     old_value = new_value
 
                 Next

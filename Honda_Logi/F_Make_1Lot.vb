@@ -3706,6 +3706,53 @@ dt As DataTable, csvPath As String, writeHeader As Boolean)
         Public Property 内装入り数 As String
         Public Property 部品収容数 As String
         Public Property オプション1 As String
+        Public Property 基本部番ハイフン付 As String
+        Public Property 代表DIST As String
+        Public Property 群 As String
+        Public Property 内装資材記号 As String
+        Public Property モデフNO As String
+
+        Public Property 副資材1 As String
+        Public Property 副資材2 As String
+        Public Property 副資材3 As String
+        Public Property 副資材4 As String
+        Public Property 副資材5 As String
+        Public Property 副資材6 As String
+        Public Property 副資材7 As String
+        Public Property 副資材8 As String
+        Public Property 副資材9 As String
+        Public Property 副資材10 As String
+        Public Property 副資材11 As String
+        Public Property 副資材12 As String
+        Public Property 副資材13 As String
+        Public Property 副資材14 As String
+        Public Property 副資材15 As String
+        Public Property 副資材16 As String
+        Public Property 副資材17 As String
+        Public Property 副資材18 As String
+        Public Property 副資材19 As String
+        Public Property 副資材20 As String
+
+        Public Property 必要数1 As String
+        Public Property 必要数2 As String
+        Public Property 必要数3 As String
+        Public Property 必要数4 As String
+        Public Property 必要数5 As String
+        Public Property 必要数6 As String
+        Public Property 必要数7 As String
+        Public Property 必要数8 As String
+        Public Property 必要数9 As String
+        Public Property 必要数10 As String
+        Public Property 必要数11 As String
+        Public Property 必要数12 As String
+        Public Property 必要数13 As String
+        Public Property 必要数14 As String
+        Public Property 必要数15 As String
+        Public Property 必要数16 As String
+        Public Property 必要数17 As String
+        Public Property 必要数18 As String
+        Public Property 必要数19 As String
+        Public Property 必要数20 As String
 
     End Class
 
