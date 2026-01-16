@@ -361,8 +361,9 @@ Public Class F_Print_Sub_Housou
                 SafeGetString(dr, "年度"),
                 SafeGetString(dr, "モデル"),
                 SafeGetString(dr, "タイプ"),
-                SafeGetString(dr, "MUDULE")
-            )
+                SafeGetString(dr, "オプション"),
+                SafeGetString(dr, "MUDULE"),
+                SafeGetString(dr, "内装手順"))
 
                 Dim info As New F_Make_1Lot.KowInfo With {
                     .包装ロットNo = SafeGetString(dr, "包装ロットNo"),
@@ -397,20 +398,20 @@ Public Class F_Print_Sub_Housou
                 search_KOW_Dict(key).Add(info)
             Next
 
-            'KOW辞書_存在チェック用
-            Dim kowExistSet As New HashSet(Of String)(StringComparer.Ordinal)
+            ''KOW辞書_存在チェック用
+            'Dim kowExistSet As New HashSet(Of String)(StringComparer.Ordinal)
 
-            For Each dr As DataRow In dt_kow.Rows
-                Dim existKey As String = String.Concat(
-                                                        SafeGetString(dr, "年度"),
-                                                        SafeGetString(dr, "モデル"),
-                                                        SafeGetString(dr, "タイプ"),
-                                                        SafeGetString(dr, "オプション"),
-                                                        SafeGetString(dr, "MUDULE"),
-                                                        SafeGetString(dr, "内装手順")
-                                                      )
-                kowExistSet.Add(existKey)
-            Next
+            'For Each dr As DataRow In dt_kow.Rows
+            '    Dim existKey As String = String.Concat(
+            '                                            SafeGetString(dr, "年度"),
+            '                                            SafeGetString(dr, "モデル"),
+            '                                            SafeGetString(dr, "タイプ"),
+            '                                            SafeGetString(dr, "オプション"),
+            '                                            SafeGetString(dr, "MUDULE"),
+            '                                            SafeGetString(dr, "内装手順")
+            '                                          )
+            '    kowExistSet.Add(existKey)
+            'Next
 
             '個装内装登録早見表マスタの辞書作成
             ta_housou_kbn.Fill(dt_housou_kbn)
@@ -493,20 +494,75 @@ Public Class F_Print_Sub_Housou
 
                 If housou_kbn = "内装" Then
 
-                    If Not kowExistSet.Contains(kowKey_exit) Then
-                        Continue For ' KOWなし
-                    End If
+                    'If Not kowExistSet.Contains(kowKey_exit) Then
 
-                    If Not search_KOW_Dict.ContainsKey(kowKey) Then Continue For
+                    '    '--- 行追加 ---
+                    '    Dim rowTop As DataRow = dt_kosou.NewRow()
+                    '    rowTop("GroupNo") = row("Col11")
+                    '    rowTop("Col11") = row("Col11")
+                    '    rowTop("Col12") = ""
+                    '    rowTop("Col13") = 9999
+                    '    rowTop("Col14") = row("Col14")
+                    '    dt_kosou.Rows.Add(rowTop)
+
+                    '    Continue For ' KOWなし
+                    'End If
+
+                    If Not search_KOW_Dict.ContainsKey(kowKey_exit) Then
+
+                        '--- 行追加 ---
+                        Dim rowTop As DataRow = dt_kosou.NewRow()
+                        rowTop("GroupNo") = row("Col11")
+                        rowTop("Col11") = row("Col11")
+                        rowTop("Col12") = ""
+                        rowTop("Col13") = 9999
+                        rowTop("Col14") = row("Col14")
+                        dt_kosou.Rows.Add(rowTop)
+
+                        Continue For
+                    End If
 
                     '========================
                     ' KOW抽出 → 最小包装ロット
                     '========================
-                    Dim kowList = search_KOW_Dict(kowKey)
-                    Dim minLot As String = kowList.Min(Function(x) x.包装ロットNo)
+                    Dim kowList = search_KOW_Dict(kowKey_exit)
+
+                    '同一のレコードが存在するので強引にカット
+                    Dim kowListDistinct =
+                            kowList.
+                                GroupBy(Function(x) String.Join("|",
+                                    x.包装ロットNo,
+                                    x.MUDULE,
+                                    x.本C_No,
+                                    x.内装手順,
+                                    x.手順識別,
+                                    x.資材規格,
+                                    x.使用数,
+                                    x.主資材,
+                                    x.その他1,
+                                    x.その他2,
+                                    x.年度,
+                                    x.モデル,
+                                    x.タイプ,
+                                    x.オプション,
+                                    x.資材単価表示,
+                                    x.資材費,
+                                    x.ケース当たりの内装資材費,
+                                    x.ケース当たりの外装資材費,
+                                    x.内装入数_カートン数,
+                                    x.ケース内必要資材数,
+                                    x.取込年月,
+                                    x.見積No
+                                )).
+                                Select(Function(g) g.First()).
+                                ToList()
+
+
+
+                    Dim minLot As String = kowListDistinct.Min(Function(x) x.包装ロットNo)
 
                     Dim targetKow =
-                        kowList.
+                        kowListDistinct.
                             Where(Function(x) x.包装ロットNo = minLot).
                             OrderBy(Function(x) x.内装手順).
                             ToList()
@@ -515,6 +571,7 @@ Public Class F_Print_Sub_Housou
                     ' KOW処理開始
                     '========================
                     Dim i As Integer = 0
+                    Dim output_flg As Boolean = False
 
                     While i < targetKow.Count
 
@@ -577,6 +634,7 @@ Public Class F_Print_Sub_Housou
                         rowTop("Col14") = row("Col14")
                         dt_kosou.Rows.Add(rowTop)
 
+                        output_flg = True
                         i += 1
 
                         '========================
@@ -605,6 +663,28 @@ Public Class F_Print_Sub_Housou
                         End While
 
                     End While
+
+                    If output_flg = False Then
+                        '--- 行追加 ---
+                        Dim rowTop As DataRow = dt_kosou.NewRow()
+                        rowTop("GroupNo") = row("Col11")
+                        rowTop("Col11") = row("Col11")
+                        rowTop("Col12") = ""
+                        rowTop("Col13") = 9999
+                        rowTop("Col14") = row("Col14")
+                        dt_kosou.Rows.Add(rowTop)
+                    End If
+
+                Else
+
+                    '--- 行追加 ---
+                    'Dim rowTop As DataRow = dt_kosou.NewRow()
+                    'rowTop("GroupNo") = row("Col11")
+                    'rowTop("Col11") = row("Col11")
+                    'rowTop("Col12") = ""
+                    'rowTop("Col13") = 9999
+                    'rowTop("Col14") = row("Col14")
+                    'dt_kosou.Rows.Add(rowTop)
 
                 End If
 
