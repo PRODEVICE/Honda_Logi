@@ -1004,7 +1004,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai2
                                     rowSub("Col18") = hituyou_su2
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
                                 If fuku_shizai3 <> "" Then
@@ -1013,7 +1013,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai3
                                     rowSub("Col18") = hituyou_su3
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
                                 If fuku_shizai4 <> "" Then
@@ -1022,7 +1022,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai4
                                     rowSub("Col18") = hituyou_su4
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
                                 If fuku_shizai5 <> "" Then
@@ -1031,7 +1031,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai5
                                     rowSub("Col18") = hituyou_su5
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
                                 If fuku_shizai6 <> "" Then
@@ -1040,7 +1040,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai6
                                     rowSub("Col18") = hituyou_su6
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
                                 If fuku_shizai7 <> "" Then
@@ -1049,7 +1049,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai7
                                     rowSub("Col18") = hituyou_su7
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
                                 If fuku_shizai8 <> "" Then
@@ -1058,7 +1058,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai8
                                     rowSub("Col18") = hituyou_su8
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
                                 If fuku_shizai9 <> "" Then
@@ -1067,7 +1067,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai9
                                     rowSub("Col18") = hituyou_su9
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
                                 If fuku_shizai10 <> "" Then
@@ -1076,7 +1076,7 @@ Public Class F_Print_Sub_Housou
                                     rowSub("Col15") = ""
                                     rowSub("Col17") = fuku_shizai10
                                     rowSub("Col18") = hituyou_su10
-                                    rowSub("Col19") = DBNull.Value
+                                    rowSub("Col19") = 9999
                                     dt_naisou.Rows.Add(rowSub)
                                 End If
 
@@ -1128,7 +1128,7 @@ Public Class F_Print_Sub_Housou
                 SafeGetString(dr, "モデル2"),
                 SafeGetString(dr, "タイプ1"),
                 SafeGetString(dr, "オプション1"),
-                SafeGetString(dr, "モデフNO")).PadLeft(3, "0"c)
+                SafeGetString(dr, "モデフNO").PadLeft(3, "0"c))
 
                 Dim info As New F_Make_1Lot.CCCInfo With {
                     .代表DIST = SafeGetString(dr, "代表DIST"),
@@ -1352,24 +1352,21 @@ Public Class F_Print_Sub_Housou
                 ' DataTable の中身を Excel に書き込む
                 For Each row As DataRow In _dt_result.Rows
 
-                    new_value = If(IsDBNull(row("Col2")), "", row("Col2").ToString) &
-                        If(IsDBNull(row("Col3")), "", row("Col3").ToString) &
-                        If(IsDBNull(row("Col4")), "", row("Col4").ToString) &
+                    new_value =
                         If(IsDBNull(row("Col5")), "", row("Col5").ToString) &
                         If(IsDBNull(row("Col6")), "", row("Col6").ToString) &
-                        If(IsDBNull(row("Col7")), "", row("Col7").ToString) &
-                        If(IsDBNull(row("Col8")), "", row("Col8").ToString) &
-                        If(IsDBNull(row("Col9")), "", row("Col9").ToString)
+                        If(IsDBNull(row("Col7")), "", row("Col7").ToString)
 
                     '同じ値の場合は出力しない
                     If old_value <> new_value Then
 
+                        ws.Cell(currentRow, 2).Value = If(IsDBNull(row("Col5")), "", row("Col5").ToString)
+                        ws.Cell(currentRow, 3).Value = If(IsDBNull(row("Col6")), "", row("Col6").ToString)
+                        ws.Cell(currentRow, 4).Value = If(IsDBNull(row("Col7")), "", row("Col7").ToString)
 
                     End If
 
-                    ws.Cell(currentRow, 2).Value = If(IsDBNull(row("Col5")), "", row("Col5").ToString)
-                    ws.Cell(currentRow, 3).Value = If(IsDBNull(row("Col6")), "", row("Col6").ToString)
-                    ws.Cell(currentRow, 4).Value = If(IsDBNull(row("Col7")), "", row("Col7").ToString)
+
                     ws.Cell(currentRow, 5).Value = If(IsDBNull(row("Col8")), "", row("Col8").ToString)
                     ws.Cell(currentRow, 6).Value = If(IsDBNull(row("Col9")), "", row("Col9").ToString)
                     ws.Cell(currentRow, 7).Value = If(IsDBNull(row("Col10")), 0, Integer.Parse(row("Col10").ToString))
@@ -1411,24 +1408,80 @@ Public Class F_Print_Sub_Housou
 
                     Next
 
+                    '最終行の更新
                     meisai_max_row = kosou_row
 
 
 
                     '内装の明細表示
+                    naisou_row = currentRow
 
+                    Dim childRows_naisou = _dt_naisou.AsEnumerable().
+                    Where(Function(r) r.Field(Of Integer)("GroupNo") = dt_row_count)
+
+                    For Each cRow In childRows_naisou
+
+                        ' 子DTの値を取得
+                        Dim val1 As String = cRow("Col15")
+                        Dim val2 As String = cRow("Col17")
+                        Dim val3 As Decimal
+                        Dim val4 As Decimal
+
+                        If cRow("Col18").ToString = Nothing Then val3 = 9999 Else val3 = cRow("Col18")
+                        If cRow("Col19").ToString = Nothing Then val4 = 9999 Else val4 = cRow("Col19")
+
+                        ' 処理
+
+                        ws.Cell(naisou_row, 13).Value = val2
+                        If val3 <> 9999 Then
+                            ws.Cell(naisou_row, 14).Value = val3
+                        End If
+
+                        If val4 <> 9999 Then
+                            ws.Cell(naisou_row, 12).Value = val1
+                            ws.Cell(naisou_row, 15).Value = val4
+                        End If
+
+                        naisou_row += 1
+
+                    Next
+
+                    '最終行の更新
+                    If meisai_max_row < naisou_row Then
+                        meisai_max_row = naisou_row
+                    End If
 
 
                     '外装の明細表示
+                    gaisou_row = meisai_max_row + 1
 
+                    Dim childRows_gaisou = _dt_gaisou.AsEnumerable().
+                    Where(Function(r) r.Field(Of Integer)("GroupNo") = dt_row_count)
 
+                    For Each cRow In childRows_gaisou
+
+                        ' 子DTの値を取得
+                        Dim val1 As String = cRow("Col20")
+                        Dim val2 As Decimal = cRow("Col21")
+
+                        ' 処理
+                        ws.Cell(gaisou_row, 16).Value = val1
+                        ws.Cell(gaisou_row, 17).Value = val2
+
+                        gaisou_row += 1
+
+                    Next
+
+                    '書き込む行数を再設定する 外装が必ず最下段
+
+                    currentRow = gaisou_row
 
                     '書き込む行数を再設定する
                     If currentRow < meisai_max_row Then
                         currentRow = meisai_max_row
                     End If
 
-                    currentRow += 1
+                    'currentRow += 1
                     dt_row_count += 1
                     old_value = new_value
 
