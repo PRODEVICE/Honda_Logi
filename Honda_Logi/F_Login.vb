@@ -37,17 +37,16 @@
 
 
                     '管理者ならメインメニューへ遷移
-                    Dim OpenForm As New F_Main
+                    Dim OpenForm As New F_Select_Main
                     OpenForm.Show()
 
                 Else
 
                     'メインメニューへ遷移
-                    Dim OpenForm As New F_Print_Main
+                    Dim OpenForm As New F_Select_Main
                     OpenForm.Show()
 
                 End If
-
 
                 Me.Close() ' ログイン成功で閉じる
 
