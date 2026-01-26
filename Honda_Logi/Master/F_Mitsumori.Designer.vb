@@ -54,6 +54,7 @@ Partial Class F_Mitsumori
         Me.DS_M = New Honda_Logi.DS_M()
         Me.TA_M_Mitsumori = New Honda_Logi.DS_MTableAdapters.TA_M_Mitsumori()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Txt_S_OP = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Txt_S_Kishu = New System.Windows.Forms.TextBox()
@@ -65,7 +66,7 @@ Partial Class F_Mitsumori
         Me.Btn_Search = New System.Windows.Forms.Button()
         Me.Txt_S_Mitsumori_CD = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Btn_Import = New System.Windows.Forms.Button()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -326,6 +327,7 @@ Partial Class F_Mitsumori
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Output)
         Me.Panel3.Controls.Add(Me.Btn_Import)
         Me.Panel3.Controls.Add(Me.Txt_S_OP)
         Me.Panel3.Controls.Add(Me.Label9)
@@ -343,6 +345,16 @@ Partial Class F_Mitsumori
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(1013, 100)
         Me.Panel3.TabIndex = 15
+        '
+        'Btn_Import
+        '
+        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Import.Location = New System.Drawing.Point(770, 54)
+        Me.Btn_Import.Name = "Btn_Import"
+        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.Text = "CSV取込"
+        Me.Btn_Import.UseVisualStyleBackColor = True
         '
         'Txt_S_OP
         '
@@ -419,7 +431,7 @@ Partial Class F_Mitsumori
         'Btn_Search
         '
         Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Search.Location = New System.Drawing.Point(686, 54)
+        Me.Btn_Search.Location = New System.Drawing.Point(678, 54)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
         Me.Btn_Search.TabIndex = 15
@@ -444,15 +456,15 @@ Partial Class F_Mitsumori
         Me.Label6.TabIndex = 16
         Me.Label6.Text = "見積コード"
         '
-        'Btn_Import
+        'Btn_Output
         '
-        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Import.Location = New System.Drawing.Point(788, 54)
-        Me.Btn_Import.Name = "Btn_Import"
-        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Import.TabIndex = 29
-        Me.Btn_Import.Text = "CSV取込"
-        Me.Btn_Import.UseVisualStyleBackColor = True
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(891, 54)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 32
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_Mitsumori
         '
@@ -517,4 +529,5 @@ Partial Class F_Mitsumori
     Friend WithEvents Label6 As Label
     Friend WithEvents Btn_Delete As Button
     Friend WithEvents Btn_Import As Button
+    Friend WithEvents Btn_Output As Button
 End Class

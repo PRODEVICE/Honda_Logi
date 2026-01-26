@@ -73,6 +73,7 @@ Partial Class F_Housou
         Me.Txt_S_DIST = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMHousouKbnBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -380,6 +381,7 @@ Partial Class F_Housou
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Output)
         Me.Panel3.Controls.Add(Me.Cmb_S_Teiryou)
         Me.Panel3.Controls.Add(Me.Label8)
         Me.Panel3.Controls.Add(Me.Cmb_S_Kubun)
@@ -469,7 +471,7 @@ Partial Class F_Housou
         'Btn_Import
         '
         Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Import.Location = New System.Drawing.Point(808, 73)
+        Me.Btn_Import.Location = New System.Drawing.Point(692, 73)
         Me.Btn_Import.Name = "Btn_Import"
         Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
         Me.Btn_Import.TabIndex = 28
@@ -487,7 +489,7 @@ Partial Class F_Housou
         'Btn_Search
         '
         Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Search.Location = New System.Drawing.Point(710, 73)
+        Me.Btn_Search.Location = New System.Drawing.Point(599, 73)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
         Me.Btn_Search.TabIndex = 25
@@ -531,6 +533,16 @@ Partial Class F_Housou
         Me.Label6.Size = New System.Drawing.Size(43, 16)
         Me.Label6.TabIndex = 18
         Me.Label6.Text = "ライン"
+        '
+        'Btn_Output
+        '
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(813, 73)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 34
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_Housou
         '
@@ -609,4 +621,5 @@ Partial Class F_Housou
     Friend WithEvents BS_Kubun As BindingSource
     Friend WithEvents Label10 As Label
     Friend WithEvents BS_S_Teiryou As BindingSource
+    Friend WithEvents Btn_Output As Button
 End Class

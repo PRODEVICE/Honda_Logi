@@ -2945,7 +2945,7 @@ Public Class F_Make_1Lot
         sql = sql & " INSERT INTO M_Naisou_Shizai_BK (内装資材コード,数量, 見積No) SELECT 内装資材コード,数量, " & _target_mitsumori_no & " FROM M_Naisou_Shizai;"
         sql = sql & " INSERT INTO M_Rate_BK (賃率, 見積No) SELECT 賃率, " & _target_mitsumori_no & " FROM M_Rate;"
         sql = sql & " INSERT INTO M_Second_BK (作業区分,作業単位,秒数, 見積No) SELECT 作業区分,作業単位,秒数, " & _target_mitsumori_no & " FROM M_Second;"
-        sql = sql & " INSERT INTO M_Tanka_BK (資材コード,資材名,単価,メーカーコード, 見積No) SELECT 資材コード,資材名,単価,メーカーコード, " & _target_mitsumori_no & " FROM M_Tanka;"
+        sql = sql & " INSERT INTO M_Tanka_BK (資材コード,資材名,単価,メーカーコード, 単重,M3,見積No) SELECT 資材コード,資材名,単価,メーカーコード, 単重,M3, " & _target_mitsumori_no & " FROM M_Tanka;"
         sql = sql & " INSERT INTO M_Keisu_BK (仕向,機種,群,係数, 見積No) SELECT 仕向,機種,群,係数, " & _target_mitsumori_no & " FROM M_Keisu;"
         Return sql
 

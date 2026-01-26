@@ -23,8 +23,8 @@ Partial Class F_Tanka
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Txt_Maker = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Txt_Tanka = New System.Windows.Forms.TextBox()
@@ -37,19 +37,13 @@ Partial Class F_Tanka
         Me.Txt_Shizai_CD = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GV_Master = New System.Windows.Forms.DataGridView()
-        Me.選択 = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.資材コード = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.資材名 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.単価 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.メーカーコード = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.削除 = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.DTMTankaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_M = New Honda_Logi.DS_M()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TA_M_Tanka = New Honda_Logi.DS_MTableAdapters.TA_M_Tanka()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Btn_Search = New System.Windows.Forms.Button()
         Me.Txt_S_Maker = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -59,7 +53,20 @@ Partial Class F_Tanka
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Txt_S_Shizai_CD = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Btn_Import = New System.Windows.Forms.Button()
+        Me.選択 = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.資材コード = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.資材名 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.単価 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.メーカーコード = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.単重 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.M3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.削除 = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.Txt_Weight = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Txt_M3 = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMTankaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,7 +78,7 @@ Partial Class F_Tanka
         'Txt_Maker
         '
         Me.Txt_Maker.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Maker.Location = New System.Drawing.Point(401, 73)
+        Me.Txt_Maker.Location = New System.Drawing.Point(279, 73)
         Me.Txt_Maker.Name = "Txt_Maker"
         Me.Txt_Maker.Size = New System.Drawing.Size(108, 23)
         Me.Txt_Maker.TabIndex = 16
@@ -80,7 +87,7 @@ Partial Class F_Tanka
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label4.Location = New System.Drawing.Point(331, 76)
+        Me.Label4.Location = New System.Drawing.Point(217, 76)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(56, 16)
         Me.Label4.TabIndex = 15
@@ -89,7 +96,7 @@ Partial Class F_Tanka
         'Txt_Tanka
         '
         Me.Txt_Tanka.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Tanka.Location = New System.Drawing.Point(115, 73)
+        Me.Txt_Tanka.Location = New System.Drawing.Point(79, 73)
         Me.Txt_Tanka.Name = "Txt_Tanka"
         Me.Txt_Tanka.Size = New System.Drawing.Size(123, 23)
         Me.Txt_Tanka.TabIndex = 14
@@ -125,7 +132,7 @@ Partial Class F_Tanka
         'Btn_Clear
         '
         Me.Btn_Clear.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Clear.Location = New System.Drawing.Point(788, 63)
+        Me.Btn_Clear.Location = New System.Drawing.Point(989, 63)
         Me.Btn_Clear.Name = "Btn_Clear"
         Me.Btn_Clear.Size = New System.Drawing.Size(75, 40)
         Me.Btn_Clear.TabIndex = 10
@@ -143,7 +150,7 @@ Partial Class F_Tanka
         'Btn_Touroku
         '
         Me.Btn_Touroku.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Touroku.Location = New System.Drawing.Point(686, 63)
+        Me.Btn_Touroku.Location = New System.Drawing.Point(887, 63)
         Me.Btn_Touroku.Name = "Btn_Touroku"
         Me.Btn_Touroku.Size = New System.Drawing.Size(75, 40)
         Me.Btn_Touroku.TabIndex = 0
@@ -173,71 +180,25 @@ Partial Class F_Tanka
         Me.GV_Master.AllowUserToAddRows = False
         Me.GV_Master.AllowUserToDeleteRows = False
         Me.GV_Master.AutoGenerateColumns = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.資材コード, Me.資材名, Me.単価, Me.メーカーコード, Me.削除})
+        Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.資材コード, Me.資材名, Me.単価, Me.メーカーコード, Me.単重, Me.M3, Me.削除})
         Me.GV_Master.DataSource = Me.DTMTankaBindingSource
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
         Me.GV_Master.Name = "GV_Master"
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GV_Master.RowTemplate.Height = 31
-        Me.GV_Master.Size = New System.Drawing.Size(935, 383)
+        Me.GV_Master.Size = New System.Drawing.Size(1093, 383)
         Me.GV_Master.TabIndex = 1
-        '
-        '選択
-        '
-        Me.選択.HeaderText = "選択"
-        Me.選択.Name = "選択"
-        Me.選択.Text = "選択"
-        Me.選択.UseColumnTextForLinkValue = True
-        '
-        'id
-        '
-        Me.id.DataPropertyName = "id"
-        Me.id.HeaderText = "id"
-        Me.id.Name = "id"
-        Me.id.ReadOnly = True
-        Me.id.Visible = False
-        '
-        '資材コード
-        '
-        Me.資材コード.DataPropertyName = "資材コード"
-        Me.資材コード.HeaderText = "資材コード"
-        Me.資材コード.Name = "資材コード"
-        '
-        '資材名
-        '
-        Me.資材名.DataPropertyName = "資材名"
-        Me.資材名.HeaderText = "資材名"
-        Me.資材名.Name = "資材名"
-        '
-        '単価
-        '
-        Me.単価.DataPropertyName = "単価"
-        Me.単価.HeaderText = "単価"
-        Me.単価.Name = "単価"
-        '
-        'メーカーコード
-        '
-        Me.メーカーコード.DataPropertyName = "メーカーコード"
-        Me.メーカーコード.HeaderText = "メーカーコード"
-        Me.メーカーコード.Name = "メーカーコード"
-        '
-        '削除
-        '
-        Me.削除.HeaderText = "削除"
-        Me.削除.Name = "削除"
-        Me.削除.Text = "削除"
-        Me.削除.UseColumnTextForLinkValue = True
         '
         'DTMTankaBindingSource
         '
@@ -255,11 +216,15 @@ Partial Class F_Tanka
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 115)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(935, 383)
+        Me.Panel1.Size = New System.Drawing.Size(1093, 383)
         Me.Panel1.TabIndex = 15
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.Txt_M3)
+        Me.Panel2.Controls.Add(Me.Label10)
+        Me.Panel2.Controls.Add(Me.Txt_Weight)
+        Me.Panel2.Controls.Add(Me.Label9)
         Me.Panel2.Controls.Add(Me.Txt_Maker)
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.Txt_Tanka)
@@ -274,7 +239,7 @@ Partial Class F_Tanka
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 498)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(935, 115)
+        Me.Panel2.Size = New System.Drawing.Size(1093, 115)
         Me.Panel2.TabIndex = 16
         '
         'TA_M_Tanka
@@ -283,6 +248,7 @@ Partial Class F_Tanka
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Output)
         Me.Panel3.Controls.Add(Me.Btn_Import)
         Me.Panel3.Controls.Add(Me.Btn_Search)
         Me.Panel3.Controls.Add(Me.Txt_S_Maker)
@@ -296,8 +262,18 @@ Partial Class F_Tanka
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(935, 115)
+        Me.Panel3.Size = New System.Drawing.Size(1093, 115)
         Me.Panel3.TabIndex = 17
+        '
+        'Btn_Import
+        '
+        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Import.Location = New System.Drawing.Point(788, 55)
+        Me.Btn_Import.Name = "Btn_Import"
+        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.Text = "CSV取込"
+        Me.Btn_Import.UseVisualStyleBackColor = True
         '
         'Btn_Search
         '
@@ -381,21 +357,115 @@ Partial Class F_Tanka
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "資材コード"
         '
-        'Btn_Import
+        '選択
         '
-        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Import.Location = New System.Drawing.Point(788, 55)
-        Me.Btn_Import.Name = "Btn_Import"
-        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Import.TabIndex = 29
-        Me.Btn_Import.Text = "CSV取込"
-        Me.Btn_Import.UseVisualStyleBackColor = True
+        Me.選択.HeaderText = "選択"
+        Me.選択.Name = "選択"
+        Me.選択.Text = "選択"
+        Me.選択.UseColumnTextForLinkValue = True
+        '
+        'id
+        '
+        Me.id.DataPropertyName = "id"
+        Me.id.HeaderText = "id"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = True
+        Me.id.Visible = False
+        '
+        '資材コード
+        '
+        Me.資材コード.DataPropertyName = "資材コード"
+        Me.資材コード.HeaderText = "資材コード"
+        Me.資材コード.Name = "資材コード"
+        '
+        '資材名
+        '
+        Me.資材名.DataPropertyName = "資材名"
+        Me.資材名.HeaderText = "資材名"
+        Me.資材名.Name = "資材名"
+        '
+        '単価
+        '
+        Me.単価.DataPropertyName = "単価"
+        Me.単価.HeaderText = "単価"
+        Me.単価.Name = "単価"
+        '
+        'メーカーコード
+        '
+        Me.メーカーコード.DataPropertyName = "メーカーコード"
+        Me.メーカーコード.HeaderText = "メーカーコード"
+        Me.メーカーコード.Name = "メーカーコード"
+        '
+        '単重
+        '
+        Me.単重.DataPropertyName = "単重"
+        Me.単重.HeaderText = "単重"
+        Me.単重.Name = "単重"
+        '
+        'M3
+        '
+        Me.M3.DataPropertyName = "M3"
+        Me.M3.HeaderText = "M3"
+        Me.M3.Name = "M3"
+        '
+        '削除
+        '
+        Me.削除.HeaderText = "削除"
+        Me.削除.Name = "削除"
+        Me.削除.Text = "削除"
+        Me.削除.UseColumnTextForLinkValue = True
+        '
+        'Txt_Weight
+        '
+        Me.Txt_Weight.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Weight.Location = New System.Drawing.Point(451, 73)
+        Me.Txt_Weight.Name = "Txt_Weight"
+        Me.Txt_Weight.Size = New System.Drawing.Size(108, 23)
+        Me.Txt_Weight.TabIndex = 18
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label9.Location = New System.Drawing.Point(405, 76)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(40, 16)
+        Me.Label9.TabIndex = 17
+        Me.Label9.Text = "単重"
+        '
+        'Txt_M3
+        '
+        Me.Txt_M3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_M3.Location = New System.Drawing.Point(622, 73)
+        Me.Txt_M3.Name = "Txt_M3"
+        Me.Txt_M3.Size = New System.Drawing.Size(108, 23)
+        Me.Txt_M3.TabIndex = 20
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label10.Location = New System.Drawing.Point(576, 76)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(28, 16)
+        Me.Label10.TabIndex = 19
+        Me.Label10.Text = "M3"
+        '
+        'Btn_Output
+        '
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(919, 55)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 30
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_Tanka
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(935, 613)
+        Me.ClientSize = New System.Drawing.Size(1093, 613)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
@@ -429,13 +499,6 @@ Partial Class F_Tanka
     Friend WithEvents DS_M As DS_M
     Friend WithEvents DTMTankaBindingSource As BindingSource
     Friend WithEvents TA_M_Tanka As DS_MTableAdapters.TA_M_Tanka
-    Friend WithEvents 選択 As DataGridViewLinkColumn
-    Friend WithEvents id As DataGridViewTextBoxColumn
-    Friend WithEvents 資材コード As DataGridViewTextBoxColumn
-    Friend WithEvents 資材名 As DataGridViewTextBoxColumn
-    Friend WithEvents 単価 As DataGridViewTextBoxColumn
-    Friend WithEvents メーカーコード As DataGridViewTextBoxColumn
-    Friend WithEvents 削除 As DataGridViewLinkColumn
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Txt_S_Maker As TextBox
     Friend WithEvents Label5 As Label
@@ -447,4 +510,18 @@ Partial Class F_Tanka
     Friend WithEvents Label8 As Label
     Friend WithEvents Btn_Search As Button
     Friend WithEvents Btn_Import As Button
+    Friend WithEvents 選択 As DataGridViewLinkColumn
+    Friend WithEvents id As DataGridViewTextBoxColumn
+    Friend WithEvents 資材コード As DataGridViewTextBoxColumn
+    Friend WithEvents 資材名 As DataGridViewTextBoxColumn
+    Friend WithEvents 単価 As DataGridViewTextBoxColumn
+    Friend WithEvents メーカーコード As DataGridViewTextBoxColumn
+    Friend WithEvents 単重 As DataGridViewTextBoxColumn
+    Friend WithEvents M3 As DataGridViewTextBoxColumn
+    Friend WithEvents 削除 As DataGridViewLinkColumn
+    Friend WithEvents Txt_M3 As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Txt_Weight As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Btn_Output As Button
 End Class

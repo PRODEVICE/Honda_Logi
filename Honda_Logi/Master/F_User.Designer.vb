@@ -23,8 +23,8 @@ Partial Class F_User
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Txt_Password = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Btn_Clear = New System.Windows.Forms.Button()
@@ -50,6 +50,7 @@ Partial Class F_User
         Me.Txt_Tantou_CD = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Cmb_S_Kengen = New System.Windows.Forms.ComboBox()
         Me.DTMKubunBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.Btn_Search = New System.Windows.Forms.Button()
@@ -60,7 +61,7 @@ Partial Class F_User
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TA_M_User = New Honda_Logi.DS_MTableAdapters.TA_M_User()
         Me.TA_M_Kubun = New Honda_Logi.DS_MTableAdapters.TA_M_Kubun()
-        Me.Btn_Import = New System.Windows.Forms.Button()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMUserBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,22 +123,22 @@ Partial Class F_User
         Me.GV_Master.AllowUserToAddRows = False
         Me.GV_Master.AllowUserToDeleteRows = False
         Me.GV_Master.AutoGenerateColumns = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.User_id, Me.User_NM, Me.Kengen, Me.Password, Me.削除})
         Me.GV_Master.DataSource = Me.DTMUserBindingSource
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
         Me.GV_Master.Name = "GV_Master"
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.GV_Master.RowTemplate.Height = 31
         Me.GV_Master.Size = New System.Drawing.Size(908, 395)
         Me.GV_Master.TabIndex = 1
@@ -292,6 +293,7 @@ Partial Class F_User
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Output)
         Me.Panel3.Controls.Add(Me.Btn_Import)
         Me.Panel3.Controls.Add(Me.Cmb_S_Kengen)
         Me.Panel3.Controls.Add(Me.Btn_Search)
@@ -305,6 +307,16 @@ Partial Class F_User
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(908, 103)
         Me.Panel3.TabIndex = 17
+        '
+        'Btn_Import
+        '
+        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Import.Location = New System.Drawing.Point(673, 51)
+        Me.Btn_Import.Name = "Btn_Import"
+        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.Text = "CSV取込"
+        Me.Btn_Import.UseVisualStyleBackColor = True
         '
         'Cmb_S_Kengen
         '
@@ -327,7 +339,7 @@ Partial Class F_User
         'Btn_Search
         '
         Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Search.Location = New System.Drawing.Point(667, 37)
+        Me.Btn_Search.Location = New System.Drawing.Point(581, 51)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
         Me.Btn_Search.TabIndex = 25
@@ -388,15 +400,15 @@ Partial Class F_User
         '
         Me.TA_M_Kubun.ClearBeforeFill = True
         '
-        'Btn_Import
+        'Btn_Output
         '
-        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Import.Location = New System.Drawing.Point(759, 37)
-        Me.Btn_Import.Name = "Btn_Import"
-        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Import.TabIndex = 29
-        Me.Btn_Import.Text = "CSV取込"
-        Me.Btn_Import.UseVisualStyleBackColor = True
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(792, 51)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 31
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_User
         '
@@ -407,7 +419,7 @@ Partial Class F_User
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "F_User"
-        Me.Text = "単価マスタ"
+        Me.Text = "ユーザーマスタ"
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DTMUserBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).EndInit()
@@ -457,4 +469,5 @@ Partial Class F_User
     Friend WithEvents TA_M_Kubun As DS_MTableAdapters.TA_M_Kubun
     Friend WithEvents DTMKubunBindingSource2 As BindingSource
     Friend WithEvents Btn_Import As Button
+    Friend WithEvents Btn_Output As Button
 End Class

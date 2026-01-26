@@ -33,6 +33,16 @@ Public Class F_Tanka
             Dim tanka As String = Txt_Tanka.Text.Trim
             Dim maker As String = Txt_Maker.Text.Trim
             Dim id As String = Txt_id.Text.Trim
+            Dim weight As String = Txt_Weight.Text.Trim
+            Dim m3 As String = Txt_M3.Text.Trim
+
+            If weight = "" Then
+                weight = 0
+            End If
+
+            If m3 = "" Then
+                m3 = 0
+            End If
 
             '入力チェック
             If shizai_cd = "" Then
@@ -65,7 +75,7 @@ Public Class F_Tanka
                 End If
 
                 '登録処理
-                ta_tanka.Q_単価登録(shizai_cd, shizai_nm, tanka, maker)
+                ta_tanka.Q_単価登録(shizai_cd, shizai_nm, tanka, maker, weight, m3)
 
             Else '更新モード
 
@@ -77,7 +87,7 @@ Public Class F_Tanka
                     Exit Sub
                 End If
 
-                ta_tanka.Q_単価更新(shizai_cd, shizai_nm, tanka, maker, id)
+                ta_tanka.Q_単価更新(shizai_cd, shizai_nm, tanka, maker, weight, m3, id)
 
             End If
 
@@ -207,6 +217,40 @@ Public Class F_Tanka
 
     End Sub
 
+    'CSV出力ボタンクリック
+    Private Sub Btn_Output_Click(sender As Object, e As EventArgs) Handles Btn_Output.Click
+
+        Try
+
+            '待機状態
+            Cursor.Current = Cursors.WaitCursor
+
+            Dim dt As New DS_M.DT_M_TankaDataTable
+            Dim ta As New DS_MTableAdapters.TA_M_Tanka
+
+            ta.Fill(dt)
+
+            Dim out_path As String = MakeOutPath()
+
+            If out_path = "" Then
+                Exit Sub
+            End If
+
+            ConvertDataTableToCsv(dt, out_path, True)
+
+            MessageBox.Show("ファイルの出力が完了しました。", "ファイル出力", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            fnc.ERR_LOG(ex.Message, "F_Tanka_Btn_Output_Click")
+            MessageBox.Show(ex.Message)
+
+        Finally
+            '元に戻す
+            Cursor.Current = Cursors.Default
+        End Try
+
+    End Sub
+
     '******************************************************************************
     'GVイベント
     '******************************************************************************
@@ -237,6 +281,8 @@ Public Class F_Tanka
                 Txt_Shizai_NM.Text = grid.Rows(e.RowIndex).Cells("資材名").Value.ToString()
                 Txt_Tanka.Text = grid.Rows(e.RowIndex).Cells("単価").Value.ToString()
                 Txt_Maker.Text = grid.Rows(e.RowIndex).Cells("メーカーコード").Value.ToString()
+                Txt_Weight.Text = grid.Rows(e.RowIndex).Cells("単重").Value.ToString()
+                Txt_M3.Text = grid.Rows(e.RowIndex).Cells("M3").Value.ToString()
 
                 Btn_Touroku.Text = "更　新"
 
@@ -278,6 +324,8 @@ Public Class F_Tanka
         Txt_Shizai_NM.Text = ""
         Txt_Tanka.Text = ""
         Txt_Maker.Text = ""
+        Txt_Weight.Text = ""
+        Txt_M3.Text = ""
 
         Btn_Touroku.Text = "登　録"
     End Sub
@@ -421,5 +469,123 @@ Public Class F_Tanka
         result.Add(current)
         Return result.ToArray()
     End Function
+
+
+#Region "CSV作成処理"
+
+    '保存先選択ダイアログ
+    Function MakeOutPath() As String
+        MakeOutPath = ""
+        Try
+            'SaveFileDialogクラスのインスタンスを作成
+            Dim sfd As New SaveFileDialog()
+            'はじめのファイル名を指定する
+            'はじめに「ファイル名」で表示される文字列を指定する
+            sfd.FileName = "単価マスタ" & Now.ToString("yyyyMMdd_HHmmss") & ".csv"
+            'はじめに表示されるフォルダを指定する
+            '指定しない（空の文字列）の時は、現在のディレクトリが表示される
+            'sfd.InitialDirectory = "C:\"
+            '[ファイルの種類]に表示される選択肢を指定する
+            sfd.Filter = "csvファイル(*.csv)|*.csv|すべてのファイル(*.*)|*.*"
+            '[ファイルの種類]ではじめに選択されるものを指定する
+            '2番目の「すべてのファイル」が選択されているようにする
+            sfd.FilterIndex = 1
+            'タイトルを設定する
+            sfd.Title = "保存先のファイルを選択してください"
+            'ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
+            sfd.RestoreDirectory = True
+            '既に存在するファイル名を指定したとき警告する
+            'デフォルトでTrueなので指定する必要はない
+            sfd.OverwritePrompt = True
+            '存在しないパスが指定されたとき警告を表示する
+            'デフォルトでTrueなので指定する必要はない
+            sfd.CheckPathExists = True
+            'ダイアログを表示する
+            If sfd.ShowDialog() = DialogResult.OK Then
+                'OKボタンがクリックされたとき、選択されたファイル名をリターン
+                Return sfd.FileName
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+    End Function
+
+    'DTをCSVデータに変換
+    Public Sub ConvertDataTableToCsv(
+dt As DataTable, csvPath As String, writeHeader As Boolean)
+        'CSVファイルに書き込むときに使うEncoding
+        Dim enc As System.Text.Encoding =
+            System.Text.Encoding.GetEncoding("Shift_JIS")
+        '書き込むファイルを開く
+        Dim sr As New System.IO.StreamWriter(csvPath, False, enc)
+        Dim colCount As Integer = dt.Columns.Count
+        Dim lastColIndex As Integer = colCount - 1
+        Dim i As Integer
+        'ヘッダを書き込む
+        If writeHeader Then
+            For i = 1 To colCount - 1
+                'ヘッダの取得
+                Dim field As String = dt.Columns(i).Caption
+                '"で囲む
+                field = EncloseDoubleQuotesIfNeed(field)
+                'フィールドを書き込む
+                sr.Write(field)
+                'カンマを書き込む
+                If lastColIndex > i Then
+                    sr.Write(","c)
+                End If
+            Next
+            '改行する
+            sr.Write(vbCrLf)
+        End If
+        'レコードを書き込む
+        Dim row As DataRow
+        For Each row In dt.Rows
+            For i = 1 To colCount - 1
+                'フィールドの取得
+                Dim field As String = row(i).ToString()
+                '"で囲む
+                field = EncloseDoubleQuotesIfNeed(field)
+                'フィールドを書き込む
+                sr.Write(field)
+                'カンマを書き込む
+                If lastColIndex > i Then
+                    sr.Write(","c)
+                End If
+            Next
+            '改行する
+            sr.Write(vbCrLf)
+        Next
+        '閉じる
+        sr.Close()
+    End Sub
+
+    Private Function EncloseDoubleQuotesIfNeed(field As String) As String
+        If NeedEncloseDoubleQuotes(field) Then
+            Return EncloseDoubleQuotes(field)
+        End If
+        Return field
+    End Function
+
+    Private Function NeedEncloseDoubleQuotes(field As String) As Boolean
+        Return field.IndexOf(""""c) > -1 OrElse
+            field.IndexOf(","c) > -1 OrElse
+            field.IndexOf(ControlChars.Cr) > -1 OrElse
+            field.IndexOf(ControlChars.Lf) > -1 OrElse
+            field.StartsWith(" ") OrElse
+            field.StartsWith(vbTab) OrElse
+            field.EndsWith(" ") OrElse
+            field.EndsWith(vbTab)
+    End Function
+
+    Private Function EncloseDoubleQuotes(field As String) As String
+        If field.IndexOf(""""c) > -1 Then
+            '"を""とする
+            field = field.Replace("""", """""")
+        End If
+        Return """" & field & """"
+    End Function
+
+#End Region
 
 End Class

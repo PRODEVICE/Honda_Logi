@@ -3105,6 +3105,10 @@ Partial Public Class DS_M
         
         Private columnメーカーコード As Global.System.Data.DataColumn
         
+        Private column単重 As Global.System.Data.DataColumn
+        
+        Private columnM3 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -3181,6 +3185,22 @@ Partial Public Class DS_M
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 単重Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column単重
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property M3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnM3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3217,9 +3237,9 @@ Partial Public Class DS_M
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddDT_M_TankaRow(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Decimal, ByVal メーカーコード As String) As DT_M_TankaRow
+        Public Overloads Function AddDT_M_TankaRow(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Decimal, ByVal メーカーコード As String, ByVal 単重 As Decimal, ByVal M3 As Decimal) As DT_M_TankaRow
             Dim rowDT_M_TankaRow As DT_M_TankaRow = CType(Me.NewRow,DT_M_TankaRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, 資材コード, 資材名, 単価, メーカーコード}
+            Dim columnValuesArray() As Object = New Object() {Nothing, 資材コード, 資材名, 単価, メーカーコード, 単重, M3}
             rowDT_M_TankaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDT_M_TankaRow)
             Return rowDT_M_TankaRow
@@ -3253,6 +3273,8 @@ Partial Public Class DS_M
             Me.column資材名 = MyBase.Columns("資材名")
             Me.column単価 = MyBase.Columns("単価")
             Me.columnメーカーコード = MyBase.Columns("メーカーコード")
+            Me.column単重 = MyBase.Columns("単重")
+            Me.columnM3 = MyBase.Columns("M3")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3268,6 +3290,10 @@ Partial Public Class DS_M
             MyBase.Columns.Add(Me.column単価)
             Me.columnメーカーコード = New Global.System.Data.DataColumn("メーカーコード", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnメーカーコード)
+            Me.column単重 = New Global.System.Data.DataColumn("単重", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column単重)
+            Me.columnM3 = New Global.System.Data.DataColumn("M3", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnM3)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid}, true))
             Me.columnid.AutoIncrement = true
             Me.columnid.AutoIncrementSeed = -1
@@ -5656,6 +5682,36 @@ Partial Public Class DS_M
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 単重() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_M_Tanka.単重Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Tanka' にある列 '単重' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_M_Tanka.単重Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property M3() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_M_Tanka.M3Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_M_Tanka' にある列 'M3' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_M_Tanka.M3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is資材コードNull() As Boolean
             Return Me.IsNull(Me.tableDT_M_Tanka.資材コードColumn)
         End Function
@@ -5700,6 +5756,30 @@ Partial Public Class DS_M
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetメーカーコードNull()
             Me(Me.tableDT_M_Tanka.メーカーコードColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is単重Null() As Boolean
+            Return Me.IsNull(Me.tableDT_M_Tanka.単重Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set単重Null()
+            Me(Me.tableDT_M_Tanka.単重Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsM3Null() As Boolean
+            Return Me.IsNull(Me.tableDT_M_Tanka.M3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetM3Null()
+            Me(Me.tableDT_M_Tanka.M3Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -11147,6 +11227,8 @@ Namespace DS_MTableAdapters
             tableMapping.ColumnMappings.Add("資材名", "資材名")
             tableMapping.ColumnMappings.Add("単価", "単価")
             tableMapping.ColumnMappings.Add("メーカーコード", "メーカーコード")
+            tableMapping.ColumnMappings.Add("単重", "単重")
+            tableMapping.ColumnMappings.Add("M3", "M3")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -11154,7 +11236,8 @@ Namespace DS_MTableAdapters
                 "材コード] IS NULL) OR ([資材コード] = @Original_資材コード)) AND ((@IsNull_資材名 = 1 AND [資材名] I"& _ 
                 "S NULL) OR ([資材名] = @Original_資材名)) AND ((@IsNull_単価 = 1 AND [単価] IS NULL) OR (["& _ 
                 "単価] = @Original_単価)) AND ((@IsNull_メーカーコード = 1 AND [メーカーコード] IS NULL) OR ([メーカーコ"& _ 
-                "ード] = @Original_メーカーコード)))"
+                "ード] = @Original_メーカーコード)) AND ((@IsNull_単重 = 1 AND [単重] IS NULL) OR ([単重] = @Ori"& _ 
+                "ginal_単重)) AND ((@IsNull_M3 = 1 AND [M3] IS NULL) OR ([M3] = @Original_M3)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -11165,29 +11248,39 @@ Namespace DS_MTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_単価", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単価", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_メーカーコード", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "メーカーコード", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_メーカーコード", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "メーカーコード", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_単重", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "単重", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_単重", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単重", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_M3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "M3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_M3", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 6, "M3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [M_Tanka] ([資材コード], [資材名], [単価], [メーカーコード]) VALUES (@資材コード, @資材名, @単価"& _ 
-                ", @メーカーコード);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, 資材コード, 資材名, 単価, メーカーコード FROM M_Tanka WHERE (id = SCOPE_"& _ 
-                "IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [M_Tanka] ([資材コード], [資材名], [単価], [メーカーコード], [単重], [M3]) VALUES (@資材コー"& _ 
+                "ド, @資材名, @単価, @メーカーコード, @単重, @M3);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, 資材コード, 資材名, 単価, メーカーコード, 単重, M3 F"& _ 
+                "ROM M_Tanka WHERE (id = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材名", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材名", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単価", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単価", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@メーカーコード", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "メーカーコード", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単重", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単重", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@M3", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 6, "M3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [M_Tanka] SET [資材コード] = @資材コード, [資材名] = @資材名, [単価] = @単価, [メーカーコード] = @メーカ"& _ 
-                "ーコード WHERE (([id] = @Original_id) AND ((@IsNull_資材コード = 1 AND [資材コード] IS NULL) O"& _ 
-                "R ([資材コード] = @Original_資材コード)) AND ((@IsNull_資材名 = 1 AND [資材名] IS NULL) OR ([資材名"& _ 
-                "] = @Original_資材名)) AND ((@IsNull_単価 = 1 AND [単価] IS NULL) OR ([単価] = @Original_"& _ 
-                "単価)) AND ((@IsNull_メーカーコード = 1 AND [メーカーコード] IS NULL) OR ([メーカーコード] = @Original_"& _ 
-                "メーカーコード)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, 資材コード, 資材名, 単価, メーカーコード FROM M_Tanka WHERE (id = @id)"
+                "ーコード, [単重] = @単重, [M3] = @M3 WHERE (([id] = @Original_id) AND ((@IsNull_資材コード = "& _ 
+                "1 AND [資材コード] IS NULL) OR ([資材コード] = @Original_資材コード)) AND ((@IsNull_資材名 = 1 AND"& _ 
+                " [資材名] IS NULL) OR ([資材名] = @Original_資材名)) AND ((@IsNull_単価 = 1 AND [単価] IS NUL"& _ 
+                "L) OR ([単価] = @Original_単価)) AND ((@IsNull_メーカーコード = 1 AND [メーカーコード] IS NULL) OR"& _ 
+                " ([メーカーコード] = @Original_メーカーコード)) AND ((@IsNull_単重 = 1 AND [単重] IS NULL) OR ([単重"& _ 
+                "] = @Original_単重)) AND ((@IsNull_M3 = 1 AND [M3] IS NULL) OR ([M3] = @Original_M"& _ 
+                "3)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id, 資材コード, 資材名, 単価, メーカーコード, 単重, M3 FROM M_Tanka WHERE (id = @id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材名", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材名", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単価", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単価", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@メーカーコード", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "メーカーコード", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単重", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単重", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@M3", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 6, "M3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_資材コード", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_資材コード", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -11197,6 +11290,10 @@ Namespace DS_MTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_単価", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単価", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_メーカーコード", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "メーカーコード", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_メーカーコード", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "メーカーコード", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_単重", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "単重", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_単重", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単重", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_M3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "M3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_M3", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 12, 6, "M3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -11213,8 +11310,8 @@ Namespace DS_MTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT                      id, 資材コード, 資材名, 単価, メーカーコード"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                    "& _ 
-                "     M_Tanka"
+            Me._commandCollection(0).CommandText = "SELECT                      id, 資材コード, 資材名, 単価, メーカーコード, 単重, M3"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            "& _ 
+                "             M_Tanka"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -11236,13 +11333,15 @@ Namespace DS_MTableAdapters
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "UPDATE                    M_Tanka"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                              資材コード = @資材コー"& _ 
-                "ド, 資材名 = @資材名, 単価 = @単価, メーカーコード = @メーカーコード"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (id = @"& _ 
-                "Original_id)"
+                "ド, 資材名 = @資材名, 単価 = @単価, メーカーコード = @メーカーコード, 単重 = @単重, M3 = @M3"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE          "& _ 
+                "             (id = @Original_id)"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材名", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "資材名", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単価", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "単価", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@メーカーコード", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "メーカーコード", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単重", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "単重", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@M3", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 12, 6, "M3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
@@ -11252,12 +11351,15 @@ Namespace DS_MTableAdapters
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = Me.Connection
             Me._commandCollection(6).CommandText = "INSERT INTO         M_Tanka"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      (資材コード, 資材名, 単"& _ 
-                "価, メーカーコード)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES                    (@資材コード,@資材名,@単価,@メーカーコード)"
+                "価, メーカーコード, 単重, M3)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES                    (@資材コード,@資材名,@単価,@メーカーコード,@単重,@M3"& _ 
+                ")"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材コード", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "資材コード", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材名", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, 0, 0, "資材名", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単価", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "単価", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@メーカーコード", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "メーカーコード", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単重", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "単重", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@M3", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 12, 6, "M3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11316,7 +11418,7 @@ Namespace DS_MTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_id As Integer, ByVal Original_資材コード As String, ByVal Original_資材名 As String, ByVal Original_単価 As Global.System.Nullable(Of Decimal), ByVal Original_メーカーコード As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_id As Integer, ByVal Original_資材コード As String, ByVal Original_資材名 As String, ByVal Original_単価 As Global.System.Nullable(Of Decimal), ByVal Original_メーカーコード As String, ByVal Original_単重 As Global.System.Nullable(Of Decimal), ByVal Original_M3 As Global.System.Nullable(Of Decimal)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_id,Integer)
             If (Original_資材コード Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -11346,6 +11448,20 @@ Namespace DS_MTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_メーカーコード,String)
             End If
+            If (Original_単重.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_単重.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Original_M3.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_M3.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11365,7 +11481,7 @@ Namespace DS_MTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String, ByVal 単重 As Global.System.Nullable(Of Decimal), ByVal M3 As Global.System.Nullable(Of Decimal)) As Integer
             If (資材コード Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -11386,6 +11502,16 @@ Namespace DS_MTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = CType(メーカーコード,String)
             End If
+            If (単重.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(単重.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (M3.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(M3.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11405,7 +11531,7 @@ Namespace DS_MTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String, ByVal Original_id As Integer, ByVal Original_資材コード As String, ByVal Original_資材名 As String, ByVal Original_単価 As Global.System.Nullable(Of Decimal), ByVal Original_メーカーコード As String, ByVal id As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String, ByVal 単重 As Global.System.Nullable(Of Decimal), ByVal M3 As Global.System.Nullable(Of Decimal), ByVal Original_id As Integer, ByVal Original_資材コード As String, ByVal Original_資材名 As String, ByVal Original_単価 As Global.System.Nullable(Of Decimal), ByVal Original_メーカーコード As String, ByVal Original_単重 As Global.System.Nullable(Of Decimal), ByVal Original_M3 As Global.System.Nullable(Of Decimal), ByVal id As Integer) As Integer
             If (資材コード Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -11426,36 +11552,60 @@ Namespace DS_MTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = CType(メーカーコード,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_id,Integer)
-            If (Original_資材コード Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            If (単重.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(単重.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_資材コード,String)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            If (Original_資材名 Is Nothing) Then
+            If (M3.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(M3.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_id,Integer)
+            If (Original_資材コード Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_資材名,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_資材コード,String)
             End If
-            If (Original_単価.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_単価.Value,Decimal)
-            Else
+            If (Original_資材名 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_資材名,String)
             End If
-            If (Original_メーカーコード Is Nothing) Then
+            If (Original_単価.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_単価.Value,Decimal)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_メーカーコード,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(id,Integer)
+            If (Original_メーカーコード Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_メーカーコード,String)
+            End If
+            If (Original_単重.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_単重.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (Original_M3.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_M3.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(id,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11475,8 +11625,8 @@ Namespace DS_MTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String, ByVal Original_id As Integer, ByVal Original_資材コード As String, ByVal Original_資材名 As String, ByVal Original_単価 As Global.System.Nullable(Of Decimal), ByVal Original_メーカーコード As String) As Integer
-            Return Me.Update(資材コード, 資材名, 単価, メーカーコード, Original_id, Original_資材コード, Original_資材名, Original_単価, Original_メーカーコード, Original_id)
+        Public Overloads Overridable Function Update(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String, ByVal 単重 As Global.System.Nullable(Of Decimal), ByVal M3 As Global.System.Nullable(Of Decimal), ByVal Original_id As Integer, ByVal Original_資材コード As String, ByVal Original_資材名 As String, ByVal Original_単価 As Global.System.Nullable(Of Decimal), ByVal Original_メーカーコード As String, ByVal Original_単重 As Global.System.Nullable(Of Decimal), ByVal Original_M3 As Global.System.Nullable(Of Decimal)) As Integer
+            Return Me.Update(資材コード, 資材名, 単価, メーカーコード, 単重, M3, Original_id, Original_資材コード, Original_資材名, Original_単価, Original_メーカーコード, Original_単重, Original_M3, Original_id)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11568,7 +11718,7 @@ Namespace DS_MTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
-        Public Overloads Overridable Function Q_単価更新(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String, ByVal Original_id As Integer) As Integer
+        Public Overloads Overridable Function Q_単価更新(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String, ByVal 単重 As Global.System.Nullable(Of Decimal), ByVal M3 As Global.System.Nullable(Of Decimal), ByVal Original_id As Integer) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
             If (資材コード Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
@@ -11590,7 +11740,17 @@ Namespace DS_MTableAdapters
             Else
                 command.Parameters(3).Value = CType(メーカーコード,String)
             End If
-            command.Parameters(4).Value = CType(Original_id,Integer)
+            If (単重.HasValue = true) Then
+                command.Parameters(4).Value = CType(単重.Value,Decimal)
+            Else
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (M3.HasValue = true) Then
+                command.Parameters(5).Value = CType(M3.Value,Decimal)
+            Else
+                command.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            command.Parameters(6).Value = CType(Original_id,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11634,7 +11794,7 @@ Namespace DS_MTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function Q_単価登録(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String) As Integer
+        Public Overloads Overridable Function Q_単価登録(ByVal 資材コード As String, ByVal 資材名 As String, ByVal 単価 As Global.System.Nullable(Of Decimal), ByVal メーカーコード As String, ByVal 単重 As Global.System.Nullable(Of Decimal), ByVal M3 As Global.System.Nullable(Of Decimal)) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(6)
             If (資材コード Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
@@ -11655,6 +11815,16 @@ Namespace DS_MTableAdapters
                 command.Parameters(3).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(3).Value = CType(メーカーコード,String)
+            End If
+            If (単重.HasValue = true) Then
+                command.Parameters(4).Value = CType(単重.Value,Decimal)
+            Else
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (M3.HasValue = true) Then
+                command.Parameters(5).Value = CType(M3.Value,Decimal)
+            Else
+                command.Parameters(5).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _

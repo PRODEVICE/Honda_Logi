@@ -25,7 +25,7 @@ Public Class F_Shizai
             GV_Master.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Shizai_Master_Load")
+            fnc.ERR_LOG(ex.Message, "F_Shizai_Load")
             MessageBox.Show(ex.Message)
         End Try
 
@@ -226,7 +226,7 @@ Public Class F_Shizai
             MessageBox.Show("完了しました。")
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Shizai_Master_Btn_Touroku_Click")
+            fnc.ERR_LOG(ex.Message, "F_Shizai_Btn_Touroku_Click")
             MessageBox.Show(ex.Message)
         End Try
 
@@ -455,85 +455,78 @@ Public Class F_Shizai
             Chenge_Master(Cmb_Shurui.SelectedValue)
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Housou_Btn_Import_Click")
+            fnc.ERR_LOG(ex.Message, "F_Shizai_Btn_Import_Click")
             MessageBox.Show(ex.Message)
         End Try
 
-
-
-
-
-
     End Sub
 
-    'CSVファイル取り込み処理
-    Function Import_CSV(_file_path As String, dt As DataTable) As DataTable
-
+    'CSV出力ボタンクリック
+    Private Sub Btn_Output_Click(sender As Object, e As EventArgs) Handles Btn_Output.Click
 
         Try
 
-            Using sr As New StreamReader(_file_path, System.Text.Encoding.Default) ' Shift-JIS等も自動判別されやすい
-                Dim isFirstLine As Boolean = True
-
-                While Not sr.EndOfStream
-                    Dim line As String = sr.ReadLine()
-
-                    ' CSV の1行をパース（ダブルクォート対応）
-                    Dim fields As String() = ParseCsvLine(line)
-
-                    ' 最初の行はヘッダー
-                    If isFirstLine Then
-
-                        isFirstLine = False
-
-                    Else
-                        Dim dr As DataRow = dt.NewRow()
+            '待機状態
+            Cursor.Current = Cursors.WaitCursor
 
 
-                        'CSV の各フィールドを id 以外の列に順にセット
-                        For i As Integer = 0 To fields.Length - 1
-                            dr(i + 1) = fields(i) ' ← +1 で id をスキップ
-                        Next
+            Dim dt_csv As New DataTable
 
-                        dt.Rows.Add(dr)
+            If Cmb_Shurui.SelectedValue = "1" Then
 
-                    End If
+                Dim dt As New DS_M.DT_M_Kosou_ShizaiDataTable
+                Dim ta As New DS_MTableAdapters.TA_M_Kosou_Shizai
+                ta.Fill(dt)
 
-                End While
+                dt_csv = dt
 
-            End Using
+            ElseIf Cmb_Shurui.SelectedValue = "2" Then '内装マスタ
+                Dim dt As New DS_M.DT_M_Naisou_ShizaiDataTable
+                Dim ta As New DS_MTableAdapters.TA_M_Naisou_Shizai
+                ta.Fill(dt)
 
-            Return dt
+                dt_csv = dt
+            ElseIf Cmb_Shurui.SelectedValue = "3" Then 'ボルトマスタ
+                Dim dt As New DS_M.DT_M_BoltDataTable
+                Dim ta As New DS_MTableAdapters.TA_M_Bolt
+                ta.Fill(dt)
+
+                dt_csv = dt
+            ElseIf Cmb_Shurui.SelectedValue = "4" Then 'ダンボール
+                Dim dt As New DS_M.DT_M_Gaisou_DanboruDataTable
+                Dim ta As New DS_MTableAdapters.TA_M_Gaisou_Danboru
+                ta.Fill(dt)
+
+                dt_csv = dt
+            ElseIf Cmb_Shurui.SelectedValue = "5" Then '箱
+                Dim dt As New DS_M.DT_M_Gaisou_BoxDataTable
+                Dim ta As New DS_MTableAdapters.TA_M_Gaisou_Box
+                ta.Fill(dt)
+
+                dt_csv = dt
+            End If
+
+
+            Dim out_path As String = MakeOutPath()
+
+            If out_path = "" Then
+                Exit Sub
+            End If
+
+            ConvertDataTableToCsv(dt_csv, out_path, True)
+
+            MessageBox.Show("ファイルの出力が完了しました。", "ファイル出力", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As Exception
-            Throw ex
+            fnc.ERR_LOG(ex.Message, "F_Shizai_Btn_Output_Click")
+            MessageBox.Show(ex.Message)
+
+        Finally
+            '元に戻す
+            Cursor.Current = Cursors.Default
         End Try
 
-    End Function
-
-    Private Function ParseCsvLine(line As String) As String()
-        Dim result As New List(Of String)()
-        Dim current As String = ""
-        Dim inQuotes As Boolean = False
-
-        For i As Integer = 0 To line.Length - 1
-            Dim c As Char = line(i)
-
-            If c = """"c Then
-                ' ダブルクォートの開始/終了
-                inQuotes = Not inQuotes
-            ElseIf c = ","c AndAlso Not inQuotes Then
-                ' カンマ区切り（クォート外のみ）
-                result.Add(current)
-                current = ""
-            Else
-                current &= c
-            End If
-        Next
-
-        result.Add(current)
-        Return result.ToArray()
-    End Function
+    End Sub
 
     '******************************************************************************
     'GVイベント
@@ -654,18 +647,13 @@ Public Class F_Shizai
             'Chenge_Master(Cmb_Shurui.SelectedValue)
             Btn_Search_Click(Nothing, Nothing)
 
-
             'コントロールの表示制御
             If Cmb_Shurui.SelectedValue = "2" Then
-
                 Lbl_Suryou.Visible = True
                 Txt_Suryou.Visible = True
-
             Else
-
                 Lbl_Suryou.Visible = False
                 Txt_Suryou.Visible = False
-
             End If
 
             '画面項目もクリア
@@ -868,5 +856,205 @@ Public Class F_Shizai
 
     End Sub
 
+
+    'CSVファイル取り込み処理
+    Function Import_CSV(_file_path As String, dt As DataTable) As DataTable
+
+        Try
+
+            Using sr As New StreamReader(_file_path, System.Text.Encoding.Default) ' Shift-JIS等も自動判別されやすい
+                Dim isFirstLine As Boolean = True
+
+                While Not sr.EndOfStream
+                    Dim line As String = sr.ReadLine()
+
+                    ' CSV の1行をパース（ダブルクォート対応）
+                    Dim fields As String() = ParseCsvLine(line)
+
+                    ' 最初の行はヘッダー
+                    If isFirstLine Then
+
+                        isFirstLine = False
+
+                    Else
+                        Dim dr As DataRow = dt.NewRow()
+
+
+                        'CSV の各フィールドを id 以外の列に順にセット
+                        For i As Integer = 0 To fields.Length - 1
+                            dr(i + 1) = fields(i) ' ← +1 で id をスキップ
+                        Next
+
+                        dt.Rows.Add(dr)
+
+                    End If
+
+                End While
+
+            End Using
+
+            Return dt
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Function
+
+    Private Function ParseCsvLine(line As String) As String()
+        Dim result As New List(Of String)()
+        Dim current As String = ""
+        Dim inQuotes As Boolean = False
+
+        For i As Integer = 0 To line.Length - 1
+            Dim c As Char = line(i)
+
+            If c = """"c Then
+                ' ダブルクォートの開始/終了
+                inQuotes = Not inQuotes
+            ElseIf c = ","c AndAlso Not inQuotes Then
+                ' カンマ区切り（クォート外のみ）
+                result.Add(current)
+                current = ""
+            Else
+                current &= c
+            End If
+        Next
+
+        result.Add(current)
+        Return result.ToArray()
+    End Function
+
+
+#Region "CSV作成処理"
+
+    '保存先選択ダイアログ
+    Function MakeOutPath() As String
+        MakeOutPath = ""
+        Try
+            'SaveFileDialogクラスのインスタンスを作成
+            Dim sfd As New SaveFileDialog()
+            'はじめのファイル名を指定する
+            'はじめに「ファイル名」で表示される文字列を指定する
+
+
+            '個装マスタ
+            If Cmb_Shurui.SelectedValue = "1" Then
+                sfd.FileName = "個装主資材マスタ" & Now.ToString("yyyyMMdd_HHmmss") & ".csv"
+            ElseIf Cmb_Shurui.SelectedValue = "2" Then '内装マスタ
+                sfd.FileName = "内装主資材マスタ" & Now.ToString("yyyyMMdd_HHmmss") & ".csv"
+            ElseIf Cmb_Shurui.SelectedValue = "3" Then 'ボルトマスタ
+                sfd.FileName = "ボルト資材マスタ" & Now.ToString("yyyyMMdd_HHmmss") & ".csv"
+            ElseIf Cmb_Shurui.SelectedValue = "4" Then 'ダンボール
+                sfd.FileName = "ダンボールパット資材マスタ" & Now.ToString("yyyyMMdd_HHmmss") & ".csv"
+            ElseIf Cmb_Shurui.SelectedValue = "5" Then '箱
+                sfd.FileName = "箱ポリ" & Now.ToString("yyyyMMdd_HHmmss") & ".csv"
+            End If
+
+            'はじめに表示されるフォルダを指定する
+            '指定しない（空の文字列）の時は、現在のディレクトリが表示される
+            'sfd.InitialDirectory = "C:\"
+            '[ファイルの種類]に表示される選択肢を指定する
+            sfd.Filter = "csvファイル(*.csv)|*.csv|すべてのファイル(*.*)|*.*"
+            '[ファイルの種類]ではじめに選択されるものを指定する
+            '2番目の「すべてのファイル」が選択されているようにする
+            sfd.FilterIndex = 1
+            'タイトルを設定する
+            sfd.Title = "保存先のファイルを選択してください"
+            'ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
+            sfd.RestoreDirectory = True
+            '既に存在するファイル名を指定したとき警告する
+            'デフォルトでTrueなので指定する必要はない
+            sfd.OverwritePrompt = True
+            '存在しないパスが指定されたとき警告を表示する
+            'デフォルトでTrueなので指定する必要はない
+            sfd.CheckPathExists = True
+            'ダイアログを表示する
+            If sfd.ShowDialog() = DialogResult.OK Then
+                'OKボタンがクリックされたとき、選択されたファイル名をリターン
+                Return sfd.FileName
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+    End Function
+
+    'DTをCSVデータに変換
+    Public Sub ConvertDataTableToCsv(
+dt As DataTable, csvPath As String, writeHeader As Boolean)
+        'CSVファイルに書き込むときに使うEncoding
+        Dim enc As System.Text.Encoding =
+            System.Text.Encoding.GetEncoding("Shift_JIS")
+        '書き込むファイルを開く
+        Dim sr As New System.IO.StreamWriter(csvPath, False, enc)
+        Dim colCount As Integer = dt.Columns.Count
+        Dim lastColIndex As Integer = colCount - 1
+        Dim i As Integer
+        'ヘッダを書き込む
+        If writeHeader Then
+            For i = 1 To colCount - 1
+                'ヘッダの取得
+                Dim field As String = dt.Columns(i).Caption
+                '"で囲む
+                field = EncloseDoubleQuotesIfNeed(field)
+                'フィールドを書き込む
+                sr.Write(field)
+                'カンマを書き込む
+                If lastColIndex > i Then
+                    sr.Write(","c)
+                End If
+            Next
+            '改行する
+            sr.Write(vbCrLf)
+        End If
+        'レコードを書き込む
+        Dim row As DataRow
+        For Each row In dt.Rows
+            For i = 1 To colCount - 1
+                'フィールドの取得
+                Dim field As String = row(i).ToString()
+                '"で囲む
+                field = EncloseDoubleQuotesIfNeed(field)
+                'フィールドを書き込む
+                sr.Write(field)
+                'カンマを書き込む
+                If lastColIndex > i Then
+                    sr.Write(","c)
+                End If
+            Next
+            '改行する
+            sr.Write(vbCrLf)
+        Next
+        '閉じる
+        sr.Close()
+    End Sub
+
+    Private Function EncloseDoubleQuotesIfNeed(field As String) As String
+        If NeedEncloseDoubleQuotes(field) Then
+            Return EncloseDoubleQuotes(field)
+        End If
+        Return field
+    End Function
+
+    Private Function NeedEncloseDoubleQuotes(field As String) As Boolean
+        Return field.IndexOf(""""c) > -1 OrElse
+            field.IndexOf(","c) > -1 OrElse
+            field.IndexOf(ControlChars.Cr) > -1 OrElse
+            field.IndexOf(ControlChars.Lf) > -1 OrElse
+            field.StartsWith(" ") OrElse
+            field.StartsWith(vbTab) OrElse
+            field.EndsWith(" ") OrElse
+            field.EndsWith(vbTab)
+    End Function
+
+    Private Function EncloseDoubleQuotes(field As String) As String
+        If field.IndexOf(""""c) > -1 Then
+            '"を""とする
+            field = field.Replace("""", """""")
+        End If
+        Return """" & field & """"
+    End Function
+
+#End Region
 
 End Class

@@ -29,6 +29,8 @@ Partial Class F_Keisu
         Me.Txt_S_Kishu = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Txt_S_Shimuke = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Txt_S_Gun = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -44,6 +46,9 @@ Partial Class F_Keisu
         Me.DTMKeisuBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_M = New Honda_Logi.DS_M()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Txt_Shimuke = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Txt_Keisu = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Txt_Gun = New System.Windows.Forms.TextBox()
@@ -53,11 +58,7 @@ Partial Class F_Keisu
         Me.Txt_id = New System.Windows.Forms.TextBox()
         Me.Btn_Touroku = New System.Windows.Forms.Button()
         Me.TA_M_Keisu = New Honda_Logi.DS_MTableAdapters.TA_M_Keisu()
-        Me.Txt_S_Shimuke = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Txt_Shimuke = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,6 +97,7 @@ Partial Class F_Keisu
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Output)
         Me.Panel3.Controls.Add(Me.Txt_S_Shimuke)
         Me.Panel3.Controls.Add(Me.Label6)
         Me.Panel3.Controls.Add(Me.Btn_Import)
@@ -107,13 +109,31 @@ Partial Class F_Keisu
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(800, 77)
+        Me.Panel3.Size = New System.Drawing.Size(912, 77)
         Me.Panel3.TabIndex = 15
+        '
+        'Txt_S_Shimuke
+        '
+        Me.Txt_S_Shimuke.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_S_Shimuke.Location = New System.Drawing.Point(71, 24)
+        Me.Txt_S_Shimuke.Name = "Txt_S_Shimuke"
+        Me.Txt_S_Shimuke.Size = New System.Drawing.Size(109, 23)
+        Me.Txt_S_Shimuke.TabIndex = 31
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label6.Location = New System.Drawing.Point(25, 27)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(40, 16)
+        Me.Label6.TabIndex = 30
+        Me.Label6.Text = "仕向"
         '
         'Btn_Import
         '
         Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Import.Location = New System.Drawing.Point(684, 14)
+        Me.Btn_Import.Location = New System.Drawing.Point(667, 14)
         Me.Btn_Import.Name = "Btn_Import"
         Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
         Me.Btn_Import.TabIndex = 29
@@ -144,7 +164,7 @@ Partial Class F_Keisu
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 77)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 280)
+        Me.Panel1.Size = New System.Drawing.Size(912, 280)
         Me.Panel1.TabIndex = 13
         '
         'GV_Master
@@ -169,7 +189,7 @@ Partial Class F_Keisu
         DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GV_Master.RowTemplate.Height = 31
-        Me.GV_Master.Size = New System.Drawing.Size(800, 280)
+        Me.GV_Master.Size = New System.Drawing.Size(912, 280)
         Me.GV_Master.TabIndex = 1
         '
         '選択
@@ -244,8 +264,36 @@ Partial Class F_Keisu
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 357)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(800, 93)
+        Me.Panel2.Size = New System.Drawing.Size(912, 93)
         Me.Panel2.TabIndex = 14
+        '
+        'Txt_Shimuke
+        '
+        Me.Txt_Shimuke.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Shimuke.Location = New System.Drawing.Point(71, 23)
+        Me.Txt_Shimuke.Name = "Txt_Shimuke"
+        Me.Txt_Shimuke.Size = New System.Drawing.Size(109, 23)
+        Me.Txt_Shimuke.TabIndex = 33
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label7.Location = New System.Drawing.Point(25, 26)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(40, 16)
+        Me.Label7.TabIndex = 32
+        Me.Label7.Text = "仕向"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label1.Location = New System.Drawing.Point(402, 26)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(24, 16)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "群"
         '
         'Txt_Keisu
         '
@@ -323,57 +371,21 @@ Partial Class F_Keisu
         '
         Me.TA_M_Keisu.ClearBeforeFill = True
         '
-        'Txt_S_Shimuke
+        'Btn_Output
         '
-        Me.Txt_S_Shimuke.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_S_Shimuke.Location = New System.Drawing.Point(71, 24)
-        Me.Txt_S_Shimuke.Name = "Txt_S_Shimuke"
-        Me.Txt_S_Shimuke.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_S_Shimuke.TabIndex = 31
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label6.Location = New System.Drawing.Point(25, 27)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(40, 16)
-        Me.Label6.TabIndex = 30
-        Me.Label6.Text = "仕向"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(402, 26)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(24, 16)
-        Me.Label1.TabIndex = 22
-        Me.Label1.Text = "群"
-        '
-        'Txt_Shimuke
-        '
-        Me.Txt_Shimuke.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Shimuke.Location = New System.Drawing.Point(71, 23)
-        Me.Txt_Shimuke.Name = "Txt_Shimuke"
-        Me.Txt_Shimuke.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_Shimuke.TabIndex = 33
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(25, 26)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(40, 16)
-        Me.Label7.TabIndex = 32
-        Me.Label7.Text = "仕向"
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(789, 14)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 33
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_Keisu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(912, 450)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel3)
@@ -424,4 +436,5 @@ Partial Class F_Keisu
     Friend WithEvents Txt_Shimuke As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents Btn_Output As Button
 End Class

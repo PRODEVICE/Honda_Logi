@@ -39,12 +39,13 @@ Partial Class F_Shizai
         Me.DTMKubunBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_M = New Honda_Logi.DS_M()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Btn_Search = New System.Windows.Forms.Button()
         Me.Txt_S_Shizai_CD = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TA_M_Kubun = New Honda_Logi.DS_MTableAdapters.TA_M_Kubun()
-        Me.Btn_Import = New System.Windows.Forms.Button()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -113,7 +114,7 @@ Partial Class F_Shizai
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 94)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(803, 403)
+        Me.Panel1.Size = New System.Drawing.Size(766, 403)
         Me.Panel1.TabIndex = 9
         '
         'GV_Master
@@ -135,7 +136,7 @@ Partial Class F_Shizai
         DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.GV_Master.RowTemplate.Height = 31
-        Me.GV_Master.Size = New System.Drawing.Size(803, 403)
+        Me.GV_Master.Size = New System.Drawing.Size(766, 403)
         Me.GV_Master.TabIndex = 1
         '
         'Label1
@@ -160,7 +161,7 @@ Partial Class F_Shizai
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 497)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(803, 88)
+        Me.Panel2.Size = New System.Drawing.Size(766, 88)
         Me.Panel2.TabIndex = 10
         '
         'Cmb_Shurui
@@ -169,7 +170,7 @@ Partial Class F_Shizai
         Me.Cmb_Shurui.DisplayMember = "区分詳細名"
         Me.Cmb_Shurui.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Cmb_Shurui.FormattingEnabled = True
-        Me.Cmb_Shurui.Location = New System.Drawing.Point(109, 33)
+        Me.Cmb_Shurui.Location = New System.Drawing.Point(109, 12)
         Me.Cmb_Shurui.Name = "Cmb_Shurui"
         Me.Cmb_Shurui.Size = New System.Drawing.Size(175, 24)
         Me.Cmb_Shurui.TabIndex = 11
@@ -188,6 +189,7 @@ Partial Class F_Shizai
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Btn_Output)
         Me.Panel3.Controls.Add(Me.Btn_Import)
         Me.Panel3.Controls.Add(Me.Btn_Search)
         Me.Panel3.Controls.Add(Me.Txt_S_Shizai_CD)
@@ -197,13 +199,23 @@ Partial Class F_Shizai
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(803, 94)
+        Me.Panel3.Size = New System.Drawing.Size(766, 94)
         Me.Panel3.TabIndex = 12
+        '
+        'Btn_Import
+        '
+        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Import.Location = New System.Drawing.Point(521, 48)
+        Me.Btn_Import.Name = "Btn_Import"
+        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.Text = "CSV取込"
+        Me.Btn_Import.UseVisualStyleBackColor = True
         '
         'Btn_Search
         '
         Me.Btn_Search.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Search.Location = New System.Drawing.Point(598, 23)
+        Me.Btn_Search.Location = New System.Drawing.Point(432, 48)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
         Me.Btn_Search.TabIndex = 13
@@ -213,7 +225,7 @@ Partial Class F_Shizai
         'Txt_S_Shizai_CD
         '
         Me.Txt_S_Shizai_CD.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_S_Shizai_CD.Location = New System.Drawing.Point(404, 33)
+        Me.Txt_S_Shizai_CD.Location = New System.Drawing.Point(404, 12)
         Me.Txt_S_Shizai_CD.Name = "Txt_S_Shizai_CD"
         Me.Txt_S_Shizai_CD.Size = New System.Drawing.Size(173, 23)
         Me.Txt_S_Shizai_CD.TabIndex = 14
@@ -222,7 +234,7 @@ Partial Class F_Shizai
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(322, 36)
+        Me.Label2.Location = New System.Drawing.Point(322, 15)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(76, 16)
         Me.Label2.TabIndex = 13
@@ -232,7 +244,7 @@ Partial Class F_Shizai
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(25, 36)
+        Me.Label5.Location = New System.Drawing.Point(25, 15)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(75, 16)
         Me.Label5.TabIndex = 12
@@ -242,21 +254,21 @@ Partial Class F_Shizai
         '
         Me.TA_M_Kubun.ClearBeforeFill = True
         '
-        'Btn_Import
+        'Btn_Output
         '
-        Me.Btn_Import.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Import.Location = New System.Drawing.Point(687, 23)
-        Me.Btn_Import.Name = "Btn_Import"
-        Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Import.TabIndex = 29
-        Me.Btn_Import.Text = "CSV取込"
-        Me.Btn_Import.UseVisualStyleBackColor = True
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(640, 48)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 34
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_Shizai
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(803, 585)
+        Me.ClientSize = New System.Drawing.Size(766, 585)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
@@ -293,4 +305,5 @@ Partial Class F_Shizai
     Friend WithEvents Txt_S_Shizai_CD As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Btn_Import As Button
+    Friend WithEvents Btn_Output As Button
 End Class
