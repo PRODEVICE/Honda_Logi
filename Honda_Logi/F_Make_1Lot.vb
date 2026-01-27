@@ -767,7 +767,6 @@ Public Class F_Make_1Lot
 
                     Next
 
-
                 Else '存在しない
 
                     '内装か外装かを判別する
@@ -956,6 +955,7 @@ Public Class F_Make_1Lot
                     End If
 
                     ' 更新データを蓄積（後で一括更新）
+                    'updates3.Add(New KeyValuePair(Of Decimal, String)(naisou_shizai_su, target_id))
                     If naisou_shizai_su <> 0 Then
                         updates3.Add(New KeyValuePair(Of Decimal, String)(naisou_shizai_su, target_id))
                     End If
@@ -2695,7 +2695,7 @@ Public Class F_Make_1Lot
 		                     ELSE 0 END AS 単品部品総数
 		 
 		                     --部品点数
-		                    ,CASE WHEN OrderList1.id IS NULL THEN Second2.秒数  ELSE 0 END AS 部品点数
+                            , Second2.秒数  AS 部品点数
 		
 		                     --防錆回数
 		                    ,0  AS 防錆回数
@@ -2744,20 +2744,16 @@ Public Class F_Make_1Lot
 		                     END AS ENG発泡材数
 
 		                     --積み付け回数
-		                     ,CASE WHEN Main.包装ライン_外装 NOT LIKE '%4%' THEN
-		 
-			                    CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
-					                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数 
-			                    ELSE 
-					                    CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
-						                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数  
-					                    ELSE 
-						                    0
-					                    END
-			                    END
-		 
-		                     ELSE 0 
-		                     END AS 積み付け回数
+		                     ,CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
+					                CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数 
+			                 ELSE 
+					                CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
+						                CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数  
+					                ELSE 
+						                0
+					                END
+			                 END AS 積み付け回数
+ 
 		 
 		                     --パネルケース数
 		                     ,0 AS パネルケース数
@@ -2802,7 +2798,7 @@ Public Class F_Make_1Lot
 		                            CASE WHEN Main.包装ライン_外装 LIKE '%M%' THEN
 		                                ISNULL(KOW46.ケース当たりの内装資材費, 0)
 		                            ELSE
-		                                ISNULL(CONVERT(decimal, CASE WHEN Kosou_Tanka.単価 = '0' THEN '1' ELSE ISNULL(Kosou_Tanka.単価,'1') END), 1) *
+		                                ISNULL(Kosou_Tanka.単価, 0) *
 		                                ISNULL(CONVERT(decimal, CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE ISNULL(Main.個装入り数,'1') END), 1) *
 		                                ISNULL(CONVERT(decimal, CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE ISNULL(Main.内装入り数,'1') END), 1)
 		                            END
@@ -2811,7 +2807,7 @@ Public Class F_Make_1Lot
 		                        END
 		                    ELSE
 		                        CASE WHEN Housou_Kbn_Naisou.個装内装区分 = '内装' THEN
-		                            ISNULL(CONVERT(decimal, CASE WHEN Kosou_Tanka.単価 = '0' THEN '1' ELSE ISNULL(Kosou_Tanka.単価,'1') END), 1) *
+		                            ISNULL(Kosou_Tanka.単価, 0) *
 		                            ISNULL(CONVERT(decimal, CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE ISNULL(Main.個装入り数,'1') END), 1) *
 		                            ISNULL(CONVERT(decimal, CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE ISNULL(Main.内装入り数,'1') END), 1)
 		                        ELSE 
@@ -2852,6 +2848,7 @@ Public Class F_Make_1Lot
 		
 		                    LEFT JOIN M_Tanka Kosou_Tanka
 		                    ON Main.個装資材記号 = Kosou_Tanka.資材コード
+                            AND Kosou_Tanka.メーカーコード = '6519'
 
 		                    LEFT JOIN T_KOW46 KOW46
 		                    ON Main.包装ロットNO + RIGHT('00' + CAST(Main.包装ロット連番 AS VARCHAR(2)), 2) = KOW46.包装ロットNo
@@ -3216,16 +3213,15 @@ Public Class F_Make_1Lot
 
 
         '内装資材費
-        sql = sql & " UPDATE t
-                        SET t.内装資材費 =
+        sql = sql & ";WITH CTE AS (
+                        SELECT
+                            t.*,
+
                             CASE
-                                -- 内装が存在する場合のみ計算
                                 WHEN HK_naisou.DIST IS NOT NULL
                                      AND NS.内装資材コード IS NOT NULL
-                                THEN 
-                                    (
-                                        ISNULL(TK1.単価, 0) * t.内装入り数
-                                    )
+                                THEN
+                                    (ISNULL(TK1.単価, 0) * t.内装入り数)
                                     +
                                     (
                                         (ISNULL(TK2.単価, 0) * ISNULL(t.必要数2, 0)) +
@@ -3239,40 +3235,55 @@ Public Class F_Make_1Lot
                                         (ISNULL(TK10.単価, 0) * ISNULL(t.必要数10, 0))
                                     ) * t.内装入り数
                                 ELSE 0
-                            END
+                            END AS 計算_内装資材費,
+
+                            ROW_NUMBER() OVER (
+                                PARTITION BY
+                                    t.見積No,
+                                    t.包装ロットNO,
+                                    t.包装ロット連番,
+                                    t.ｺﾝﾄﾛｰﾙNO,
+                                    t.年度1,
+                                    t.モデル1,
+                                    t.ケースNO1,
+                                    t.モジュール手順SEQ,
+                                    t.モデフNO
+                                ORDER BY (t.id)
+                            ) AS RN
+
                         FROM T_CCC_Lot t
 
                         LEFT JOIN M_Naisou_Shizai NS
-                        ON t.内装資材記号 = NS.内装資材コード
+                            ON t.内装資材記号 = NS.内装資材コード
 
                         LEFT JOIN M_Housou_Kbn HK_kosou
-                        ON t.代表DIST = HK_kosou.DIST
-                        AND HK_kosou.個装内装区分 = '個装'
+                            ON t.代表DIST = HK_kosou.DIST
+                           AND HK_kosou.個装内装区分 = '個装'
 
                         LEFT JOIN M_Housou_Kbn HK_naisou
-                        ON t.代表DIST = HK_naisou.DIST
-                        AND HK_naisou.個装内装区分 = '内装'
+                            ON t.代表DIST = HK_naisou.DIST
+                           AND HK_naisou.個装内装区分 = '内装'
 
                         LEFT JOIN M_Tanka TK1
-                        ON t.内装資材記号 = TK1.資材コード
+                            ON t.内装資材記号 = TK1.資材コード
+                           AND TK1.メーカーコード = '6519'
 
-                        LEFT JOIN M_Tanka TK2  ON t.副資材2  = TK2.資材コード
-                        LEFT JOIN M_Tanka TK3  ON t.副資材3  = TK3.資材コード
-                        LEFT JOIN M_Tanka TK4  ON t.副資材4  = TK4.資材コード
-                        LEFT JOIN M_Tanka TK5  ON t.副資材5  = TK5.資材コード
-                        LEFT JOIN M_Tanka TK6  ON t.副資材6  = TK6.資材コード
-                        LEFT JOIN M_Tanka TK7  ON t.副資材7  = TK7.資材コード
-                        LEFT JOIN M_Tanka TK8  ON t.副資材8  = TK8.資材コード
-                        LEFT JOIN M_Tanka TK9  ON t.副資材9  = TK9.資材コード
-                        LEFT JOIN M_Tanka TK10 ON t.副資材10 = TK10.資材コード
+                        LEFT JOIN M_Tanka TK2  ON t.副資材2  = TK2.資材コード AND TK2.メーカーコード = '6519'
+                        LEFT JOIN M_Tanka TK3  ON t.副資材3  = TK3.資材コード AND TK3.メーカーコード = '6519'
+                        LEFT JOIN M_Tanka TK4  ON t.副資材4  = TK4.資材コード AND TK4.メーカーコード = '6519'
+                        LEFT JOIN M_Tanka TK5  ON t.副資材5  = TK5.資材コード AND TK5.メーカーコード = '6519'
+                        LEFT JOIN M_Tanka TK6  ON t.副資材6  = TK6.資材コード AND TK6.メーカーコード = '6519'
+                        LEFT JOIN M_Tanka TK7  ON t.副資材7  = TK7.資材コード AND TK7.メーカーコード = '6519'
+                        LEFT JOIN M_Tanka TK8  ON t.副資材8  = TK8.資材コード AND TK8.メーカーコード = '6519'
+                        LEFT JOIN M_Tanka TK9  ON t.副資材9  = TK9.資材コード AND TK9.メーカーコード = '6519'
+                        LEFT JOIN M_Tanka TK10 ON t.副資材10 = TK10.資材コード AND TK10.メーカーコード = '6519'
 
-                        WHERE t.見積No = " & _target_mitsumori_no & "
-                          AND (
-                                (HK_kosou.DIST IS NOT NULL  -- 個装あり
-                                 AND HK_naisou.DIST IS NOT NULL  -- 内装あり
-                                 AND ISNULL(t.包装ライン_外装,'') NOT LIKE '%M%')
-                                OR HK_naisou.DIST IS NOT NULL  -- 内装のみもしくは両方
-                              );"
+                        WHERE t.見積No =  " & _target_mitsumori_no & "
+                    )
+
+                    UPDATE CTE
+                    SET 内装資材費 = 計算_内装資材費
+                    WHERE RN = 1; "
 
 
 
@@ -3280,32 +3291,57 @@ Public Class F_Make_1Lot
 
 
         '外装資材費
-        sql = sql & " UPDATE t
-                        SET t.外装資材費 = 
-                            ISNULL(
-                                (CASE WHEN g11.資材コード IS NOT NULL THEN t.必要数11 * g11.単価 ELSE 0 END) +
-                                (CASE WHEN g12.資材コード IS NOT NULL THEN t.必要数12 * g12.単価 ELSE 0 END) +
-                                (CASE WHEN g13.資材コード IS NOT NULL THEN t.必要数13 * g13.単価 ELSE 0 END) +
-                                (CASE WHEN g14.資材コード IS NOT NULL THEN t.必要数14 * g14.単価 ELSE 0 END) +
-                                (CASE WHEN g15.資材コード IS NOT NULL THEN t.必要数15 * g15.単価 ELSE 0 END) +
-                                (CASE WHEN g16.資材コード IS NOT NULL THEN t.必要数16 * g16.単価 ELSE 0 END) +
-                                (CASE WHEN g17.資材コード IS NOT NULL THEN t.必要数17 * g17.単価 ELSE 0 END) +
-                                (CASE WHEN g18.資材コード IS NOT NULL THEN t.必要数18 * g18.単価 ELSE 0 END) +
-                                (CASE WHEN g19.資材コード IS NOT NULL THEN t.必要数19 * g19.単価 ELSE 0 END) +
-                                (CASE WHEN g20.資材コード IS NOT NULL THEN t.必要数20 * g20.単価 ELSE 0 END)
-                            , 0)
-                        FROM T_CCC_Lot t
-                        LEFT JOIN M_Tanka g11 ON t.副資材11 = g11.資材コード
-                        LEFT JOIN M_Tanka g12 ON t.副資材12 = g12.資材コード
-                        LEFT JOIN M_Tanka g13 ON t.副資材13 = g13.資材コード
-                        LEFT JOIN M_Tanka g14 ON t.副資材14 = g14.資材コード
-                        LEFT JOIN M_Tanka g15 ON t.副資材15 = g15.資材コード
-                        LEFT JOIN M_Tanka g16 ON t.副資材16 = g16.資材コード
-                        LEFT JOIN M_Tanka g17 ON t.副資材17 = g17.資材コード
-                        LEFT JOIN M_Tanka g18 ON t.副資材18 = g18.資材コード
-                        LEFT JOIN M_Tanka g19 ON t.副資材19 = g19.資材コード
-                        LEFT JOIN M_Tanka g20 ON t.副資材20 = g20.資材コード
-                        WHERE t.見積No = " & _target_mitsumori_no & ";"
+        sql = sql & " ;WITH CTE AS (
+                            SELECT
+                                t.ID,
+
+                                ISNULL(
+                                    (CASE WHEN g11.資材コード IS NOT NULL THEN t.必要数11 * g11.単価 ELSE 0 END) +
+                                    (CASE WHEN g12.資材コード IS NOT NULL THEN t.必要数12 * g12.単価 ELSE 0 END) +
+                                    (CASE WHEN g13.資材コード IS NOT NULL THEN t.必要数13 * g13.単価 ELSE 0 END) +
+                                    (CASE WHEN g14.資材コード IS NOT NULL THEN t.必要数14 * g14.単価 ELSE 0 END) +
+                                    (CASE WHEN g15.資材コード IS NOT NULL THEN t.必要数15 * g15.単価 ELSE 0 END) +
+                                    (CASE WHEN g16.資材コード IS NOT NULL THEN t.必要数16 * g16.単価 ELSE 0 END) +
+                                    (CASE WHEN g17.資材コード IS NOT NULL THEN t.必要数17 * g17.単価 ELSE 0 END) +
+                                    (CASE WHEN g18.資材コード IS NOT NULL THEN t.必要数18 * g18.単価 ELSE 0 END) +
+                                    (CASE WHEN g19.資材コード IS NOT NULL THEN t.必要数19 * g19.単価 ELSE 0 END) +
+                                    (CASE WHEN g20.資材コード IS NOT NULL THEN t.必要数20 * g20.単価 ELSE 0 END)
+                                , 0) AS 計算_外装資材費,
+
+                                ROW_NUMBER() OVER (
+                                    PARTITION BY
+                                        t.代表DIST,
+                                        t.ｺﾝﾄﾛｰﾙNO,
+                                        t.ケースNO1,
+                                        t.年度2,
+                                        t.モデル2,
+                                        t.タイプ1,
+                                        t.オプション1,
+                                        t.群
+                                    ORDER BY t.ID ASC   -- ← 最小ID
+                                ) AS RN
+
+                            FROM T_CCC_Lot t
+
+                            LEFT JOIN M_Tanka g11 ON t.副資材11 = g11.資材コード AND g11.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g12 ON t.副資材12 = g12.資材コード AND g12.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g13 ON t.副資材13 = g13.資材コード AND g13.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g14 ON t.副資材14 = g14.資材コード AND g14.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g15 ON t.副資材15 = g15.資材コード AND g15.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g16 ON t.副資材16 = g16.資材コード AND g16.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g17 ON t.副資材17 = g17.資材コード AND g17.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g18 ON t.副資材18 = g18.資材コード AND g18.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g19 ON t.副資材19 = g19.資材コード AND g19.メーカーコード = '6519'
+                            LEFT JOIN M_Tanka g20 ON t.副資材20 = g20.資材コード AND g20.メーカーコード = '6519'
+
+                            WHERE t.見積No = " & _target_mitsumori_no & "
+                        )
+
+                        UPDATE T_CCC_Lot
+                        SET 外装資材費 = CTE.計算_外装資材費
+                        FROM T_CCC_Lot
+                        JOIN CTE ON T_CCC_Lot.ID = CTE.ID
+                        WHERE CTE.RN = 1;"
 
         '個装作業
         sql = sql & " UPDATE T_CCC_Lot
