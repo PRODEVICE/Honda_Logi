@@ -62,4 +62,24 @@
     Private Sub Cancel_Click(sender As Object, e As EventArgs) Handles Cancel.Click
         Me.Close()
     End Sub
+
+    Private Sub Txt_Password_TextChanged(sender As Object, e As EventArgs) Handles Txt_Password.TextChanged
+
+    End Sub
+
+    Private Sub Txt_ID_TextChanged(sender As Object, e As EventArgs) Handles Txt_ID.TextChanged
+
+    End Sub
+
+    Private Sub PasswordLabel_Click(sender As Object, e As EventArgs) Handles PasswordLabel.Click
+
+    End Sub
+
+    Private Sub UsernameLabel_Click(sender As Object, e As EventArgs) Handles UsernameLabel.Click
+
+    End Sub
+
+    Private Sub LogoPictureBox_Click(sender As Object, e As EventArgs) Handles LogoPictureBox.Click
+
+    End Sub
 End Class
