@@ -6,6 +6,9 @@ Public Class F_Select_Main
 
     Dim fnc As New Function_Class
 
+    Private Sub F_Select_Main_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+
+    End Sub
 
     '******************************************************************************
     'ボタンクリックイベント
@@ -17,7 +20,7 @@ Public Class F_Select_Main
         Try
 
             'メインメニューへ遷移
-            Dim OpenForm As New F_Main
+            Dim OpenForm As New F_Main(1)
             OpenForm.Show()
 
             Me.Close() '閉じる
@@ -25,7 +28,6 @@ Public Class F_Select_Main
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Select_Main_Main_Btn_Normal_Click")
             MessageBox.Show(ex.Message)
-
         End Try
 
     End Sub
@@ -36,7 +38,7 @@ Public Class F_Select_Main
         Try
 
             'メインメニューへ遷移
-            Dim OpenForm As New F_Main_Manual
+            Dim OpenForm As New F_Main(2)
             OpenForm.Show()
 
             Me.Close() '閉じる
@@ -44,12 +46,9 @@ Public Class F_Select_Main
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Select_Main_Btn_Tokushu")
             MessageBox.Show(ex.Message)
-
         End Try
 
-
     End Sub
-
 
 
 End Class

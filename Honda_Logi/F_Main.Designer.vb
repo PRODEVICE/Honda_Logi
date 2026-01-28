@@ -33,6 +33,7 @@ Partial Class F_Main
         Me.Pnl_Output = New System.Windows.Forms.Panel()
         Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Lbl_Mode = New System.Windows.Forms.Label()
         Me.Pnl_Data.SuspendLayout()
         Me.Pnl_Master.SuspendLayout()
         Me.Pnl_Output.SuspendLayout()
@@ -153,17 +154,30 @@ Partial Class F_Main
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(419, 202)
+        Me.Label1.Location = New System.Drawing.Point(406, 202)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(84, 18)
         Me.Label1.TabIndex = 58
         Me.Label1.Text = "データ出力"
+        '
+        'Lbl_Mode
+        '
+        Me.Lbl_Mode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Lbl_Mode.Font = New System.Drawing.Font("HGｺﾞｼｯｸE", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Lbl_Mode.ForeColor = System.Drawing.Color.Red
+        Me.Lbl_Mode.Location = New System.Drawing.Point(26, 18)
+        Me.Lbl_Mode.Name = "Lbl_Mode"
+        Me.Lbl_Mode.Size = New System.Drawing.Size(188, 36)
+        Me.Lbl_Mode.TabIndex = 65
+        Me.Lbl_Mode.Text = "見積依頼"
+        Me.Lbl_Mode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'F_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(693, 368)
+        Me.Controls.Add(Me.Lbl_Mode)
         Me.Controls.Add(Me.Pnl_Output)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Pnl_Master)
@@ -191,4 +205,5 @@ Partial Class F_Main
     Friend WithEvents Pnl_Output As Panel
     Friend WithEvents Btn_Output As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents Lbl_Mode As Label
 End Class

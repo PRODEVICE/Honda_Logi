@@ -147,12 +147,6 @@
     <Compile Include="F_Login.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_Main_Manual.Designer.vb">
-      <DependentUpon>F_Main_Manual.vb</DependentUpon>
-    </Compile>
-    <Compile Include="F_Main_Manual.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="F_Main.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -282,9 +276,6 @@
   <ItemGroup>
     <EmbeddedResource Include="F_Login.resx">
       <DependentUpon>F_Login.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="F_Main_Manual.resx">
-      <DependentUpon>F_Main_Manual.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Main.resx">
       <DependentUpon>F_Main.vb</DependentUpon>

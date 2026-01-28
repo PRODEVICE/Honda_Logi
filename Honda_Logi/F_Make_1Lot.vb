@@ -22,7 +22,7 @@ Public Class F_Make_1Lot
             Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC
             Dim ta_ccc_1lot As New DS_TTableAdapters.TA_T_CCC_Lot
             Dim ta_ccc_work As New DS_TTableAdapters.TA_T_CCC_Work
-            Dim ta_rireki As New DS_TTableAdapters.TA_T_Inport_Rireki
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
             Dim ta_second As New DS_MTableAdapters.TA_M_Second
             Dim ta_M_naisou As New DS_MTableAdapters.TA_M_Naisou_Shizai
 

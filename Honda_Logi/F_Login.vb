@@ -13,6 +13,7 @@
     Private Sub OK_Click(sender As Object, e As EventArgs) Handles OK.Click
 
         Try
+
             Dim ta_user As New DS_MTableAdapters.TA_M_User
             Dim dt_user As New DS_M.DT_M_UserDataTable
 
@@ -34,18 +35,13 @@
                 kengen = dt_user.Rows(0)("Kengen")
 
                 If kengen = "1" Then
-
-
                     '管理者ならメインメニューへ遷移
                     Dim OpenForm As New F_Select_Main
                     OpenForm.Show()
-
                 Else
-
                     'メインメニューへ遷移
                     Dim OpenForm As New F_Select_Main
                     OpenForm.Show()
-
                 End If
 
                 Me.Close() ' ログイン成功で閉じる

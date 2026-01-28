@@ -22,38 +22,15 @@ Partial Class F_Make_1Lot
     'コード エディターを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Dtp_Nengetu = New System.Windows.Forms.DateTimePicker()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Btn_Change = New System.Windows.Forms.Button()
         Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Lbl_Messege = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'Dtp_Nengetu
-        '
-        Me.Dtp_Nengetu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Dtp_Nengetu.Location = New System.Drawing.Point(204, 94)
-        Me.Dtp_Nengetu.Name = "Dtp_Nengetu"
-        Me.Dtp_Nengetu.Size = New System.Drawing.Size(200, 23)
-        Me.Dtp_Nengetu.TabIndex = 34
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(204, 72)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(74, 18)
-        Me.Label3.TabIndex = 33
-        Me.Label3.Text = "対象年月"
-        '
         'Btn_Change
         '
         Me.Btn_Change.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Change.Location = New System.Drawing.Point(133, 172)
+        Me.Btn_Change.Location = New System.Drawing.Point(139, 118)
         Me.Btn_Change.Name = "Btn_Change"
         Me.Btn_Change.Size = New System.Drawing.Size(124, 65)
         Me.Btn_Change.TabIndex = 32
@@ -63,7 +40,7 @@ Partial Class F_Make_1Lot
         'Btn_Output
         '
         Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Output.Location = New System.Drawing.Point(369, 172)
+        Me.Btn_Output.Location = New System.Drawing.Point(359, 118)
         Me.Btn_Output.Name = "Btn_Output"
         Me.Btn_Output.Size = New System.Drawing.Size(124, 65)
         Me.Btn_Output.TabIndex = 35
@@ -89,8 +66,6 @@ Partial Class F_Make_1Lot
         Me.ClientSize = New System.Drawing.Size(615, 296)
         Me.Controls.Add(Me.Lbl_Messege)
         Me.Controls.Add(Me.Btn_Output)
-        Me.Controls.Add(Me.Dtp_Nengetu)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Btn_Change)
         Me.Name = "F_Make_1Lot"
         Me.Text = "データ変換"
@@ -98,9 +73,6 @@ Partial Class F_Make_1Lot
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Dtp_Nengetu As DateTimePicker
-    Friend WithEvents Label3 As Label
     Friend WithEvents Btn_Change As Button
     Friend WithEvents Btn_Output As Button
     Friend WithEvents Lbl_Messege As Label

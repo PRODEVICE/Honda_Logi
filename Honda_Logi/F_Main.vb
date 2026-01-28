@@ -1,5 +1,13 @@
 ﻿Public Class F_Main
 
+    Private _mode As Integer
+
+    ' コンストラクタを追加
+    Public Sub New(mode As Integer)
+        InitializeComponent()
+        _mode = mode
+    End Sub
+
     'ページロード時
     Private Sub F_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
@@ -19,6 +27,14 @@
                 Pnl_Master.Visible = False
             End If
 
+            'モードによって表示制御
+            If _mode = 1 Then
+                Lbl_Mode.Visible = False
+
+            ElseIf _mode = 2 Then
+                Lbl_Mode.Visible = True
+            End If
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -28,9 +44,8 @@
     'ページクローズ時
     Private Sub F_Main_Closed(sender As Object, e As EventArgs) Handles Me.Closed
 
-        'たまにゴミが残るので
-        Application.Exit()
-        Environment.Exit(0)
+        Dim OpenForm As New F_Select_Main
+        OpenForm.Show()
 
     End Sub
 
@@ -40,13 +55,13 @@
 
     'データ取込ボタンクリック時
     Private Sub Btn_Receive_Click(sender As Object, e As EventArgs) Handles Btn_Receive.Click
-        Dim OpenForm As New F_Receive
+        Dim OpenForm As New F_Receive(_mode)
         OpenForm.ShowDialog()
     End Sub
 
     'データ出力ボタンクリック時
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Btn_Output.Click
-        Dim OpenForm As New F_Print_Main
+        Dim OpenForm As New F_Print_Main(_mode)
         OpenForm.ShowDialog()
     End Sub
 

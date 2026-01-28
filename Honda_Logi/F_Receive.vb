@@ -8,6 +8,14 @@ Public Class F_Receive
 
     Dim fnc As New Function_Class
 
+    Private _mode As Integer
+
+    ' コンストラクタを追加
+    Public Sub New(mode As Integer)
+        InitializeComponent()
+        _mode = mode
+    End Sub
+
     'ページロード時
     Private Sub F_Receive_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -89,85 +97,127 @@ Public Class F_Receive
 
                 Using tran As SqlTransaction = conn.BeginTransaction()
 
-                    Try
+                    '通常モードなら
+                    If _mode = 1 Then
 
-                        '取込が行われたかを判別
-                        Dim ccc_flg As Boolean = False
-                        Dim kow46_flg As Boolean = False
-                        Dim kit60_flg As Boolean = False
-                        Dim gyoumu_flg As Boolean = False
-                        Dim order_flg As Boolean = False
+                        Try
 
-                        '見積番号取得
-                        Dim mitsumori_no_old As Integer '1個前の値も後の処理の為に取得しておく
-                        Dim mitsumori_no As Integer = Get_No(conn, tran, mitsumori_no_old)
+                            '取込が行われたかを判別
+                            Dim ccc_flg As Boolean = False
+                            Dim kow46_flg As Boolean = False
+                            Dim kit60_flg As Boolean = False
+                            Dim gyoumu_flg As Boolean = False
+                            Dim order_flg As Boolean = False
 
+                            '見積番号取得
+                            Dim mitsumori_no_old As Integer '1個前の値も後の処理の為に取得しておく
+                            Dim mitsumori_no As Integer = Get_No(conn, tran, mitsumori_no_old)
 
-                        '1ファイルずつ処理
-                        For Each filePath As String In files
+                            '1ファイルずつ処理
+                            For Each filePath As String In files
 
-                            Dim fileName As String = Path.GetFileName(filePath)
+                                Dim fileName As String = Path.GetFileName(filePath)
 
-                            If fileName.Contains("CCC") Then
+                                If fileName.Contains("CCC") Then
 
-                                Inport_CCC(filePath, nengetu, mitsumori_no, conn, tran)
-                                ccc_flg = True
+                                    Import_CCC(filePath, nengetu, mitsumori_no, conn, tran)
+                                    ccc_flg = True
 
-                            ElseIf fileName.Contains("KOW46") Then
+                                ElseIf fileName.Contains("KOW46") Then
 
-                                Inport_KOW46(filePath, nengetu, mitsumori_no, conn, tran)
-                                kow46_flg = True
+                                    Import_KOW46(filePath, nengetu, mitsumori_no, conn, tran)
+                                    kow46_flg = True
 
-                            ElseIf fileName.Contains("KIT60") Then
+                                ElseIf fileName.Contains("KIT60") Then
 
-                                Inport_KIT60(filePath, nengetu, mitsumori_no, conn, tran)
-                                kit60_flg = True
+                                    Import_KIT60(filePath, nengetu, mitsumori_no, conn, tran)
+                                    kit60_flg = True
 
-                            ElseIf fileName.Contains("業務量") Then
+                                ElseIf fileName.Contains("業務量") Then
 
-                                Inport_Gyoumu(filePath, nengetu, mitsumori_no, conn, tran)
-                                gyoumu_flg = True
+                                    Import_Gyoumu(filePath, nengetu, mitsumori_no, conn, tran)
+                                    gyoumu_flg = True
 
-                            ElseIf fileName.Contains("部品単位") Then
+                                ElseIf fileName.Contains("部品単位") Then
 
-                                Inport_Order(filePath, nengetu, mitsumori_no, conn, tran)
-                                order_flg = True
+                                    Import_Order(filePath, nengetu, mitsumori_no, conn, tran)
+                                    order_flg = True
 
+                                End If
+
+                            Next
+
+                            '取り込んでいないファイルがある場合は、直前の見積Noの値をインサートする
+                            If ccc_flg = False Then
+                                Copy_Tran(conn, tran, "T_CCC", mitsumori_no_old, mitsumori_no)
+                            End If
+                            If kow46_flg = False Then
+                                Copy_Tran(conn, tran, "T_KOW46", mitsumori_no_old, mitsumori_no)
+                            End If
+                            If kit60_flg = False Then
+                                Copy_Tran(conn, tran, "T_KIT60", mitsumori_no_old, mitsumori_no)
+                            End If
+                            If gyoumu_flg = False Then
+                                Copy_Tran(conn, tran, "T_Gyomu_Plan", mitsumori_no_old, mitsumori_no)
+                            End If
+                            If order_flg = False Then
+                                Copy_Tran(conn, tran, "T_Buhin_Order_List", mitsumori_no_old, mitsumori_no)
                             End If
 
-                        Next
+                            '履歴テーブルに登録
+                            Import_Rireki(conn, tran, mitsumori_no, nengetu)
 
-                        '取り込んでいないファイルがある場合は、直前の見積Noの値をインサートする
-                        If ccc_flg = False Then
-                            Copy_Tran(conn, tran, "T_CCC", mitsumori_no_old, mitsumori_no)
-                        End If
-                        If kow46_flg = False Then
-                            Copy_Tran(conn, tran, "T_KOW46", mitsumori_no_old, mitsumori_no)
-                        End If
-                        If kit60_flg = False Then
-                            Copy_Tran(conn, tran, "T_KIT60", mitsumori_no_old, mitsumori_no)
-                        End If
-                        If gyoumu_flg = False Then
-                            Copy_Tran(conn, tran, "T_Gyomu_Plan", mitsumori_no_old, mitsumori_no)
-                        End If
-                        If order_flg = False Then
-                            Copy_Tran(conn, tran, "T_Buhin_Order_List", mitsumori_no_old, mitsumori_no)
-                        End If
+                            ' 全て成功したらコミット
+                            tran.Commit()
 
-                        '履歴テーブルに登録
-                        Inport_Rireki(conn, tran, mitsumori_no, nengetu)
+                            '対象ファイルをBKフォルダに移動
+                            File_Move(targetFolder, files)
 
-                        ' 全て成功したらコミット
-                        tran.Commit()
+                        Catch ex As Exception
+                            ' どれか失敗したらロールバック
+                            tran.Rollback()
+                            Throw
+                        End Try
 
-                        '対象ファイルをBKフォルダに移動
-                        File_Move(targetFolder, files)
 
-                    Catch ex As Exception
-                        ' どれか失敗したらロールバック
-                        tran.Rollback()
-                        Throw
-                    End Try
+                    ElseIf _mode = 2 Then '見積依頼モードなら
+
+                        Try
+
+                            '見積番号取得
+                            Dim mitsumori_no_old As Integer
+                            Dim mitsumori_no As Integer = Get_No(conn, tran, mitsumori_no_old)
+
+                            '1ファイルずつ処理
+                            For Each filePath As String In files
+
+                                Dim fileName As String = Path.GetFileName(filePath)
+
+                                If fileName.Contains("CCC") Then
+
+                                    Import_CCC_Manual(filePath, nengetu, mitsumori_no, conn, tran)
+
+                                End If
+
+                            Next
+
+                            '履歴テーブルに登録
+                            Import_Rireki(conn, tran, mitsumori_no, nengetu)
+
+                            ' 全て成功したらコミット
+                            tran.Commit()
+
+                            '対象ファイルをBKフォルダに移動
+                            File_Move(targetFolder, files)
+
+                        Catch ex As Exception
+                            ' どれか失敗したらロールバック
+                            tran.Rollback()
+                            Throw
+                        End Try
+
+                    End If
+
 
                 End Using
 
@@ -191,7 +241,7 @@ Public Class F_Receive
     '**********************************************************************************
 
     'CCCファイル取り込み処理
-    Sub Inport_CCC(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
+    Sub Import_CCC(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -562,8 +612,351 @@ Public Class F_Receive
 
     End Sub
 
+    '見積依頼用_CCCファイル取り込み処理
+    Sub Import_CCC_Manual(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
+
+        Try
+
+            Dim dt_ccc As New DS_T.DT_T_CCC_ManualDataTable
+            Dim batchSize As Integer = 5000
+            Dim batchCount As Integer = 0
+
+            Using bulk As New SqlBulkCopy(conn, SqlBulkCopyOptions.Default, tran)
+
+                bulk.DestinationTableName = "T_CCC_Manual"
+                bulk.BatchSize = batchSize
+
+                Dim dtBatch As DataTable = dt_ccc.Clone()
+
+                ' Excel 読み込み
+                Using wb As New XLWorkbook(_file_path)
+
+                    Dim ws = wb.Worksheet(1)    ' 1枚目のシートと仮定
+
+                    Dim startRow As Integer = 8 ' データ開始行（ヘッダが1行目なら2）
+                    Dim endRow As Integer = ws.Column(50).LastCellUsed().Address.RowNumber '50列のコントロールNoに値が入っている最終行を取得
+                    Dim startCol As Integer = 1  ' A列
+                    Dim endCol As Integer = 282   ' IP列
+                    Dim currentRow As Integer = startRow
+
+                    For r As Integer = startRow To endRow
+
+                        Dim dr As DataRow = dtBatch.NewRow()
+
+                        dr("工程管理ｼｽﾃﾑ日付") = ""
+                        dr("処理ID") = ""
+                        dr("包装指示1") = ""
+                        dr("コンテンツ1") = ""
+                        dr("パッケージコンテンツ1") = ""
+                        dr("パッキングチェックシート1") = ""
+                        dr("ケースマーク1") = ""
+                        dr("部品管理エフ1") = ""
+                        dr("包装指示2") = ""
+                        dr("コンテンツ2") = ""
+                        dr("パッケージコンテンツ2") = ""
+                        dr("パッキングチェックシート2") = ""
+                        dr("ケースマーク2") = ""
+                        dr("部品管理エフ2") = ""
+                        dr("包装指示3") = ""
+                        dr("コンテンツ3") = ""
+                        dr("パッケージコンテンツ3") = ""
+                        dr("パッキングチェックシート3") = ""
+                        dr("ケースマーク3") = ""
+                        dr("部品管理エフ3") = ""
+                        dr("包装指示4") = ""
+                        dr("コンテンツ4") = ""
+                        dr("パッケージコンテンツ4") = ""
+                        dr("パッキングチェックシート4") = ""
+                        dr("ケースマーク4") = ""
+                        dr("部品管理エフ4") = ""
+                        dr("予約1") = ""
+                        dr("予約2") = ""
+                        dr("予約3") = ""
+                        dr("予約4") = ""
+                        dr("予約5") = ""
+                        dr("アイテムNO表示") = ""
+                        dr("KD部番表示区分") = ""
+                        dr("C_M重量表示要否") = ""
+                        dr("A_Sフォーマット") = ""
+                        dr("A_S日本表示形式") = ""
+                        dr("A_S現地表示形式") = ""
+                        dr("A_S輸出部品名称") = ""
+                        dr("P_ﾘｽﾄ2ND記述") = ""
+                        dr("包装資材表示要否") = ""
+                        dr("オプション表示区分") = ""
+                        dr("機種コード表示区分") = ""
+                        dr("予約6") = ""
+                        dr("原産国表示要否") = ""
+                        dr("対応要否_10_2") = ""
+                        dr("対応要否_5品目") = ""
+                        dr("包装SS") = ""
+                        dr("汎区分24") = ""
+                        dr("PC_NO") = ""
+                        dr("ｺﾝﾄﾛｰﾙNO") = ws.Cell(currentRow, 50).Value
+                        dr("年度1") = ""
+                        dr("モデル1") = ""
+                        dr("モデフNO") = ""
+                        dr("ケースNO1") = ws.Cell(currentRow, 54).Value
+                        dr("レコードID") = ""
+                        dr("バッチ処理エラーコード") = ""
+                        dr("量産_枠外区分") = ""
+                        dr("インボイスNO") = ""
+                        dr("代表DIST") = ws.Cell(currentRow, 59).Value
+                        dr("部品群") = ""
+                        dr("包装ロットNO") = ""
+                        dr("包装ロット連番") = ""
+                        dr("現地工場コード") = ""
+                        dr("現地ラインNO1") = ""
+                        dr("年1") = ""
+                        dr("月1") = ""
+                        dr("連番1") = ""
+                        dr("サフィックス") = ""
+                        dr("K_Y_KD1") = ""
+                        dr("年度2") = ws.Cell(currentRow, 70).Value
+                        dr("モデル2") = ws.Cell(currentRow, 71).Value
+                        dr("タイプ1") = ws.Cell(currentRow, 72).Value
+                        dr("オプション1") = ws.Cell(currentRow, 73).Value
+                        dr("外装HES1") = ""
+                        dr("内装タイプ1") = ""
+                        dr("K_Y_KD2") = ""
+                        dr("年度3") = ""
+                        dr("モデル3") = ""
+                        dr("タイプ2") = ""
+                        dr("群") = ""
+                        dr("外装HES2") = ""
+                        dr("内装タイプ2") = ""
+                        dr("K_Y_KD3") = ""
+                        dr("年度4") = ""
+                        dr("モデル4") = ""
+                        dr("タイプ3") = ""
+                        dr("オプション2") = ""
+                        dr("外装HES3") = ""
+                        dr("内装タイプ3") = ""
+                        dr("MIX区分") = ""
+                        dr("代表区分1") = ""
+                        dr("包装仕様有無区分") = ""
+                        dr("包装場") = ""
+                        dr("オーダー区分") = ""
+                        dr("オーダー経歴NO") = ""
+                        dr("配送先DIST") = ""
+                        dr("オーダー元プラント") = ""
+                        dr("現地ラインNO2") = ""
+                        dr("モデル年度") = ""
+                        dr("オーダー理由コード") = ""
+                        dr("オーダー年月日SEQ") = ""
+                        dr("シップメントNO") = ""
+                        dr("基本生産計画区分") = ""
+                        dr("計画年月") = ""
+                        dr("計画改訂NO") = ""
+                        dr("計画コード") = ""
+                        dr("包装予定日") = ""
+                        dr("計画確定区分") = ""
+                        dr("SS") = ""
+                        dr("本社製品区分") = ""
+                        dr("年2") = ""
+                        dr("月2") = ""
+                        dr("連番2") = ""
+                        dr("包装数量") = ws.Cell(currentRow, 114).Value
+                        dr("個装ライン") = ""
+                        dr("内装ライン") = ""
+                        dr("包装ライン_外装") = ws.Cell(currentRow, 117).Value
+                        dr("ケース順位") = ""
+                        dr("包装ロット台数") = ""
+                        dr("ケース保税区分") = ""
+                        dr("ケースグロスL") = ""
+                        dr("ケースグロスW") = ""
+                        dr("ケースグロスH") = ""
+                        dr("ケースグロス容量M3") = ""
+                        dr("ケースネットL") = ""
+                        dr("ケースネットW") = ""
+                        dr("ケースネットH") = ""
+                        dr("ケースネット容量M3") = ""
+                        dr("ケースネット重量") = ""
+                        dr("ケース重量計画値") = ws.Cell(currentRow, 130).Value
+                        dr("ケース実績重量") = ""
+                        dr("ケース重量測定要求") = ""
+                        dr("初物部品ケースサイン") = ""
+                        dr("エンジンASSYサイン") = ""
+                        dr("K_Y_KD4") = ""
+                        dr("年度5") = ""
+                        dr("モデル5") = ""
+                        dr("タイプ4") = ""
+                        dr("オプション3") = ""
+                        dr("外装HES4") = ""
+                        dr("内装タイプ4") = ""
+                        dr("エンジン入り数") = ""
+                        dr("パッキングNO") = ""
+                        dr("FILLER1") = ""
+                        dr("オーダーアイテムNO") = ""
+                        dr("ITEM") = ""
+                        dr("基本部番") = ws.Cell(currentRow, 147).Value
+                        dr("設変部番") = ""
+                        dr("KD部番") = ""
+                        dr("部品色") = ""
+                        dr("輸出部品名称") = ws.Cell(currentRow, 151).Value
+                        dr("第二外国語名称") = ""
+                        dr("主管SS") = ""
+                        dr("現地ロケーションNO") = ""
+                        dr("部品単位重量") = ""
+                        dr("個装資材記号") = ws.Cell(currentRow, 156).Value
+                        dr("個装手順SEQ") = ""
+                        dr("部品収容数") = ws.Cell(currentRow, 158).Value
+                        dr("個装担当NO") = ""
+                        dr("内装資材記号") = ws.Cell(currentRow, 160).Value
+                        dr("内装手順SEQ") = ""
+                        dr("内装NO") = ""
+                        dr("個装入り数") = ws.Cell(currentRow, 163).Value
+                        dr("内装担当NO") = ""
+                        dr("外装資材記号") = ws.Cell(currentRow, 165).Value
+                        dr("モジュール手順SEQ") = ""
+                        dr("内装入り数") = ws.Cell(currentRow, 167).Value
+                        dr("外装担当NO1") = ""
+                        dr("外装担当NO2") = ""
+                        dr("台当り使用個数") = ""
+                        dr("包装指示数") = ""
+                        dr("ケース個内装荷姿必要") = ""
+                        dr("コンテンツ必要枚数") = ""
+                        dr("要否区分") = ""
+                        dr("品質チェック要否") = ""
+                        dr("取引先NO") = ""
+                        dr("搬入ホーム") = ""
+                        dr("海事専用機種名称") = ""
+                        dr("包装特性1") = ""
+                        dr("包装特性2") = ""
+                        dr("包装特性3") = ""
+                        dr("包装特性4") = ""
+                        dr("包装特性5") = ""
+                        dr("FILLER2") = ""
+                        dr("部品包装特性1") = ""
+                        dr("部品包装特性2") = ""
+                        dr("部品包装特性3") = ""
+                        dr("部品包装特性4") = ""
+                        dr("部品包装特性5") = ""
+                        dr("内装総重量") = ""
+                        dr("代表区分2") = ws.Cell(currentRow, 191).Value
+                        dr("副資材1") = ws.Cell(currentRow, 192).Value
+                        dr("必要数1") = ws.Cell(currentRow, 193).Value
+                        dr("代表区分3") = ws.Cell(currentRow, 194).Value
+                        dr("副資材2") = ws.Cell(currentRow, 195).Value
+                        dr("必要数2") = ws.Cell(currentRow, 196).Value
+                        dr("代表区分4") = ws.Cell(currentRow, 197).Value
+                        dr("副資材3") = ws.Cell(currentRow, 198).Value
+                        dr("必要数3") = ws.Cell(currentRow, 199).Value
+                        dr("代表区分5") = ws.Cell(currentRow, 200).Value
+                        dr("副資材4") = ws.Cell(currentRow, 201).Value
+                        dr("必要数4") = ws.Cell(currentRow, 202).Value
+                        dr("代表区分6") = ws.Cell(currentRow, 203).Value
+                        dr("副資材5") = ws.Cell(currentRow, 204).Value
+                        dr("必要数5") = ws.Cell(currentRow, 205).Value
+                        dr("代表区分7") = ws.Cell(currentRow, 206).Value
+                        dr("副資材6") = ws.Cell(currentRow, 207).Value
+                        dr("必要数6") = ws.Cell(currentRow, 208).Value
+                        dr("代表区分8") = ws.Cell(currentRow, 209).Value
+                        dr("副資材7") = ws.Cell(currentRow, 210).Value
+                        dr("必要数7") = ws.Cell(currentRow, 211).Value
+                        dr("代表区分9") = ws.Cell(currentRow, 212).Value
+                        dr("副資材8") = ws.Cell(currentRow, 213).Value
+                        dr("必要数8") = ws.Cell(currentRow, 214).Value
+                        dr("代表区分10") = ws.Cell(currentRow, 215).Value
+                        dr("副資材9") = ws.Cell(currentRow, 216).Value
+                        dr("必要数9") = ws.Cell(currentRow, 217).Value
+                        dr("代表区分11") = ws.Cell(currentRow, 218).Value
+                        dr("副資材10") = ws.Cell(currentRow, 219).Value
+                        dr("必要数10") = ws.Cell(currentRow, 220).Value
+                        dr("代表区分12") = ws.Cell(currentRow, 221).Value
+                        dr("副資材11") = ws.Cell(currentRow, 222).Value
+                        dr("必要数11") = ws.Cell(currentRow, 223).Value
+                        dr("代表区分13") = ws.Cell(currentRow, 224).Value
+                        dr("副資材12") = ws.Cell(currentRow, 225).Value
+                        dr("必要数12") = ws.Cell(currentRow, 226).Value
+                        dr("代表区分14") = ws.Cell(currentRow, 227).Value
+                        dr("副資材13") = ws.Cell(currentRow, 228).Value
+                        dr("必要数13") = ws.Cell(currentRow, 229).Value
+                        dr("代表区分15") = ws.Cell(currentRow, 230).Value
+                        dr("副資材14") = ws.Cell(currentRow, 231).Value
+                        dr("必要数14") = ws.Cell(currentRow, 232).Value
+                        dr("代表区分16") = ws.Cell(currentRow, 233).Value
+                        dr("副資材15") = ws.Cell(currentRow, 234).Value
+                        dr("必要数15") = ws.Cell(currentRow, 235).Value
+                        dr("代表区分17") = ws.Cell(currentRow, 236).Value
+                        dr("副資材16") = ws.Cell(currentRow, 237).Value
+                        dr("必要数16") = ws.Cell(currentRow, 238).Value
+                        dr("代表区分18") = ws.Cell(currentRow, 239).Value
+                        dr("副資材17") = ws.Cell(currentRow, 240).Value
+                        dr("必要数17") = ws.Cell(currentRow, 241).Value
+                        dr("代表区分19") = ws.Cell(currentRow, 242).Value
+                        dr("副資材18") = ws.Cell(currentRow, 243).Value
+                        dr("必要数18") = ws.Cell(currentRow, 244).Value
+                        dr("代表区分20") = ws.Cell(currentRow, 245).Value
+                        dr("副資材19") = ws.Cell(currentRow, 246).Value
+                        dr("必要数19") = ws.Cell(currentRow, 247).Value
+                        dr("代表区分21") = ws.Cell(currentRow, 248).Value
+                        dr("副資材20") = ws.Cell(currentRow, 249).Value
+                        dr("必要数20") = ws.Cell(currentRow, 250).Value
+                        dr("ダイレクト包装記号1") = ""
+                        dr("リターナブル区分1") = ""
+                        dr("ダイレクト包装記号2") = ""
+                        dr("リターナブル区分2") = ""
+                        dr("ダイレクト包装記号3") = ""
+                        dr("リターナブル区分3") = ""
+                        dr("HNS") = ""
+                        dr("保税区分") = ""
+                        dr("エンジンASSY区分") = ""
+                        dr("部品特性3") = ""
+                        dr("部品特性4") = ""
+                        dr("部品特性5") = ""
+                        dr("部品特性6") = ""
+                        dr("原産国コード1") = ""
+                        dr("外産品区分1") = ""
+                        dr("部品特性10") = ""
+                        dr("FILLER3") = ""
+                        dr("DIST名称") = ""
+                        dr("基本部番ハイフン付") = ""
+                        dr("設変部番ハイフン付") = ""
+                        dr("部品特性フラブ") = ""
+                        dr("部品属性4") = ""
+                        dr("輸送手段") = ""
+                        dr("実績有無区分") = ""
+                        dr("実績数量") = ""
+                        dr("種別NO") = ""
+                        dr("原産国コード2") = ""
+                        dr("外産品区分2") = ""
+                        dr("モジュールコード") = ""
+                        dr("ケースNO2") = ""
+                        dr("転送日時") = ""
+                        dr("FILLER4") = ""
+                        dr("取込年月") = _nengetu
+                        dr("見積No") = _mitsumori_no
+
+                        dtBatch.Rows.Add(dr)
+                        batchCount += 1
+
+                        '規定値を超えたらインサート処理
+                        If batchCount >= batchSize Then
+                            bulk.WriteToServer(dtBatch)
+                            dtBatch.Clear()
+                            batchCount = 0
+                        End If
+
+                    Next
+
+                    ' 残りのレコードを挿入
+                    If dtBatch.Rows.Count > 0 Then
+                        bulk.WriteToServer(dtBatch)
+                    End If
+
+                End Using
+
+            End Using 'SqlBulkCopy
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
     'KOW46ファイル取り込み処理
-    Sub Inport_KOW46(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
+    Sub Import_KOW46(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
 
         Try
             Dim dt_kow As New DS_T.DT_T_KOW46DataTable
@@ -652,7 +1045,7 @@ Public Class F_Receive
     End Sub
 
     'KIT60ファイル取り込み処理
-    Sub Inport_KIT60(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
+    Sub Import_KIT60(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -735,7 +1128,7 @@ Public Class F_Receive
     End Sub
 
     '業務ファイル取り込み処理
-    Sub Inport_Gyoumu(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
+    Sub Import_Gyoumu(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -818,7 +1211,7 @@ Public Class F_Receive
 
 
     '部品オーダーリストファイル取り込み処理
-    Sub Inport_Order(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
+    Sub Import_Order(_file_path As String, _nengetu As String, _mitsumori_no As Integer, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -1027,13 +1420,13 @@ Public Class F_Receive
     End Sub
 
     'インポート履歴の登録
-    Sub Inport_Rireki(conn As SqlConnection, tran As SqlTransaction, _mitumori_no As Integer, _nengestu As String)
+    Sub Import_Rireki(conn As SqlConnection, tran As SqlTransaction, _mitumori_no As Integer, _nengestu As String)
 
         Try
 
             Dim insert_sql As String =
-                "INSERT INTO T_Inport_Rireki (見積No, 取込年月, 取込日時, ユーザーid, 変換フラグ) " &
-                "VALUES (@見積No, @取込年月, @取込日時, @ユーザーid, @変換フラグ)"
+                "INSERT INTO T_Import_Rireki (見積No, 取込年月, 取込日時, ユーザーid, 変換フラグ,モード区分) " &
+                "VALUES (@見積No, @取込年月, @取込日時, @ユーザーid, @変換フラグ,@モード区分)"
 
             Using cmd As New SqlClient.SqlCommand(insert_sql, conn, tran)
 
@@ -1043,6 +1436,7 @@ Public Class F_Receive
                 cmd.Parameters.AddWithValue("@取込日時", Now.ToString("yyyy/MM/dd HH:mm:ss"))
                 cmd.Parameters.AddWithValue("@ユーザーid", "")
                 cmd.Parameters.AddWithValue("@変換フラグ", "0")
+                cmd.Parameters.AddWithValue("@モード区分", _mode)
 
                 ' 実行
                 cmd.ExecuteNonQuery()
