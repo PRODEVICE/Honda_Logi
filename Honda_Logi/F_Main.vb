@@ -73,7 +73,7 @@
 
     '変換ボタンクリック時
     Private Sub Btn_Change_Click(sender As Object, e As EventArgs) Handles Btn_Change.Click
-        Dim OpenForm As New F_Make_1Lot
+        Dim OpenForm As New F_Make_1Lot(_mode)
         OpenForm.ShowDialog()
     End Sub
 

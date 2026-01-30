@@ -930,6 +930,7 @@ Public Class F_Receive
 
                         dtBatch.Rows.Add(dr)
                         batchCount += 1
+                        currentRow = currentRow + 1
 
                         '規定値を超えたらインサート処理
                         If batchCount >= batchSize Then
