@@ -46,31 +46,85 @@ Public Class F_Print_Sub_Mitsumori2
 
             Dim keisu_flg As Boolean = Chk_Keisu_Flg.Checked
 
+            Dim old_master_flg As Boolean = False
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
+
             Dim dt As New DataTable
             Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
 
             ' ストアド実行
             Using conn As New SqlConnection(connectionString)
 
-                Using cmd As New SqlCommand("Proc2_4_見積書_機種_見積依頼", conn)
+                conn.Open()
 
-                    'タイムアウト設定
-                    cmd.CommandTimeout = 1200
-                    cmd.CommandType = CommandType.StoredProcedure
+                ' トランザクション開始
+                Using tran As SqlTransaction = conn.BeginTransaction()
 
-                    ' ★ 必要なら引数を追加
-                    cmd.Parameters.AddWithValue("@Debug", 0)
-                    cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+                    ta_rireki.Connection = conn
+                    ta_rireki.Transaction = tran
 
-                    Dim da As New SqlDataAdapter(cmd)
-                    da.Fill(dt)
+                    Try
 
-                End Using
+                        '最新の見積Noでなければ確認ダイアログ表示
+                        Dim mitsumori_no As String = Cmb_Target.SelectedValue
+                        Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("2")
 
-                'Excelに描画
-                ExportToExcel(dt, keisu_flg, 2)
+                        If mitsumori_no <> new_mitsumori_no Then
 
-            End Using
+                            If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+
+                                'Yesなら
+                                old_master_flg = True
+
+                                '最新をBKに保存、対象のBKを本番にインサート
+                                fnc.Master_Change_Start(new_mitsumori_no, mitsumori_no, conn, tran)
+
+                            End If
+
+                        End If
+
+                        Using cmd As New SqlCommand("Proc2_4_見積書_機種_見積依頼", conn, tran)
+
+                            cmd.CommandTimeout = 1200
+                            cmd.CommandType = CommandType.StoredProcedure
+
+                            cmd.Parameters.AddWithValue("@Debug", 0)
+                            cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+
+                            Dim da As New SqlDataAdapter(cmd)
+                            da.Fill(dt)
+
+                        End Using
+
+                        ' Excel処理にコネクションとトランザクションを渡す
+                        ExportToExcel(dt, keisu_flg, 2, conn, tran)
+
+
+                        '過去マスタを読み込んでいた場合は最新版に戻す
+                        If old_master_flg = True Then
+
+                            '保存したBKを本番に戻す
+                            fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                            old_master_flg = False
+
+                        End If
+
+                        'ここまで全部成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' どこかでエラーが出たら全部ロールバック
+                        tran.Rollback()
+                        Throw
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
+
+
+
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Print_Sub_Mitsumori2_Btn_Output_Click")
@@ -88,7 +142,7 @@ Public Class F_Print_Sub_Mitsumori2
     '******************************************************************************
 
     '見積書(機種)作成処理
-    Private Sub ExportToExcel(dt As DataTable, _keisu_flg As Boolean, _mode As Integer)
+    Private Sub ExportToExcel(dt As DataTable, _keisu_flg As Boolean, _mode As Integer, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -107,6 +161,15 @@ Public Class F_Print_Sub_Mitsumori2
             Dim dt_keisu As New DS_M.DT_M_KeisuDataTable
             Dim ta_keisu As New DS_MTableAdapters.TA_M_Keisu
             Dim ta_rate As New DS_MTableAdapters.TA_M_Rate
+
+
+            ta_keisu.Connection = conn
+            ta_keisu.Transaction = tran
+
+            ta_rate.Connection = conn
+            ta_rate.Transaction = tran
+
+
             Dim keisu As Decimal = 0
             Dim rate As Decimal = ta_rate.Q_賃率取得
 
@@ -264,11 +327,12 @@ Public Class F_Print_Sub_Mitsumori2
 
             MessageBox.Show("Excel へ出力しました：" & vbCrLf & savePath)
 
-
         Catch ex As Exception
             Throw
         End Try
 
     End Sub
+
+
 
 End Class

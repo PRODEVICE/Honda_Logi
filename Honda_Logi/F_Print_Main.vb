@@ -40,11 +40,12 @@ Public Class F_Print_Main
         Try
 
             '待機状態
+            Cursor.Current = Cursors.WaitCursor
             Lbl_Messege.Visible = True
             Application.DoEvents()    ' ★ UIを即時更新
 
-            Cursor.Current = Cursors.WaitCursor
-
+            Dim old_master_flg As Boolean = False
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
 
             Dim dt As New DataTable
             Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
@@ -52,25 +53,74 @@ Public Class F_Print_Main
             ' ストアド実行
             Using conn As New SqlConnection(connectionString)
 
-                Using cmd As New SqlCommand("Proc2_2_見積書_部単内装", conn)
+                conn.Open()
 
-                    'タイムアウト設定
-                    cmd.CommandTimeout = 1200
-                    cmd.CommandType = CommandType.StoredProcedure
+                ' トランザクション開始
+                Using tran As SqlTransaction = conn.BeginTransaction()
 
-                    ' ★ 必要なら引数を追加
-                    cmd.Parameters.AddWithValue("@Debug", 0)
-                    cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+                    ta_rireki.Connection = conn
+                    ta_rireki.Transaction = tran
 
-                    Dim da As New SqlDataAdapter(cmd)
-                    da.Fill(dt)
+                    Try
 
-                End Using
+                        '最新の見積Noでなければ確認ダイアログ表示
+                        Dim mitsumori_no As String = Cmb_Target.SelectedValue
+                        Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("1")
 
-                'Excelに描画
-                ExportToExcel5(dt)
+                        If mitsumori_no <> new_mitsumori_no Then
 
-            End Using
+                            If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+
+                                'Yesなら
+                                old_master_flg = True
+
+                                '最新をBKに保存、対象のBKを本番にインサート
+                                fnc.Master_Change_Start(new_mitsumori_no, mitsumori_no, conn, tran)
+
+                            End If
+
+                        End If
+
+                        Using cmd As New SqlCommand("Proc2_2_見積書_部単内装", conn, tran)
+
+                            'タイムアウト設定
+                            cmd.CommandTimeout = 1200
+                            cmd.CommandType = CommandType.StoredProcedure
+
+                            ' ★ 必要なら引数を追加
+                            cmd.Parameters.AddWithValue("@Debug", 0)
+                            cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+
+                            Dim da As New SqlDataAdapter(cmd)
+                            da.Fill(dt)
+
+                        End Using
+
+                        'Excelに描画
+                        ExportToExcel5(dt)
+
+                        '過去マスタを読み込んでいた場合は最新版に戻す
+                        If old_master_flg = True Then
+
+                            '保存したBKを本番に戻す
+                            fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                            old_master_flg = False
+
+                        End If
+
+                        'ここまで全部成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' どこかでエラーが出たら全部ロールバック
+                        tran.Rollback()
+                        Throw
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Print_Main_Btn_Output5_Click")
@@ -89,10 +139,12 @@ Public Class F_Print_Main
         Try
 
             '待機状態
+            Cursor.Current = Cursors.WaitCursor
             Lbl_Messege.Visible = True
             Application.DoEvents()    ' ★ UIを即時更新
 
-            Cursor.Current = Cursors.WaitCursor
+            Dim old_master_flg As Boolean = False
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
 
             Dim dt As New DataTable
             Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
@@ -100,25 +152,74 @@ Public Class F_Print_Main
             ' ストアド実行
             Using conn As New SqlConnection(connectionString)
 
-                Using cmd As New SqlCommand("Proc2_3_見積書_部単外装", conn)
+                conn.Open()
 
-                    'タイムアウト設定
-                    cmd.CommandTimeout = 1200
-                    cmd.CommandType = CommandType.StoredProcedure
+                ' トランザクション開始
+                Using tran As SqlTransaction = conn.BeginTransaction()
 
-                    ' ★ 必要なら引数を追加
-                    cmd.Parameters.AddWithValue("@Debug", 0)
-                    cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+                    ta_rireki.Connection = conn
+                    ta_rireki.Transaction = tran
 
-                    Dim da As New SqlDataAdapter(cmd)
-                    da.Fill(dt)
+                    Try
 
-                End Using
+                        '最新の見積Noでなければ確認ダイアログ表示
+                        Dim mitsumori_no As String = Cmb_Target.SelectedValue
+                        Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("1")
 
-                'Excelに描画
-                ExportToExcel6(dt)
+                        If mitsumori_no <> new_mitsumori_no Then
 
-            End Using
+                            If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+
+                                'Yesなら
+                                old_master_flg = True
+
+                                '最新をBKに保存、対象のBKを本番にインサート
+                                fnc.Master_Change_Start(new_mitsumori_no, mitsumori_no, conn, tran)
+
+                            End If
+
+                        End If
+
+                        Using cmd As New SqlCommand("Proc2_3_見積書_部単外装", conn, tran)
+
+                            'タイムアウト設定
+                            cmd.CommandTimeout = 1200
+                            cmd.CommandType = CommandType.StoredProcedure
+
+                            ' ★ 必要なら引数を追加
+                            cmd.Parameters.AddWithValue("@Debug", 0)
+                            cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+
+                            Dim da As New SqlDataAdapter(cmd)
+                            da.Fill(dt)
+
+                        End Using
+
+                        'Excelに描画
+                        ExportToExcel6(dt)
+
+                        '過去マスタを読み込んでいた場合は最新版に戻す
+                        If old_master_flg = True Then
+
+                            '保存したBKを本番に戻す
+                            fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                            old_master_flg = False
+
+                        End If
+
+                        'ここまで全部成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' どこかでエラーが出たら全部ロールバック
+                        tran.Rollback()
+                        Throw
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Print_Main_Btn_Output6_Click")
@@ -138,11 +239,12 @@ Public Class F_Print_Main
         Try
 
             '待機状態
+            Cursor.Current = Cursors.WaitCursor
             Lbl_Messege.Visible = True
             Application.DoEvents()    ' ★ UIを即時更新
 
-            Cursor.Current = Cursors.WaitCursor
-
+            Dim old_master_flg As Boolean = False
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
 
             Dim dt_result As New DataTable
             Dim dt_module As New DataTable
@@ -152,28 +254,77 @@ Public Class F_Print_Main
             ' ストアド実行
             Using conn As New SqlConnection(connectionString)
 
-                Using cmd As New SqlCommand("Proc3_包装費変動表", conn)
+                conn.Open()
 
-                    'タイムアウト設定
-                    cmd.CommandTimeout = 1200
-                    cmd.CommandType = CommandType.StoredProcedure
+                ' トランザクション開始
+                Using tran As SqlTransaction = conn.BeginTransaction()
 
-                    ' ★ 必要なら引数を追加
-                    cmd.Parameters.AddWithValue("@Debug", 0)
-                    cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+                    ta_rireki.Connection = conn
+                    ta_rireki.Transaction = tran
 
-                    Dim da As New SqlDataAdapter(cmd)
-                    da.Fill(ds)
+                    Try
 
-                End Using
+                        '最新の見積Noでなければ確認ダイアログ表示
+                        Dim mitsumori_no As String = Cmb_Target.SelectedValue
+                        Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("1")
 
-                dt_result = ds.Tables(0)
-                dt_module = ds.Tables(1)
+                        If mitsumori_no <> new_mitsumori_no Then
 
-                'Excelに描画
-                ExportToExcel7(dt_result, dt_module)
+                            If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
 
-            End Using
+                                'Yesなら
+                                old_master_flg = True
+
+                                '最新をBKに保存、対象のBKを本番にインサート
+                                fnc.Master_Change_Start(new_mitsumori_no, mitsumori_no, conn, tran)
+
+                            End If
+
+                        End If
+
+                        Using cmd As New SqlCommand("Proc3_包装費変動表", conn, tran)
+
+                            'タイムアウト設定
+                            cmd.CommandTimeout = 1200
+                            cmd.CommandType = CommandType.StoredProcedure
+
+                            ' ★ 必要なら引数を追加
+                            cmd.Parameters.AddWithValue("@Debug", 0)
+                            cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+
+                            Dim da As New SqlDataAdapter(cmd)
+                            da.Fill(ds)
+
+                        End Using
+
+                        dt_result = ds.Tables(0)
+                        dt_module = ds.Tables(1)
+
+                        'Excelに描画
+                        ExportToExcel7(dt_result, dt_module)
+
+                        '過去マスタを読み込んでいた場合は最新版に戻す
+                        If old_master_flg = True Then
+
+                            '保存したBKを本番に戻す
+                            fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                            old_master_flg = False
+
+                        End If
+
+                        'ここまで全部成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' どこかでエラーが出たら全部ロールバック
+                        tran.Rollback()
+                        Throw
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Print_Main_Btn_Output7_Click")
@@ -192,10 +343,12 @@ Public Class F_Print_Main
         Try
 
             '待機状態
+            Cursor.Current = Cursors.WaitCursor
             Lbl_Messege.Visible = True
             Application.DoEvents()    ' ★ UIを即時更新
 
-            Cursor.Current = Cursors.WaitCursor
+            Dim old_master_flg As Boolean = False
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
 
             Dim dt As New DS_T.DT_T_KIT60DataTable
             Dim ta As New DS_TTableAdapters.DT_T_KIT60TableAdapter
@@ -206,22 +359,69 @@ Public Class F_Print_Main
 
                 conn.Open()
 
-                Using cmd As New SqlCommand("Proc7_KIT60", conn)
+                ' トランザクション開始
+                Using tran As SqlTransaction = conn.BeginTransaction()
 
-                    'タイムアウト設定
-                    cmd.CommandTimeout = 1200
-                    cmd.CommandType = CommandType.StoredProcedure
+                    ta_rireki.Connection = conn
+                    ta_rireki.Transaction = tran
 
-                    ' ★ 必要なら引数を追加
-                    cmd.Parameters.AddWithValue("@Debug", 0)
-                    cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+                    Try
 
-                    ' ★ 実行（戻り値なし）
-                    cmd.ExecuteNonQuery()
+                        '最新の見積Noでなければ確認ダイアログ表示
+                        Dim mitsumori_no As String = Cmb_Target.SelectedValue
+                        Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("1")
 
-                End Using
+                        If mitsumori_no <> new_mitsumori_no Then
 
-            End Using
+                            If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+
+                                'Yesなら
+                                old_master_flg = True
+
+                                '最新をBKに保存、対象のBKを本番にインサート
+                                fnc.Master_Change_Start(new_mitsumori_no, mitsumori_no, conn, tran)
+
+                            End If
+
+                        End If
+
+                        Using cmd As New SqlCommand("Proc7_KIT60", conn, tran)
+
+                            'タイムアウト設定
+                            cmd.CommandTimeout = 1200
+                            cmd.CommandType = CommandType.StoredProcedure
+
+                            ' ★ 必要なら引数を追加
+                            cmd.Parameters.AddWithValue("@Debug", 0)
+                            cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+
+                            ' ★ 実行（戻り値なし）
+                            cmd.ExecuteNonQuery()
+
+                        End Using
+
+                        '過去マスタを読み込んでいた場合は最新版に戻す
+                        If old_master_flg = True Then
+
+                            '保存したBKを本番に戻す
+                            fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                            old_master_flg = False
+
+                        End If
+
+                        'ここまで全部成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' どこかでエラーが出たら全部ロールバック
+                        tran.Rollback()
+                        Throw
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
 
             ta.Q_KIT情報取得(dt, Cmb_Target.SelectedValue)
 
@@ -245,10 +445,12 @@ Public Class F_Print_Main
         Try
 
             '待機状態
+            Cursor.Current = Cursors.WaitCursor
             Lbl_Messege.Visible = True
             Application.DoEvents()    ' ★ UIを即時更新
 
-            Cursor.Current = Cursors.WaitCursor
+            Dim old_master_flg As Boolean = False
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
 
             Dim dt As New DataTable
             Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
@@ -256,25 +458,74 @@ Public Class F_Print_Main
             ' ストアド実行
             Using conn As New SqlConnection(connectionString)
 
-                Using cmd As New SqlCommand("Proc8_請求明細", conn)
+                conn.Open()
 
-                    'タイムアウト設定
-                    cmd.CommandTimeout = 1200
-                    cmd.CommandType = CommandType.StoredProcedure
+                ' トランザクション開始
+                Using tran As SqlTransaction = conn.BeginTransaction()
 
-                    ' ★ 必要なら引数を追加
-                    cmd.Parameters.AddWithValue("@Debug", 0)
-                    cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+                    ta_rireki.Connection = conn
+                    ta_rireki.Transaction = tran
 
-                    Dim da As New SqlDataAdapter(cmd)
-                    da.Fill(dt)
+                    Try
 
-                End Using
+                        '最新の見積Noでなければ確認ダイアログ表示
+                        Dim mitsumori_no As String = Cmb_Target.SelectedValue
+                        Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("1")
 
-                'Excelに描画
-                ExportToExcel11(dt)
+                        If mitsumori_no <> new_mitsumori_no Then
 
-            End Using
+                            If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+
+                                'Yesなら
+                                old_master_flg = True
+
+                                '最新をBKに保存、対象のBKを本番にインサート
+                                fnc.Master_Change_Start(new_mitsumori_no, mitsumori_no, conn, tran)
+
+                            End If
+
+                        End If
+
+                        Using cmd As New SqlCommand("Proc8_請求明細", conn, tran)
+
+                            'タイムアウト設定
+                            cmd.CommandTimeout = 1200
+                            cmd.CommandType = CommandType.StoredProcedure
+
+                            ' ★ 必要なら引数を追加
+                            cmd.Parameters.AddWithValue("@Debug", 0)
+                            cmd.Parameters.AddWithValue("@QuoteNo", Cmb_Target.SelectedValue)
+
+                            Dim da As New SqlDataAdapter(cmd)
+                            da.Fill(dt)
+
+                        End Using
+
+                        'Excelに描画
+                        ExportToExcel11(dt)
+
+                        '過去マスタを読み込んでいた場合は最新版に戻す
+                        If old_master_flg = True Then
+
+                            '保存したBKを本番に戻す
+                            fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                            old_master_flg = False
+
+                        End If
+
+                        'ここまで全部成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' どこかでエラーが出たら全部ロールバック
+                        tran.Rollback()
+                        Throw
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
 
         Catch ex As Exception
             fnc.ERR_LOG(ex.Message, "F_Print_Main_Btn_Output11_Click")

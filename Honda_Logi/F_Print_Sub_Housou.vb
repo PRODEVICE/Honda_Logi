@@ -150,103 +150,201 @@ Public Class F_Print_Sub_Housou
             Dim dt_kosou As New DataTable
             Dim dt_naisou As New DataTable
             Dim dt_gaisou As New DataTable
+            Dim old_master_flg As Boolean = False
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
 
             '呼び出し元によってキックするストアドを変更
             If _mode = 1 Then
 
-
                 ' ストアド実行
                 Using conn As New SqlConnection(connectionString)
 
-                    '入力された行数分実行する
-                    For Each row As DataGridViewRow In GV_Search.Rows
+                    conn.Open()
 
-                        If row.IsNewRow Then Continue For
+                    ' トランザクション開始
+                    Using tran As SqlTransaction = conn.BeginTransaction()
 
-                        Using cmd As New SqlCommand("Proc5_包装仕様一覧", conn)
-                            cmd.CommandTimeout = 1200
-                            cmd.CommandType = CommandType.StoredProcedure
+                        ta_rireki.Connection = conn
+                        ta_rireki.Transaction = tran
 
-                            ' ★引数セット（毎回クリアされる）
-                            cmd.Parameters.Add("@Debug", SqlDbType.Bit).Value = 0
-                            cmd.Parameters.Add("@QuoteNo", SqlDbType.Int).Value = _mitsumoriNo
-                            cmd.Parameters.Add("@Dist", SqlDbType.NVarChar, 100).Value = If(row.Cells("DIST").Value Is Nothing, DBNull.Value, row.Cells("DIST").Value)
-                            cmd.Parameters.Add("@Year", SqlDbType.NVarChar, 100).Value = If(row.Cells("年度").Value Is Nothing, DBNull.Value, row.Cells("年度").Value)
-                            cmd.Parameters.Add("@Model", SqlDbType.NVarChar, 100).Value = If(row.Cells("モデル").Value Is Nothing, DBNull.Value, row.Cells("モデル").Value)
-                            cmd.Parameters.Add("@Type", SqlDbType.NVarChar, 100).Value = If(row.Cells("タイプ").Value Is Nothing, DBNull.Value, row.Cells("タイプ").Value)
-                            cmd.Parameters.Add("@Op", SqlDbType.NVarChar, 100).Value = If(row.Cells("OP").Value Is Nothing, DBNull.Value, row.Cells("OP").Value)
+                        Try
 
-                            Dim da As New SqlDataAdapter(cmd)
-                            da.Fill(ds)
+                            '最新の見積Noでなければ確認ダイアログ表示
+                            Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("1")
 
-                        End Using
+                            If _mitsumoriNo <> new_mitsumori_no Then
 
-                    Next
+                                If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
 
-                    dt_result = ds.Tables(0)
-                    dt_kosou = ds.Tables(1)
-                    dt_naisou = ds.Tables(2)
-                    dt_gaisou = ds.Tables(3)
+                                    'Yesなら
+                                    old_master_flg = True
 
-                    'ケースNo違いで同一レコードが発生するので重複を削除
-                    Dim dv As New DataView(dt_result)
-                    Dim distinctDT As DataTable = dv.ToTable(True)
+                                    '最新をBKに保存、対象のBKを本番にインサート
+                                    fnc.Master_Change_Start(new_mitsumori_no, _mitsumoriNo, conn, tran)
 
-                    '後の処理の為に行番号を付与
-                    Dim no As Integer = 1
-                    For Each row As DataRow In distinctDT.Rows
-                        row("Col11") = no
-                        no += 1
-                    Next
+                                End If
 
-                    '個装の各データを収集
-                    lord_data_kosou(distinctDT, dt_kosou)
+                            End If
 
-                    '内装の各データを収集
-                    lord_data_naisou(distinctDT, dt_naisou, dt_kosou)
+                            '入力された行数分実行する
+                            For Each row As DataGridViewRow In GV_Search.Rows
 
-                    '外装の各データを収集
-                    lord_data_gaisou(distinctDT, dt_gaisou)
+                                If row.IsNewRow Then Continue For
+
+                                Using cmd As New SqlCommand("Proc5_包装仕様一覧", conn, tran)
+                                    cmd.CommandTimeout = 1200
+                                    cmd.CommandType = CommandType.StoredProcedure
+
+                                    ' ★引数セット（毎回クリアされる）
+                                    cmd.Parameters.Add("@Debug", SqlDbType.Bit).Value = 0
+                                    cmd.Parameters.Add("@QuoteNo", SqlDbType.Int).Value = _mitsumoriNo
+                                    cmd.Parameters.Add("@Dist", SqlDbType.NVarChar, 100).Value = If(row.Cells("DIST").Value Is Nothing, DBNull.Value, row.Cells("DIST").Value)
+                                    cmd.Parameters.Add("@Year", SqlDbType.NVarChar, 100).Value = If(row.Cells("年度").Value Is Nothing, DBNull.Value, row.Cells("年度").Value)
+                                    cmd.Parameters.Add("@Model", SqlDbType.NVarChar, 100).Value = If(row.Cells("モデル").Value Is Nothing, DBNull.Value, row.Cells("モデル").Value)
+                                    cmd.Parameters.Add("@Type", SqlDbType.NVarChar, 100).Value = If(row.Cells("タイプ").Value Is Nothing, DBNull.Value, row.Cells("タイプ").Value)
+                                    cmd.Parameters.Add("@Op", SqlDbType.NVarChar, 100).Value = If(row.Cells("OP").Value Is Nothing, DBNull.Value, row.Cells("OP").Value)
+
+                                    Dim da As New SqlDataAdapter(cmd)
+                                    da.Fill(ds)
+
+                                End Using
+
+                            Next
+
+                            dt_result = ds.Tables(0)
+                            dt_kosou = ds.Tables(1)
+                            dt_naisou = ds.Tables(2)
+                            dt_gaisou = ds.Tables(3)
+
+                            'ケースNo違いで同一レコードが発生するので重複を削除
+                            Dim dv As New DataView(dt_result)
+                            Dim distinctDT As DataTable = dv.ToTable(True)
+
+                            '後の処理の為に行番号を付与
+                            Dim no As Integer = 1
+                            For Each row As DataRow In distinctDT.Rows
+                                row("Col11") = no
+                                no += 1
+                            Next
+
+                            '個装の各データを収集
+                            lord_data_kosou(distinctDT, dt_kosou, conn, tran)
+
+                            '内装の各データを収集
+                            lord_data_naisou(distinctDT, dt_naisou, dt_kosou, conn, tran)
+
+                            '外装の各データを収集
+                            lord_data_gaisou(distinctDT, dt_gaisou, conn, tran)
 
 
-                    'Excelに描画
-                    ExportToExcel1(distinctDT, dt_kosou, dt_naisou, dt_gaisou)
+                            'Excelに描画
+                            ExportToExcel1(distinctDT, dt_kosou, dt_naisou, dt_gaisou, conn, tran)
 
-                End Using
+                            '過去マスタを読み込んでいた場合は最新版に戻す
+                            If old_master_flg = True Then
+
+                                '保存したBKを本番に戻す
+                                fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                                old_master_flg = False
+
+                            End If
+
+                            'ここまで全部成功したらコミット
+                            tran.Commit()
+
+                        Catch ex As Exception
+                            ' どこかでエラーが出たら全部ロールバック
+                            tran.Rollback()
+                            Throw
+                        End Try
+
+                    End Using 'SqlTransaction
+
+                End Using 'SqlConnection
+
             Else
                 ' ストアド実行
                 Using conn As New SqlConnection(connectionString)
 
-                    '入力された行数分実行する
-                    For Each row As DataGridViewRow In GV_Search.Rows
+                    conn.Open()
 
-                        If row.IsNewRow Then Continue For
+                    ' トランザクション開始
+                    Using tran As SqlTransaction = conn.BeginTransaction()
 
-                        Using cmd As New SqlCommand("Proc6_包装資材明細", conn)
-                            cmd.CommandTimeout = 1200
-                            cmd.CommandType = CommandType.StoredProcedure
+                        ta_rireki.Connection = conn
+                        ta_rireki.Transaction = tran
 
-                            ' ★引数セット（毎回クリアされる）
-                            cmd.Parameters.Add("@Debug", SqlDbType.Bit).Value = 0
-                            cmd.Parameters.Add("@QuoteNo", SqlDbType.Int).Value = _mitsumoriNo
-                            cmd.Parameters.Add("@Dist", SqlDbType.NVarChar, 100).Value = If(row.Cells("DIST").Value Is Nothing, DBNull.Value, row.Cells("DIST").Value)
-                            cmd.Parameters.Add("@Year", SqlDbType.NVarChar, 100).Value = If(row.Cells("年度").Value Is Nothing, DBNull.Value, row.Cells("年度").Value)
-                            cmd.Parameters.Add("@Model", SqlDbType.NVarChar, 100).Value = If(row.Cells("モデル").Value Is Nothing, DBNull.Value, row.Cells("モデル").Value)
-                            cmd.Parameters.Add("@Type", SqlDbType.NVarChar, 100).Value = If(row.Cells("タイプ").Value Is Nothing, DBNull.Value, row.Cells("タイプ").Value)
-                            cmd.Parameters.Add("@Op", SqlDbType.NVarChar, 100).Value = If(row.Cells("OP").Value Is Nothing, DBNull.Value, row.Cells("OP").Value)
-                            cmd.Parameters.Add("@Lot", SqlDbType.NVarChar, 100).Value = If(row.Cells("包装ロットNo").Value Is Nothing, DBNull.Value, row.Cells("包装ロットNo").Value)
+                        Try
 
-                            Dim da As New SqlDataAdapter(cmd)
-                            da.Fill(dt)
+                            '最新の見積Noでなければ確認ダイアログ表示
+                            Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("1")
 
-                        End Using
+                            If _mitsumoriNo <> new_mitsumori_no Then
 
-                    Next
+                                If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
 
-                    'Excelに描画
-                    ExportToExcel2(dt)
+                                    'Yesなら
+                                    old_master_flg = True
 
-                End Using
+                                    '最新をBKに保存、対象のBKを本番にインサート
+                                    fnc.Master_Change_Start(new_mitsumori_no, _mitsumoriNo, conn, tran)
+
+                                End If
+
+                            End If
+
+                            '入力された行数分実行する
+                            For Each row As DataGridViewRow In GV_Search.Rows
+
+                                If row.IsNewRow Then Continue For
+
+                                Using cmd As New SqlCommand("Proc6_包装資材明細", conn, tran)
+                                    cmd.CommandTimeout = 1200
+                                    cmd.CommandType = CommandType.StoredProcedure
+
+                                    ' ★引数セット（毎回クリアされる）
+                                    cmd.Parameters.Add("@Debug", SqlDbType.Bit).Value = 0
+                                    cmd.Parameters.Add("@QuoteNo", SqlDbType.Int).Value = _mitsumoriNo
+                                    cmd.Parameters.Add("@Dist", SqlDbType.NVarChar, 100).Value = If(row.Cells("DIST").Value Is Nothing, DBNull.Value, row.Cells("DIST").Value)
+                                    cmd.Parameters.Add("@Year", SqlDbType.NVarChar, 100).Value = If(row.Cells("年度").Value Is Nothing, DBNull.Value, row.Cells("年度").Value)
+                                    cmd.Parameters.Add("@Model", SqlDbType.NVarChar, 100).Value = If(row.Cells("モデル").Value Is Nothing, DBNull.Value, row.Cells("モデル").Value)
+                                    cmd.Parameters.Add("@Type", SqlDbType.NVarChar, 100).Value = If(row.Cells("タイプ").Value Is Nothing, DBNull.Value, row.Cells("タイプ").Value)
+                                    cmd.Parameters.Add("@Op", SqlDbType.NVarChar, 100).Value = If(row.Cells("OP").Value Is Nothing, DBNull.Value, row.Cells("OP").Value)
+                                    cmd.Parameters.Add("@Lot", SqlDbType.NVarChar, 100).Value = If(row.Cells("包装ロットNo").Value Is Nothing, DBNull.Value, row.Cells("包装ロットNo").Value)
+
+                                    Dim da As New SqlDataAdapter(cmd)
+                                    da.Fill(dt)
+
+                                End Using
+
+                            Next
+
+                            'Excelに描画
+                            ExportToExcel2(dt, conn, tran)
+
+                            '過去マスタを読み込んでいた場合は最新版に戻す
+                            If old_master_flg = True Then
+
+                                '保存したBKを本番に戻す
+                                fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                                old_master_flg = False
+
+                            End If
+
+                            'ここまで全部成功したらコミット
+                            tran.Commit()
+
+                        Catch ex As Exception
+                            ' どこかでエラーが出たら全部ロールバック
+                            tran.Rollback()
+                            Throw
+                        End Try
+
+                    End Using 'SqlTransaction
+
+                End Using 'SqlConnection
 
             End If
 
@@ -304,7 +402,7 @@ Public Class F_Print_Sub_Housou
     '******************************************************************************
 
     '個装データの収集処理
-    Private Sub lord_data_kosou(_dt_ccc As DataTable, ByRef dt_kosou As DataTable)
+    Private Sub lord_data_kosou(_dt_ccc As DataTable, ByRef dt_kosou As DataTable, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -316,6 +414,15 @@ Public Class F_Print_Sub_Housou
             Dim ta_M_naisou As New DS_MTableAdapters.TA_M_Naisou_Shizai
             Dim dt_M_kosou As New DS_M.DT_M_Kosou_ShizaiDataTable
             Dim ta_M_kosou As New DS_MTableAdapters.TA_M_Kosou_Shizai
+
+            ta_kow.Connection = conn
+            ta_kow.Transaction = tran
+            ta_housou_kbn.Connection = conn
+            ta_housou_kbn.Transaction = tran
+            ta_M_naisou.Connection = conn
+            ta_M_naisou.Transaction = tran
+            ta_M_kosou.Connection = conn
+            ta_M_kosou.Transaction = tran
 
             'CCC辞書 部品収容数取得用
             Dim search_ccc_Dict As New Dictionary(Of String, List(Of F_Make_1Lot.CCCInfo))(StringComparer.Ordinal)
@@ -698,7 +805,7 @@ Public Class F_Print_Sub_Housou
     End Sub
 
     '内装データの収集処理
-    Private Sub lord_data_naisou(_dt_ccc As DataTable, ByRef dt_naisou As DataTable, dt_kosou As DataTable)
+    Private Sub lord_data_naisou(_dt_ccc As DataTable, ByRef dt_naisou As DataTable, dt_kosou As DataTable, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -706,6 +813,11 @@ Public Class F_Print_Sub_Housou
             Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
             Dim dt_housou_kbn As New DS_M.DT_M_Housou_KbnDataTable
             Dim ta_housou_kbn As New DS_MTableAdapters.TA_M_Housou_Kbn
+
+            ta_ccc.Connection = conn
+            ta_ccc.Transaction = tran
+            ta_housou_kbn.Connection = conn
+            ta_housou_kbn.Transaction = tran
 
             'CCC辞書
             ta_ccc.Q_CCC_Lot取得(dt_ccc, _mitsumoriNo)
@@ -1105,7 +1217,7 @@ Public Class F_Print_Sub_Housou
     End Sub
 
     '外装データの収集処理
-    Private Sub lord_data_gaisou(_dt_ccc As DataTable, ByRef dt_gaisou As DataTable)
+    Private Sub lord_data_gaisou(_dt_ccc As DataTable, ByRef dt_gaisou As DataTable, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -1113,6 +1225,11 @@ Public Class F_Print_Sub_Housou
             Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
             Dim dt_housou_kbn As New DS_M.DT_M_Housou_KbnDataTable
             Dim ta_housou_kbn As New DS_MTableAdapters.TA_M_Housou_Kbn
+
+            ta_ccc.Connection = conn
+            ta_ccc.Transaction = tran
+            ta_housou_kbn.Connection = conn
+            ta_housou_kbn.Transaction = tran
 
             'CCC辞書 副資材の値取得用
             Dim search_ccc_Dict As New Dictionary(Of String, List(Of F_Make_1Lot.CCCInfo))(StringComparer.Ordinal)
@@ -1301,7 +1418,7 @@ Public Class F_Print_Sub_Housou
     End Sub
 
     '包装仕様一覧作成処理
-    Private Sub ExportToExcel1(_dt_result As DataTable, _dt_kosou As DataTable, _dt_naisou As DataTable, _dt_gaisou As DataTable)
+    Private Sub ExportToExcel1(_dt_result As DataTable, _dt_kosou As DataTable, _dt_naisou As DataTable, _dt_gaisou As DataTable, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -1310,6 +1427,9 @@ Public Class F_Print_Sub_Housou
 
             'ファイル名に付ける年度の取得
             Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            ta_ccc.Connection = conn
+            ta_ccc.Transaction = tran
+
             Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
 
             ' -------------------------
@@ -1511,7 +1631,7 @@ Public Class F_Print_Sub_Housou
     End Sub
 
     '包装資材明細(定量、不定量共通)作成処理
-    Private Sub ExportToExcel2(dt As DataTable)
+    Private Sub ExportToExcel2(dt As DataTable, conn As SqlConnection, tran As SqlTransaction)
 
         Try
 
@@ -1520,6 +1640,9 @@ Public Class F_Print_Sub_Housou
 
             'ファイル名に付ける年度の取得
             Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC_Lot
+            ta_ccc.Connection = conn
+            ta_ccc.Transaction = tran
+
             Dim nendo As String = ta_ccc.Q_年度取得(_mitsumoriNo)
 
             ' -------------------------

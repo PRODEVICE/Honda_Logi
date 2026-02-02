@@ -115,6 +115,8 @@ Public Class F_Print_Sub_Module
             Dim dt As New DataTable
             Dim dt2 As New DataTable
             Dim connectionString As String = ConfigurationManager.ConnectionStrings("Honda_Logi.My.MySettings.Honda_LogiConnectionString").ConnectionString
+            Dim old_master_flg As Boolean = False
+            Dim ta_rireki As New DS_TTableAdapters.TA_T_Import_Rireki
 
             'クリックしたボタンによってファイル名を変更する
             Dim file_nm As String = ""
@@ -143,29 +145,78 @@ Public Class F_Print_Sub_Module
             ' ストアド実行
             Using conn As New SqlConnection(connectionString)
 
-                Using cmd As New SqlCommand("Proc1_機種摘要モジュール", conn)
+                conn.Open()
 
-                    'タイムアウト設定
-                    cmd.CommandTimeout = 1200
-                    cmd.CommandType = CommandType.StoredProcedure
+                ' トランザクション開始
+                Using tran As SqlTransaction = conn.BeginTransaction()
 
-                    ' ★ 必要なら引数を追加
-                    cmd.Parameters.AddWithValue("@Debug", 0)
-                    cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
-                    cmd.Parameters.AddWithValue("@kbn1", kbn1)
-                    'cmd.Parameters.AddWithValue("@kbn2", kbn2)
-                    If kbn2 Is Nothing Then
-                        cmd.Parameters.Add("@kbn2", SqlDbType.NVarChar, 20).Value = DBNull.Value
-                    Else
-                        cmd.Parameters.Add("@kbn2", SqlDbType.NVarChar, 20).Value = kbn2
-                    End If
+                    ta_rireki.Connection = conn
+                    ta_rireki.Transaction = tran
 
-                    Dim da As New SqlDataAdapter(cmd)
-                    da.Fill(dt)
+                    Try
 
-                End Using
+                        '最新の見積Noでなければ確認ダイアログ表示
+                        Dim new_mitsumori_no As String = ta_rireki.Q_最新見積No取得("1")
 
-            End Using
+                        If _mitsumoriNo <> new_mitsumori_no Then
+
+                            If MessageBox.Show("過去データが選択されました。１Lot作成時のマスタを呼び出しますか？", "過去マスタ参照", MessageBoxButtons.YesNo) = System.Windows.Forms.DialogResult.Yes Then
+
+                                'Yesなら
+                                old_master_flg = True
+
+                                '最新をBKに保存、対象のBKを本番にインサート
+                                fnc.Master_Change_Start(new_mitsumori_no, _mitsumoriNo, conn, tran)
+
+                            End If
+
+                        End If
+
+                        Using cmd As New SqlCommand("Proc1_機種摘要モジュール", conn, tran)
+
+                            'タイムアウト設定
+                            cmd.CommandTimeout = 1200
+                            cmd.CommandType = CommandType.StoredProcedure
+
+                            ' ★ 必要なら引数を追加
+                            cmd.Parameters.AddWithValue("@Debug", 0)
+                            cmd.Parameters.AddWithValue("@QuoteNo", _mitsumoriNo)
+                            cmd.Parameters.AddWithValue("@kbn1", kbn1)
+                            'cmd.Parameters.AddWithValue("@kbn2", kbn2)
+
+                            If kbn2 Is Nothing Then
+                                cmd.Parameters.Add("@kbn2", SqlDbType.NVarChar, 20).Value = DBNull.Value
+                            Else
+                                cmd.Parameters.Add("@kbn2", SqlDbType.NVarChar, 20).Value = kbn2
+                            End If
+
+                            Dim da As New SqlDataAdapter(cmd)
+                            da.Fill(dt)
+
+                        End Using
+
+                        '過去マスタを読み込んでいた場合は最新版に戻す
+                        If old_master_flg = True Then
+
+                            '保存したBKを本番に戻す
+                            fnc.Master_Change_END(new_mitsumori_no, conn, tran)
+
+                            old_master_flg = False
+
+                        End If
+
+                        'ここまで全部成功したらコミット
+                        tran.Commit()
+
+                    Catch ex As Exception
+                        ' どこかでエラーが出たら全部ロールバック
+                        tran.Rollback()
+                        Throw
+                    End Try
+
+                End Using 'SqlTransaction
+
+            End Using 'SqlConnection
 
             ' プロジェクト内テンプレートのパス
             Dim templatePath As String = IO.Path.Combine(Application.StartupPath, "Excel_Format\機種摘要モジュール一覧.xlsx")
