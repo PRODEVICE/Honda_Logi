@@ -5,13 +5,6 @@ Imports ClosedXML.Excel
 Public Class F_Print_Main
 
     Dim fnc As New Function_Class
-    Private _mode As Integer
-
-    ' コンストラクタを追加
-    Public Sub New(mode As Integer)
-        InitializeComponent()
-        _mode = mode
-    End Sub
 
     'ページロード時
     Private Sub F_Print_Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,7 +14,7 @@ Public Class F_Print_Main
             Dim dt As New DS_T.DT_T_Import_RirekiDataTable
             Dim ta As New DS_TTableAdapters.TA_T_Import_Rireki
 
-            ta.Q_取込履歴_呼び出し(dt, _mode)
+            ta.Q_取込履歴_呼び出し(dt, "1")
 
             ' ComboBox に設定
             With Cmb_Target

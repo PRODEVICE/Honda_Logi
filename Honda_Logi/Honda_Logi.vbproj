@@ -178,6 +178,12 @@
     <Compile Include="F_Print_Sub_Housou.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_Print_Sub_Mitsumori2.Designer.vb">
+      <DependentUpon>F_Print_Sub_Mitsumori2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Print_Sub_Mitsumori2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Select_Main.Designer.vb">
       <DependentUpon>F_Select_Main.vb</DependentUpon>
     </Compile>
@@ -292,6 +298,9 @@
     <EmbeddedResource Include="F_Print_Sub_Housou.resx">
       <DependentUpon>F_Print_Sub_Housou.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_Print_Sub_Mitsumori2.resx">
+      <DependentUpon>F_Print_Sub_Mitsumori2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Select_Main.resx">
       <DependentUpon>F_Select_Main.vb</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +397,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Excel_Format\機種摘要モジュール一覧.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel_Format\見積書%28機種%29_見積依頼.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Excel_Format\見積書%28汎用機種%29.xlsx">

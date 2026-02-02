@@ -61,8 +61,15 @@
 
     'データ出力ボタンクリック時
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Btn_Output.Click
-        Dim OpenForm As New F_Print_Main(_mode)
-        OpenForm.ShowDialog()
+
+        If _mode = 1 Then
+            Dim OpenForm As New F_Print_Main()
+            OpenForm.ShowDialog()
+        ElseIf _mode = 2 Then
+            Dim OpenForm As New F_Print_Sub_Mitsumori2()
+            OpenForm.ShowDialog()
+        End If
+
     End Sub
 
     'マスタ編集ボタンクリック時
