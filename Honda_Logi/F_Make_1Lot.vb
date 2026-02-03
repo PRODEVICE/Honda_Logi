@@ -5721,6 +5721,7 @@ dt As DataTable, csvPath As String, writeHeader As Boolean)
         Public Property モデル2 As String
         Public Property タイプ1 As String
         Public Property ｺﾝﾄﾛｰﾙNO As String
+        Public Property ケースNo As String
         Public Property モジュール手順SEQ As String
         Public Property 個装入り数 As String
         Public Property 内装入り数 As String

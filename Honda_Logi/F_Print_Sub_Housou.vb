@@ -88,8 +88,8 @@ Public Class F_Print_Sub_Housou
                 If row.Cells("包装ロットNo").Value Is Nothing Then housou_lot_no = "" Else housou_lot_no = row.Cells("包装ロットNo").Value
 
                 '検索条件の必須チェック
-                If DIST = "" Or nendo = "" Or model = "" Then
-                    MessageBox.Show("DIST、年度、モデルは必須項目です。")
+                If DIST = "" Or nendo = "" Or model = "" Or type = "" Or OP = "" Then
+                    MessageBox.Show("DIST、年度、モデル、タイプ、OPは必須項目です。")
                     Exit Sub
                 End If
 
@@ -599,7 +599,7 @@ Public Class F_Print_Sub_Housou
                                                         SafeGetString(row, "モジュール手順SEQ")
                                                     )
 
-                If housou_kbn = "内装" Then
+                If housou_kbn = "個装" Then
 
                     'If Not kowExistSet.Contains(kowKey_exit) Then
 
@@ -1454,7 +1454,7 @@ Public Class F_Print_Sub_Housou
 
                 Dim startRow As Integer = 5 ' データ開始行（ヘッダが1行目なら2）
                 Dim startCol As Integer = 2  ' B列
-                Dim endCol As Integer = 17   ' Q列
+                Dim endCol As Integer = 18   ' Q列
                 Dim currentRow As Integer = startRow
 
                 'ヘッダ項目を書き込む
@@ -1475,7 +1475,8 @@ Public Class F_Print_Sub_Housou
                     new_value =
                         If(IsDBNull(row("Col5")), "", row("Col5").ToString) &
                         If(IsDBNull(row("Col6")), "", row("Col6").ToString) &
-                        If(IsDBNull(row("Col7")), "", row("Col7").ToString)
+                        If(IsDBNull(row("Col7")), "", row("Col7").ToString) &
+                        If(IsDBNull(row("ケースNo")), "", row("ケースNo").ToString)
 
                     '同じ値の場合は出力しない
                     If old_value <> new_value Then
@@ -1483,13 +1484,13 @@ Public Class F_Print_Sub_Housou
                         ws.Cell(currentRow, 2).Value = If(IsDBNull(row("Col5")), "", row("Col5").ToString)
                         ws.Cell(currentRow, 3).Value = If(IsDBNull(row("Col6")), "", row("Col6").ToString)
                         ws.Cell(currentRow, 4).Value = If(IsDBNull(row("Col7")), "", row("Col7").ToString)
-
+                        ws.Cell(currentRow, 5).Value = If(IsDBNull(row("ケースNo")), "", row("ケースNo").ToString)
                     End If
 
 
-                    ws.Cell(currentRow, 5).Value = If(IsDBNull(row("Col8")), "", row("Col8").ToString)
-                    ws.Cell(currentRow, 6).Value = If(IsDBNull(row("Col9")), "", row("Col9").ToString)
-                    ws.Cell(currentRow, 7).Value = If(IsDBNull(row("Col10")), 0, Integer.Parse(row("Col10").ToString))
+                    ws.Cell(currentRow, 6).Value = If(IsDBNull(row("Col8")), "", row("Col8").ToString)
+                    ws.Cell(currentRow, 7).Value = If(IsDBNull(row("Col9")), "", row("Col9").ToString)
+                    ws.Cell(currentRow, 8).Value = If(IsDBNull(row("Col10")), 0, Integer.Parse(row("Col10").ToString))
 
                     Dim kosou_row = 0
                     Dim naisou_row = 0
@@ -1513,14 +1514,14 @@ Public Class F_Print_Sub_Housou
                         If cRow("Col13").ToString = Nothing Then val3 = 9999 Else val3 = cRow("Col13")
 
                         ' 処理
-                        ws.Cell(kosou_row, 9).Value = val2
+                        ws.Cell(kosou_row, 10).Value = val2
                         If val3 <> 9999 Then
-                            ws.Cell(kosou_row, 10).Value = val3
+                            ws.Cell(kosou_row, 11).Value = val3
                         End If
 
                         If val4 <> "" Then
-                            ws.Cell(kosou_row, 8).Value = val1
-                            ws.Cell(kosou_row, 11).Value = val4
+                            ws.Cell(kosou_row, 9).Value = val1
+                            ws.Cell(kosou_row, 12).Value = val4
                         End If
 
 
@@ -1552,14 +1553,14 @@ Public Class F_Print_Sub_Housou
 
                         ' 処理
 
-                        ws.Cell(naisou_row, 13).Value = val2
+                        ws.Cell(naisou_row, 14).Value = val2
                         If val3 <> 9999 Then
-                            ws.Cell(naisou_row, 14).Value = val3
+                            ws.Cell(naisou_row, 15).Value = val3
                         End If
 
                         If val4 <> 9999 Then
-                            ws.Cell(naisou_row, 12).Value = val1
-                            ws.Cell(naisou_row, 15).Value = val4
+                            ws.Cell(naisou_row, 13).Value = val1
+                            ws.Cell(naisou_row, 16).Value = val4
                         End If
 
                         naisou_row += 1
@@ -1573,7 +1574,7 @@ Public Class F_Print_Sub_Housou
 
 
                     '外装の明細表示
-                    gaisou_row = meisai_max_row + 1
+                    gaisou_row = meisai_max_row
 
                     Dim childRows_gaisou = _dt_gaisou.AsEnumerable().
                     Where(Function(r) r.Field(Of Integer)("GroupNo") = dt_row_count)
@@ -1585,8 +1586,8 @@ Public Class F_Print_Sub_Housou
                         Dim val2 As Decimal = cRow("Col21")
 
                         ' 処理
-                        ws.Cell(gaisou_row, 16).Value = val1
-                        ws.Cell(gaisou_row, 17).Value = val2
+                        ws.Cell(gaisou_row, 17).Value = val1
+                        ws.Cell(gaisou_row, 18).Value = val2
 
                         gaisou_row += 1
 
