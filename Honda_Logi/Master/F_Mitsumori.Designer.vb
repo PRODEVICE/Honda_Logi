@@ -23,8 +23,8 @@ Partial Class F_Mitsumori
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Btn_Delete = New System.Windows.Forms.Button()
         Me.Txt_OP = New System.Windows.Forms.TextBox()
@@ -54,6 +54,7 @@ Partial Class F_Mitsumori
         Me.DS_M = New Honda_Logi.DS_M()
         Me.TA_M_Mitsumori = New Honda_Logi.DS_MTableAdapters.TA_M_Mitsumori()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Txt_S_OP = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -66,7 +67,6 @@ Partial Class F_Mitsumori
         Me.Btn_Search = New System.Windows.Forms.Button()
         Me.Txt_S_Mitsumori_CD = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,7 +95,7 @@ Partial Class F_Mitsumori
         Me.Panel2.Location = New System.Drawing.Point(0, 498)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1013, 115)
-        Me.Panel2.TabIndex = 14
+        Me.Panel2.TabIndex = 1
         '
         'Btn_Delete
         '
@@ -103,7 +103,7 @@ Partial Class F_Mitsumori
         Me.Btn_Delete.Location = New System.Drawing.Point(891, 63)
         Me.Btn_Delete.Name = "Btn_Delete"
         Me.Btn_Delete.Size = New System.Drawing.Size(110, 40)
-        Me.Btn_Delete.TabIndex = 19
+        Me.Btn_Delete.TabIndex = 7
         Me.Btn_Delete.Text = "全件削除"
         Me.Btn_Delete.UseVisualStyleBackColor = True
         '
@@ -113,7 +113,7 @@ Partial Class F_Mitsumori
         Me.Txt_OP.Location = New System.Drawing.Point(377, 73)
         Me.Txt_OP.Name = "Txt_OP"
         Me.Txt_OP.Size = New System.Drawing.Size(70, 23)
-        Me.Txt_OP.TabIndex = 18
+        Me.Txt_OP.TabIndex = 4
         '
         'Label5
         '
@@ -131,7 +131,7 @@ Partial Class F_Mitsumori
         Me.Txt_Type.Location = New System.Drawing.Point(115, 73)
         Me.Txt_Type.Name = "Txt_Type"
         Me.Txt_Type.Size = New System.Drawing.Size(108, 23)
-        Me.Txt_Type.TabIndex = 16
+        Me.Txt_Type.TabIndex = 3
         '
         'Label4
         '
@@ -149,7 +149,7 @@ Partial Class F_Mitsumori
         Me.Txt_Kishu.Location = New System.Drawing.Point(550, 22)
         Me.Txt_Kishu.Name = "Txt_Kishu"
         Me.Txt_Kishu.Size = New System.Drawing.Size(108, 23)
-        Me.Txt_Kishu.TabIndex = 14
+        Me.Txt_Kishu.TabIndex = 2
         '
         'Label3
         '
@@ -167,7 +167,7 @@ Partial Class F_Mitsumori
         Me.Txt_Shimuke.Location = New System.Drawing.Point(377, 22)
         Me.Txt_Shimuke.Name = "Txt_Shimuke"
         Me.Txt_Shimuke.Size = New System.Drawing.Size(70, 23)
-        Me.Txt_Shimuke.TabIndex = 12
+        Me.Txt_Shimuke.TabIndex = 1
         '
         'Label2
         '
@@ -185,7 +185,7 @@ Partial Class F_Mitsumori
         Me.Btn_Clear.Location = New System.Drawing.Point(788, 63)
         Me.Btn_Clear.Name = "Btn_Clear"
         Me.Btn_Clear.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Clear.TabIndex = 10
+        Me.Btn_Clear.TabIndex = 6
         Me.Btn_Clear.Text = "クリア"
         Me.Btn_Clear.UseVisualStyleBackColor = True
         '
@@ -203,7 +203,7 @@ Partial Class F_Mitsumori
         Me.Btn_Touroku.Location = New System.Drawing.Point(686, 63)
         Me.Btn_Touroku.Name = "Btn_Touroku"
         Me.Btn_Touroku.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Touroku.TabIndex = 0
+        Me.Btn_Touroku.TabIndex = 5
         Me.Btn_Touroku.Text = "登　録"
         Me.Btn_Touroku.UseVisualStyleBackColor = True
         '
@@ -213,7 +213,7 @@ Partial Class F_Mitsumori
         Me.Txt_Mitsumori_CD.Location = New System.Drawing.Point(115, 22)
         Me.Txt_Mitsumori_CD.Name = "Txt_Mitsumori_CD"
         Me.Txt_Mitsumori_CD.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_Mitsumori_CD.TabIndex = 3
+        Me.Txt_Mitsumori_CD.TabIndex = 0
         '
         'Label1
         '
@@ -239,25 +239,26 @@ Partial Class F_Mitsumori
         Me.GV_Master.AllowUserToAddRows = False
         Me.GV_Master.AllowUserToDeleteRows = False
         Me.GV_Master.AutoGenerateColumns = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.見積コード, Me.仕向, Me.機種, Me.タイプ, Me.OP, Me.削除})
         Me.GV_Master.DataSource = Me.DTMMitsumoriBindingSource
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
         Me.GV_Master.Name = "GV_Master"
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GV_Master.RowTemplate.Height = 31
         Me.GV_Master.Size = New System.Drawing.Size(1013, 398)
         Me.GV_Master.TabIndex = 1
+        Me.GV_Master.TabStop = False
         '
         '選択
         '
@@ -344,7 +345,17 @@ Partial Class F_Mitsumori
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(1013, 100)
-        Me.Panel3.TabIndex = 15
+        Me.Panel3.TabIndex = 0
+        '
+        'Btn_Output
+        '
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(891, 54)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 7
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'Btn_Import
         '
@@ -352,7 +363,7 @@ Partial Class F_Mitsumori
         Me.Btn_Import.Location = New System.Drawing.Point(770, 54)
         Me.Btn_Import.Name = "Btn_Import"
         Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.TabIndex = 6
         Me.Btn_Import.Text = "CSV取込"
         Me.Btn_Import.UseVisualStyleBackColor = True
         '
@@ -362,7 +373,7 @@ Partial Class F_Mitsumori
         Me.Txt_S_OP.Location = New System.Drawing.Point(377, 64)
         Me.Txt_S_OP.Name = "Txt_S_OP"
         Me.Txt_S_OP.Size = New System.Drawing.Size(70, 23)
-        Me.Txt_S_OP.TabIndex = 22
+        Me.Txt_S_OP.TabIndex = 4
         '
         'Label9
         '
@@ -380,7 +391,7 @@ Partial Class F_Mitsumori
         Me.Txt_S_Kishu.Location = New System.Drawing.Point(550, 12)
         Me.Txt_S_Kishu.Name = "Txt_S_Kishu"
         Me.Txt_S_Kishu.Size = New System.Drawing.Size(108, 23)
-        Me.Txt_S_Kishu.TabIndex = 20
+        Me.Txt_S_Kishu.TabIndex = 2
         '
         'Txt_S_Type
         '
@@ -388,7 +399,7 @@ Partial Class F_Mitsumori
         Me.Txt_S_Type.Location = New System.Drawing.Point(115, 64)
         Me.Txt_S_Type.Name = "Txt_S_Type"
         Me.Txt_S_Type.Size = New System.Drawing.Size(108, 23)
-        Me.Txt_S_Type.TabIndex = 20
+        Me.Txt_S_Type.TabIndex = 3
         '
         'Label8
         '
@@ -416,7 +427,7 @@ Partial Class F_Mitsumori
         Me.Txt_S_Shimuke.Location = New System.Drawing.Point(377, 15)
         Me.Txt_S_Shimuke.Name = "Txt_S_Shimuke"
         Me.Txt_S_Shimuke.Size = New System.Drawing.Size(70, 23)
-        Me.Txt_S_Shimuke.TabIndex = 19
+        Me.Txt_S_Shimuke.TabIndex = 1
         '
         'Label7
         '
@@ -434,7 +445,7 @@ Partial Class F_Mitsumori
         Me.Btn_Search.Location = New System.Drawing.Point(678, 54)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Search.TabIndex = 15
+        Me.Btn_Search.TabIndex = 5
         Me.Btn_Search.Text = "検　索"
         Me.Btn_Search.UseVisualStyleBackColor = True
         '
@@ -444,7 +455,7 @@ Partial Class F_Mitsumori
         Me.Txt_S_Mitsumori_CD.Location = New System.Drawing.Point(115, 12)
         Me.Txt_S_Mitsumori_CD.Name = "Txt_S_Mitsumori_CD"
         Me.Txt_S_Mitsumori_CD.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_S_Mitsumori_CD.TabIndex = 17
+        Me.Txt_S_Mitsumori_CD.TabIndex = 0
         '
         'Label6
         '
@@ -455,16 +466,6 @@ Partial Class F_Mitsumori
         Me.Label6.Size = New System.Drawing.Size(76, 16)
         Me.Label6.TabIndex = 16
         Me.Label6.Text = "見積コード"
-        '
-        'Btn_Output
-        '
-        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Output.Location = New System.Drawing.Point(891, 54)
-        Me.Btn_Output.Name = "Btn_Output"
-        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Output.TabIndex = 32
-        Me.Btn_Output.Text = "CSV出力"
-        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_Mitsumori
         '

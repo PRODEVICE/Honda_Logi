@@ -37,7 +37,7 @@ Partial Class F_Select_Main
         Me.Panel5.Location = New System.Drawing.Point(62, 44)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(332, 205)
-        Me.Panel5.TabIndex = 65
+        Me.Panel5.TabIndex = 0
         '
         'Btn_Tokushu
         '
@@ -45,7 +45,7 @@ Partial Class F_Select_Main
         Me.Btn_Tokushu.Location = New System.Drawing.Point(29, 113)
         Me.Btn_Tokushu.Name = "Btn_Tokushu"
         Me.Btn_Tokushu.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Tokushu.TabIndex = 5
+        Me.Btn_Tokushu.TabIndex = 1
         Me.Btn_Tokushu.Text = "新見積システム" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "見積依頼用"
         Me.Btn_Tokushu.UseVisualStyleBackColor = True
         '
@@ -55,7 +55,7 @@ Partial Class F_Select_Main
         Me.Btn_Normal.Location = New System.Drawing.Point(29, 28)
         Me.Btn_Normal.Name = "Btn_Normal"
         Me.Btn_Normal.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Normal.TabIndex = 3
+        Me.Btn_Normal.TabIndex = 0
         Me.Btn_Normal.Text = "新見積システム"
         Me.Btn_Normal.UseVisualStyleBackColor = True
         '

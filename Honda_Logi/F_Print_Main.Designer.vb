@@ -191,7 +191,7 @@ Partial Class F_Print_Main
         Me.Label3.Location = New System.Drawing.Point(189, 68)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(79, 18)
-        Me.Label3.TabIndex = 57
+        Me.Label3.TabIndex = 0
         Me.Label3.Text = "対象データ"
         '
         'Lbl_Messege

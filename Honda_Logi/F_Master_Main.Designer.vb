@@ -26,12 +26,12 @@ Partial Class F_Master_Main
         Me.Btn_Tantou = New System.Windows.Forms.Button()
         Me.Btn_M_Keisu = New System.Windows.Forms.Button()
         Me.Btn_M_Tanka = New System.Windows.Forms.Button()
-        Me.Btn_M_Order = New System.Windows.Forms.Button()
         Me.Btn_M_Hayami = New System.Windows.Forms.Button()
         Me.Btn_M_Mitsumori = New System.Windows.Forms.Button()
         Me.Btn_M_Kousu = New System.Windows.Forms.Button()
         Me.Btn_M_Tinritsu = New System.Windows.Forms.Button()
         Me.Btn_M_Shizai = New System.Windows.Forms.Button()
+        Me.Btn_M_Order = New System.Windows.Forms.Button()
         Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -58,7 +58,7 @@ Partial Class F_Master_Main
         Me.Btn_Tantou.Location = New System.Drawing.Point(304, 189)
         Me.Btn_Tantou.Name = "Btn_Tantou"
         Me.Btn_Tantou.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Tantou.TabIndex = 16
+        Me.Btn_Tantou.TabIndex = 7
         Me.Btn_Tantou.Text = "担当者マスタ"
         Me.Btn_Tantou.UseVisualStyleBackColor = True
         '
@@ -68,7 +68,7 @@ Partial Class F_Master_Main
         Me.Btn_M_Keisu.Location = New System.Drawing.Point(304, 130)
         Me.Btn_M_Keisu.Name = "Btn_M_Keisu"
         Me.Btn_M_Keisu.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_M_Keisu.TabIndex = 15
+        Me.Btn_M_Keisu.TabIndex = 6
         Me.Btn_M_Keisu.Text = "機種係数マスタ"
         Me.Btn_M_Keisu.UseVisualStyleBackColor = True
         '
@@ -78,20 +78,9 @@ Partial Class F_Master_Main
         Me.Btn_M_Tanka.Location = New System.Drawing.Point(18, 189)
         Me.Btn_M_Tanka.Name = "Btn_M_Tanka"
         Me.Btn_M_Tanka.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_M_Tanka.TabIndex = 13
+        Me.Btn_M_Tanka.TabIndex = 3
         Me.Btn_M_Tanka.Text = "資材単価マスタ"
         Me.Btn_M_Tanka.UseVisualStyleBackColor = True
-        '
-        'Btn_M_Order
-        '
-        Me.Btn_M_Order.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_M_Order.Location = New System.Drawing.Point(349, 313)
-        Me.Btn_M_Order.Name = "Btn_M_Order"
-        Me.Btn_M_Order.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_M_Order.TabIndex = 11
-        Me.Btn_M_Order.Text = "部品単位オーダーリスト"
-        Me.Btn_M_Order.UseVisualStyleBackColor = True
-        Me.Btn_M_Order.Visible = False
         '
         'Btn_M_Hayami
         '
@@ -99,7 +88,7 @@ Partial Class F_Master_Main
         Me.Btn_M_Hayami.Location = New System.Drawing.Point(304, 12)
         Me.Btn_M_Hayami.Name = "Btn_M_Hayami"
         Me.Btn_M_Hayami.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_M_Hayami.TabIndex = 10
+        Me.Btn_M_Hayami.TabIndex = 4
         Me.Btn_M_Hayami.Text = "個装/内装登録早見表"
         Me.Btn_M_Hayami.UseVisualStyleBackColor = True
         '
@@ -109,7 +98,7 @@ Partial Class F_Master_Main
         Me.Btn_M_Mitsumori.Location = New System.Drawing.Point(18, 71)
         Me.Btn_M_Mitsumori.Name = "Btn_M_Mitsumori"
         Me.Btn_M_Mitsumori.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_M_Mitsumori.TabIndex = 14
+        Me.Btn_M_Mitsumori.TabIndex = 1
         Me.Btn_M_Mitsumori.Text = "見積コードマスタ"
         Me.Btn_M_Mitsumori.UseVisualStyleBackColor = True
         '
@@ -119,7 +108,7 @@ Partial Class F_Master_Main
         Me.Btn_M_Kousu.Location = New System.Drawing.Point(304, 71)
         Me.Btn_M_Kousu.Name = "Btn_M_Kousu"
         Me.Btn_M_Kousu.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_M_Kousu.TabIndex = 9
+        Me.Btn_M_Kousu.TabIndex = 5
         Me.Btn_M_Kousu.Text = "工数マスタ"
         Me.Btn_M_Kousu.UseVisualStyleBackColor = True
         '
@@ -129,7 +118,7 @@ Partial Class F_Master_Main
         Me.Btn_M_Tinritsu.Location = New System.Drawing.Point(18, 130)
         Me.Btn_M_Tinritsu.Name = "Btn_M_Tinritsu"
         Me.Btn_M_Tinritsu.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_M_Tinritsu.TabIndex = 11
+        Me.Btn_M_Tinritsu.TabIndex = 2
         Me.Btn_M_Tinritsu.Text = "賃率マスタ"
         Me.Btn_M_Tinritsu.UseVisualStyleBackColor = True
         '
@@ -139,9 +128,21 @@ Partial Class F_Master_Main
         Me.Btn_M_Shizai.Location = New System.Drawing.Point(18, 12)
         Me.Btn_M_Shizai.Name = "Btn_M_Shizai"
         Me.Btn_M_Shizai.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_M_Shizai.TabIndex = 2
+        Me.Btn_M_Shizai.TabIndex = 0
         Me.Btn_M_Shizai.Text = "資材マスタ"
         Me.Btn_M_Shizai.UseVisualStyleBackColor = True
+        '
+        'Btn_M_Order
+        '
+        Me.Btn_M_Order.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_M_Order.Location = New System.Drawing.Point(349, 313)
+        Me.Btn_M_Order.Name = "Btn_M_Order"
+        Me.Btn_M_Order.Size = New System.Drawing.Size(266, 53)
+        Me.Btn_M_Order.TabIndex = 11
+        Me.Btn_M_Order.TabStop = False
+        Me.Btn_M_Order.Text = "部品単位オーダーリスト"
+        Me.Btn_M_Order.UseVisualStyleBackColor = True
+        Me.Btn_M_Order.Visible = False
         '
         'F_Master_Main
         '

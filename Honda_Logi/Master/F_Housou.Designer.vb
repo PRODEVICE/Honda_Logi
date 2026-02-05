@@ -23,8 +23,8 @@ Partial Class F_Housou
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GV_Master = New System.Windows.Forms.DataGridView()
         Me.選択 = New System.Windows.Forms.DataGridViewLinkColumn()
@@ -59,6 +59,7 @@ Partial Class F_Housou
         Me.TA_M_Housou_Kbn = New Honda_Logi.DS_MTableAdapters.TA_M_Housou_Kbn()
         Me.TA_M_Kubun = New Honda_Logi.DS_MTableAdapters.TA_M_Kubun()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Cmb_S_Teiryou = New System.Windows.Forms.ComboBox()
         Me.BS_S_Teiryou = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label8 = New System.Windows.Forms.Label()
@@ -73,7 +74,6 @@ Partial Class F_Housou
         Me.Txt_S_DIST = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMHousouKbnBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,25 +103,26 @@ Partial Class F_Housou
         Me.GV_Master.AllowUserToAddRows = False
         Me.GV_Master.AllowUserToDeleteRows = False
         Me.GV_Master.AutoGenerateColumns = False
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.ライン, Me.DIST, Me.個装内装区分, Me.区分, Me.定量_不定量, Me.削除})
         Me.GV_Master.DataSource = Me.DTMHousouKbnBindingSource
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
         Me.GV_Master.Name = "GV_Master"
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GV_Master.RowTemplate.Height = 31
         Me.GV_Master.Size = New System.Drawing.Size(934, 358)
-        Me.GV_Master.TabIndex = 1
+        Me.GV_Master.TabIndex = 0
+        Me.GV_Master.TabStop = False
         '
         '選択
         '
@@ -202,7 +203,7 @@ Partial Class F_Housou
         Me.Txt_DIST.Location = New System.Drawing.Point(299, 21)
         Me.Txt_DIST.Name = "Txt_DIST"
         Me.Txt_DIST.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_DIST.TabIndex = 12
+        Me.Txt_DIST.TabIndex = 1
         '
         'Label2
         '
@@ -220,7 +221,7 @@ Partial Class F_Housou
         Me.Btn_Clear.Location = New System.Drawing.Point(842, 63)
         Me.Btn_Clear.Name = "Btn_Clear"
         Me.Btn_Clear.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Clear.TabIndex = 10
+        Me.Btn_Clear.TabIndex = 6
         Me.Btn_Clear.Text = "クリア"
         Me.Btn_Clear.UseVisualStyleBackColor = True
         '
@@ -238,7 +239,7 @@ Partial Class F_Housou
         Me.Btn_Touroku.Location = New System.Drawing.Point(740, 63)
         Me.Btn_Touroku.Name = "Btn_Touroku"
         Me.Btn_Touroku.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Touroku.TabIndex = 0
+        Me.Btn_Touroku.TabIndex = 5
         Me.Btn_Touroku.Text = "登　録"
         Me.Btn_Touroku.UseVisualStyleBackColor = True
         '
@@ -271,7 +272,7 @@ Partial Class F_Housou
         Me.Panel2.Location = New System.Drawing.Point(0, 481)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(934, 123)
-        Me.Panel2.TabIndex = 18
+        Me.Panel2.TabIndex = 1
         '
         'Cmb_Teiryou
         '
@@ -282,7 +283,7 @@ Partial Class F_Housou
         Me.Cmb_Teiryou.Location = New System.Drawing.Point(351, 73)
         Me.Cmb_Teiryou.Name = "Cmb_Teiryou"
         Me.Cmb_Teiryou.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_Teiryou.TabIndex = 37
+        Me.Cmb_Teiryou.TabIndex = 4
         Me.Cmb_Teiryou.ValueMember = "区分詳細名"
         '
         'BS_Teiryou
@@ -310,7 +311,7 @@ Partial Class F_Housou
         Me.Cmb_Kubun.Location = New System.Drawing.Point(82, 73)
         Me.Cmb_Kubun.Name = "Cmb_Kubun"
         Me.Cmb_Kubun.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_Kubun.TabIndex = 35
+        Me.Cmb_Kubun.TabIndex = 3
         Me.Cmb_Kubun.ValueMember = "区分詳細名"
         '
         'BS_Kubun
@@ -338,7 +339,7 @@ Partial Class F_Housou
         Me.Cmb_Line.Location = New System.Drawing.Point(82, 21)
         Me.Cmb_Line.Name = "Cmb_Line"
         Me.Cmb_Line.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_Line.TabIndex = 16
+        Me.Cmb_Line.TabIndex = 0
         Me.Cmb_Line.ValueMember = "区分詳細名"
         '
         'BS_Line
@@ -356,7 +357,7 @@ Partial Class F_Housou
         Me.Cmb_Housou_Kbn.Location = New System.Drawing.Point(607, 21)
         Me.Cmb_Housou_Kbn.Name = "Cmb_Housou_Kbn"
         Me.Cmb_Housou_Kbn.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_Housou_Kbn.TabIndex = 15
+        Me.Cmb_Housou_Kbn.TabIndex = 2
         Me.Cmb_Housou_Kbn.ValueMember = "区分詳細名"
         '
         'BS_KosouNaisou
@@ -398,7 +399,17 @@ Partial Class F_Housou
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(934, 123)
-        Me.Panel3.TabIndex = 19
+        Me.Panel3.TabIndex = 0
+        '
+        'Btn_Output
+        '
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(813, 73)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 7
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'Cmb_S_Teiryou
         '
@@ -409,7 +420,7 @@ Partial Class F_Housou
         Me.Cmb_S_Teiryou.Location = New System.Drawing.Point(351, 83)
         Me.Cmb_S_Teiryou.Name = "Cmb_S_Teiryou"
         Me.Cmb_S_Teiryou.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_S_Teiryou.TabIndex = 33
+        Me.Cmb_S_Teiryou.TabIndex = 4
         Me.Cmb_S_Teiryou.ValueMember = "区分詳細名"
         '
         'BS_S_Teiryou
@@ -437,7 +448,7 @@ Partial Class F_Housou
         Me.Cmb_S_Kubun.Location = New System.Drawing.Point(82, 83)
         Me.Cmb_S_Kubun.Name = "Cmb_S_Kubun"
         Me.Cmb_S_Kubun.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_S_Kubun.TabIndex = 31
+        Me.Cmb_S_Kubun.TabIndex = 3
         Me.Cmb_S_Kubun.ValueMember = "区分詳細名"
         '
         'BS_S_Kubun
@@ -465,7 +476,7 @@ Partial Class F_Housou
         Me.Cmb_S_Housou_Kbn.Location = New System.Drawing.Point(607, 22)
         Me.Cmb_S_Housou_Kbn.Name = "Cmb_S_Housou_Kbn"
         Me.Cmb_S_Housou_Kbn.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_S_Housou_Kbn.TabIndex = 29
+        Me.Cmb_S_Housou_Kbn.TabIndex = 2
         Me.Cmb_S_Housou_Kbn.ValueMember = "区分詳細名"
         '
         'Btn_Import
@@ -474,7 +485,7 @@ Partial Class F_Housou
         Me.Btn_Import.Location = New System.Drawing.Point(692, 73)
         Me.Btn_Import.Name = "Btn_Import"
         Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Import.TabIndex = 28
+        Me.Btn_Import.TabIndex = 6
         Me.Btn_Import.Text = "CSV取込"
         Me.Btn_Import.UseVisualStyleBackColor = True
         '
@@ -484,7 +495,7 @@ Partial Class F_Housou
         Me.Txt_S_Line.Location = New System.Drawing.Point(82, 22)
         Me.Txt_S_Line.Name = "Txt_S_Line"
         Me.Txt_S_Line.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_S_Line.TabIndex = 26
+        Me.Txt_S_Line.TabIndex = 0
         '
         'Btn_Search
         '
@@ -492,7 +503,7 @@ Partial Class F_Housou
         Me.Btn_Search.Location = New System.Drawing.Point(599, 73)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Search.TabIndex = 25
+        Me.Btn_Search.TabIndex = 5
         Me.Btn_Search.Text = "検　索"
         Me.Btn_Search.UseVisualStyleBackColor = True
         '
@@ -512,7 +523,7 @@ Partial Class F_Housou
         Me.Txt_S_DIST.Location = New System.Drawing.Point(299, 22)
         Me.Txt_S_DIST.Name = "Txt_S_DIST"
         Me.Txt_S_DIST.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_S_DIST.TabIndex = 21
+        Me.Txt_S_DIST.TabIndex = 1
         '
         'Label5
         '
@@ -533,16 +544,6 @@ Partial Class F_Housou
         Me.Label6.Size = New System.Drawing.Size(43, 16)
         Me.Label6.TabIndex = 18
         Me.Label6.Text = "ライン"
-        '
-        'Btn_Output
-        '
-        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Output.Location = New System.Drawing.Point(813, 73)
-        Me.Btn_Output.Name = "Btn_Output"
-        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Output.TabIndex = 34
-        Me.Btn_Output.Text = "CSV出力"
-        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_Housou
         '

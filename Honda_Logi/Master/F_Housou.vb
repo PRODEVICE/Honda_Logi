@@ -370,7 +370,7 @@ Public Class F_Housou
             End If
 
         Catch ex As Exception
-            fnc.ERR_LOG(ex.Message, "F_Tanka_GV_Master_CellContentClick")
+            fnc.ERR_LOG(ex.Message, "F_Housou_GV_Master_CellContentClick")
             MessageBox.Show(ex.Message)
         End Try
 

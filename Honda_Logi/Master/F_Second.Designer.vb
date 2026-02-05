@@ -73,7 +73,7 @@ Partial Class F_Second
         Me.Btn_Touroku.Location = New System.Drawing.Point(289, 12)
         Me.Btn_Touroku.Name = "Btn_Touroku"
         Me.Btn_Touroku.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Touroku.TabIndex = 0
+        Me.Btn_Touroku.TabIndex = 1
         Me.Btn_Touroku.Text = "更　新"
         Me.Btn_Touroku.UseVisualStyleBackColor = True
         '
@@ -83,7 +83,7 @@ Partial Class F_Second
         Me.Txt_Byousu.Location = New System.Drawing.Point(115, 22)
         Me.Txt_Byousu.Name = "Txt_Byousu"
         Me.Txt_Byousu.Size = New System.Drawing.Size(121, 23)
-        Me.Txt_Byousu.TabIndex = 3
+        Me.Txt_Byousu.TabIndex = 0
         '
         'Label1
         '
@@ -119,6 +119,7 @@ Partial Class F_Second
         Me.GV_Master.RowTemplate.Height = 31
         Me.GV_Master.Size = New System.Drawing.Size(686, 670)
         Me.GV_Master.TabIndex = 1
+        Me.GV_Master.TabStop = False
         '
         '選択
         '

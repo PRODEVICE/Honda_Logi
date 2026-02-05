@@ -54,7 +54,7 @@ Partial Class F_Print_Sub_Mitsumori2
         Me.Chk_Keisu_Flg.Location = New System.Drawing.Point(272, 67)
         Me.Chk_Keisu_Flg.Name = "Chk_Keisu_Flg"
         Me.Chk_Keisu_Flg.Size = New System.Drawing.Size(89, 20)
-        Me.Chk_Keisu_Flg.TabIndex = 2
+        Me.Chk_Keisu_Flg.TabIndex = 1
         Me.Chk_Keisu_Flg.Text = "付与する"
         Me.Chk_Keisu_Flg.UseVisualStyleBackColor = True
         Me.Chk_Keisu_Flg.Visible = False
@@ -105,7 +105,7 @@ Partial Class F_Print_Sub_Mitsumori2
         Me.Cmb_Target.Location = New System.Drawing.Point(239, 24)
         Me.Cmb_Target.Name = "Cmb_Target"
         Me.Cmb_Target.Size = New System.Drawing.Size(203, 24)
-        Me.Cmb_Target.TabIndex = 61
+        Me.Cmb_Target.TabIndex = 0
         '
         'Btn_Output
         '
@@ -113,7 +113,7 @@ Partial Class F_Print_Sub_Mitsumori2
         Me.Btn_Output.Location = New System.Drawing.Point(176, 122)
         Me.Btn_Output.Name = "Btn_Output"
         Me.Btn_Output.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output.TabIndex = 4
+        Me.Btn_Output.TabIndex = 2
         Me.Btn_Output.Text = "機種"
         Me.Btn_Output.UseVisualStyleBackColor = True
         '

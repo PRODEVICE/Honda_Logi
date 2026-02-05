@@ -38,7 +38,7 @@ Partial Class F_Make_1Lot
         Me.Btn_Change.Location = New System.Drawing.Point(138, 160)
         Me.Btn_Change.Name = "Btn_Change"
         Me.Btn_Change.Size = New System.Drawing.Size(124, 65)
-        Me.Btn_Change.TabIndex = 32
+        Me.Btn_Change.TabIndex = 1
         Me.Btn_Change.Text = "変　換"
         Me.Btn_Change.UseVisualStyleBackColor = True
         '
@@ -48,7 +48,7 @@ Partial Class F_Make_1Lot
         Me.Btn_Output.Location = New System.Drawing.Point(358, 160)
         Me.Btn_Output.Name = "Btn_Output"
         Me.Btn_Output.Size = New System.Drawing.Size(124, 65)
-        Me.Btn_Output.TabIndex = 35
+        Me.Btn_Output.TabIndex = 2
         Me.Btn_Output.Text = "出　力"
         Me.Btn_Output.UseVisualStyleBackColor = True
         '
@@ -73,7 +73,7 @@ Partial Class F_Make_1Lot
         Me.Pnl_Maker.Location = New System.Drawing.Point(91, 67)
         Me.Pnl_Maker.Name = "Pnl_Maker"
         Me.Pnl_Maker.Size = New System.Drawing.Size(444, 53)
-        Me.Pnl_Maker.TabIndex = 65
+        Me.Pnl_Maker.TabIndex = 0
         '
         'Rdb_6519
         '
@@ -82,7 +82,7 @@ Partial Class F_Make_1Lot
         Me.Rdb_6519.Location = New System.Drawing.Point(289, 10)
         Me.Rdb_6519.Name = "Rdb_6519"
         Me.Rdb_6519.Size = New System.Drawing.Size(132, 31)
-        Me.Rdb_6519.TabIndex = 2
+        Me.Rdb_6519.TabIndex = 1
         Me.Rdb_6519.TabStop = True
         Me.Rdb_6519.Text = "6519のみ"
         Me.Rdb_6519.UseVisualStyleBackColor = True
@@ -94,7 +94,7 @@ Partial Class F_Make_1Lot
         Me.Rdb_all.Location = New System.Drawing.Point(185, 10)
         Me.Rdb_all.Name = "Rdb_all"
         Me.Rdb_all.Size = New System.Drawing.Size(78, 31)
-        Me.Rdb_all.TabIndex = 1
+        Me.Rdb_all.TabIndex = 0
         Me.Rdb_all.TabStop = True
         Me.Rdb_all.Text = "全て"
         Me.Rdb_all.UseVisualStyleBackColor = True

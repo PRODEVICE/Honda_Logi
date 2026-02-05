@@ -90,7 +90,7 @@ Partial Class F_Main
         Me.Btn_Receive.Location = New System.Drawing.Point(11, 26)
         Me.Btn_Receive.Name = "Btn_Receive"
         Me.Btn_Receive.Size = New System.Drawing.Size(162, 53)
-        Me.Btn_Receive.TabIndex = 1
+        Me.Btn_Receive.TabIndex = 0
         Me.Btn_Receive.Text = "データ取込"
         Me.Btn_Receive.UseVisualStyleBackColor = True
         '
@@ -100,7 +100,7 @@ Partial Class F_Main
         Me.Btn_Change.Location = New System.Drawing.Point(11, 106)
         Me.Btn_Change.Name = "Btn_Change"
         Me.Btn_Change.Size = New System.Drawing.Size(162, 53)
-        Me.Btn_Change.TabIndex = 0
+        Me.Btn_Change.TabIndex = 1
         Me.Btn_Change.Text = "データ変換"
         Me.Btn_Change.UseVisualStyleBackColor = True
         '
@@ -143,7 +143,7 @@ Partial Class F_Main
         Me.Btn_Output.Location = New System.Drawing.Point(11, 13)
         Me.Btn_Output.Name = "Btn_Output"
         Me.Btn_Output.Size = New System.Drawing.Size(162, 46)
-        Me.Btn_Output.TabIndex = 2
+        Me.Btn_Output.TabIndex = 0
         Me.Btn_Output.Text = "データ出力"
         Me.Btn_Output.UseVisualStyleBackColor = True
         '

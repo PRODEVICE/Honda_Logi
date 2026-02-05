@@ -33,7 +33,7 @@ Partial Class F_Rate
         Me.Btn_Touroku.Location = New System.Drawing.Point(155, 118)
         Me.Btn_Touroku.Name = "Btn_Touroku"
         Me.Btn_Touroku.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Touroku.TabIndex = 4
+        Me.Btn_Touroku.TabIndex = 1
         Me.Btn_Touroku.Text = "更　新"
         Me.Btn_Touroku.UseVisualStyleBackColor = True
         '
@@ -43,7 +43,7 @@ Partial Class F_Rate
         Me.Txt_Rate.Location = New System.Drawing.Point(138, 56)
         Me.Txt_Rate.Name = "Txt_Rate"
         Me.Txt_Rate.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_Rate.TabIndex = 6
+        Me.Txt_Rate.TabIndex = 0
         '
         'Label1
         '

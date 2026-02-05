@@ -59,6 +59,12 @@ Public Class F_Shizai
                     Exit Sub
                 End If
 
+                Dim qty As Integer
+                If Not Integer.TryParse(suryou, qty) Then
+                    MessageBox.Show("数量は整数で入力してください。")
+                    Exit Sub
+                End If
+
             Else 'その他資材マスタ
 
                 If shizai_cd = "" Then
@@ -66,13 +72,6 @@ Public Class F_Shizai
                     Exit Sub
                 End If
 
-            End If
-
-            Dim qty As Integer
-
-            If Not Integer.TryParse(suryou, qty) Then
-                MessageBox.Show("数量は整数で入力してください。")
-                Exit Sub
             End If
 
             Dim chk_count As String = ""

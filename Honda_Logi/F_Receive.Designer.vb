@@ -55,7 +55,7 @@ Partial Class F_Receive
         Me.Btn_Sanshou.Location = New System.Drawing.Point(697, 212)
         Me.Btn_Sanshou.Name = "Btn_Sanshou"
         Me.Btn_Sanshou.Size = New System.Drawing.Size(75, 38)
-        Me.Btn_Sanshou.TabIndex = 27
+        Me.Btn_Sanshou.TabIndex = 2
         Me.Btn_Sanshou.Text = "参照"
         Me.Btn_Sanshou.UseVisualStyleBackColor = True
         '
@@ -65,7 +65,7 @@ Partial Class F_Receive
         Me.Txt_File_Path.Location = New System.Drawing.Point(62, 183)
         Me.Txt_File_Path.Name = "Txt_File_Path"
         Me.Txt_File_Path.Size = New System.Drawing.Size(710, 23)
-        Me.Txt_File_Path.TabIndex = 26
+        Me.Txt_File_Path.TabIndex = 1
         '
         'Label1
         '
@@ -86,7 +86,7 @@ Partial Class F_Receive
         Me.Btn_Receive.Location = New System.Drawing.Point(349, 225)
         Me.Btn_Receive.Name = "Btn_Receive"
         Me.Btn_Receive.Size = New System.Drawing.Size(124, 65)
-        Me.Btn_Receive.TabIndex = 29
+        Me.Btn_Receive.TabIndex = 3
         Me.Btn_Receive.Text = "取　込"
         Me.Btn_Receive.UseVisualStyleBackColor = True
         '
@@ -113,7 +113,7 @@ Partial Class F_Receive
         Me.Dtp_Nengetu.Location = New System.Drawing.Point(62, 83)
         Me.Dtp_Nengetu.Name = "Dtp_Nengetu"
         Me.Dtp_Nengetu.Size = New System.Drawing.Size(200, 23)
-        Me.Dtp_Nengetu.TabIndex = 31
+        Me.Dtp_Nengetu.TabIndex = 0
         '
         'Lbl_Messege
         '

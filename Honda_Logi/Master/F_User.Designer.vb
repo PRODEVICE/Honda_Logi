@@ -23,8 +23,8 @@ Partial Class F_User
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Txt_Password = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Btn_Clear = New System.Windows.Forms.Button()
@@ -50,6 +50,7 @@ Partial Class F_User
         Me.Txt_Tantou_CD = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Btn_Import = New System.Windows.Forms.Button()
         Me.Cmb_S_Kengen = New System.Windows.Forms.ComboBox()
         Me.DTMKubunBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
@@ -61,7 +62,6 @@ Partial Class F_User
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TA_M_User = New Honda_Logi.DS_MTableAdapters.TA_M_User()
         Me.TA_M_Kubun = New Honda_Logi.DS_MTableAdapters.TA_M_Kubun()
-        Me.Btn_Output = New System.Windows.Forms.Button()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DTMUserBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,7 +78,7 @@ Partial Class F_User
         Me.Txt_Password.Location = New System.Drawing.Point(115, 73)
         Me.Txt_Password.Name = "Txt_Password"
         Me.Txt_Password.Size = New System.Drawing.Size(123, 23)
-        Me.Txt_Password.TabIndex = 14
+        Me.Txt_Password.TabIndex = 2
         '
         'Label3
         '
@@ -96,7 +96,7 @@ Partial Class F_User
         Me.Btn_Clear.Location = New System.Drawing.Point(769, 63)
         Me.Btn_Clear.Name = "Btn_Clear"
         Me.Btn_Clear.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Clear.TabIndex = 10
+        Me.Btn_Clear.TabIndex = 5
         Me.Btn_Clear.Text = "クリア"
         Me.Btn_Clear.UseVisualStyleBackColor = True
         '
@@ -114,7 +114,7 @@ Partial Class F_User
         Me.Btn_Touroku.Location = New System.Drawing.Point(667, 63)
         Me.Btn_Touroku.Name = "Btn_Touroku"
         Me.Btn_Touroku.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Touroku.TabIndex = 0
+        Me.Btn_Touroku.TabIndex = 4
         Me.Btn_Touroku.Text = "登　録"
         Me.Btn_Touroku.UseVisualStyleBackColor = True
         '
@@ -123,25 +123,26 @@ Partial Class F_User
         Me.GV_Master.AllowUserToAddRows = False
         Me.GV_Master.AllowUserToDeleteRows = False
         Me.GV_Master.AutoGenerateColumns = False
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GV_Master.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GV_Master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GV_Master.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.選択, Me.id, Me.User_id, Me.User_NM, Me.Kengen, Me.Password, Me.削除})
         Me.GV_Master.DataSource = Me.DTMUserBindingSource
         Me.GV_Master.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GV_Master.Location = New System.Drawing.Point(0, 0)
         Me.GV_Master.Name = "GV_Master"
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.GV_Master.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.GV_Master.RowTemplate.Height = 31
         Me.GV_Master.Size = New System.Drawing.Size(908, 395)
         Me.GV_Master.TabIndex = 1
+        Me.GV_Master.TabStop = False
         '
         '選択
         '
@@ -225,7 +226,7 @@ Partial Class F_User
         Me.Panel2.Location = New System.Drawing.Point(0, 498)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(908, 115)
-        Me.Panel2.TabIndex = 16
+        Me.Panel2.TabIndex = 1
         '
         'Cmb_Kengen
         '
@@ -236,7 +237,7 @@ Partial Class F_User
         Me.Cmb_Kengen.Location = New System.Drawing.Point(403, 72)
         Me.Cmb_Kengen.Name = "Cmb_Kengen"
         Me.Cmb_Kengen.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_Kengen.TabIndex = 32
+        Me.Cmb_Kengen.TabIndex = 3
         Me.Cmb_Kengen.ValueMember = "区分CD"
         '
         'DTMKubunBindingSource
@@ -261,7 +262,7 @@ Partial Class F_User
         Me.Txt_Tantou_NM.Location = New System.Drawing.Point(403, 18)
         Me.Txt_Tantou_NM.Name = "Txt_Tantou_NM"
         Me.Txt_Tantou_NM.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_Tantou_NM.TabIndex = 30
+        Me.Txt_Tantou_NM.TabIndex = 1
         '
         'Label2
         '
@@ -279,7 +280,7 @@ Partial Class F_User
         Me.Txt_Tantou_CD.Location = New System.Drawing.Point(115, 18)
         Me.Txt_Tantou_CD.Name = "Txt_Tantou_CD"
         Me.Txt_Tantou_CD.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_Tantou_CD.TabIndex = 28
+        Me.Txt_Tantou_CD.TabIndex = 0
         '
         'Label5
         '
@@ -306,7 +307,17 @@ Partial Class F_User
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(908, 103)
-        Me.Panel3.TabIndex = 17
+        Me.Panel3.TabIndex = 0
+        '
+        'Btn_Output
+        '
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(792, 51)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 5
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'Btn_Import
         '
@@ -314,7 +325,7 @@ Partial Class F_User
         Me.Btn_Import.Location = New System.Drawing.Point(673, 51)
         Me.Btn_Import.Name = "Btn_Import"
         Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.TabIndex = 4
         Me.Btn_Import.Text = "CSV取込"
         Me.Btn_Import.UseVisualStyleBackColor = True
         '
@@ -327,7 +338,7 @@ Partial Class F_User
         Me.Cmb_S_Kengen.Location = New System.Drawing.Point(131, 67)
         Me.Cmb_S_Kengen.Name = "Cmb_S_Kengen"
         Me.Cmb_S_Kengen.Size = New System.Drawing.Size(121, 24)
-        Me.Cmb_S_Kengen.TabIndex = 26
+        Me.Cmb_S_Kengen.TabIndex = 2
         Me.Cmb_S_Kengen.ValueMember = "区分CD"
         '
         'DTMKubunBindingSource2
@@ -342,7 +353,7 @@ Partial Class F_User
         Me.Btn_Search.Location = New System.Drawing.Point(581, 51)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Search.TabIndex = 25
+        Me.Btn_Search.TabIndex = 3
         Me.Btn_Search.Text = "検　索"
         Me.Btn_Search.UseVisualStyleBackColor = True
         '
@@ -362,7 +373,7 @@ Partial Class F_User
         Me.Txt_S_Tantou_NM.Location = New System.Drawing.Point(419, 18)
         Me.Txt_S_Tantou_NM.Name = "Txt_S_Tantou_NM"
         Me.Txt_S_Tantou_NM.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_S_Tantou_NM.TabIndex = 20
+        Me.Txt_S_Tantou_NM.TabIndex = 1
         '
         'Label7
         '
@@ -380,7 +391,7 @@ Partial Class F_User
         Me.Txt_S_Tantou_CD.Location = New System.Drawing.Point(131, 18)
         Me.Txt_S_Tantou_CD.Name = "Txt_S_Tantou_CD"
         Me.Txt_S_Tantou_CD.Size = New System.Drawing.Size(173, 23)
-        Me.Txt_S_Tantou_CD.TabIndex = 18
+        Me.Txt_S_Tantou_CD.TabIndex = 0
         '
         'Label8
         '
@@ -399,16 +410,6 @@ Partial Class F_User
         'TA_M_Kubun
         '
         Me.TA_M_Kubun.ClearBeforeFill = True
-        '
-        'Btn_Output
-        '
-        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Output.Location = New System.Drawing.Point(792, 51)
-        Me.Btn_Output.Name = "Btn_Output"
-        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Output.TabIndex = 31
-        Me.Btn_Output.Text = "CSV出力"
-        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_User
         '

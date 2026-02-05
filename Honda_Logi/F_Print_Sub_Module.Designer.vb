@@ -61,7 +61,7 @@ Partial Class F_Print_Sub_Module
         Me.Btn_Output3.Location = New System.Drawing.Point(58, 148)
         Me.Btn_Output3.Name = "Btn_Output3"
         Me.Btn_Output3.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output3.TabIndex = 5
+        Me.Btn_Output3.TabIndex = 2
         Me.Btn_Output3.Text = "不定量のみ"
         Me.Btn_Output3.UseVisualStyleBackColor = True
         '
@@ -71,7 +71,7 @@ Partial Class F_Print_Sub_Module
         Me.Btn_Output2.Location = New System.Drawing.Point(58, 89)
         Me.Btn_Output2.Name = "Btn_Output2"
         Me.Btn_Output2.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output2.TabIndex = 4
+        Me.Btn_Output2.TabIndex = 1
         Me.Btn_Output2.Text = "定量のみ"
         Me.Btn_Output2.UseVisualStyleBackColor = True
         '
@@ -81,7 +81,7 @@ Partial Class F_Print_Sub_Module
         Me.Btn_Output1.Location = New System.Drawing.Point(58, 30)
         Me.Btn_Output1.Name = "Btn_Output1"
         Me.Btn_Output1.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output1.TabIndex = 3
+        Me.Btn_Output1.TabIndex = 0
         Me.Btn_Output1.Text = "定量/不定量"
         Me.Btn_Output1.UseVisualStyleBackColor = True
         '

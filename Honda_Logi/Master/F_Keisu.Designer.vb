@@ -29,6 +29,7 @@ Partial Class F_Keisu
         Me.Txt_S_Kishu = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Txt_S_Shimuke = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Btn_Import = New System.Windows.Forms.Button()
@@ -58,7 +59,6 @@ Partial Class F_Keisu
         Me.Txt_id = New System.Windows.Forms.TextBox()
         Me.Btn_Touroku = New System.Windows.Forms.Button()
         Me.TA_M_Keisu = New Honda_Logi.DS_MTableAdapters.TA_M_Keisu()
-        Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.GV_Master, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +73,7 @@ Partial Class F_Keisu
         Me.Btn_Search.Location = New System.Drawing.Point(574, 14)
         Me.Btn_Search.Name = "Btn_Search"
         Me.Btn_Search.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Search.TabIndex = 13
+        Me.Btn_Search.TabIndex = 3
         Me.Btn_Search.Text = "検　索"
         Me.Btn_Search.UseVisualStyleBackColor = True
         '
@@ -83,7 +83,7 @@ Partial Class F_Keisu
         Me.Txt_S_Kishu.Location = New System.Drawing.Point(252, 24)
         Me.Txt_S_Kishu.Name = "Txt_S_Kishu"
         Me.Txt_S_Kishu.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_S_Kishu.TabIndex = 14
+        Me.Txt_S_Kishu.TabIndex = 1
         '
         'Label2
         '
@@ -110,7 +110,17 @@ Partial Class F_Keisu
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(912, 77)
-        Me.Panel3.TabIndex = 15
+        Me.Panel3.TabIndex = 0
+        '
+        'Btn_Output
+        '
+        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Output.Location = New System.Drawing.Point(789, 14)
+        Me.Btn_Output.Name = "Btn_Output"
+        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
+        Me.Btn_Output.TabIndex = 5
+        Me.Btn_Output.Text = "CSV出力"
+        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'Txt_S_Shimuke
         '
@@ -118,7 +128,7 @@ Partial Class F_Keisu
         Me.Txt_S_Shimuke.Location = New System.Drawing.Point(71, 24)
         Me.Txt_S_Shimuke.Name = "Txt_S_Shimuke"
         Me.Txt_S_Shimuke.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_S_Shimuke.TabIndex = 31
+        Me.Txt_S_Shimuke.TabIndex = 0
         '
         'Label6
         '
@@ -136,7 +146,7 @@ Partial Class F_Keisu
         Me.Btn_Import.Location = New System.Drawing.Point(667, 14)
         Me.Btn_Import.Name = "Btn_Import"
         Me.Btn_Import.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Import.TabIndex = 29
+        Me.Btn_Import.TabIndex = 4
         Me.Btn_Import.Text = "CSV取込"
         Me.Btn_Import.UseVisualStyleBackColor = True
         '
@@ -146,7 +156,7 @@ Partial Class F_Keisu
         Me.Txt_S_Gun.Location = New System.Drawing.Point(432, 24)
         Me.Txt_S_Gun.Name = "Txt_S_Gun"
         Me.Txt_S_Gun.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_S_Gun.TabIndex = 15
+        Me.Txt_S_Gun.TabIndex = 2
         '
         'Label5
         '
@@ -191,6 +201,7 @@ Partial Class F_Keisu
         Me.GV_Master.RowTemplate.Height = 31
         Me.GV_Master.Size = New System.Drawing.Size(912, 280)
         Me.GV_Master.TabIndex = 1
+        Me.GV_Master.TabStop = False
         '
         '選択
         '
@@ -265,7 +276,7 @@ Partial Class F_Keisu
         Me.Panel2.Location = New System.Drawing.Point(0, 357)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(912, 93)
-        Me.Panel2.TabIndex = 14
+        Me.Panel2.TabIndex = 1
         '
         'Txt_Shimuke
         '
@@ -273,7 +284,7 @@ Partial Class F_Keisu
         Me.Txt_Shimuke.Location = New System.Drawing.Point(71, 23)
         Me.Txt_Shimuke.Name = "Txt_Shimuke"
         Me.Txt_Shimuke.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_Shimuke.TabIndex = 33
+        Me.Txt_Shimuke.TabIndex = 0
         '
         'Label7
         '
@@ -301,7 +312,7 @@ Partial Class F_Keisu
         Me.Txt_Keisu.Location = New System.Drawing.Point(71, 58)
         Me.Txt_Keisu.Name = "Txt_Keisu"
         Me.Txt_Keisu.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_Keisu.TabIndex = 21
+        Me.Txt_Keisu.TabIndex = 3
         '
         'Label4
         '
@@ -319,7 +330,7 @@ Partial Class F_Keisu
         Me.Txt_Gun.Location = New System.Drawing.Point(432, 23)
         Me.Txt_Gun.Name = "Txt_Gun"
         Me.Txt_Gun.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_Gun.TabIndex = 19
+        Me.Txt_Gun.TabIndex = 2
         '
         'Txt_Kishu
         '
@@ -327,7 +338,7 @@ Partial Class F_Keisu
         Me.Txt_Kishu.Location = New System.Drawing.Point(252, 23)
         Me.Txt_Kishu.Name = "Txt_Kishu"
         Me.Txt_Kishu.Size = New System.Drawing.Size(109, 23)
-        Me.Txt_Kishu.TabIndex = 18
+        Me.Txt_Kishu.TabIndex = 1
         '
         'Label3
         '
@@ -345,7 +356,7 @@ Partial Class F_Keisu
         Me.Btn_Clear.Location = New System.Drawing.Point(718, 30)
         Me.Btn_Clear.Name = "Btn_Clear"
         Me.Btn_Clear.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Clear.TabIndex = 10
+        Me.Btn_Clear.TabIndex = 5
         Me.Btn_Clear.Text = "クリア"
         Me.Btn_Clear.UseVisualStyleBackColor = True
         '
@@ -363,23 +374,13 @@ Partial Class F_Keisu
         Me.Btn_Touroku.Location = New System.Drawing.Point(616, 30)
         Me.Btn_Touroku.Name = "Btn_Touroku"
         Me.Btn_Touroku.Size = New System.Drawing.Size(75, 40)
-        Me.Btn_Touroku.TabIndex = 0
+        Me.Btn_Touroku.TabIndex = 4
         Me.Btn_Touroku.Text = "登　録"
         Me.Btn_Touroku.UseVisualStyleBackColor = True
         '
         'TA_M_Keisu
         '
         Me.TA_M_Keisu.ClearBeforeFill = True
-        '
-        'Btn_Output
-        '
-        Me.Btn_Output.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Output.Location = New System.Drawing.Point(789, 14)
-        Me.Btn_Output.Name = "Btn_Output"
-        Me.Btn_Output.Size = New System.Drawing.Size(104, 40)
-        Me.Btn_Output.TabIndex = 33
-        Me.Btn_Output.Text = "CSV出力"
-        Me.Btn_Output.UseVisualStyleBackColor = True
         '
         'F_Keisu
         '

@@ -79,6 +79,7 @@ Partial Class F_Print_Sub_Housou
         Me.GV_Search.RowTemplate.Height = 21
         Me.GV_Search.Size = New System.Drawing.Size(794, 267)
         Me.GV_Search.TabIndex = 88
+        Me.GV_Search.TabStop = False
         '
         'コピー
         '

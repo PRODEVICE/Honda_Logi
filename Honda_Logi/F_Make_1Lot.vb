@@ -4900,7 +4900,8 @@ Public Class F_Make_1Lot
 		                    LEFT JOIN M_Second Second16 ON Second16.作業区分 = 16
 		                    LEFT JOIN M_Second Second17 ON Second17.作業区分 = 17
 		                    LEFT JOIN M_Second Second18 ON Second18.作業区分 = 18
-		                    LEFT JOIN M_Second Second19 ON Second19.作業区分 = 19;"
+		                    LEFT JOIN M_Second Second19 ON Second19.作業区分 = 19
+                            WHERE Main.見積No = " & _target_mitsumori_no & ";"
 
         Return sql
 

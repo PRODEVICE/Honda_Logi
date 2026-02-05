@@ -54,7 +54,7 @@ Partial Class F_Print_Sub_Mitsumori
         Me.Chk_Keisu_Flg.Location = New System.Drawing.Point(268, 29)
         Me.Chk_Keisu_Flg.Name = "Chk_Keisu_Flg"
         Me.Chk_Keisu_Flg.Size = New System.Drawing.Size(89, 20)
-        Me.Chk_Keisu_Flg.TabIndex = 2
+        Me.Chk_Keisu_Flg.TabIndex = 0
         Me.Chk_Keisu_Flg.Text = "付与する"
         Me.Chk_Keisu_Flg.UseVisualStyleBackColor = True
         '
@@ -91,7 +91,7 @@ Partial Class F_Print_Sub_Mitsumori
         Me.Btn_Output3.Location = New System.Drawing.Point(314, 64)
         Me.Btn_Output3.Name = "Btn_Output3"
         Me.Btn_Output3.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output3.TabIndex = 5
+        Me.Btn_Output3.TabIndex = 3
         Me.Btn_Output3.Text = "部単内装"
         Me.Btn_Output3.UseVisualStyleBackColor = True
         '
@@ -101,7 +101,7 @@ Partial Class F_Print_Sub_Mitsumori
         Me.Btn_Output4.Location = New System.Drawing.Point(314, 123)
         Me.Btn_Output4.Name = "Btn_Output4"
         Me.Btn_Output4.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output4.TabIndex = 6
+        Me.Btn_Output4.TabIndex = 4
         Me.Btn_Output4.Text = "部単外装"
         Me.Btn_Output4.UseVisualStyleBackColor = True
         '
@@ -111,7 +111,7 @@ Partial Class F_Print_Sub_Mitsumori
         Me.Btn_Output2.Location = New System.Drawing.Point(16, 123)
         Me.Btn_Output2.Name = "Btn_Output2"
         Me.Btn_Output2.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output2.TabIndex = 4
+        Me.Btn_Output2.TabIndex = 2
         Me.Btn_Output2.Text = "汎用機種"
         Me.Btn_Output2.UseVisualStyleBackColor = True
         '
@@ -121,7 +121,7 @@ Partial Class F_Print_Sub_Mitsumori
         Me.Btn_Output1.Location = New System.Drawing.Point(16, 64)
         Me.Btn_Output1.Name = "Btn_Output1"
         Me.Btn_Output1.Size = New System.Drawing.Size(266, 53)
-        Me.Btn_Output1.TabIndex = 3
+        Me.Btn_Output1.TabIndex = 1
         Me.Btn_Output1.Text = "2R/ATV"
         Me.Btn_Output1.UseVisualStyleBackColor = True
         '
