@@ -559,30 +559,60 @@ Public Class F_Receive
                         '60列目の部品群から=と@を除外した値を群としてセット
                         gun = dr("部品群").ToString.Replace("=", "").Replace("@", "")
 
-                    Else '代表DISTが157、321の場合
+                    ElseIf dr("代表DIST") = "157" Then '代表DISTが157の場合
+                        gun = "+" & dr("群").ToString
+
+                    ElseIf dr("代表DIST") = "321" Then '代表DISTが321の場合
 
                         '60列目の部品群から=と@を除外した値を群としてセット
                         gun = dr("部品群").ToString.Replace("=", "").Replace("@", "")
 
-                        '先頭の3桁を取得
-                        gun = gun.Substring(0, 3)
-                        last_moji = gun.Substring(2, 1)
+                        '数値が5桁以上ある場合
+                        Dim digitCount As Integer = gun.Count(Function(c) Char.IsDigit(c))
 
-                        '3桁目が数値の場合は-2をする　0の場合はスルー
-                        If Integer.TryParse(last_moji, result) Then
+                        If digitCount >= 5 Then
 
-                            ' 数値の場合
-                            If result = 0 Or result = 1 Then
+                            Dim prefix As String = gun.Substring(0, 2)          ' +A
+                            Dim lastDigit As String = gun.Substring(gun.Length - 1)
+
+                            gun = prefix & lastDigit
+
+                        ElseIf digitCount = 0 Then '文字のみの場合
+
+                            '何もしない
+
+                        ElseIf digitCount <> 0 Then '数値と文字の混在の場合
+
+                            '先頭の3桁を取得
+                            gun = gun.Substring(0, 3)
+                            last_moji = gun.Substring(2, 1)
+
+                            '3桁目が数値の場合は-2をする　0の場合はスルー
+                            If Integer.TryParse(last_moji, result) Then
+
+                                ' 数値の場合
+                                If result = 0 Or result = 1 Then
+                                    '何もしない
+                                Else
+                                    result = result - 2
+                                    gun = gun.Substring(0, 2) & result.ToString
+                                End If
+
+                            Else ' 数値ではない
                                 '何もしない
-                            Else
-                                result = result - 2
-                                gun = gun.Substring(0, 2) & result.ToString
+                                result = 0
                             End If
 
-                        Else ' 数値ではない
-                            '何もしない
-                            result = 0
                         End If
+
+
+
+
+
+
+
+
+
                     End If
 
                     dr("群") = gun

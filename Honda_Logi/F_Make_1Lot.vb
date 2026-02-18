@@ -2141,7 +2141,6 @@ Public Class F_Make_1Lot
                             ;WITH MinLot AS (
                                 SELECT
                                     ｺﾝﾄﾛｰﾙNO,
-                                    ケースNO1,
                                     代表DIST,
                                     年度2,
                                     モデル2,
@@ -2154,7 +2153,6 @@ Public Class F_Make_1Lot
                                 WHERE 見積No = '" & _target_mitsumori_no & "'
                                 GROUP BY
                                     ｺﾝﾄﾛｰﾙNO,
-                                    ケースNO1,
                                     代表DIST,
                                     年度2,
                                     モデル2,
@@ -2168,7 +2166,6 @@ Public Class F_Make_1Lot
                                 FROM [dbo].[T_CCC] C
                                 INNER JOIN MinLot M ON
                                     C.ｺﾝﾄﾛｰﾙNO = M.ｺﾝﾄﾛｰﾙNO AND
-                                    C.ケースNO1 = M.ケースNO1 AND
                                     C.代表DIST = M.代表DIST AND
                                     C.年度2 = M.年度2 AND
                                     C.モデル2 = M.モデル2 AND
