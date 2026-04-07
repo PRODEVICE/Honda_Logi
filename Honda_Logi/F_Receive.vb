@@ -83,6 +83,12 @@ Public Class F_Receive
 
             Dim targetFolder As String = Txt_File_Path.Text.Trim
             Dim nengetu As String = Dtp_Nengetu.Value.Year.ToString & "/" & Dtp_Nengetu.Value.Month.ToString.PadLeft(2, "0")
+            Dim bikou As String = Txt_Bikou.Text.Trim
+
+            If bikou.Length > 50 Then
+                MessageBox.Show("備考に登録できるのは50文字までです。")
+                Exit Sub
+            End If
 
             My.Settings.Input_Path = Txt_File_Path.Text.Trim
 
@@ -335,7 +341,7 @@ Public Class F_Receive
                     dr("年度2") = NormalizeString(Mid(line, 154, 1))
                     dr("モデル2") = NormalizeString(Mid(line, 155, 3))
                     dr("タイプ1") = NormalizeString(Mid(line, 158, 3))
-                    dr("オプション1") = NormalizeString(Mid(line, 161, 3))
+                    dr("オプション1") = Mid(line, 161, 3).Trim
                     dr("外装HES1") = NormalizeString(Mid(line, 164, 4))
                     dr("内装タイプ1") = NormalizeString(Mid(line, 168, 8))
                     dr("K_Y_KD2") = NormalizeString(Mid(line, 176, 1))
@@ -349,7 +355,7 @@ Public Class F_Receive
                     dr("年度4") = NormalizeString(Mid(line, 200, 1))
                     dr("モデル4") = NormalizeString(Mid(line, 201, 3))
                     dr("タイプ3") = NormalizeString(Mid(line, 204, 3))
-                    dr("オプション2") = NormalizeString(Mid(line, 207, 3))
+                    dr("オプション2") = Mid(line, 207, 3).Trim
                     dr("外装HES3") = NormalizeString(Mid(line, 210, 4))
                     dr("内装タイプ3") = NormalizeString(Mid(line, 214, 8))
                     dr("MIX区分") = NormalizeString(Mid(line, 222, 1))
@@ -401,7 +407,7 @@ Public Class F_Receive
                     dr("年度5") = NormalizeString(Mid(line, 406, 1))
                     dr("モデル5") = NormalizeString(Mid(line, 407, 3))
                     dr("タイプ4") = NormalizeString(Mid(line, 410, 3))
-                    dr("オプション3") = NormalizeString(Mid(line, 413, 3))
+                    dr("オプション3") = Mid(line, 413, 3).Trim
                     dr("外装HES4") = NormalizeString(Mid(line, 416, 4))
                     dr("内装タイプ4") = NormalizeString(Mid(line, 420, 8))
                     dr("エンジン入り数") = NormalizeString(Mid(line, 428, 3))
@@ -1465,7 +1471,7 @@ Public Class F_Receive
                 cmd.Parameters.AddWithValue("@見積No", _mitumori_no)
                 cmd.Parameters.AddWithValue("@取込年月", _nengestu)
                 cmd.Parameters.AddWithValue("@取込日時", Now.ToString("yyyy/MM/dd HH:mm:ss"))
-                cmd.Parameters.AddWithValue("@ユーザーid", "")
+                cmd.Parameters.AddWithValue("@ユーザーid", Txt_Bikou.Text.Trim)
                 cmd.Parameters.AddWithValue("@変換フラグ", "0")
                 cmd.Parameters.AddWithValue("@モード区分", _mode)
 

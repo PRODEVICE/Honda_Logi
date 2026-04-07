@@ -34,6 +34,8 @@ Partial Class F_Receive
         Me.Dtp_Nengetu = New System.Windows.Forms.DateTimePicker()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Lbl_Messege = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Txt_Bikou = New System.Windows.Forms.TextBox()
         CType(Me.DTMKubunBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_M, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -83,7 +85,7 @@ Partial Class F_Receive
         'Btn_Receive
         '
         Me.Btn_Receive.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Receive.Location = New System.Drawing.Point(349, 225)
+        Me.Btn_Receive.Location = New System.Drawing.Point(344, 332)
         Me.Btn_Receive.Name = "Btn_Receive"
         Me.Btn_Receive.Size = New System.Drawing.Size(124, 65)
         Me.Btn_Receive.TabIndex = 3
@@ -127,11 +129,34 @@ Partial Class F_Receive
         Me.Lbl_Messege.Text = "取込中"
         Me.Lbl_Messege.Visible = False
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label2.Location = New System.Drawing.Point(62, 258)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(42, 18)
+        Me.Label2.TabIndex = 66
+        Me.Label2.Text = "備考"
+        '
+        'Txt_Bikou
+        '
+        Me.Txt_Bikou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Bikou.Location = New System.Drawing.Point(62, 279)
+        Me.Txt_Bikou.Name = "Txt_Bikou"
+        Me.Txt_Bikou.Size = New System.Drawing.Size(710, 23)
+        Me.Txt_Bikou.TabIndex = 67
+        '
         'F_Receive
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 346)
+        Me.ClientSize = New System.Drawing.Size(800, 430)
+        Me.Controls.Add(Me.Txt_Bikou)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Lbl_Messege)
         Me.Controls.Add(Me.Dtp_Nengetu)
         Me.Controls.Add(Me.Label3)
@@ -158,4 +183,6 @@ Partial Class F_Receive
     Friend WithEvents Dtp_Nengetu As DateTimePicker
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents Lbl_Messege As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Txt_Bikou As TextBox
 End Class

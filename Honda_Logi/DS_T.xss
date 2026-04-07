@@ -13,10 +13,10 @@
     <Shape ID="DesignTable:DT_T_CCC" ZOrder="9" X="387" Y="51" Height="326" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="256" />
     <Shape ID="DesignTable:DT_T_CCC_Lot" ZOrder="5" X="572" Y="35" Height="383" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="256" />
     <Shape ID="DesignTable:DT_T_CCC_Work" ZOrder="3" X="77" Y="280" Height="324" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:DT_T_Import_Rireki" ZOrder="2" X="879" Y="35" Height="324" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:DT_T_Import_Rireki" ZOrder="1" X="879" Y="35" Height="324" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:DT_T_Buhin_Order_List" ZOrder="7" X="1139" Y="421" Height="324" Width="262" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:DT_T_CCC_Manual" ZOrder="4" X="235" Y="758" Height="324" Width="168" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:DT_T_CCC_Manual_Lot" ZOrder="1" X="477" Y="760" Height="362" Width="252" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:DT_T_CCC_Manual_Lot" ZOrder="2" X="477" Y="760" Height="362" Width="252" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

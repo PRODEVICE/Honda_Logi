@@ -247,7 +247,7 @@ Public Class F_Print_Sub_Module
 
                 'ヘッダ項目を書き込む
                 ws.Cell(1, 4).Value = If(IsDBNull(dt.Rows(0)(1)), "", "年次 " & dt.Rows(0)(1).ToString)
-                ws.Cell(1, 6).Value = If(IsDBNull(dt.Rows(0)(2)), "", dt.Rows(0)(2).ToString & "月度 ")
+                ws.Cell(1, 6).Value = "月度 "
                 ws.Cell(1, 21).Value = If(IsDBNull(dt.Rows(0)(3)), "", dt.Rows(0)(3).ToString)
 
                 ' DataTable の中身を Excel に書き込む

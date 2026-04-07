@@ -599,7 +599,7 @@ Public Class F_Print_Sub_Housou
                                                         SafeGetString(row, "モジュール手順SEQ")
                                                     )
 
-                If housou_kbn = "個装" Then
+                If housou_kbn = "内装" Then
 
                     'If Not kowExistSet.Contains(kowKey_exit) Then
 
@@ -1329,85 +1329,144 @@ Public Class F_Print_Sub_Housou
                         Dim hituyou_su9 As String = ccc_data.必要数19
                         Dim hituyou_su10 As String = ccc_data.必要数20
 
+                        '集計用Dictionary作成
+                        Dim gaisouDict As New Dictionary(Of String, Integer)
+
+                        Dim key As String = row("Col11").ToString() & "_" & fuku_shizai1
+
+                        Dim su As Integer = 0
+
+                        '既に登録済みの資材は数量を合算する
                         If fuku_shizai1 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai1
-                            rowSub("Col21") = hituyou_su1
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai1
+                            su = 0
+                            Integer.TryParse(hituyou_su1, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
 
                         If fuku_shizai2 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai2
-                            rowSub("Col21") = hituyou_su2
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai2
+                            su = 0
+                            Integer.TryParse(hituyou_su2, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
                         If fuku_shizai3 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai3
-                            rowSub("Col21") = hituyou_su3
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai3
+                            su = 0
+                            Integer.TryParse(hituyou_su3, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
                         If fuku_shizai4 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai4
-                            rowSub("Col21") = hituyou_su4
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai4
+                            su = 0
+                            Integer.TryParse(hituyou_su4, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
                         If fuku_shizai5 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai5
-                            rowSub("Col21") = hituyou_su5
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai5
+                            su = 0
+                            Integer.TryParse(hituyou_su5, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
                         If fuku_shizai6 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai6
-                            rowSub("Col21") = hituyou_su6
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai6
+                            su = 0
+                            Integer.TryParse(hituyou_su6, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
                         If fuku_shizai7 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai7
-                            rowSub("Col21") = hituyou_su7
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai7
+                            su = 0
+                            Integer.TryParse(hituyou_su7, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
                         If fuku_shizai8 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai8
-                            rowSub("Col21") = hituyou_su8
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai8
+                            su = 0
+                            Integer.TryParse(hituyou_su8, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
                         If fuku_shizai9 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai9
-                            rowSub("Col21") = hituyou_su9
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai9
+                            su = 0
+                            Integer.TryParse(hituyou_su9, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
                         If fuku_shizai10 <> "" Then
-                            Dim rowSub As DataRow = dt_gaisou.NewRow()
-                            rowSub("GroupNo") = row("Col11")
-                            rowSub("Col20") = fuku_shizai10
-                            rowSub("Col21") = hituyou_su10
-                            dt_gaisou.Rows.Add(rowSub)
+                            key = row("Col11").ToString() & "_" & fuku_shizai10
+                            su = 0
+                            Integer.TryParse(hituyou_su10, su)
+
+                            If gaisouDict.ContainsKey(key) Then
+                                gaisouDict(key) += su
+                            Else
+                                gaisouDict(key) = su
+                            End If
                         End If
+
+                        '辞書の中身をDTにセット
+                        For Each kvp In gaisouDict
+
+                            Dim keys = kvp.Key.Split("_"c)
+
+                            Dim rowSub As DataRow = dt_gaisou.NewRow()
+                            rowSub("GroupNo") = keys(0)
+                            rowSub("Col20") = keys(1)
+                            rowSub("Col21") = kvp.Value
+
+                            dt_gaisou.Rows.Add(rowSub)
+
+                        Next
 
                         i += 1
 
                     End While
-
-
                 End If
-
             Next
 
         Catch ex As Exception

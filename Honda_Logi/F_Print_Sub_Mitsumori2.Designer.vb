@@ -92,7 +92,7 @@ Partial Class F_Print_Sub_Mitsumori2
         Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(154, 26)
+        Me.Label3.Location = New System.Drawing.Point(14, 11)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(79, 18)
         Me.Label3.TabIndex = 62
@@ -102,9 +102,9 @@ Partial Class F_Print_Sub_Mitsumori2
         '
         Me.Cmb_Target.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Cmb_Target.FormattingEnabled = True
-        Me.Cmb_Target.Location = New System.Drawing.Point(239, 24)
+        Me.Cmb_Target.Location = New System.Drawing.Point(14, 32)
         Me.Cmb_Target.Name = "Cmb_Target"
-        Me.Cmb_Target.Size = New System.Drawing.Size(203, 24)
+        Me.Cmb_Target.Size = New System.Drawing.Size(566, 24)
         Me.Cmb_Target.TabIndex = 0
         '
         'Btn_Output
