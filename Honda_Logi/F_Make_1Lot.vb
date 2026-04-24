@@ -445,9 +445,13 @@ Public Class F_Make_1Lot
 
             'ユニーク判定用辞書
             Dim lotDict As New Dictionary(Of String, Integer)(StringComparer.Ordinal)
+            Dim lotMinIdDict As New Dictionary(Of String, String)(StringComparer.Ordinal)
+
             ' まず DataRow 配列にする（高速化）
             Dim rows As DataRow() = dt_ccc_lot.Select()
+
             For Each dr As DataRow In rows
+
                 Dim key As String = String.Concat(
                 SafeGetString(dr, "ｺﾝﾄﾛｰﾙNO"),
                 SafeGetString(dr, "年度1"),
@@ -459,11 +463,25 @@ Public Class F_Make_1Lot
                 SafeGetString(dr, "モジュール手順SEQ"),
                 SafeGetString(dr, "内装資材記号")
             )
+
+                Dim id As String = SafeGetString(dr, "id")
+
                 If lotDict.ContainsKey(key) Then
                     lotDict(key) += 1
                 Else
                     lotDict(key) = 1
                 End If
+
+                ' 最小ID保持
+                If Not lotMinIdDict.ContainsKey(key) Then
+                    lotMinIdDict(key) = id
+                Else
+                    ' 文字列比較でなく数値比較したいならCInt等にする
+                    If CInt(id) < CInt(lotMinIdDict(key)) Then
+                        lotMinIdDict(key) = id
+                    End If
+                End If
+
             Next
 
             '部品オーダーリスト辞書
@@ -767,6 +785,20 @@ Public Class F_Make_1Lot
 
                         End If
                     Next
+
+
+                    Dim lotKey＿MIN As String = controll_no & nendo & model & modefu & case_no & housou_lot_no & housou_lot_eda_no & module_seq & naisou_shizai_cd
+
+                    If lotDict.ContainsKey(lotKey＿MIN) AndAlso lotDict(lotKey＿MIN) > 1 Then
+
+                        ' 最小IDだけ値を入れる
+                        If target_id = lotMinIdDict(lotKey＿MIN) Then
+                            ' そのまま carton_su
+                        Else
+                            carton_su = 0
+                        End If
+
+                    End If
 
                     ' 更新データを蓄積（後で一括的にプリペアドコマンドで更新）
                     If carton_su <> 0 Then
@@ -3362,18 +3394,23 @@ Public Class F_Make_1Lot
 		
 		                    --単品部品総数
 		                    ,CASE WHEN OrderList1.id IS  NULL THEN
+
+                                CASE WHEN ISNULL(Main.個装ライン, '') LIKE '%4%' THEN
+                                    0
+                                ELSE
 		
-			                    CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
-				 	                    CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
-					                    CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) * 
-					                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second1.秒数 
-			                    ELSE 
-					                    CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
-						                    CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
-						                    CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) * 
-						                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second1.秒数  
-					                    ELSE 0 END
-			                    END
+			                        CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
+				 	                        CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
+					                        CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) * 
+					                        CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second1.秒数 
+			                        ELSE 
+					                        CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
+						                        CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
+						                        CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) * 
+						                        CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second1.秒数  
+					                        ELSE 0 END
+			                        END
+                                END
 				 
 		                     ELSE 0 END AS 単品部品総数
 		 
@@ -3467,7 +3504,7 @@ Public Class F_Make_1Lot
 		                    ,0 AS 外直の防錆回数
 		
 		                    --外装ケース数
-		                    ,Second18.秒数 AS 外装ケース数
+		                    ,0 AS 外装ケース数
 		
 		                    --部品点数2
 		                    ,CASE WHEN OrderList2.id IS NOT NULL THEN
@@ -3618,7 +3655,7 @@ Public Class F_Make_1Lot
 
 
         'スカシケース数
-        sql = "WITH cte AS (
+        sql = sql & "WITH cte AS (
                     SELECT t.*,
                            ROW_NUMBER() OVER (PARTITION BY t.ｺﾝﾄﾛｰﾙNO, t.ケースNO1, t.包装ロットNO
                                               ORDER BY t.id) AS rn
@@ -3627,7 +3664,7 @@ Public Class F_Make_1Lot
                       AND EXISTS (
                           SELECT 1
                           FROM T_CCC_Lot tt
-                          WHERE tt.外装資材記号 LIKE '%SP%' OR tt.外装資材記号 LIKE '%RC%' OR tt.外装資材記号 LIKE '%CY%'
+                          WHERE (tt.外装資材記号 LIKE '%SC%' OR tt.外装資材記号 LIKE '%RC%' OR tt.外装資材記号 LIKE '%CY%')
                             AND tt.ｺﾝﾄﾛｰﾙNO = t.ｺﾝﾄﾛｰﾙNO
                             AND tt.ケースNO1 = t.ケースNO1
                             AND tt.包装ロットNO = t.包装ロットNO
@@ -3639,30 +3676,46 @@ Public Class F_Make_1Lot
 
 
         '外装用段ボールパット使用数
-        sql = sql & " UPDATE t
-                        SET t.外装用段ボールパット使用数 = 
-                            ISNULL(
-                                (CASE WHEN g12.内装資材コード IS NOT NULL THEN t.必要数12 * " & gaisou_danboru & " ELSE 0 END) +
-                                (CASE WHEN g13.内装資材コード IS NOT NULL THEN t.必要数13 * " & gaisou_danboru & " ELSE 0 END) +
-                                (CASE WHEN g14.内装資材コード IS NOT NULL THEN t.必要数14 * " & gaisou_danboru & " ELSE 0 END) +
-                                (CASE WHEN g15.内装資材コード IS NOT NULL THEN t.必要数15 * " & gaisou_danboru & " ELSE 0 END) +
-                                (CASE WHEN g16.内装資材コード IS NOT NULL THEN t.必要数16 * " & gaisou_danboru & " ELSE 0 END) +
-                                (CASE WHEN g17.内装資材コード IS NOT NULL THEN t.必要数17 * " & gaisou_danboru & " ELSE 0 END) +
-                                (CASE WHEN g18.内装資材コード IS NOT NULL THEN t.必要数18 * " & gaisou_danboru & " ELSE 0 END) +
-                                (CASE WHEN g19.内装資材コード IS NOT NULL THEN t.必要数19 * " & gaisou_danboru & " ELSE 0 END) +
-                                (CASE WHEN g20.内装資材コード IS NOT NULL THEN t.必要数20 * " & gaisou_danboru & " ELSE 0 END)
-                            , 0)
+        sql = sql & "WITH cte AS (
+                        SELECT 
+                            t.id,
+                            ROW_NUMBER() OVER (
+                                PARTITION BY t.ｺﾝﾄﾛｰﾙNO, t.ケースNO1, t.包装ロットNO
+                                ORDER BY t.id
+                            ) AS rn
                         FROM T_CCC_Lot t
-                        LEFT JOIN M_Gaisou_Danboru g12 ON t.副資材12 = g12.内装資材コード
-                        LEFT JOIN M_Gaisou_Danboru g13 ON t.副資材13 = g13.内装資材コード
-                        LEFT JOIN M_Gaisou_Danboru g14 ON t.副資材14 = g14.内装資材コード
-                        LEFT JOIN M_Gaisou_Danboru g15 ON t.副資材15 = g15.内装資材コード
-                        LEFT JOIN M_Gaisou_Danboru g16 ON t.副資材16 = g16.内装資材コード
-                        LEFT JOIN M_Gaisou_Danboru g17 ON t.副資材17 = g17.内装資材コード
-                        LEFT JOIN M_Gaisou_Danboru g18 ON t.副資材18 = g18.内装資材コード
-                        LEFT JOIN M_Gaisou_Danboru g19 ON t.副資材19 = g19.内装資材コード
-                        LEFT JOIN M_Gaisou_Danboru g20 ON t.副資材20 = g20.内装資材コード
-                        WHERE t.見積No = " & _target_mitsumori_no & ";"
+                        WHERE t.見積No = " & _target_mitsumori_no & "
+                    )
+
+                    UPDATE t
+                    SET t.外装用段ボールパット使用数 =
+                        CASE 
+                            WHEN cte.rn = 1 THEN
+                                ISNULL(
+                                    (CASE WHEN g12.内装資材コード IS NOT NULL THEN t.必要数12 * " & gaisou_danboru & " ELSE 0 END) +
+                                    (CASE WHEN g13.内装資材コード IS NOT NULL THEN t.必要数13 * " & gaisou_danboru & " ELSE 0 END) +
+                                    (CASE WHEN g14.内装資材コード IS NOT NULL THEN t.必要数14 * " & gaisou_danboru & " ELSE 0 END) +
+                                    (CASE WHEN g15.内装資材コード IS NOT NULL THEN t.必要数15 * " & gaisou_danboru & " ELSE 0 END) +
+                                    (CASE WHEN g16.内装資材コード IS NOT NULL THEN t.必要数16 * " & gaisou_danboru & " ELSE 0 END) +
+                                    (CASE WHEN g17.内装資材コード IS NOT NULL THEN t.必要数17 * " & gaisou_danboru & " ELSE 0 END) +
+                                    (CASE WHEN g18.内装資材コード IS NOT NULL THEN t.必要数18 * " & gaisou_danboru & " ELSE 0 END) +
+                                    (CASE WHEN g19.内装資材コード IS NOT NULL THEN t.必要数19 * " & gaisou_danboru & " ELSE 0 END) +
+                                    (CASE WHEN g20.内装資材コード IS NOT NULL THEN t.必要数20 * " & gaisou_danboru & " ELSE 0 END)
+                                , 0)
+                            ELSE 0
+                        END
+                    FROM T_CCC_Lot t
+                    INNER JOIN cte ON t.id = cte.id
+                    LEFT JOIN M_Gaisou_Danboru g12 ON t.副資材12 = g12.内装資材コード
+                    LEFT JOIN M_Gaisou_Danboru g13 ON t.副資材13 = g13.内装資材コード
+                    LEFT JOIN M_Gaisou_Danboru g14 ON t.副資材14 = g14.内装資材コード
+                    LEFT JOIN M_Gaisou_Danboru g15 ON t.副資材15 = g15.内装資材コード
+                    LEFT JOIN M_Gaisou_Danboru g16 ON t.副資材16 = g16.内装資材コード
+                    LEFT JOIN M_Gaisou_Danboru g17 ON t.副資材17 = g17.内装資材コード
+                    LEFT JOIN M_Gaisou_Danboru g18 ON t.副資材18 = g18.内装資材コード
+                    LEFT JOIN M_Gaisou_Danboru g19 ON t.副資材19 = g19.内装資材コード
+                    LEFT JOIN M_Gaisou_Danboru g20 ON t.副資材20 = g20.内装資材コード
+                    WHERE t.見積No = " & _target_mitsumori_no & ";"
 
         '外装用箱型ポリ袋
         sql = sql & " UPDATE t
@@ -3836,7 +3889,7 @@ Public Class F_Make_1Lot
                                 *,
                                 ROW_NUMBER() OVER (
                                     PARTITION BY ｺﾝﾄﾛｰﾙNO, ケースNO1, 包装ロットNO
-                                    ORDER BY ｺﾝﾄﾛｰﾙNO, ケースNO1, 包装ロットNO
+                                    ORDER BY id
                                 ) AS rn
                             FROM T_CCC_Lot
                             WHERE 見積No = " & _target_mitsumori_no & "
@@ -3844,14 +3897,6 @@ Public Class F_Make_1Lot
                         UPDATE cte
                         SET 外装ケース数 = " & _gaichoku_case & "
                         WHERE rn = 1;"
-
-
-
-
-
-
-
-
 
 
         '内装資材費
@@ -4821,6 +4866,7 @@ Public Class F_Make_1Lot
 		                     --スカシケース数
                              ,CASE WHEN Main.外装資材記号  LIKE '%SC%' OR Main.外装資材記号 LIKE '%RC%' OR Main.外装資材記号 LIKE '%CY%' 
                                     THEN Second11.秒数 ELSE 0 END AS スカシケース数
+
 
 		                    --外装用段ボールパット使用数
 		                    ,0 AS 外装用段ボールパット使用数
