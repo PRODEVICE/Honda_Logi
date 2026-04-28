@@ -3492,11 +3492,14 @@ Public Class F_Make_1Lot
 		
 		                    --外直部品総数
 		                     ,CASE WHEN Main.包装ライン_外装  LIKE '%4%' THEN
-		 
-			                    CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
-			                    CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) *
-			                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second16.秒数
-		 
+
+                                CASE WHEN Main.個装ライン  LIKE '%4%' THEN
+                                    0
+                                ELSE
+			                        CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
+			                        CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) *
+			                        CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second16.秒数
+		                        END
 		                     ELSE 0 
 		                     END AS 外直部品総数
 		
@@ -3744,7 +3747,6 @@ Public Class F_Make_1Lot
                         WHERE t.見積No = " & _target_mitsumori_no & ";"
 
         '外装用ボルト使用数
-
         sql = sql & "WITH cte AS (
                         SELECT 
                             t.id,
@@ -3787,35 +3789,22 @@ Public Class F_Make_1Lot
                     WHERE t.見積No = " & _target_mitsumori_no & ";"
 
 
-        'sql = sql & " UPDATE t
-        '                SET t.外装用ボルト使用数 = 
-        '                    ISNULL(
-        '                        (CASE WHEN g12.個装資材コード IS NOT NULL THEN t.必要数12 * " & gaisou_bolt & " ELSE 0 END) +
-        '                        (CASE WHEN g13.個装資材コード IS NOT NULL THEN t.必要数13 * " & gaisou_bolt & " ELSE 0 END) +
-        '                        (CASE WHEN g14.個装資材コード IS NOT NULL THEN t.必要数14 * " & gaisou_bolt & " ELSE 0 END) +
-        '                        (CASE WHEN g15.個装資材コード IS NOT NULL THEN t.必要数15 * " & gaisou_bolt & " ELSE 0 END) +
-        '                        (CASE WHEN g16.個装資材コード IS NOT NULL THEN t.必要数16 * " & gaisou_bolt & " ELSE 0 END) +
-        '                        (CASE WHEN g17.個装資材コード IS NOT NULL THEN t.必要数17 * " & gaisou_bolt & " ELSE 0 END) +
-        '                        (CASE WHEN g18.個装資材コード IS NOT NULL THEN t.必要数18 * " & gaisou_bolt & " ELSE 0 END) +
-        '                        (CASE WHEN g19.個装資材コード IS NOT NULL THEN t.必要数19 * " & gaisou_bolt & " ELSE 0 END) +
-        '                        (CASE WHEN g20.個装資材コード IS NOT NULL THEN t.必要数20 * " & gaisou_bolt & " ELSE 0 END)
-        '                    , 0)
-        '                FROM T_CCC_Lot t
-        '                LEFT JOIN M_Bolt g12 ON t.副資材12 = g12.個装資材コード
-        '                LEFT JOIN M_Bolt g13 ON t.副資材13 = g13.個装資材コード
-        '                LEFT JOIN M_Bolt g14 ON t.副資材14 = g14.個装資材コード
-        '                LEFT JOIN M_Bolt g15 ON t.副資材15 = g15.個装資材コード
-        '                LEFT JOIN M_Bolt g16 ON t.副資材16 = g16.個装資材コード
-        '                LEFT JOIN M_Bolt g17 ON t.副資材17 = g17.個装資材コード
-        '                LEFT JOIN M_Bolt g18 ON t.副資材18 = g18.個装資材コード
-        '                LEFT JOIN M_Bolt g19 ON t.副資材19 = g19.個装資材コード
-        '                LEFT JOIN M_Bolt g20 ON t.副資材20 = g20.個装資材コード
-        '                WHERE t.見積No = " & _target_mitsumori_no & ";"
-
-
         '外装用副資材使用数
-        sql = sql & " UPDATE t
+        sql = sql & "WITH cte AS (
+                        SELECT 
+                            t.id,
+                            ROW_NUMBER() OVER (
+                                PARTITION BY t.ｺﾝﾄﾛｰﾙNO, t.ケースNO1, t.包装ロットNO
+                                ORDER BY t.id
+                            ) AS rn
+                        FROM T_CCC_Lot t
+                        WHERE t.見積No = " & _target_mitsumori_no & "
+                    )
+
+                        UPDATE t
                         SET t.外装用副資材使用数 = 
+                         CASE 
+                            WHEN cte.rn = 1 THEN
                             ISNULL(
                                 (CASE WHEN g12.内装資材コード IS NULL 
                                            AND b12.内装資材コード IS NULL
@@ -3854,7 +3843,10 @@ Public Class F_Make_1Lot
                                            AND bo20.個装資材コード IS NULL
                                            AND t.副資材20 NOT LIKE '%TA%' THEN t.必要数20 * " & _gaisou_fukushizai & " ELSE 0 END)
                             , 0)
+                            ELSE 0
+                        END
                         FROM T_CCC_Lot t
+                        INNER JOIN cte ON t.id = cte.id
                         LEFT JOIN M_Gaisou_Danboru g12 ON t.副資材12 = g12.内装資材コード
                         LEFT JOIN M_Gaisou_Box    b12 ON t.副資材12 = b12.内装資材コード
                         LEFT JOIN M_Bolt           bo12 ON t.副資材12 = bo12.個装資材コード
