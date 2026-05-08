@@ -3465,13 +3465,23 @@ Public Class F_Make_1Lot
 
 		                     --積み付け回数
 		                     ,CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
-					                CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数 
+
+                                CASE WHEN Main.個装ライン  LIKE '%4%' THEN
+                                    0
+                                ELSE
+                                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数 
+		                        END
+					                
 			                 ELSE 
-					                CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
-						                CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数  
-					                ELSE 
-						                0
-					                END
+					            CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
+                                    CASE WHEN Main.個装ライン  LIKE '%4%' THEN
+                                        0
+                                    ELSE
+                                         CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数  
+		                            END
+					            ELSE 
+						            0
+					            END
 			                 END AS 積み付け回数
  
 		 
