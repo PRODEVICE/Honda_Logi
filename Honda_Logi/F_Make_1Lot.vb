@@ -1472,7 +1472,6 @@ Public Class F_Make_1Lot
 
                         End If
 
-
                     End If
 
 
@@ -3731,30 +3730,72 @@ Public Class F_Make_1Lot
                     WHERE t.見積No = " & _target_mitsumori_no & ";"
 
         '外装用箱型ポリ袋
-        sql = sql & " UPDATE t
-                        SET t.外装用箱型ポリ袋 = 
-                            ISNULL(
-                                (CASE WHEN g12.内装資材コード IS NOT NULL THEN t.必要数12 * " & gaisou_pori & " ELSE 0 END) +
-                                (CASE WHEN g13.内装資材コード IS NOT NULL THEN t.必要数13 * " & gaisou_pori & " ELSE 0 END) +
-                                (CASE WHEN g14.内装資材コード IS NOT NULL THEN t.必要数14 * " & gaisou_pori & " ELSE 0 END) +
-                                (CASE WHEN g15.内装資材コード IS NOT NULL THEN t.必要数15 * " & gaisou_pori & " ELSE 0 END) +
-                                (CASE WHEN g16.内装資材コード IS NOT NULL THEN t.必要数16 * " & gaisou_pori & " ELSE 0 END) +
-                                (CASE WHEN g17.内装資材コード IS NOT NULL THEN t.必要数17 * " & gaisou_pori & " ELSE 0 END) +
-                                (CASE WHEN g18.内装資材コード IS NOT NULL THEN t.必要数18 * " & gaisou_pori & " ELSE 0 END) +
-                                (CASE WHEN g19.内装資材コード IS NOT NULL THEN t.必要数19 * " & gaisou_pori & " ELSE 0 END) +
-                                (CASE WHEN g20.内装資材コード IS NOT NULL THEN t.必要数20 * " & gaisou_pori & " ELSE 0 END)
-                            , 0)
+        sql = sql & "WITH cte AS (
+                        SELECT 
+                            t.id,
+                            ROW_NUMBER() OVER (
+                                PARTITION BY t.ｺﾝﾄﾛｰﾙNO, t.ケースNO1, t.包装ロットNO
+                                ORDER BY t.id
+                            ) AS rn
                         FROM T_CCC_Lot t
-                        LEFT JOIN M_Gaisou_Box g12 ON t.副資材12 = g12.内装資材コード
-                        LEFT JOIN M_Gaisou_Box g13 ON t.副資材13 = g13.内装資材コード
-                        LEFT JOIN M_Gaisou_Box g14 ON t.副資材14 = g14.内装資材コード
-                        LEFT JOIN M_Gaisou_Box g15 ON t.副資材15 = g15.内装資材コード
-                        LEFT JOIN M_Gaisou_Box g16 ON t.副資材16 = g16.内装資材コード
-                        LEFT JOIN M_Gaisou_Box g17 ON t.副資材17 = g17.内装資材コード
-                        LEFT JOIN M_Gaisou_Box g18 ON t.副資材18 = g18.内装資材コード
-                        LEFT JOIN M_Gaisou_Box g19 ON t.副資材19 = g19.内装資材コード
-                        LEFT JOIN M_Gaisou_Box g20 ON t.副資材20 = g20.内装資材コード
-                        WHERE t.見積No = " & _target_mitsumori_no & ";"
+                        WHERE t.見積No = " & _target_mitsumori_no & "
+                    )
+
+                    UPDATE t
+                    SET t.外装用箱型ポリ袋 =
+                        CASE 
+                            WHEN cte.rn = 1 THEN
+                                ISNULL(
+                                    (CASE WHEN g12.内装資材コード IS NOT NULL THEN t.必要数12 * " & gaisou_pori & " ELSE 0 END) +
+                                    (CASE WHEN g13.内装資材コード IS NOT NULL THEN t.必要数13 * " & gaisou_pori & " ELSE 0 END) +
+                                    (CASE WHEN g14.内装資材コード IS NOT NULL THEN t.必要数14 * " & gaisou_pori & " ELSE 0 END) +
+                                    (CASE WHEN g15.内装資材コード IS NOT NULL THEN t.必要数15 * " & gaisou_pori & " ELSE 0 END) +
+                                    (CASE WHEN g16.内装資材コード IS NOT NULL THEN t.必要数16 * " & gaisou_pori & " ELSE 0 END) +
+                                    (CASE WHEN g17.内装資材コード IS NOT NULL THEN t.必要数17 * " & gaisou_pori & " ELSE 0 END) +
+                                    (CASE WHEN g18.内装資材コード IS NOT NULL THEN t.必要数18 * " & gaisou_pori & " ELSE 0 END) +
+                                    (CASE WHEN g19.内装資材コード IS NOT NULL THEN t.必要数19 * " & gaisou_pori & " ELSE 0 END) +
+                                    (CASE WHEN g20.内装資材コード IS NOT NULL THEN t.必要数20 * " & gaisou_pori & " ELSE 0 END)
+                                , 0)
+                            ELSE 0
+                        END
+                    FROM T_CCC_Lot t
+                    INNER JOIN cte ON t.id = cte.id
+                    LEFT JOIN M_Gaisou_Box g12 ON t.副資材12 = g12.内装資材コード
+                    LEFT JOIN M_Gaisou_Box g13 ON t.副資材13 = g13.内装資材コード
+                    LEFT JOIN M_Gaisou_Box g14 ON t.副資材14 = g14.内装資材コード
+                    LEFT JOIN M_Gaisou_Box g15 ON t.副資材15 = g15.内装資材コード
+                    LEFT JOIN M_Gaisou_Box g16 ON t.副資材16 = g16.内装資材コード
+                    LEFT JOIN M_Gaisou_Box g17 ON t.副資材17 = g17.内装資材コード
+                    LEFT JOIN M_Gaisou_Box g18 ON t.副資材18 = g18.内装資材コード
+                    LEFT JOIN M_Gaisou_Box g19 ON t.副資材19 = g19.内装資材コード
+                    LEFT JOIN M_Gaisou_Box g20 ON t.副資材20 = g20.内装資材コード
+                    WHERE t.見積No = " & _target_mitsumori_no & ";"
+
+
+        'sql = sql & " UPDATE t
+        '                SET t.外装用箱型ポリ袋 = 
+        '                    ISNULL(
+        '                        (CASE WHEN g12.内装資材コード IS NOT NULL THEN t.必要数12 * " & gaisou_pori & " ELSE 0 END) +
+        '                        (CASE WHEN g13.内装資材コード IS NOT NULL THEN t.必要数13 * " & gaisou_pori & " ELSE 0 END) +
+        '                        (CASE WHEN g14.内装資材コード IS NOT NULL THEN t.必要数14 * " & gaisou_pori & " ELSE 0 END) +
+        '                        (CASE WHEN g15.内装資材コード IS NOT NULL THEN t.必要数15 * " & gaisou_pori & " ELSE 0 END) +
+        '                        (CASE WHEN g16.内装資材コード IS NOT NULL THEN t.必要数16 * " & gaisou_pori & " ELSE 0 END) +
+        '                        (CASE WHEN g17.内装資材コード IS NOT NULL THEN t.必要数17 * " & gaisou_pori & " ELSE 0 END) +
+        '                        (CASE WHEN g18.内装資材コード IS NOT NULL THEN t.必要数18 * " & gaisou_pori & " ELSE 0 END) +
+        '                        (CASE WHEN g19.内装資材コード IS NOT NULL THEN t.必要数19 * " & gaisou_pori & " ELSE 0 END) +
+        '                        (CASE WHEN g20.内装資材コード IS NOT NULL THEN t.必要数20 * " & gaisou_pori & " ELSE 0 END)
+        '                    , 0)
+        '                FROM T_CCC_Lot t
+        '                LEFT JOIN M_Gaisou_Box g12 ON t.副資材12 = g12.内装資材コード
+        '                LEFT JOIN M_Gaisou_Box g13 ON t.副資材13 = g13.内装資材コード
+        '                LEFT JOIN M_Gaisou_Box g14 ON t.副資材14 = g14.内装資材コード
+        '                LEFT JOIN M_Gaisou_Box g15 ON t.副資材15 = g15.内装資材コード
+        '                LEFT JOIN M_Gaisou_Box g16 ON t.副資材16 = g16.内装資材コード
+        '                LEFT JOIN M_Gaisou_Box g17 ON t.副資材17 = g17.内装資材コード
+        '                LEFT JOIN M_Gaisou_Box g18 ON t.副資材18 = g18.内装資材コード
+        '                LEFT JOIN M_Gaisou_Box g19 ON t.副資材19 = g19.内装資材コード
+        '                LEFT JOIN M_Gaisou_Box g20 ON t.副資材20 = g20.内装資材コード
+        '                WHERE t.見積No = " & _target_mitsumori_no & ";"
 
         '外装用ボルト使用数
         sql = sql & "WITH cte AS (
