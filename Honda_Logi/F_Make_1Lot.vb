@@ -930,7 +930,7 @@ Public Class F_Make_1Lot
                 ' 検索用複合キー
                 Dim searchKey As String = dist & houzou_line_gaisou & "無し"
                 Dim searchKey_housou As String = dist
-                Dim searchKey_kow As String = housou_lot_no & housou_lot_eda_no.ToString.PadLeft(2, "0"c) & controll_no & case_no & module_seq
+                Dim searchKey_kow As String = housou_lot_no & housou_lot_eda_no.ToString.PadLeft(2, "0"c) & controll_no & case_no & module_seq.ToString.PadLeft(3, "0"c)
 
 
                 '検索結果格納用変数
@@ -1981,7 +1981,7 @@ Public Class F_Make_1Lot
                 case_naisou_shizai_hi = 0
 
                 ' 検索用複合キー
-                Dim searchKey As String = nendo & model & type & MUDULE & naisou_tejun
+                Dim searchKey As String = nendo & model & type & MUDULE & CInt(naisou_tejun).ToString
 
                 If old_searchKey = "" Then
                     target_flg = False
@@ -2142,7 +2142,7 @@ Public Class F_Make_1Lot
                 bulk.WriteToServer(dtUpdate)
             End Using
 
-            ' 4. JOIN UPDATE で一括更新（SQL 1回）→ 爆速
+            ' 4. JOIN UPDATE で一括更新
             Using cmd As New SqlCommand("
                                         UPDATE C
                                         SET C.ケース当たりの内装資材費 = T.ケース当たりの内装資材費
@@ -3500,17 +3500,14 @@ Public Class F_Make_1Lot
 		                    ,0 AS 外装用副資材使用数
 		
 		                    --外直部品総数
-		                     ,CASE WHEN Main.包装ライン_外装  LIKE '%4%' THEN
 
-                                CASE WHEN Main.個装ライン  LIKE '%4%' THEN
-                                    0
-                                ELSE
-			                        CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
-			                        CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) *
-			                        CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second16.秒数
-		                        END
-		                     ELSE 0 
-		                     END AS 外直部品総数
+                            ,CASE WHEN Main.個装ライン  LIKE '%4%' THEN
+                                0
+                            ELSE
+			                    CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
+			                    CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) *
+			                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second16.秒数
+		                    END AS 外直部品総数
 		
 		                    --外直の防錆回数
 		                    ,0 AS 外直の防錆回数
@@ -3528,20 +3525,38 @@ Public Class F_Make_1Lot
 		                    ,CASE WHEN Housou_Kbn_Kosou.個装内装区分 = '個装' THEN
 		                        CASE WHEN Housou_Kbn_Naisou.個装内装区分 = '内装' THEN
 		                            CASE WHEN Main.包装ライン_外装 LIKE '%M%' THEN
-		                                ISNULL(KOW46.ケース当たりの内装資材費, 0)
+                                        
+                                        --個装の場合
+		                                CAST(ISNULL(NULLIF(KOW46.ケース当たりの内装資材費, ''),'0') AS decimal(18,2))
 		                            ELSE
-		                                ISNULL(Kosou_Tanka.単価, 0) *
-		                                ISNULL(CONVERT(decimal, CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE ISNULL(Main.個装入り数,'1') END), 1) *
-		                                ISNULL(CONVERT(decimal, CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE ISNULL(Main.内装入り数,'1') END), 1)
+
+                                        --内装の場合
+			                            CASE WHEN Kosou.個装資材コード IS NOT NULL THEN
+		                                    ISNULL(Kosou_Tanka.単価, 0) *
+		                                    ISNULL(CONVERT(decimal, CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE ISNULL(Main.個装入り数,'1') END), 1) *
+		                                    ISNULL(CONVERT(decimal, CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE ISNULL(Main.内装入り数,'1') END), 1)
+			                            ELSE 
+					                            0
+			                            END
+
 		                            END
 		                        ELSE
-		                            ISNULL(KOW46.ケース当たりの内装資材費, 0)
+
+                                    --個装の場合
+		                            CAST(ISNULL(NULLIF(KOW46.ケース当たりの内装資材費, ''),'0') AS decimal(18,2))
 		                        END
 		                    ELSE
+
+                                 --内装の場合
 		                        CASE WHEN Housou_Kbn_Naisou.個装内装区分 = '内装' THEN
-		                            ISNULL(Kosou_Tanka.単価, 0) *
-		                            ISNULL(CONVERT(decimal, CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE ISNULL(Main.個装入り数,'1') END), 1) *
-		                            ISNULL(CONVERT(decimal, CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE ISNULL(Main.内装入り数,'1') END), 1)
+                                        --内装の場合
+			                            CASE WHEN Kosou.個装資材コード IS NOT NULL THEN
+		                                    ISNULL(Kosou_Tanka.単価, 0) *
+		                                    ISNULL(CONVERT(decimal, CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE ISNULL(Main.個装入り数,'1') END), 1) *
+		                                    ISNULL(CONVERT(decimal, CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE ISNULL(Main.内装入り数,'1') END), 1)
+			                            ELSE 
+					                            0
+			                            END
 		                        ELSE 
 		                            0
 		                        END
@@ -3586,8 +3601,10 @@ Public Class F_Make_1Lot
 		                    ON Main.包装ロットNO + RIGHT('00' + CAST(Main.包装ロット連番 AS VARCHAR(2)), 2) = KOW46.包装ロットNo
 		                    AND Main.ｺﾝﾄﾛｰﾙNO = KOW46.MUDULE
 		                    AND Main.ケースNO1= KOW46.本C_No
-		                    AND Main.モジュール手順SEQ = KOW46.内装手順
+		                    AND RIGHT('000' + CAST(Main.モジュール手順SEQ AS VARCHAR(2)), 3) = KOW46.内装手順
+                            --AND Main.モジュール手順SEQ = KOW46.内装手順
                             AND Main.見積No = KOW46.見積No
+                            AND KOW46.主資材 = '*'
 
 		                    LEFT JOIN T_Buhin_Order_List OrderList1
 		                    ON Main.代表DIST = OrderList1.DIST
@@ -4169,7 +4186,7 @@ Public Class F_Make_1Lot
                     INNER JOIN T_CCC_Lot C
                         ON K.MUDULE        = C.ｺﾝﾄﾛｰﾙNO   
                         AND K.本C_No       = C.ケースNO1     
-                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ     
+                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     =　C.モジュール手順SEQ
 	                    AND C.見積No = " & _target_mitsumori_no & "
                     WHERE K.見積No = " & _target_mitsumori_no & ";"
 
@@ -4180,7 +4197,7 @@ Public Class F_Make_1Lot
                     INNER JOIN T_CCC_Lot C
                         ON K.MUDULE        = C.ｺﾝﾄﾛｰﾙNO   
                         AND K.本C_No       = C.ケースNO1     
-                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ     
+                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ  
 	                    AND C.見積No = " & _target_mitsumori_no & "
                     WHERE K.見積No = " & _target_mitsumori_no & ";"
 
@@ -4191,7 +4208,7 @@ Public Class F_Make_1Lot
                     INNER JOIN T_CCC_Lot C
                         ON K.MUDULE        = C.ｺﾝﾄﾛｰﾙNO   
                         AND K.本C_No       = C.ケースNO1     
-                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ     
+                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ   
 	                    AND C.見積No = " & _target_mitsumori_no & "
                     WHERE K.見積No = " & _target_mitsumori_no & ";"
 
@@ -4202,7 +4219,7 @@ Public Class F_Make_1Lot
                     INNER JOIN T_CCC_Lot C
                         ON K.MUDULE        = C.ｺﾝﾄﾛｰﾙNO   
                         AND K.本C_No       = C.ケースNO1     
-                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ     
+                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ
 	                    AND C.見積No = " & _target_mitsumori_no & "
                     WHERE K.見積No = " & _target_mitsumori_no & ";"
 
@@ -4239,7 +4256,7 @@ Public Class F_Make_1Lot
                           AND K.モデル      = C.モデル2
                           AND K.タイプ      = C.タイプ1
                           AND K.MUDULE      = C.ｺﾝﾄﾛｰﾙNO
-                          AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))    = C.モジュール手順SEQ   
+                          AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))    = C.モジュール手順SEQ
 	                      AND C.見積No = " & _target_mitsumori_no & ")
                     AND K.見積No = " & _target_mitsumori_no & ";"
 
@@ -4252,7 +4269,7 @@ Public Class F_Make_1Lot
                         AND K.モデル       = C.モデル2     
                         AND K.タイプ     = C.タイプ1     
                         AND K.MUDULE     = C.ｺﾝﾄﾛｰﾙNO   
-                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ     
+                        AND CAST(CAST(K.内装手順 AS INT) AS VARCHAR(40))     = C.モジュール手順SEQ   
 	                    AND C.見積No = " & _target_mitsumori_no & "
                     WHERE K.見積No = " & _target_mitsumori_no & ";"
 
@@ -4964,7 +4981,7 @@ Public Class F_Make_1Lot
 		                    ,0 AS 外装用副資材使用数
 		
 		                    --外直部品総数
-		                     ,CASE WHEN Main.包装ライン_外装  LIKE '%4%' THEN
+                            ,CASE WHEN Main.個装ライン  LIKE '%4%' THEN
 		 
 			                    CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
 			                    CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) *
