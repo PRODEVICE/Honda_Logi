@@ -405,6 +405,7 @@ Public Class F_Make_1Lot
             Dim naisou_second As String = ta_second.Q_工数取得(5)
             Dim carton_second As Decimal = ta_second.Q_工数取得(6)
             Dim return_able_second As Decimal = ta_second.Q_工数取得(7)
+            Dim tsumitsuke_second As Decimal = ta_second.Q_工数取得(9)
 
             '内装資材マスタの辞書作成
             ta_M_naisou.Fill(dt_M_naisou)
@@ -589,15 +590,18 @@ Public Class F_Make_1Lot
             Dim updates As New List(Of KeyValuePair(Of Decimal, String))(rows.Length)
             Dim updates2 As New List(Of KeyValuePair(Of Decimal, String))(rows.Length)
             Dim updates3 As New List(Of KeyValuePair(Of Decimal, String))(rows.Length)
+            Dim updates4 As New List(Of KeyValuePair(Of Decimal, String))(rows.Length)
 
             '重複更新チェック用
             Dim updatedLots As New HashSet(Of String)
+            Dim updatedLots2 As New HashSet(Of String)
 
             For Each row In dt_ccc_lot
 
                 Dim carton_su As Decimal = 0
                 Dim return_able_su As Decimal = 0
                 Dim naisou_shizai_su As Decimal = 0
+                Dim tsumitsuke_kaisu As Decimal = 0
                 Dim naisou_master_suryou As Decimal = 0
                 Dim naisou_master_suryou2 As Decimal = 0
                 Dim naisou_master_cd As String = ""
@@ -672,144 +676,255 @@ Public Class F_Make_1Lot
                     hitsuyou_suSmall(i - 12) = SafeGetString(row, ("必要数" & i))
                 Next
 
+                Dim searchKey_kow As String = housou_lot_no & housou_lot_eda_no.ToString.PadLeft(2, "0"c) & controll_no & case_no & module_seq.ToString.PadLeft(3, "0"c)
 
                 'カートン数の計算
 
-                '包装ライン_外装にA0が含まれているか
-                If houzou_line_gaisou.Contains("A0") Then
+                '検索結果格納用変数
+                Dim hitList_kow3 As List(Of KowInfo) = Nothing
 
-                    '含まれている場合、カートン数は0
-                    carton_su = 0
+                '内装か外装かを判別する
+                Dim housou_kbn3 As String = ""
+                Dim distKey3 As String = dist
 
-                Else '含まれていない場合
+                If Not String.IsNullOrEmpty(distKey3) AndAlso housouDict.ContainsKey(distKey3) Then
+                    ' 複数件をカンマ区切りで連結
+                    housou_kbn3 = String.Join(",", housouDict(distKey3))
+                End If
 
-                    '各資材記号が内装資材マスタに存在するかチェック
+                '個装内装両方登録されている場合
+                If housou_kbn3 = "個装,内装" Or housou_kbn3 = "内装,個装" Then
 
-                    ' 内装資材マスタ参照
-                    '156列目の個装資材記号
-                    If naisouDict.ContainsKey(kosou_shizai_cd) Then
-                        naisou_master_suryou = naisouDict(kosou_shizai_cd)
+                    '117:「包装ライン/外装」にMが含まれていれば個装
+                    Dim housou_line As String = SafeGetString(row, "包装ライン_外装")
+
+                    If housou_line.Contains("M") Then
+                        housou_kbn3 = "個装"
                     Else
-                        naisou_master_suryou = -1
+                        housou_kbn3 = "内装"
                     End If
 
-                    '160列目の内装資材記号
-                    If naisou_master_suryou = -1 Then
+                End If
 
-                        If naisouDict.ContainsKey(naisou_shizai_cd) Then
-                            naisou_master_suryou = naisouDict(naisou_shizai_cd)
+                '内装の場合の計算
+                If housou_kbn3 = "内装" Then
+
+                    '包装ライン_外装にA0が含まれているか
+                    If houzou_line_gaisou.Contains("A0") Then
+
+                        '含まれている場合、カートン数は0
+                        carton_su = 0
+
+                    Else '含まれていない場合
+
+                        '各資材記号が内装資材マスタに存在するかチェック
+
+                        ' 内装資材マスタ参照
+                        '156列目の個装資材記号
+                        If naisouDict.ContainsKey(kosou_shizai_cd) Then
+                            naisou_master_suryou = naisouDict(kosou_shizai_cd)
                         Else
                             naisou_master_suryou = -1
                         End If
 
-                    End If
+                        '160列目の内装資材記号
+                        If naisou_master_suryou = -1 Then
 
-                    '165列目の外装資材記号
-                    If naisouDict.ContainsKey(gaisou_shizai_cd) Then
-                        naisou_master_suryou2 = naisouDict(gaisou_shizai_cd)
-                    Else
-                        naisou_master_suryou2 = -1
-                    End If
+                            If naisouDict.ContainsKey(naisou_shizai_cd) Then
+                                naisou_master_suryou = naisouDict(naisou_shizai_cd)
+                            Else
+                                naisou_master_suryou = -1
+                            End If
 
-                    '個装資材記号、内装資材記号で一致した場合の計算
-                    If naisou_master_suryou = -1 Then
-
-                        '存在しない
-
-                    Else '存在する
-
-                        '1lotデータにユニーク条件に合致、かつ内装資材記号が一致するデータがあるか
-
-                        ' ユニークチェック
-                        Dim lotKey As String = controll_no & nendo & model & modefu _
-                            & case_no & housou_lot_no & housou_lot_eda_no & module_seq & naisou_shizai_cd
-
-                        If Not lotDict.ContainsKey(lotKey) OrElse lotDict(lotKey) <= 1 Then
-                            carton_su = naisou_irisu * naisou_master_suryou * carton_second
-                        Else
-                            carton_su = naisou_master_suryou * carton_second
                         End If
 
-                    End If
+                        '165列目の外装資材記号
+                        If naisouDict.ContainsKey(gaisou_shizai_cd) Then
+                            naisou_master_suryou2 = naisouDict(gaisou_shizai_cd)
+                        Else
+                            naisou_master_suryou2 = -1
+                        End If
 
-                    '外装資材記号で一致した場合の計算
-                    If naisou_master_suryou2 = -1 Then
+                        '個装資材記号、内装資材記号で一致した場合の計算
+                        If naisou_master_suryou = -1 Then
 
-                        '存在しない
+                            '存在しない
 
-                    Else '存在する
+                        Else '存在する
 
-                        '個装資材記号、内装資材記号で一致していなければ
-                        If naisou_master_suryou <> -1 Then
+                            '1lotデータにユニーク条件に合致、かつ内装資材記号が一致するデータがあるか
 
                             ' ユニークチェック
                             Dim lotKey As String = controll_no & nendo & model & modefu _
                                 & case_no & housou_lot_no & housou_lot_eda_no & module_seq & naisou_shizai_cd
 
                             If Not lotDict.ContainsKey(lotKey) OrElse lotDict(lotKey) <= 1 Then
-                                carton_su = naisou_irisu * naisou_master_suryou2 * carton_second
+                                carton_su = naisou_irisu * naisou_master_suryou * carton_second
                             Else
-                                carton_su = naisou_master_suryou2 * carton_second
+                                carton_su = naisou_master_suryou * carton_second
                             End If
-
-
-                        Else '個装資材記号、内装資材記号で一致済み
-
-                            carton_su = carton_su + naisou_master_suryou2 * carton_second
 
                         End If
 
+                        '外装資材記号で一致した場合の計算
+                        If naisou_master_suryou2 = -1 Then
 
-                    End If
+                            '存在しない
+
+                        Else '存在する
+
+                            '個装資材記号、内装資材記号で一致していなければ
+                            If naisou_master_suryou <> -1 Then
+
+                                ' ユニークチェック
+                                Dim lotKey As String = controll_no & nendo & model & modefu _
+                                    & case_no & housou_lot_no & housou_lot_eda_no & module_seq & naisou_shizai_cd
+
+                                If Not lotDict.ContainsKey(lotKey) OrElse lotDict(lotKey) <= 1 Then
+                                    carton_su = naisou_irisu * naisou_master_suryou2 * carton_second
+                                Else
+                                    carton_su = naisou_master_suryou2 * carton_second
+                                End If
 
 
-                    '225列目～249列目の中に内装主資材データ記載の資材が存在するかチェック
-                    For i As Integer = 0 To fuku_shizaiSmall.Length - 1
-                        Dim shizai_cd As String = fuku_shizaiSmall(i)
-                        Dim qty As Decimal = hitsuyou_suSmall(i)
-                        Dim suryou As Decimal = 0
-                        ' 空チェック
-                        If Not String.IsNullOrEmpty(shizai_cd) AndAlso qty > 0 Then
+                            Else '個装資材記号、内装資材記号で一致済み
 
-                            If naisouDict.ContainsKey(shizai_cd) Then
-                                suryou = naisouDict(shizai_cd)
+                                carton_su = carton_su + naisou_master_suryou2 * carton_second
+
+                            End If
+
+                        End If
+
+                        '225列目～249列目の中に内装主資材データ記載の資材が存在するかチェック
+                        For i As Integer = 0 To fuku_shizaiSmall.Length - 1
+                            Dim shizai_cd As String = fuku_shizaiSmall(i)
+                            Dim qty As Decimal = hitsuyou_suSmall(i)
+                            Dim suryou As Decimal = 0
+                            ' 空チェック
+                            If Not String.IsNullOrEmpty(shizai_cd) AndAlso qty > 0 Then
+
+                                If naisouDict.ContainsKey(shizai_cd) Then
+                                    suryou = naisouDict(shizai_cd)
+                                Else
+                                    suryou = -1
+                                End If
+                                'suryou = ta_M_naisou.Q_数量取得(shizai_cd)
+
+                                If suryou <> -1 Then
+                                    carton_su = carton_su + qty * suryou * carton_second
+                                End If
+
+                            End If
+
+                        Next
+
+                        Dim lotKey_MIN As String = controll_no & nendo & model & modefu & case_no & housou_lot_no & housou_lot_eda_no & module_seq & naisou_shizai_cd
+
+                        If lotDict.ContainsKey(lotKey_MIN) AndAlso lotDict(lotKey_MIN) > 1 Then
+
+                            ' 最小IDだけ値を入れる
+                            If target_id = lotMinIdDict(lotKey_MIN) Then
+                                ' そのまま carton_su
                             Else
-                                suryou = -1
-                            End If
-                            'suryou = ta_M_naisou.Q_数量取得(shizai_cd)
-
-                            If suryou <> -1 Then
-                                carton_su = carton_su + qty * suryou * carton_second
+                                carton_su = 0
                             End If
 
-
-                        End If
-                    Next
-
-
-                    Dim lotKey＿MIN As String = controll_no & nendo & model & modefu & case_no & housou_lot_no & housou_lot_eda_no & module_seq & naisou_shizai_cd
-
-                    If lotDict.ContainsKey(lotKey＿MIN) AndAlso lotDict(lotKey＿MIN) > 1 Then
-
-                        ' 最小IDだけ値を入れる
-                        If target_id = lotMinIdDict(lotKey＿MIN) Then
-                            ' そのまま carton_su
-                        Else
-                            carton_su = 0
                         End If
 
                     End If
 
-                    ' 更新データを蓄積（後で一括的にプリペアドコマンドで更新）
-                    If carton_su <> 0 Then
-                        updates.Add(New KeyValuePair(Of Decimal, String)(carton_su, target_id))
+
+                ElseIf housou_kbn3 = "個装" Then '個装の場合の計算
+
+                    'KOWに存在するかチェック
+                    If search_KOW_Dict.TryGetValue(searchKey_kow, hitList_kow3) Then
+
+                        Dim target_flg As Boolean = False
+                        Dim total_shiyou_su As Decimal = 0
+
+                        '存在する
+                        For Each info In hitList_kow3
+
+                            Dim main_flg As String = info.主資材
+                            Dim shizai_cd As String = info.資材規格
+                            Dim strNumber As String = info.使用数
+                            Dim shiyou_su As Decimal = Decimal.Parse(strNumber)
+
+                            If Decimal.TryParse(strNumber, shiyou_su) Then
+
+                            Else
+                                shiyou_su = 1
+                            End If
+
+                            'メイン資材
+                            If main_flg = "*" Then
+
+                                ' 内装資材マスタ参照
+                                If naisouDict.ContainsKey(shizai_cd) Then
+                                    naisou_master_suryou = naisouDict(shizai_cd)
+                                Else
+                                    naisou_master_suryou = -1
+                                End If
+
+                                'マスタに存在すればターゲットフラグを立てる
+                                If naisou_master_suryou <> -1 Then
+
+                                    target_flg = True
+
+                                    '使用数を加算する
+                                    total_shiyou_su = total_shiyou_su + shiyou_su
+
+                                Else
+                                    target_flg = False
+                                End If
+
+                            Else '副資材
+
+                                If target_flg = True Then
+
+                                    ' 内装資材マスタ参照
+                                    If naisouDict.ContainsKey(shizai_cd) Then
+                                        naisou_master_suryou = naisouDict(shizai_cd)
+                                    Else
+                                        naisou_master_suryou = -1
+                                    End If
+
+                                    'マスタに存在すれば計算する
+                                    If naisou_master_suryou <> -1 Then
+
+                                        '使用数を加算する
+                                        total_shiyou_su = total_shiyou_su + shiyou_su
+
+                                    End If
+
+                                    'If Not shizai_cd.Contains("TA") And Not shizai_cd.Contains("ZW") Then
+                                    'End If
+                                End If
+
+                            End If
+                        Next
+
+                        carton_su = total_shiyou_su * naisou_irisu * carton_second
+
+                    Else 'KOWに存在しない
+
+                        carton_su = 0
+
                     End If
-
-
-                    '1lotのカートン数を更新
-                    'ta_ccc_lot.Q_カートン数更新(carton_su, target_id)
 
                 End If
+
+
+
+
+
+                ' 更新データを蓄積（後で一括的にプリペアドコマンドで更新）
+                If carton_su <> 0 Then
+                    updates.Add(New KeyValuePair(Of Decimal, String)(carton_su, target_id))
+                End If
+
+
+
 
 
                 'リターナブル容器数の計算
@@ -929,9 +1044,6 @@ Public Class F_Make_1Lot
 
                 ' 検索用複合キー
                 Dim searchKey As String = dist & houzou_line_gaisou & "無し"
-                Dim searchKey_housou As String = dist
-                Dim searchKey_kow As String = housou_lot_no & housou_lot_eda_no.ToString.PadLeft(2, "0"c) & controll_no & case_no & module_seq.ToString.PadLeft(3, "0"c)
-
 
                 '検索結果格納用変数
                 Dim hitList As List(Of OrderInfo) = Nothing
@@ -1146,7 +1258,210 @@ Public Class F_Make_1Lot
 
                 End If
 
+                '積み付け回数の計算
+
+                '検索結果格納用変数
+                Dim hitList_kow2 As List(Of KowInfo) = Nothing
+
+                '内装か外装かを判別する
+                Dim housou_kbn2 As String = ""
+                Dim distKey2 As String = dist
+
+                If Not String.IsNullOrEmpty(distKey2) AndAlso housouDict.ContainsKey(distKey2) Then
+                    ' 複数件をカンマ区切りで連結
+                    housou_kbn2 = String.Join(",", housouDict(distKey2))
+                End If
+
+
+                '個装内装両方登録されている場合
+                If housou_kbn2 = "個装,内装" Or housou_kbn2 = "内装,個装" Then
+
+                    '117:「包装ライン/外装」にMが含まれていれば個装
+                    Dim housou_line As String = SafeGetString(row, "包装ライン_外装")
+
+                    If housou_line.Contains("M") Then
+                        housou_kbn2 = "個装"
+                    Else
+                        housou_kbn2 = "内装"
+                    End If
+
+                End If
+
+                '内装の場合の計算
+                If housou_kbn2 = "内装" Then
+
+                    '115:「個装ライン」に4が含まれていれば個装
+                    Dim kosou_line As String = SafeGetString(row, "個装ライン")
+
+                    Dim tsumitsuke As Decimal = 0
+
+                    '個装ラインに4が含まれていれば
+                    If kosou_line.Contains("4") Then
+
+                        tsumitsuke_kaisu = 0
+
+                    Else
+
+                        ' 内装資材マスタ参照
+                        If naisouDict.ContainsKey(kosou_shizai_cd) Then
+                            naisou_master_suryou = naisouDict(kosou_shizai_cd)
+                        Else
+                            naisou_master_suryou = -1
+                        End If
+
+                        If naisou_master_suryou = -1 Then
+
+                            If naisouDict.ContainsKey(naisou_shizai_cd) Then
+                                naisou_master_suryou = naisouDict(naisou_shizai_cd)
+                            Else
+                                naisou_master_suryou = -1
+                            End If
+
+                        End If
+
+                        If naisou_master_suryou = -1 Then
+                            tsumitsuke_kaisu = 0
+                        Else
+
+                            Dim lotKey As String = controll_no & nendo & model & modefu & case_no & housou_lot_no & housou_lot_eda_no & module_seq & naisou_shizai_cd
+
+                            ' lotDict に存在するか
+                            If lotDict.ContainsKey(lotKey) Then
+
+                                ' 複数件の場合は最初の1件のみ更新
+                                If lotDict(lotKey) > 1 Then
+
+                                    '既に更新済みかチェック
+                                    If Not updatedLots2.Contains(lotKey) Then
+
+                                        tsumitsuke_kaisu = naisou_irisu * tsumitsuke_second
+                                        updatedLots2.Add(lotKey) ' 更新済みとして記録
+
+                                    Else
+                                        tsumitsuke_kaisu = 0 ' 2件目以降は0で更新
+                                    End If
+
+                                Else
+                                    ' 1件だけの場合は通常計算
+                                    tsumitsuke_kaisu = naisou_irisu * tsumitsuke_second
+                                End If
+
+                            End If
+
+                        End If
+
+                    End If
+
+                ElseIf housou_kbn2 = "個装" Then '個装の場合の計算
+
+                    'KOWに存在するかチェック
+                    If search_KOW_Dict.TryGetValue(searchKey_kow, hitList_kow2) Then
+
+                        Dim target_flg As Boolean = False
+                        Dim total_shiyou_su As Decimal = 0
+
+                        '存在する
+                        For Each info In hitList_kow2
+
+                            Dim main_flg As String = info.主資材
+                            Dim shizai_cd As String = info.資材規格
+                            Dim strNumber As String = info.使用数
+                            Dim shiyou_su As Decimal = Decimal.Parse(strNumber)
+
+                            If Decimal.TryParse(strNumber, shiyou_su) Then
+
+                            Else
+                                shiyou_su = 1
+                            End If
+
+                            'メイン資材
+                            If main_flg = "*" Then
+
+                                ' 内装資材マスタ参照
+                                If naisouDict.ContainsKey(shizai_cd) Then
+                                    naisou_master_suryou = naisouDict(shizai_cd)
+                                Else
+                                    naisou_master_suryou = -1
+                                End If
+
+                                'マスタに存在すればターゲットフラグを立てる
+                                If naisou_master_suryou <> -1 Then
+
+                                    target_flg = True
+
+                                    '使用数を加算する
+                                    total_shiyou_su = total_shiyou_su + shiyou_su
+
+                                Else
+                                    target_flg = False
+                                End If
+
+                            Else '副資材
+
+                                If target_flg = True Then
+
+                                    ' 内装資材マスタ参照
+                                    If naisouDict.ContainsKey(shizai_cd) Then
+                                        naisou_master_suryou = naisouDict(shizai_cd)
+                                    Else
+                                        naisou_master_suryou = -1
+                                    End If
+
+                                    'マスタに存在すれば計算する
+                                    If naisou_master_suryou <> -1 Then
+
+                                        '使用数を加算する
+                                        total_shiyou_su = total_shiyou_su + shiyou_su
+
+                                    End If
+
+                                    'If Not shizai_cd.Contains("TA") And Not shizai_cd.Contains("ZW") Then
+                                    'End If
+                                End If
+
+                            End If
+                        Next
+
+                        tsumitsuke_kaisu = total_shiyou_su * naisou_irisu * tsumitsuke_second
+
+                    Else 'KOWに存在しない
+
+                        tsumitsuke_kaisu = 0
+
+                    End If
+
+                End If
+
+                ' 更新データを蓄積（後で一括更新）
+                If tsumitsuke_kaisu <> 0 Then
+                    updates4.Add(New KeyValuePair(Of Decimal, String)(tsumitsuke_kaisu, target_id))
+                End If
+
             Next
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            '/////////////////////////
+            '実際の更新処理スタート
+            '/////////////////////////
 
             '1lotのカートン数を更新
 
@@ -1266,6 +1581,50 @@ Public Class F_Make_1Lot
             Using cmd As New SqlCommand("
                                         UPDATE C
                                         SET C.内装資材数 = T.naisou_shizai_su
+                                        FROM T_CCC_Lot C
+                                        INNER JOIN #TmpUpdate T
+                                            ON C.id = T.id
+                                    ", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' 5. 一時テーブル削除
+            Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
+
+
+            '1lotの積み付け回数を更新
+
+            ' 1. DataTable を作る
+            Dim dtUpdate4 As New DataTable()
+            dtUpdate4.Columns.Add("id", GetType(String))
+            dtUpdate4.Columns.Add("tsumitsuke_su", GetType(Decimal))
+
+            For Each kvp In updates4
+                dtUpdate4.Rows.Add(kvp.Value, kvp.Key)
+            Next
+
+            ' 2. SQLServer の一時テーブル作成
+            Using cmd As New SqlCommand("
+                                        CREATE TABLE #TmpUpdate (
+                                            id VARCHAR(50),
+                                            tsumitsuke_su DECIMAL(16,2)
+                                        )
+                                    ", conn, transaction)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' 3. BulkCopy で #TmpUpdate に超高速挿入（数万件でも 0.1～0.3秒）
+            Using bulk As New SqlBulkCopy(conn, SqlBulkCopyOptions.Default, transaction)
+                bulk.DestinationTableName = "#TmpUpdate"
+                bulk.WriteToServer(dtUpdate4)
+            End Using
+
+            ' 4. JOIN UPDATE で一括更新（SQL 1回）→ 爆速
+            Using cmd As New SqlCommand("
+                                        UPDATE C
+                                        SET C.積み付け回数 = T.tsumitsuke_su
                                         FROM T_CCC_Lot C
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
@@ -3463,26 +3822,27 @@ Public Class F_Make_1Lot
 		                     END AS ENG発泡材数
 
 		                     --積み付け回数
-		                     ,CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
+		                     --,CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
 
-                                CASE WHEN Main.個装ライン  LIKE '%4%' THEN
-                                    0
-                                ELSE
-                                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数 
-		                        END
+                             --   CASE WHEN Main.個装ライン  LIKE '%4%' THEN
+                             --      0
+                             --   ELSE
+                             --       CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数 
+		                     --   END
 					                
-			                 ELSE 
-					            CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
-                                    CASE WHEN Main.個装ライン  LIKE '%4%' THEN
-                                        0
-                                    ELSE
-                                         CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数  
-		                            END
-					            ELSE 
-						            0
-					            END
-			                 END AS 積み付け回数
- 
+			                 --ELSE 
+					         --   CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
+                             --       CASE WHEN Main.個装ライン  LIKE '%4%' THEN
+                             --           0
+                             --       ELSE
+                             --            CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second9.秒数  
+		                     --       END
+					         --   ELSE 
+						     --       0
+					         --   END
+			                 --END AS 積み付け回数
+
+                            ,0 AS 積み付け回数
 		 
 		                     --パネルケース数
 		                     ,0 AS パネルケース数
@@ -3502,11 +3862,11 @@ Public Class F_Make_1Lot
 		                    --外直部品総数
 
                             ,CASE WHEN Main.個装ライン  LIKE '%4%' THEN
-                                0
-                            ELSE
-			                    CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
+                                CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
 			                    CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) *
 			                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second16.秒数
+                            ELSE
+                                0
 		                    END AS 外直部品総数
 		
 		                    --外直の防錆回数
