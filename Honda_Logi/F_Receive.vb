@@ -259,6 +259,7 @@ Public Class F_Receive
 
                 bulk.DestinationTableName = "T_CCC"
                 bulk.BatchSize = batchSize
+                bulk.BulkCopyTimeout = 0
 
                 Dim dtBatch As DataTable = dt_ccc.Clone()
 
@@ -661,6 +662,7 @@ Public Class F_Receive
 
                 bulk.DestinationTableName = "T_CCC_Manual"
                 bulk.BatchSize = batchSize
+                bulk.BulkCopyTimeout = 0
 
                 Dim dtBatch As DataTable = dt_ccc.Clone()
 
@@ -1006,6 +1008,7 @@ Public Class F_Receive
 
                 bulk.DestinationTableName = "T_KOW46"
                 bulk.BatchSize = batchSize
+                bulk.BulkCopyTimeout = 0
 
                 Dim dtBatch As DataTable = dt_kow.Clone()
 
@@ -1134,6 +1137,7 @@ Public Class F_Receive
 
                 bulk.DestinationTableName = "T_KIT60"
                 bulk.BatchSize = batchSize
+                bulk.BulkCopyTimeout = 0
 
                 Dim dtBatch As DataTable = dt_kit.Clone()
 
@@ -1215,6 +1219,7 @@ Public Class F_Receive
 
                 bulk.DestinationTableName = "T_Gyomu_Plan"
                 bulk.BatchSize = batchSize
+                bulk.BulkCopyTimeout = 0
 
                 Dim dtBatch As DataTable = dt_gyoumu.Clone()
 
@@ -1317,6 +1322,7 @@ Public Class F_Receive
 
                 bulk.DestinationTableName = "T_Buhin_Order_List"
                 bulk.BatchSize = batchSize
+                bulk.BulkCopyTimeout = 0
 
                 Dim dtBatch As DataTable = dt_gyoumu.Clone()
 
@@ -1434,6 +1440,7 @@ Public Class F_Receive
 
             'トランザクションを引き継いでSQL実行
             Using cmd As New SqlClient.SqlCommand(selectSql, conn, tran)
+                cmd.CommandTimeout = 0
                 Using adapter As New SqlClient.SqlDataAdapter(cmd)
                     adapter.Fill(dt)
                 End Using
@@ -1466,7 +1473,7 @@ Public Class F_Receive
                 "VALUES (@見積No, @取込年月, @取込日時, @ユーザーid, @変換フラグ,@モード区分)"
 
             Using cmd As New SqlClient.SqlCommand(insert_sql, conn, tran)
-
+                cmd.CommandTimeout = 0
                 ' パラメータ設定
                 cmd.Parameters.AddWithValue("@見積No", _mitumori_no)
                 cmd.Parameters.AddWithValue("@取込年月", _nengestu)

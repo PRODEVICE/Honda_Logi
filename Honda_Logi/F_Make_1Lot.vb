@@ -80,6 +80,11 @@ Public Class F_Make_1Lot
                     ta_second.Connection = conn
                     ta_second.Transaction = transaction
 
+                    ta_ccc_1lot.Adapter.InsertCommand.CommandTimeout = 300
+                    ta_ccc_work.Adapter.InsertCommand.CommandTimeout = 300
+                    ta_rireki.Adapter.InsertCommand.CommandTimeout = 300
+                    ta_second.Adapter.InsertCommand.CommandTimeout = 300
+
                     '後で必要な工数（秒数）を取得しておく
                     Dim panel_case As String = ta_second.Q_工数取得(10)
                     Dim sukashi_case As String = ta_second.Q_工数取得(11)
@@ -104,6 +109,7 @@ Public Class F_Make_1Lot
 
                         'cccテーブルのデータをGroupByしてworkテーブルにインサート
                         Using cmdIns As New SqlCommand(sql, conn, transaction)
+                            cmdIns.CommandTimeout = 0
                             Dim rowsAffected As Integer = cmdIns.ExecuteNonQuery()
                         End Using
 
@@ -113,12 +119,14 @@ Public Class F_Make_1Lot
 
                         '該当見積Noのデータはデリート
                         Using cmd_master_del As New SqlCommand(master_delete_sql, conn, transaction)
+                            cmd_master_del.CommandTimeout = 0
                             Dim rowsAffected As Integer = cmd_master_del.ExecuteNonQuery()
                         End Using
 
 
                         'インサート処理
                         Using cmd_master_insert As New SqlCommand(master_insert_sql, conn, transaction)
+                            cmd_master_insert.CommandTimeout = 0
                             Dim rowsAffected As Integer = cmd_master_insert.ExecuteNonQuery()
                         End Using
 
@@ -136,6 +144,7 @@ Public Class F_Make_1Lot
 
                         ' 必要情報を関連テーブルから収集して本番テーブルへインサート
                         Using cmdIns2 As New SqlCommand(make_1lot_sql, conn, transaction)
+                            cmdIns2.CommandTimeout = 0
                             Dim rowsAffected As Integer = cmdIns2.ExecuteNonQuery()
                         End Using
 
@@ -144,6 +153,7 @@ Public Class F_Make_1Lot
 
                         'SQLでUpdate
                         Using cmdUp1 As New SqlCommand(ccc_update_sql, conn, transaction)
+                            cmdUp1.CommandTimeout = 0
                             Dim rowsAffected As Integer = cmdUp1.ExecuteNonQuery()
                         End Using
 
@@ -151,6 +161,7 @@ Public Class F_Make_1Lot
                         '④KOWテーブル
                         '*******************
                         Using cmdUp_kow As New SqlCommand(kow_update_sql, conn, transaction)
+                            cmdUp_kow.CommandTimeout = 0
                             Dim rowsAffected As Integer = cmdUp_kow.ExecuteNonQuery()
                         End Using
 
@@ -397,6 +408,13 @@ Public Class F_Make_1Lot
             ta_tanka.Transaction = transaction
             ta_housou_kbn.Connection = conn
             ta_housou_kbn.Transaction = transaction
+
+            ta_ccc_lot.Adapter.InsertCommand.CommandTimeout = 300
+            ta_M_naisou.Adapter.InsertCommand.CommandTimeout = 300
+            ta_second.Adapter.InsertCommand.CommandTimeout = 300
+            ta_order_list.Adapter.InsertCommand.CommandTimeout = 300
+            ta_tanka.Adapter.InsertCommand.CommandTimeout = 300
+            ta_housou_kbn.Adapter.InsertCommand.CommandTimeout = 300
 
             '変換対象の1lotデータを取得
             ta_ccc_lot.Q_CCC_Lot取得(dt_ccc_lot, _target_mitsumori_no)
@@ -1481,6 +1499,7 @@ Public Class F_Make_1Lot
                                             carton DECIMAL(16,2)
                                         )
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -1498,11 +1517,13 @@ Public Class F_Make_1Lot
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
             ' 5. 一時テーブル削除
             Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -1524,6 +1545,7 @@ Public Class F_Make_1Lot
                                             return_able_su DECIMAL(16,2)
                                         )
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -1541,11 +1563,13 @@ Public Class F_Make_1Lot
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
             ' 5. 一時テーブル削除
             Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -1568,6 +1592,7 @@ Public Class F_Make_1Lot
                                             naisou_shizai_su DECIMAL(16,2)
                                         )
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -1585,11 +1610,13 @@ Public Class F_Make_1Lot
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
             ' 5. 一時テーブル削除
             Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -1612,6 +1639,7 @@ Public Class F_Make_1Lot
                                             tsumitsuke_su DECIMAL(16,2)
                                         )
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -1629,11 +1657,13 @@ Public Class F_Make_1Lot
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
             ' 5. 一時テーブル削除
             Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -1663,6 +1693,10 @@ Public Class F_Make_1Lot
             ta_M_naisou.Transaction = transaction
             ta_second.Connection = conn
             ta_second.Transaction = transaction
+
+            ta_ccc_lot.Adapter.InsertCommand.CommandTimeout = 300
+            ta_M_naisou.Adapter.InsertCommand.CommandTimeout = 300
+            ta_second.Adapter.InsertCommand.CommandTimeout = 300
 
             '変換対象の1lotデータを取得
             ta_ccc_lot.Q_CCC_Lot取得(dt_ccc_lot, _target_mitsumori_no)
@@ -2058,6 +2092,7 @@ Public Class F_Make_1Lot
                                             carton DECIMAL(16,2)
                                         )
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -2075,11 +2110,13 @@ Public Class F_Make_1Lot
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
             ' 5. 一時テーブル削除
             Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -2101,6 +2138,7 @@ Public Class F_Make_1Lot
                                             return_able_su DECIMAL(16,2)
                                         )
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -2118,11 +2156,13 @@ Public Class F_Make_1Lot
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
             ' 5. 一時テーブル削除
             Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -2145,6 +2185,7 @@ Public Class F_Make_1Lot
                                             naisou_shizai_su DECIMAL(16,2)
                                         )
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -2162,11 +2203,13 @@ Public Class F_Make_1Lot
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
             ' 5. 一時テーブル削除
             Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -2200,9 +2243,13 @@ Public Class F_Make_1Lot
             ta_M_naisou.Transaction = transaction
             ta_M_kosou.Connection = conn
             ta_M_kosou.Transaction = transaction
-
             ta_housou_kbn.Connection = conn
             ta_housou_kbn.Transaction = transaction
+
+            ta_ccc_lot.Adapter.InsertCommand.CommandTimeout = 300
+            ta_M_naisou.Adapter.InsertCommand.CommandTimeout = 300
+            ta_M_kosou.Adapter.InsertCommand.CommandTimeout = 300
+            ta_housou_kbn.Adapter.InsertCommand.CommandTimeout = 300
 
             '変換対象のKOWデータを取得
             Using cmd As New SqlCommand("
@@ -2492,6 +2539,7 @@ Public Class F_Make_1Lot
                                             ケース当たりの内装資材費 DECIMAL(16,2)
                                         )
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -2509,11 +2557,13 @@ Public Class F_Make_1Lot
                                         INNER JOIN #TmpUpdate T
                                             ON C.id = T.id
                                     ", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
             ' 5. 一時テーブル削除
             Using cmd As New SqlCommand("DROP TABLE #TmpUpdate", conn, transaction)
+                cmd.CommandTimeout = 0
                 cmd.ExecuteNonQuery()
             End Using
 
