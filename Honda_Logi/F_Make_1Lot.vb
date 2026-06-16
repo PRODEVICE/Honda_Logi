@@ -4007,14 +4007,30 @@ Public Class F_Make_1Lot
 		                    ON Main.個装資材記号 = Kosou_Tanka.資材コード
                             AND Kosou_Tanka.メーカーコード = '6519'
 
-		                    LEFT JOIN T_KOW46 KOW46
-		                    ON Main.包装ロットNO + RIGHT('00' + CAST(Main.包装ロット連番 AS VARCHAR(2)), 2) = KOW46.包装ロットNo
-		                    AND Main.ｺﾝﾄﾛｰﾙNO = KOW46.MUDULE
-		                    AND Main.ケースNO1= KOW46.本C_No
-		                    AND RIGHT('000' + CAST(Main.モジュール手順SEQ AS VARCHAR(2)), 3) = KOW46.内装手順
+		                    --LEFT JOIN T_KOW46 KOW46
+		                    --ON Main.包装ロットNO + RIGHT('00' + CAST(Main.包装ロット連番 AS VARCHAR(2)), 2) = KOW46.包装ロットNo
+		                    --AND Main.ｺﾝﾄﾛｰﾙNO = KOW46.MUDULE
+		                    --AND Main.ケースNO1= KOW46.本C_No
+		                    --AND RIGHT('000' + CAST(Main.モジュール手順SEQ AS VARCHAR(2)), 3) = KOW46.内装手順
                             --AND Main.モジュール手順SEQ = KOW46.内装手順
-                            AND Main.見積No = KOW46.見積No
-                            AND KOW46.主資材 = '*'
+                            --AND Main.見積No = KOW46.見積No
+                            --AND KOW46.主資材 = '*'
+
+                            LEFT JOIN (
+                                SELECT *,
+                                       ROW_NUMBER() OVER (
+                                           PARTITION BY 包装ロットNo, MUDULE, 本C_No, 内装手順, 見積No, 主資材
+                                           ORDER BY (SELECT NULL)  -- 順序が特に無い場合
+                                       ) AS RN
+                                FROM T_KOW46
+                                WHERE 主資材 = '*'
+                            ) KOW46
+                                ON KOW46.RN = 1
+                                AND Main.包装ロットNO + RIGHT('00' + CAST(Main.包装ロット連番 AS VARCHAR(2)), 2) = KOW46.包装ロットNo
+                                AND Main.ｺﾝﾄﾛｰﾙNO = KOW46.MUDULE
+                                AND Main.ケースNO1 = KOW46.本C_No
+                                AND RIGHT('000' + CAST(Main.モジュール手順SEQ AS VARCHAR(2)), 3) = KOW46.内装手順
+                                AND Main.見積No = KOW46.見積No
 
 		                    LEFT JOIN T_Buhin_Order_List OrderList1
 		                    ON Main.代表DIST = OrderList1.DIST
