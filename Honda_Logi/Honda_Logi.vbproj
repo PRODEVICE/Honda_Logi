@@ -141,6 +141,12 @@
       <DependentUpon>DS_T.xsd</DependentUpon>
     </Compile>
     <Compile Include="Function_Class.vb" />
+    <Compile Include="F_Chousei.Designer.vb">
+      <DependentUpon>F_Chousei.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Chousei.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Login.Designer.vb">
       <DependentUpon>F_Login.vb</DependentUpon>
     </Compile>
@@ -280,6 +286,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="F_Chousei.resx">
+      <DependentUpon>F_Chousei.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Login.resx">
       <DependentUpon>F_Login.vb</DependentUpon>
     </EmbeddedResource>

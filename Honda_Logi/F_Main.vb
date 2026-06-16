@@ -84,5 +84,8 @@
         OpenForm.ShowDialog()
     End Sub
 
-
+    Private Sub Btn_Chousei_Click(sender As Object, e As EventArgs) Handles Btn_Chousei.Click
+        Dim OpenForm As New F_Chousei(_mode)
+        OpenForm.ShowDialog()
+    End Sub
 End Class

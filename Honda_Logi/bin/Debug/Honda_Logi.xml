@@ -652,6 +652,16 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_Lot_WorkDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_Lot_ChouseiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:Honda_Logi.DS_T.DT_T_ERR_LOGRow">
 <summary>
 Represents strongly named DataRow class.
@@ -703,6 +713,16 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:Honda_Logi.DS_T.DT_T_CCC_Manual_LotRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_Lot_WorkRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_Lot_ChouseiRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -762,6 +782,16 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_Lot_WorkRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_T.DT_T_CCC_Lot_ChouseiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:Honda_Logi.DS_TTableAdapters.TA_T_ERR_LOG">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -813,6 +843,16 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC_Manual_Lot">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC_Lot_Work">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:Honda_Logi.DS_TTableAdapters.TA_T_CCC_Lot_Chousei">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

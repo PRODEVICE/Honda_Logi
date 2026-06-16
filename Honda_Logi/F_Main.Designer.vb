@@ -34,6 +34,7 @@ Partial Class F_Main
         Me.Btn_Output = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Lbl_Mode = New System.Windows.Forms.Label()
+        Me.Btn_Chousei = New System.Windows.Forms.Button()
         Me.Pnl_Data.SuspendLayout()
         Me.Pnl_Master.SuspendLayout()
         Me.Pnl_Output.SuspendLayout()
@@ -131,10 +132,11 @@ Partial Class F_Main
         '
         Me.Pnl_Output.BackColor = System.Drawing.Color.Thistle
         Me.Pnl_Output.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Pnl_Output.Controls.Add(Me.Btn_Chousei)
         Me.Pnl_Output.Controls.Add(Me.Btn_Output)
         Me.Pnl_Output.Location = New System.Drawing.Point(406, 222)
         Me.Pnl_Output.Name = "Pnl_Output"
-        Me.Pnl_Output.Size = New System.Drawing.Size(189, 79)
+        Me.Pnl_Output.Size = New System.Drawing.Size(189, 134)
         Me.Pnl_Output.TabIndex = 59
         '
         'Btn_Output
@@ -172,6 +174,16 @@ Partial Class F_Main
         Me.Lbl_Mode.Text = "見積依頼"
         Me.Lbl_Mode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Btn_Chousei
+        '
+        Me.Btn_Chousei.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Chousei.Location = New System.Drawing.Point(11, 71)
+        Me.Btn_Chousei.Name = "Btn_Chousei"
+        Me.Btn_Chousei.Size = New System.Drawing.Size(162, 46)
+        Me.Btn_Chousei.TabIndex = 1
+        Me.Btn_Chousei.Text = "調整工数登録"
+        Me.Btn_Chousei.UseVisualStyleBackColor = True
+        '
         'F_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -206,4 +218,5 @@ Partial Class F_Main
     Friend WithEvents Btn_Output As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Lbl_Mode As Label
+    Friend WithEvents Btn_Chousei As Button
 End Class
