@@ -612,14 +612,6 @@ Public Class F_Receive
 
                         End If
 
-
-
-
-
-
-
-
-
                     End If
 
                     dr("群") = gun
@@ -1065,15 +1057,20 @@ Public Class F_Receive
             Dim sql As String = "WITH CountCTE AS (
                                                         SELECT その他2,COUNT(*) AS cnt
                                                         FROM T_KOW46
+                                                        WHERE 見積No = @見積No
                                                         GROUP BY その他2
                                                     )
                                                     UPDATE t
                                                     SET t.その他1 = c.cnt
                                                     FROM T_KOW46 t
                                                     INNER JOIN CountCTE c
-                                                        ON t.その他2 = c.その他2;"
+                                                        ON t.その他2 = c.その他2 
+                                                    WHERE t.見積No = @見積No;"
+
             'SQL実行
             Using cmd As New SqlClient.SqlCommand(sql, conn, tran)
+
+                cmd.Parameters.Add("@見積No", SqlDbType.Int).Value = _mitsumori_no
                 cmd.ExecuteNonQuery()
             End Using
 
