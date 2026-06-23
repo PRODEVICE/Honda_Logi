@@ -3806,18 +3806,27 @@ Public Class F_Make_1Lot
                                 CASE WHEN ISNULL(Main.個装ライン, '') LIKE '%4%' THEN
                                     0
                                 ELSE
+
+                                    CASE WHEN Kosou.個装資材コード IS NOT NULL THEN　
+                                        '0'
+                                    ELSE 
+                                        CASE WHEN Kosou.個装資材コード IS NOT NULL THEN　
+                                        '0'
+                                        ELSE
 		
-			                        CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
-				 	                        CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
-					                        CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) * 
-					                        CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second1.秒数 
-			                        ELSE 
-					                        CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
-						                        CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
-						                        CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) * 
-						                        CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second1.秒数  
-					                        ELSE 0 END
-			                        END
+			                                CASE WHEN Naisou1.内装資材コード IS NOT NULL THEN
+				 	                                CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
+					                                CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) * 
+					                                CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second1.秒数 
+			                                ELSE 
+					                                CASE WHEN Naisou2.内装資材コード IS NOT NULL THEN
+						                                CONVERT(decimal,CASE WHEN Main.部品収容数 = '0' THEN '1' ELSE Main.部品収容数 END) * 
+						                                CONVERT(decimal,CASE WHEN Main.個装入り数 = '0' THEN '1' ELSE Main.個装入り数 END) * 
+						                                CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second1.秒数  
+					                                ELSE 0 END
+			                                END
+                                         END
+                                     END    
                                 END
 				 
 		                     ELSE 0 END AS 単品部品総数
@@ -3994,6 +4003,9 @@ Public Class F_Make_1Lot
 
 		                    LEFT JOIN M_Kosou_Shizai Kosou
 		                    ON Main.個装資材記号 = Kosou.個装資材コード
+
+		                    LEFT JOIN M_Kosou_Shizai Kosou2
+		                    ON Main.内装資材記号 = Kosou2.個装資材コード
 
 		                    LEFT JOIN M_Housou_Kbn Housou_Kbn_Naisou
 		                    ON Main.代表DIST = Housou_Kbn_Naisou.DIST
