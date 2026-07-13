@@ -3810,7 +3810,7 @@ Public Class F_Make_1Lot
                                     CASE WHEN Kosou.個装資材コード IS NOT NULL THEN　
                                         '0'
                                     ELSE 
-                                        CASE WHEN Kosou.個装資材コード IS NOT NULL THEN　
+                                        CASE WHEN Kosou2.個装資材コード IS NOT NULL THEN　
                                         '0'
                                         ELSE
 		
@@ -3832,8 +3832,16 @@ Public Class F_Make_1Lot
 		                     ELSE 0 END AS 単品部品総数
 		 
 		                     --部品点数
-                            , Second2.秒数  AS 部品点数
-		
+                            ,CASE WHEN Kosou.個装資材コード IS NOT NULL THEN　
+                                CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second2.秒数
+                            ELSE 
+                                CASE WHEN Kosou2.個装資材コード IS NOT NULL THEN　
+                                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second2.秒数
+                                ELSE
+                                    Second2.秒数
+                                END     
+		                    END AS 部品点数
+
 		                     --防錆回数
 		                    ,0  AS 防錆回数
 		
