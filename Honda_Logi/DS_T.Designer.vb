@@ -49,7 +49,7 @@ Partial Public Class DS_T
     
     Private tableDT_T_CCC_Lot_Work As DT_T_CCC_Lot_WorkDataTable
     
-    Private tableDT_T_CCC_Lot_Chousei As DT_T_CCC_Lot_ChouseiDataTable
+    Private tableDT_T_CCC_Lot_Save As DT_T_CCC_Lot_SaveDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -116,8 +116,8 @@ Partial Public Class DS_T
             If (Not (ds.Tables("DT_T_CCC_Lot_Work")) Is Nothing) Then
                 MyBase.Tables.Add(New DT_T_CCC_Lot_WorkDataTable(ds.Tables("DT_T_CCC_Lot_Work")))
             End If
-            If (Not (ds.Tables("DT_T_CCC_Lot_Chousei")) Is Nothing) Then
-                MyBase.Tables.Add(New DT_T_CCC_Lot_ChouseiDataTable(ds.Tables("DT_T_CCC_Lot_Chousei")))
+            If (Not (ds.Tables("DT_T_CCC_Lot_Save")) Is Nothing) Then
+                MyBase.Tables.Add(New DT_T_CCC_Lot_SaveDataTable(ds.Tables("DT_T_CCC_Lot_Save")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -260,9 +260,9 @@ Partial Public Class DS_T
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property DT_T_CCC_Lot_Chousei() As DT_T_CCC_Lot_ChouseiDataTable
+    Public ReadOnly Property DT_T_CCC_Lot_Save() As DT_T_CCC_Lot_SaveDataTable
         Get
-            Return Me.tableDT_T_CCC_Lot_Chousei
+            Return Me.tableDT_T_CCC_Lot_Save
         End Get
     End Property
     
@@ -369,8 +369,8 @@ Partial Public Class DS_T
             If (Not (ds.Tables("DT_T_CCC_Lot_Work")) Is Nothing) Then
                 MyBase.Tables.Add(New DT_T_CCC_Lot_WorkDataTable(ds.Tables("DT_T_CCC_Lot_Work")))
             End If
-            If (Not (ds.Tables("DT_T_CCC_Lot_Chousei")) Is Nothing) Then
-                MyBase.Tables.Add(New DT_T_CCC_Lot_ChouseiDataTable(ds.Tables("DT_T_CCC_Lot_Chousei")))
+            If (Not (ds.Tables("DT_T_CCC_Lot_Save")) Is Nothing) Then
+                MyBase.Tables.Add(New DT_T_CCC_Lot_SaveDataTable(ds.Tables("DT_T_CCC_Lot_Save")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -476,10 +476,10 @@ Partial Public Class DS_T
                 Me.tableDT_T_CCC_Lot_Work.InitVars
             End If
         End If
-        Me.tableDT_T_CCC_Lot_Chousei = CType(MyBase.Tables("DT_T_CCC_Lot_Chousei"),DT_T_CCC_Lot_ChouseiDataTable)
+        Me.tableDT_T_CCC_Lot_Save = CType(MyBase.Tables("DT_T_CCC_Lot_Save"),DT_T_CCC_Lot_SaveDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableDT_T_CCC_Lot_Chousei) Is Nothing) Then
-                Me.tableDT_T_CCC_Lot_Chousei.InitVars
+            If (Not (Me.tableDT_T_CCC_Lot_Save) Is Nothing) Then
+                Me.tableDT_T_CCC_Lot_Save.InitVars
             End If
         End If
     End Sub
@@ -516,8 +516,8 @@ Partial Public Class DS_T
         MyBase.Tables.Add(Me.tableDT_T_CCC_Manual_Lot)
         Me.tableDT_T_CCC_Lot_Work = New DT_T_CCC_Lot_WorkDataTable()
         MyBase.Tables.Add(Me.tableDT_T_CCC_Lot_Work)
-        Me.tableDT_T_CCC_Lot_Chousei = New DT_T_CCC_Lot_ChouseiDataTable()
-        MyBase.Tables.Add(Me.tableDT_T_CCC_Lot_Chousei)
+        Me.tableDT_T_CCC_Lot_Save = New DT_T_CCC_Lot_SaveDataTable()
+        MyBase.Tables.Add(Me.tableDT_T_CCC_Lot_Save)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -594,7 +594,7 @@ Partial Public Class DS_T
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Private Function ShouldSerializeDT_T_CCC_Lot_Chousei() As Boolean
+    Private Function ShouldSerializeDT_T_CCC_Lot_Save() As Boolean
         Return false
     End Function
     
@@ -693,7 +693,7 @@ Partial Public Class DS_T
     Public Delegate Sub DT_T_CCC_Lot_WorkRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_T_CCC_Lot_WorkRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Delegate Sub DT_T_CCC_Lot_ChouseiRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_T_CCC_Lot_ChouseiRowChangeEvent)
+    Public Delegate Sub DT_T_CCC_Lot_SaveRowChangeEventHandler(ByVal sender As Object, ByVal e As DT_T_CCC_Lot_SaveRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -29705,10 +29705,12 @@ Partial Public Class DS_T
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class DT_T_CCC_Lot_ChouseiDataTable
-        Inherits Global.System.Data.TypedTableBase(Of DT_T_CCC_Lot_ChouseiRow)
+    Partial Public Class DT_T_CCC_Lot_SaveDataTable
+        Inherits Global.System.Data.TypedTableBase(Of DT_T_CCC_Lot_SaveRow)
         
         Private columnid As Global.System.Data.DataColumn
+        
+        Private columnlot_id As Global.System.Data.DataColumn
         
         Private column見積No As Global.System.Data.DataColumn
         
@@ -29772,11 +29774,51 @@ Partial Public Class DS_T
         
         Private column区分 As Global.System.Data.DataColumn
         
+        Private columnCCC_Lot_id As Global.System.Data.DataColumn
+        
+        Private columnｺﾝﾄﾛｰﾙNO As Global.System.Data.DataColumn
+        
+        Private column代表DIST As Global.System.Data.DataColumn
+        
+        Private column年度2 As Global.System.Data.DataColumn
+        
+        Private columnモデル2 As Global.System.Data.DataColumn
+        
+        Private columnタイプ1 As Global.System.Data.DataColumn
+        
+        Private columnオプション1 As Global.System.Data.DataColumn
+        
+        Private column群 As Global.System.Data.DataColumn
+        
+        Private column包装ロットNO As Global.System.Data.DataColumn
+        
+        Private column基本部番ハイフン付 As Global.System.Data.DataColumn
+        
+        Private column予備1 As Global.System.Data.DataColumn
+        
+        Private column予備2 As Global.System.Data.DataColumn
+        
+        Private column予備3 As Global.System.Data.DataColumn
+        
+        Private column予備4 As Global.System.Data.DataColumn
+        
+        Private column予備5 As Global.System.Data.DataColumn
+        
+        Private column予備6 As Global.System.Data.DataColumn
+        
+        Private column予備7 As Global.System.Data.DataColumn
+        
+        Private column予備8 As Global.System.Data.DataColumn
+        
+        Private column予備9 As Global.System.Data.DataColumn
+        
+        Private column予備10 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "DT_T_CCC_Lot_Chousei"
+            Me.TableName = "DT_T_CCC_Lot_Save"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -29812,6 +29854,14 @@ Partial Public Class DS_T
         Public ReadOnly Property idColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnid
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property lot_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlot_id
             End Get
         End Property
         
@@ -30064,6 +30114,166 @@ Partial Public Class DS_T
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CCC_Lot_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCCC_Lot_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ｺﾝﾄﾛｰﾙNOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnｺﾝﾄﾛｰﾙNO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 代表DISTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column代表DIST
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 年度2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column年度2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property モデル2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnモデル2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property タイプ1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnタイプ1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property オプション1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnオプション1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 群Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column群
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 包装ロットNOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column包装ロットNO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 基本部番ハイフン付Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column基本部番ハイフン付
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備5Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備5
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備6Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備6
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備7Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備7
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備8Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備8
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備9Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備9
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property 予備10Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.column予備10
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -30074,33 +30284,34 @@ Partial Public Class DS_T
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As DT_T_CCC_Lot_ChouseiRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As DT_T_CCC_Lot_SaveRow
             Get
-                Return CType(Me.Rows(index),DT_T_CCC_Lot_ChouseiRow)
+                Return CType(Me.Rows(index),DT_T_CCC_Lot_SaveRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event DT_T_CCC_Lot_ChouseiRowChanging As DT_T_CCC_Lot_ChouseiRowChangeEventHandler
+        Public Event DT_T_CCC_Lot_SaveRowChanging As DT_T_CCC_Lot_SaveRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event DT_T_CCC_Lot_ChouseiRowChanged As DT_T_CCC_Lot_ChouseiRowChangeEventHandler
+        Public Event DT_T_CCC_Lot_SaveRowChanged As DT_T_CCC_Lot_SaveRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event DT_T_CCC_Lot_ChouseiRowDeleting As DT_T_CCC_Lot_ChouseiRowChangeEventHandler
+        Public Event DT_T_CCC_Lot_SaveRowDeleting As DT_T_CCC_Lot_SaveRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Event DT_T_CCC_Lot_ChouseiRowDeleted As DT_T_CCC_Lot_ChouseiRowChangeEventHandler
+        Public Event DT_T_CCC_Lot_SaveRowDeleted As DT_T_CCC_Lot_SaveRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Sub AddDT_T_CCC_Lot_ChouseiRow(ByVal row As DT_T_CCC_Lot_ChouseiRow)
+        Public Overloads Sub AddDT_T_CCC_Lot_SaveRow(ByVal row As DT_T_CCC_Lot_SaveRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddDT_T_CCC_Lot_ChouseiRow( _
+        Public Overloads Function AddDT_T_CCC_Lot_SaveRow( _
+                    ByVal lot_id As Integer,  _
                     ByVal 見積No As Integer,  _
                     ByVal 単品部品総数 As Decimal,  _
                     ByVal 部品点数 As Decimal,  _
@@ -30131,18 +30342,38 @@ Partial Public Class DS_T
                     ByVal 個_内装資材 As Decimal,  _
                     ByVal 外装資材 As Decimal,  _
                     ByVal 資材計 As Decimal,  _
-                    ByVal 区分 As String) As DT_T_CCC_Lot_ChouseiRow
-            Dim rowDT_T_CCC_Lot_ChouseiRow As DT_T_CCC_Lot_ChouseiRow = CType(Me.NewRow,DT_T_CCC_Lot_ChouseiRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナブル容器数, ENG発泡材数, 積み付け回数, パネルケース数, スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 外装用副資材使用数, 外直部品総数, 外直の防錆回数, 外装ケース数, 部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, 個_内装資材, 外装資材, 資材計, 区分}
-            rowDT_T_CCC_Lot_ChouseiRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowDT_T_CCC_Lot_ChouseiRow)
-            Return rowDT_T_CCC_Lot_ChouseiRow
+                    ByVal 区分 As String,  _
+                    ByVal CCC_Lot_id As Integer,  _
+                    ByVal ｺﾝﾄﾛｰﾙNO As String,  _
+                    ByVal 代表DIST As String,  _
+                    ByVal 年度2 As String,  _
+                    ByVal モデル2 As String,  _
+                    ByVal タイプ1 As String,  _
+                    ByVal オプション1 As String,  _
+                    ByVal 群 As String,  _
+                    ByVal 包装ロットNO As String,  _
+                    ByVal 基本部番ハイフン付 As String,  _
+                    ByVal 予備1 As String,  _
+                    ByVal 予備2 As String,  _
+                    ByVal 予備3 As String,  _
+                    ByVal 予備4 As String,  _
+                    ByVal 予備5 As String,  _
+                    ByVal 予備6 As String,  _
+                    ByVal 予備7 As String,  _
+                    ByVal 予備8 As String,  _
+                    ByVal 予備9 As String,  _
+                    ByVal 予備10 As String) As DT_T_CCC_Lot_SaveRow
+            Dim rowDT_T_CCC_Lot_SaveRow As DT_T_CCC_Lot_SaveRow = CType(Me.NewRow,DT_T_CCC_Lot_SaveRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, lot_id, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナブル容器数, ENG発泡材数, 積み付け回数, パネルケース数, スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 外装用副資材使用数, 外直部品総数, 外直の防錆回数, 外装ケース数, 部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, 個_内装資材, 外装資材, 資材計, 区分, CCC_Lot_id, ｺﾝﾄﾛｰﾙNO, 代表DIST, 年度2, モデル2, タイプ1, オプション1, 群, 包装ロットNO, 基本部番ハイフン付, 予備1, 予備2, 予備3, 予備4, 予備5, 予備6, 予備7, 予備8, 予備9, 予備10}
+            rowDT_T_CCC_Lot_SaveRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowDT_T_CCC_Lot_SaveRow)
+            Return rowDT_T_CCC_Lot_SaveRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As DT_T_CCC_Lot_ChouseiDataTable = CType(MyBase.Clone,DT_T_CCC_Lot_ChouseiDataTable)
+            Dim cln As DT_T_CCC_Lot_SaveDataTable = CType(MyBase.Clone,DT_T_CCC_Lot_SaveDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -30150,13 +30381,14 @@ Partial Public Class DS_T
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New DT_T_CCC_Lot_ChouseiDataTable()
+            Return New DT_T_CCC_Lot_SaveDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnid = MyBase.Columns("id")
+            Me.columnlot_id = MyBase.Columns("lot_id")
             Me.column見積No = MyBase.Columns("見積No")
             Me.column単品部品総数 = MyBase.Columns("単品部品総数")
             Me.column部品点数 = MyBase.Columns("部品点数")
@@ -30188,6 +30420,26 @@ Partial Public Class DS_T
             Me.column外装資材 = MyBase.Columns("外装資材")
             Me.column資材計 = MyBase.Columns("資材計")
             Me.column区分 = MyBase.Columns("区分")
+            Me.columnCCC_Lot_id = MyBase.Columns("CCC_Lot_id")
+            Me.columnｺﾝﾄﾛｰﾙNO = MyBase.Columns("ｺﾝﾄﾛｰﾙNO")
+            Me.column代表DIST = MyBase.Columns("代表DIST")
+            Me.column年度2 = MyBase.Columns("年度2")
+            Me.columnモデル2 = MyBase.Columns("モデル2")
+            Me.columnタイプ1 = MyBase.Columns("タイプ1")
+            Me.columnオプション1 = MyBase.Columns("オプション1")
+            Me.column群 = MyBase.Columns("群")
+            Me.column包装ロットNO = MyBase.Columns("包装ロットNO")
+            Me.column基本部番ハイフン付 = MyBase.Columns("基本部番ハイフン付")
+            Me.column予備1 = MyBase.Columns("予備1")
+            Me.column予備2 = MyBase.Columns("予備2")
+            Me.column予備3 = MyBase.Columns("予備3")
+            Me.column予備4 = MyBase.Columns("予備4")
+            Me.column予備5 = MyBase.Columns("予備5")
+            Me.column予備6 = MyBase.Columns("予備6")
+            Me.column予備7 = MyBase.Columns("予備7")
+            Me.column予備8 = MyBase.Columns("予備8")
+            Me.column予備9 = MyBase.Columns("予備9")
+            Me.column予備10 = MyBase.Columns("予備10")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -30195,6 +30447,8 @@ Partial Public Class DS_T
         Private Sub InitClass()
             Me.columnid = New Global.System.Data.DataColumn("id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnid)
+            Me.columnlot_id = New Global.System.Data.DataColumn("lot_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlot_id)
             Me.column見積No = New Global.System.Data.DataColumn("見積No", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.column見積No)
             Me.column単品部品総数 = New Global.System.Data.DataColumn("単品部品総数", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
@@ -30257,38 +30511,97 @@ Partial Public Class DS_T
             MyBase.Columns.Add(Me.column資材計)
             Me.column区分 = New Global.System.Data.DataColumn("区分", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.column区分)
+            Me.columnCCC_Lot_id = New Global.System.Data.DataColumn("CCC_Lot_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCCC_Lot_id)
+            Me.columnｺﾝﾄﾛｰﾙNO = New Global.System.Data.DataColumn("ｺﾝﾄﾛｰﾙNO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnｺﾝﾄﾛｰﾙNO)
+            Me.column代表DIST = New Global.System.Data.DataColumn("代表DIST", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column代表DIST)
+            Me.column年度2 = New Global.System.Data.DataColumn("年度2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column年度2)
+            Me.columnモデル2 = New Global.System.Data.DataColumn("モデル2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnモデル2)
+            Me.columnタイプ1 = New Global.System.Data.DataColumn("タイプ1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnタイプ1)
+            Me.columnオプション1 = New Global.System.Data.DataColumn("オプション1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnオプション1)
+            Me.column群 = New Global.System.Data.DataColumn("群", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column群)
+            Me.column包装ロットNO = New Global.System.Data.DataColumn("包装ロットNO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column包装ロットNO)
+            Me.column基本部番ハイフン付 = New Global.System.Data.DataColumn("基本部番ハイフン付", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column基本部番ハイフン付)
+            Me.column予備1 = New Global.System.Data.DataColumn("予備1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備1)
+            Me.column予備2 = New Global.System.Data.DataColumn("予備2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備2)
+            Me.column予備3 = New Global.System.Data.DataColumn("予備3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備3)
+            Me.column予備4 = New Global.System.Data.DataColumn("予備4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備4)
+            Me.column予備5 = New Global.System.Data.DataColumn("予備5", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備5)
+            Me.column予備6 = New Global.System.Data.DataColumn("予備6", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備6)
+            Me.column予備7 = New Global.System.Data.DataColumn("予備7", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備7)
+            Me.column予備8 = New Global.System.Data.DataColumn("予備8", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備8)
+            Me.column予備9 = New Global.System.Data.DataColumn("予備9", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備9)
+            Me.column予備10 = New Global.System.Data.DataColumn("予備10", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.column予備10)
             Me.columnid.AutoIncrement = true
             Me.columnid.AutoIncrementSeed = -1
             Me.columnid.AutoIncrementStep = -1
             Me.columnid.AllowDBNull = false
             Me.columnid.ReadOnly = true
             Me.column区分.MaxLength = 40
+            Me.columnｺﾝﾄﾛｰﾙNO.MaxLength = 40
+            Me.column代表DIST.MaxLength = 40
+            Me.column年度2.MaxLength = 40
+            Me.columnモデル2.MaxLength = 40
+            Me.columnタイプ1.MaxLength = 40
+            Me.columnオプション1.MaxLength = 40
+            Me.column群.MaxLength = 40
+            Me.column包装ロットNO.MaxLength = 40
+            Me.column基本部番ハイフン付.MaxLength = 40
+            Me.column予備1.MaxLength = 40
+            Me.column予備2.MaxLength = 40
+            Me.column予備3.MaxLength = 40
+            Me.column予備4.MaxLength = 40
+            Me.column予備5.MaxLength = 40
+            Me.column予備6.MaxLength = 40
+            Me.column予備7.MaxLength = 40
+            Me.column予備8.MaxLength = 40
+            Me.column予備9.MaxLength = 40
+            Me.column予備10.MaxLength = 40
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function NewDT_T_CCC_Lot_ChouseiRow() As DT_T_CCC_Lot_ChouseiRow
-            Return CType(Me.NewRow,DT_T_CCC_Lot_ChouseiRow)
+        Public Function NewDT_T_CCC_Lot_SaveRow() As DT_T_CCC_Lot_SaveRow
+            Return CType(Me.NewRow,DT_T_CCC_Lot_SaveRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New DT_T_CCC_Lot_ChouseiRow(builder)
+            Return New DT_T_CCC_Lot_SaveRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(DT_T_CCC_Lot_ChouseiRow)
+            Return GetType(DT_T_CCC_Lot_SaveRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.DT_T_CCC_Lot_ChouseiRowChangedEvent) Is Nothing) Then
-                RaiseEvent DT_T_CCC_Lot_ChouseiRowChanged(Me, New DT_T_CCC_Lot_ChouseiRowChangeEvent(CType(e.Row,DT_T_CCC_Lot_ChouseiRow), e.Action))
+            If (Not (Me.DT_T_CCC_Lot_SaveRowChangedEvent) Is Nothing) Then
+                RaiseEvent DT_T_CCC_Lot_SaveRowChanged(Me, New DT_T_CCC_Lot_SaveRowChangeEvent(CType(e.Row,DT_T_CCC_Lot_SaveRow), e.Action))
             End If
         End Sub
         
@@ -30296,8 +30609,8 @@ Partial Public Class DS_T
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.DT_T_CCC_Lot_ChouseiRowChangingEvent) Is Nothing) Then
-                RaiseEvent DT_T_CCC_Lot_ChouseiRowChanging(Me, New DT_T_CCC_Lot_ChouseiRowChangeEvent(CType(e.Row,DT_T_CCC_Lot_ChouseiRow), e.Action))
+            If (Not (Me.DT_T_CCC_Lot_SaveRowChangingEvent) Is Nothing) Then
+                RaiseEvent DT_T_CCC_Lot_SaveRowChanging(Me, New DT_T_CCC_Lot_SaveRowChangeEvent(CType(e.Row,DT_T_CCC_Lot_SaveRow), e.Action))
             End If
         End Sub
         
@@ -30305,8 +30618,8 @@ Partial Public Class DS_T
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.DT_T_CCC_Lot_ChouseiRowDeletedEvent) Is Nothing) Then
-                RaiseEvent DT_T_CCC_Lot_ChouseiRowDeleted(Me, New DT_T_CCC_Lot_ChouseiRowChangeEvent(CType(e.Row,DT_T_CCC_Lot_ChouseiRow), e.Action))
+            If (Not (Me.DT_T_CCC_Lot_SaveRowDeletedEvent) Is Nothing) Then
+                RaiseEvent DT_T_CCC_Lot_SaveRowDeleted(Me, New DT_T_CCC_Lot_SaveRowChangeEvent(CType(e.Row,DT_T_CCC_Lot_SaveRow), e.Action))
             End If
         End Sub
         
@@ -30314,14 +30627,14 @@ Partial Public Class DS_T
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.DT_T_CCC_Lot_ChouseiRowDeletingEvent) Is Nothing) Then
-                RaiseEvent DT_T_CCC_Lot_ChouseiRowDeleting(Me, New DT_T_CCC_Lot_ChouseiRowChangeEvent(CType(e.Row,DT_T_CCC_Lot_ChouseiRow), e.Action))
+            If (Not (Me.DT_T_CCC_Lot_SaveRowDeletingEvent) Is Nothing) Then
+                RaiseEvent DT_T_CCC_Lot_SaveRowDeleting(Me, New DT_T_CCC_Lot_SaveRowChangeEvent(CType(e.Row,DT_T_CCC_Lot_SaveRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub RemoveDT_T_CCC_Lot_ChouseiRow(ByVal row As DT_T_CCC_Lot_ChouseiRow)
+        Public Sub RemoveDT_T_CCC_Lot_SaveRow(ByVal row As DT_T_CCC_Lot_SaveRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -30348,7 +30661,7 @@ Partial Public Class DS_T
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "DT_T_CCC_Lot_ChouseiDataTable"
+            attribute2.FixedValue = "DT_T_CCC_Lot_SaveDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -77564,26 +77877,41 @@ Partial Public Class DS_T
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class DT_T_CCC_Lot_ChouseiRow
+    Partial Public Class DT_T_CCC_Lot_SaveRow
         Inherits Global.System.Data.DataRow
         
-        Private tableDT_T_CCC_Lot_Chousei As DT_T_CCC_Lot_ChouseiDataTable
+        Private tableDT_T_CCC_Lot_Save As DT_T_CCC_Lot_SaveDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableDT_T_CCC_Lot_Chousei = CType(Me.Table,DT_T_CCC_Lot_ChouseiDataTable)
+            Me.tableDT_T_CCC_Lot_Save = CType(Me.Table,DT_T_CCC_Lot_SaveDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property id() As Integer
             Get
-                Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.idColumn),Integer)
+                Return CType(Me(Me.tableDT_T_CCC_Lot_Save.idColumn),Integer)
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.idColumn) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property lot_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.lot_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'lot_id' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.lot_idColumn) = value
             End Set
         End Property
         
@@ -77592,13 +77920,13 @@ Partial Public Class DS_T
         Public Property 見積No() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.見積NoColumn),Integer)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.見積NoColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '見積No' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '見積No' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.見積NoColumn) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.見積NoColumn) = value
             End Set
         End Property
         
@@ -77607,13 +77935,13 @@ Partial Public Class DS_T
         Public Property 単品部品総数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.単品部品総数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.単品部品総数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '単品部品総数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '単品部品総数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.単品部品総数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.単品部品総数Column) = value
             End Set
         End Property
         
@@ -77622,13 +77950,13 @@ Partial Public Class DS_T
         Public Property 部品点数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.部品点数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.部品点数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '部品点数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '部品点数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.部品点数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.部品点数Column) = value
             End Set
         End Property
         
@@ -77637,13 +77965,13 @@ Partial Public Class DS_T
         Public Property 防錆回数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.防錆回数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.防錆回数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '防錆回数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '防錆回数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.防錆回数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.防錆回数Column) = value
             End Set
         End Property
         
@@ -77652,13 +77980,13 @@ Partial Public Class DS_T
         Public Property 個装数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.個装数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.個装数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '個装数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '個装数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.個装数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.個装数Column) = value
             End Set
         End Property
         
@@ -77667,13 +77995,13 @@ Partial Public Class DS_T
         Public Property 内装資材数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.内装資材数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.内装資材数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '内装資材数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '内装資材数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.内装資材数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.内装資材数Column) = value
             End Set
         End Property
         
@@ -77682,13 +78010,13 @@ Partial Public Class DS_T
         Public Property カートン数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.カートン数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.カートン数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 'カートン数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'カートン数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.カートン数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.カートン数Column) = value
             End Set
         End Property
         
@@ -77697,13 +78025,13 @@ Partial Public Class DS_T
         Public Property リターナブル容器数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.リターナブル容器数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.リターナブル容器数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 'リターナブル容器数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'リターナブル容器数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.リターナブル容器数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.リターナブル容器数Column) = value
             End Set
         End Property
         
@@ -77712,13 +78040,13 @@ Partial Public Class DS_T
         Public Property ENG発泡材数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.ENG発泡材数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.ENG発泡材数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 'ENG発泡材数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'ENG発泡材数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.ENG発泡材数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.ENG発泡材数Column) = value
             End Set
         End Property
         
@@ -77727,13 +78055,13 @@ Partial Public Class DS_T
         Public Property 積み付け回数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.積み付け回数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.積み付け回数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '積み付け回数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '積み付け回数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.積み付け回数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.積み付け回数Column) = value
             End Set
         End Property
         
@@ -77742,13 +78070,13 @@ Partial Public Class DS_T
         Public Property パネルケース数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.パネルケース数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.パネルケース数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 'パネルケース数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'パネルケース数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.パネルケース数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.パネルケース数Column) = value
             End Set
         End Property
         
@@ -77757,13 +78085,13 @@ Partial Public Class DS_T
         Public Property スカシケース数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.スカシケース数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.スカシケース数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 'スカシケース数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'スカシケース数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.スカシケース数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.スカシケース数Column) = value
             End Set
         End Property
         
@@ -77772,13 +78100,13 @@ Partial Public Class DS_T
         Public Property 外装用段ボールパット使用数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外装用段ボールパット使用数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外装用段ボールパット使用数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外装用段ボールパット使用数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外装用段ボールパット使用数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外装用段ボールパット使用数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外装用段ボールパット使用数Column) = value
             End Set
         End Property
         
@@ -77787,13 +78115,13 @@ Partial Public Class DS_T
         Public Property 外装用箱型ポリ袋() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外装用箱型ポリ袋Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外装用箱型ポリ袋Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外装用箱型ポリ袋' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外装用箱型ポリ袋' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外装用箱型ポリ袋Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外装用箱型ポリ袋Column) = value
             End Set
         End Property
         
@@ -77802,13 +78130,13 @@ Partial Public Class DS_T
         Public Property 外装用ボルト使用数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外装用ボルト使用数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外装用ボルト使用数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外装用ボルト使用数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外装用ボルト使用数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外装用ボルト使用数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外装用ボルト使用数Column) = value
             End Set
         End Property
         
@@ -77817,13 +78145,13 @@ Partial Public Class DS_T
         Public Property 外装用副資材使用数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外装用副資材使用数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外装用副資材使用数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外装用副資材使用数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外装用副資材使用数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外装用副資材使用数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外装用副資材使用数Column) = value
             End Set
         End Property
         
@@ -77832,13 +78160,13 @@ Partial Public Class DS_T
         Public Property 外直部品総数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外直部品総数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外直部品総数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外直部品総数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外直部品総数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外直部品総数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外直部品総数Column) = value
             End Set
         End Property
         
@@ -77847,13 +78175,13 @@ Partial Public Class DS_T
         Public Property 外直の防錆回数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外直の防錆回数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外直の防錆回数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外直の防錆回数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外直の防錆回数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外直の防錆回数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外直の防錆回数Column) = value
             End Set
         End Property
         
@@ -77862,13 +78190,13 @@ Partial Public Class DS_T
         Public Property 外装ケース数() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外装ケース数Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外装ケース数Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外装ケース数' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外装ケース数' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外装ケース数Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外装ケース数Column) = value
             End Set
         End Property
         
@@ -77877,13 +78205,13 @@ Partial Public Class DS_T
         Public Property 部品点数_集計() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.部品点数_集計Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.部品点数_集計Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '部品点数_集計' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '部品点数_集計' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.部品点数_集計Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.部品点数_集計Column) = value
             End Set
         End Property
         
@@ -77892,13 +78220,13 @@ Partial Public Class DS_T
         Public Property 個装資材費() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.個装資材費Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.個装資材費Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '個装資材費' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '個装資材費' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.個装資材費Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.個装資材費Column) = value
             End Set
         End Property
         
@@ -77907,13 +78235,13 @@ Partial Public Class DS_T
         Public Property 内装資材費() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.内装資材費Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.内装資材費Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '内装資材費' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '内装資材費' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.内装資材費Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.内装資材費Column) = value
             End Set
         End Property
         
@@ -77922,13 +78250,13 @@ Partial Public Class DS_T
         Public Property 外装資材費() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外装資材費Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外装資材費Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外装資材費' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外装資材費' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外装資材費Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外装資材費Column) = value
             End Set
         End Property
         
@@ -77937,13 +78265,13 @@ Partial Public Class DS_T
         Public Property 個装作業() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.個装作業Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.個装作業Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '個装作業' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '個装作業' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.個装作業Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.個装作業Column) = value
             End Set
         End Property
         
@@ -77952,13 +78280,13 @@ Partial Public Class DS_T
         Public Property 内装作業() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.内装作業Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.内装作業Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '内装作業' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '内装作業' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.内装作業Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.内装作業Column) = value
             End Set
         End Property
         
@@ -77967,13 +78295,13 @@ Partial Public Class DS_T
         Public Property 外装作業() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外装作業Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外装作業Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外装作業' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外装作業' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外装作業Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外装作業Column) = value
             End Set
         End Property
         
@@ -77982,13 +78310,13 @@ Partial Public Class DS_T
         Public Property 作業計() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.作業計Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.作業計Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '作業計' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '作業計' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.作業計Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.作業計Column) = value
             End Set
         End Property
         
@@ -77997,13 +78325,13 @@ Partial Public Class DS_T
         Public Property 個_内装資材() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.個_内装資材Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.個_内装資材Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '個_内装資材' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '個_内装資材' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.個_内装資材Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.個_内装資材Column) = value
             End Set
         End Property
         
@@ -78012,13 +78340,13 @@ Partial Public Class DS_T
         Public Property 外装資材() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.外装資材Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.外装資材Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '外装資材' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '外装資材' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.外装資材Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.外装資材Column) = value
             End Set
         End Property
         
@@ -78027,13 +78355,13 @@ Partial Public Class DS_T
         Public Property 資材計() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.資材計Column),Decimal)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.資材計Column),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '資材計' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '資材計' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.資材計Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.資材計Column) = value
             End Set
         End Property
         
@@ -78042,386 +78370,938 @@ Partial Public Class DS_T
         Public Property 区分() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableDT_T_CCC_Lot_Chousei.区分Column),String)
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.区分Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Chousei' にある列 '区分' の値は DBNull です。", e)
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '区分' の値は DBNull です。", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDT_T_CCC_Lot_Chousei.区分Column) = value
+                Me(Me.tableDT_T_CCC_Lot_Save.区分Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CCC_Lot_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.CCC_Lot_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'CCC_Lot_id' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.CCC_Lot_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ｺﾝﾄﾛｰﾙNO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.ｺﾝﾄﾛｰﾙNOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'ｺﾝﾄﾛｰﾙNO' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.ｺﾝﾄﾛｰﾙNOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 代表DIST() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.代表DISTColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '代表DIST' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.代表DISTColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 年度2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.年度2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '年度2' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.年度2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property モデル2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.モデル2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'モデル2' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.モデル2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property タイプ1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.タイプ1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'タイプ1' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.タイプ1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property オプション1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.オプション1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 'オプション1' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.オプション1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 群() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.群Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '群' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.群Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 包装ロットNO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.包装ロットNOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '包装ロットNO' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.包装ロットNOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 基本部番ハイフン付() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.基本部番ハイフン付Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '基本部番ハイフン付' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.基本部番ハイフン付Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備1' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備2' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備3' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備4() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備4Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備4' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備5() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備5Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備5' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備5Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備6() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備6Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備6' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備6Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備7() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備7Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備7' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備7Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備8() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備8Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備8' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備8Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備9() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備9Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備9' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備9Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property 予備10() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDT_T_CCC_Lot_Save.予備10Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("テーブル 'DT_T_CCC_Lot_Save' にある列 '予備10' の値は DBNull です。", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDT_T_CCC_Lot_Save.予備10Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Islot_idNull() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.lot_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setlot_idNull()
+            Me(Me.tableDT_T_CCC_Lot_Save.lot_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is見積NoNull() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.見積NoColumn)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.見積NoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set見積NoNull()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.見積NoColumn) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.見積NoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is単品部品総数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.単品部品総数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.単品部品総数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set単品部品総数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.単品部品総数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.単品部品総数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is部品点数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.部品点数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.部品点数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set部品点数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.部品点数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.部品点数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is防錆回数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.防錆回数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.防錆回数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set防錆回数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.防錆回数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.防錆回数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is個装数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.個装数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.個装数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set個装数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.個装数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.個装数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is内装資材数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.内装資材数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.内装資材数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set内装資材数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.内装資材数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.内装資材数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isカートン数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.カートン数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.カートン数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Setカートン数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.カートン数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.カートン数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isリターナブル容器数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.リターナブル容器数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.リターナブル容器数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Setリターナブル容器数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.リターナブル容器数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.リターナブル容器数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsENG発泡材数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.ENG発泡材数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.ENG発泡材数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetENG発泡材数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.ENG発泡材数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.ENG発泡材数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is積み付け回数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.積み付け回数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.積み付け回数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set積み付け回数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.積み付け回数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.積み付け回数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isパネルケース数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.パネルケース数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.パネルケース数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Setパネルケース数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.パネルケース数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.パネルケース数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isスカシケース数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.スカシケース数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.スカシケース数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Setスカシケース数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.スカシケース数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.スカシケース数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外装用段ボールパット使用数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外装用段ボールパット使用数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外装用段ボールパット使用数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外装用段ボールパット使用数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外装用段ボールパット使用数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外装用段ボールパット使用数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外装用箱型ポリ袋Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外装用箱型ポリ袋Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外装用箱型ポリ袋Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外装用箱型ポリ袋Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外装用箱型ポリ袋Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外装用箱型ポリ袋Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外装用ボルト使用数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外装用ボルト使用数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外装用ボルト使用数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外装用ボルト使用数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外装用ボルト使用数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外装用ボルト使用数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外装用副資材使用数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外装用副資材使用数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外装用副資材使用数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外装用副資材使用数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外装用副資材使用数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外装用副資材使用数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外直部品総数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外直部品総数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外直部品総数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外直部品総数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外直部品総数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外直部品総数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外直の防錆回数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外直の防錆回数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外直の防錆回数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外直の防錆回数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外直の防錆回数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外直の防錆回数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外装ケース数Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外装ケース数Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外装ケース数Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外装ケース数Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外装ケース数Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外装ケース数Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is部品点数_集計Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.部品点数_集計Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.部品点数_集計Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set部品点数_集計Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.部品点数_集計Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.部品点数_集計Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is個装資材費Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.個装資材費Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.個装資材費Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set個装資材費Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.個装資材費Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.個装資材費Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is内装資材費Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.内装資材費Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.内装資材費Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set内装資材費Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.内装資材費Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.内装資材費Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外装資材費Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外装資材費Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外装資材費Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外装資材費Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外装資材費Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外装資材費Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is個装作業Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.個装作業Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.個装作業Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set個装作業Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.個装作業Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.個装作業Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is内装作業Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.内装作業Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.内装作業Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set内装作業Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.内装作業Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.内装作業Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外装作業Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外装作業Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外装作業Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外装作業Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外装作業Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外装作業Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is作業計Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.作業計Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.作業計Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set作業計Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.作業計Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.作業計Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is個_内装資材Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.個_内装資材Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.個_内装資材Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set個_内装資材Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.個_内装資材Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.個_内装資材Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is外装資材Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.外装資材Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.外装資材Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set外装資材Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.外装資材Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.外装資材Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is資材計Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.資材計Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.資材計Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set資材計Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.資材計Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.資材計Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Is区分Null() As Boolean
-            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Chousei.区分Column)
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.区分Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set区分Null()
-            Me(Me.tableDT_T_CCC_Lot_Chousei.区分Column) = Global.System.Convert.DBNull
+            Me(Me.tableDT_T_CCC_Lot_Save.区分Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCCC_Lot_idNull() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.CCC_Lot_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCCC_Lot_idNull()
+            Me(Me.tableDT_T_CCC_Lot_Save.CCC_Lot_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsｺﾝﾄﾛｰﾙNONull() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.ｺﾝﾄﾛｰﾙNOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetｺﾝﾄﾛｰﾙNONull()
+            Me(Me.tableDT_T_CCC_Lot_Save.ｺﾝﾄﾛｰﾙNOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is代表DISTNull() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.代表DISTColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set代表DISTNull()
+            Me(Me.tableDT_T_CCC_Lot_Save.代表DISTColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is年度2Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.年度2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set年度2Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.年度2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isモデル2Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.モデル2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setモデル2Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.モデル2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isタイプ1Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.タイプ1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setタイプ1Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.タイプ1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isオプション1Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.オプション1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setオプション1Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.オプション1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is群Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.群Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set群Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.群Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is包装ロットNONull() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.包装ロットNOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set包装ロットNONull()
+            Me(Me.tableDT_T_CCC_Lot_Save.包装ロットNOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is基本部番ハイフン付Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.基本部番ハイフン付Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set基本部番ハイフン付Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.基本部番ハイフン付Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備1Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備1Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備2Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備2Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備3Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備3Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備4Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備4Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備5Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備5Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備5Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備5Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備6Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備6Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備6Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備6Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備7Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備7Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備7Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備7Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備8Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備8Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備8Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備8Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備9Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備9Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備9Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備9Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is予備10Null() As Boolean
+            Return Me.IsNull(Me.tableDT_T_CCC_Lot_Save.予備10Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set予備10Null()
+            Me(Me.tableDT_T_CCC_Lot_Save.予備10Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -78861,16 +79741,16 @@ Partial Public Class DS_T
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-    Public Class DT_T_CCC_Lot_ChouseiRowChangeEvent
+    Public Class DT_T_CCC_Lot_SaveRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As DT_T_CCC_Lot_ChouseiRow
+        Private eventRow As DT_T_CCC_Lot_SaveRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub New(ByVal row As DT_T_CCC_Lot_ChouseiRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As DT_T_CCC_Lot_SaveRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -78878,7 +79758,7 @@ Partial Public Class DS_T
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Row() As DT_T_CCC_Lot_ChouseiRow
+        Public ReadOnly Property Row() As DT_T_CCC_Lot_SaveRow
             Get
                 Return Me.eventRow
             End Get
@@ -99241,7 +100121,7 @@ Namespace DS_TTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal 見積No As Global.System.Nullable(Of Integer), ByVal 区分 As String) As DS_T.DT_T_CCC_Lot_WorkDataTable
+        Public Overloads Overridable Function GetDataBy1(ByVal 見積No As Global.System.Nullable(Of Integer), ByVal 区分 As String) As DS_T.DT_T_CCC_Lot_WorkDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (見積No.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(見積No.Value,Integer)
@@ -99742,7 +100622,7 @@ Namespace DS_TTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class TA_T_CCC_Lot_Chousei
+    Partial Public Class TA_T_CCC_Lot_Save
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -99859,8 +100739,9 @@ Namespace DS_TTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "DT_T_CCC_Lot_Chousei"
+            tableMapping.DataSetTable = "DT_T_CCC_Lot_Save"
             tableMapping.ColumnMappings.Add("id", "id")
+            tableMapping.ColumnMappings.Add("lot_id", "lot_id")
             tableMapping.ColumnMappings.Add("見積No", "見積No")
             tableMapping.ColumnMappings.Add("単品部品総数", "単品部品総数")
             tableMapping.ColumnMappings.Add("部品点数", "部品点数")
@@ -99892,18 +100773,43 @@ Namespace DS_TTableAdapters
             tableMapping.ColumnMappings.Add("外装資材", "外装資材")
             tableMapping.ColumnMappings.Add("資材計", "資材計")
             tableMapping.ColumnMappings.Add("区分", "区分")
+            tableMapping.ColumnMappings.Add("CCC_Lot_id", "CCC_Lot_id")
+            tableMapping.ColumnMappings.Add("ｺﾝﾄﾛｰﾙNO", "ｺﾝﾄﾛｰﾙNO")
+            tableMapping.ColumnMappings.Add("代表DIST", "代表DIST")
+            tableMapping.ColumnMappings.Add("年度2", "年度2")
+            tableMapping.ColumnMappings.Add("モデル2", "モデル2")
+            tableMapping.ColumnMappings.Add("タイプ1", "タイプ1")
+            tableMapping.ColumnMappings.Add("オプション1", "オプション1")
+            tableMapping.ColumnMappings.Add("群", "群")
+            tableMapping.ColumnMappings.Add("包装ロットNO", "包装ロットNO")
+            tableMapping.ColumnMappings.Add("基本部番ハイフン付", "基本部番ハイフン付")
+            tableMapping.ColumnMappings.Add("予備1", "予備1")
+            tableMapping.ColumnMappings.Add("予備2", "予備2")
+            tableMapping.ColumnMappings.Add("予備3", "予備3")
+            tableMapping.ColumnMappings.Add("予備4", "予備4")
+            tableMapping.ColumnMappings.Add("予備5", "予備5")
+            tableMapping.ColumnMappings.Add("予備6", "予備6")
+            tableMapping.ColumnMappings.Add("予備7", "予備7")
+            tableMapping.ColumnMappings.Add("予備8", "予備8")
+            tableMapping.ColumnMappings.Add("予備9", "予備9")
+            tableMapping.ColumnMappings.Add("予備10", "予備10")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[T_CCC_Lot_Chousei] ([見積No], [単品部品総数], [部品点数], [防錆回数], [個装数], ["& _ 
-                "内装資材数], [カートン数], [リターナブル容器数], [ENG発泡材数], [積み付け回数], [パネルケース数], [スカシケース数], [外装用段ボー"& _ 
-                "ルパット使用数], [外装用箱型ポリ袋], [外装用ボルト使用数], [外装用副資材使用数], [外直部品総数], [外直の防錆回数], [外装ケース数], ["& _ 
-                "部品点数_集計], [個装資材費], [内装資材費], [外装資材費], [個装作業], [内装作業], [外装作業], [作業計], [個_内装資材], [外"& _ 
-                "装資材], [資材計], [区分]) VALUES (@見積No, @単品部品総数, @部品点数, @防錆回数, @個装数, @内装資材数, @カートン数, @"& _ 
-                "リターナブル容器数, @ENG発泡材数, @積み付け回数, @パネルケース数, @スカシケース数, @外装用段ボールパット使用数, @外装用箱型ポリ袋, @外装"& _ 
-                "用ボルト使用数, @外装用副資材使用数, @外直部品総数, @外直の防錆回数, @外装ケース数, @部品点数_集計, @個装資材費, @内装資材費, @外装資材"& _ 
-                "費, @個装作業, @内装作業, @外装作業, @作業計, @個_内装資材, @外装資材, @資材計, @区分)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[T_CCC_Lot_Save] ([lot_id], [見積No], [単品部品総数], [部品点数], [防錆回数], ["& _ 
+                "個装数], [内装資材数], [カートン数], [リターナブル容器数], [ENG発泡材数], [積み付け回数], [パネルケース数], [スカシケース数], "& _ 
+                "[外装用段ボールパット使用数], [外装用箱型ポリ袋], [外装用ボルト使用数], [外装用副資材使用数], [外直部品総数], [外直の防錆回数], [外装ケ"& _ 
+                "ース数], [部品点数_集計], [個装資材費], [内装資材費], [外装資材費], [個装作業], [内装作業], [外装作業], [作業計], [個_内装"& _ 
+                "資材], [外装資材], [資材計], [区分], [CCC_Lot_id], [ｺﾝﾄﾛｰﾙNO], [代表DIST], [年度2], [モデル2], [タイ"& _ 
+                "プ1], [オプション1], [群], [包装ロットNO], [基本部番ハイフン付], [予備1], [予備2], [予備3], [予備4], [予備5], ["& _ 
+                "予備6], [予備7], [予備8], [予備9], [予備10]) VALUES (@lot_id, @見積No, @単品部品総数, @部品点数, @防錆回数"& _ 
+                ", @個装数, @内装資材数, @カートン数, @リターナブル容器数, @ENG発泡材数, @積み付け回数, @パネルケース数, @スカシケース数, @外装用段"& _ 
+                "ボールパット使用数, @外装用箱型ポリ袋, @外装用ボルト使用数, @外装用副資材使用数, @外直部品総数, @外直の防錆回数, @外装ケース数, @部品点数_"& _ 
+                "集計, @個装資材費, @内装資材費, @外装資材費, @個装作業, @内装作業, @外装作業, @作業計, @個_内装資材, @外装資材, @資材計, @区分"& _ 
+                ", @CCC_Lot_id, @ｺﾝﾄﾛｰﾙNO, @代表DIST, @年度2, @モデル2, @タイプ1, @オプション1, @群, @包装ロットNO, @基"& _ 
+                "本部番ハイフン付, @予備1, @予備2, @予備3, @予備4, @予備5, @予備6, @予備7, @予備8, @予備9, @予備10)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@lot_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lot_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単品部品総数", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "単品部品総数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@部品点数", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "部品点数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -99935,6 +100841,26 @@ Namespace DS_TTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装資材", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "外装資材", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材計", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 16, 2, "資材計", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@区分", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "区分", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CCC_Lot_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CCC_Lot_id", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ｺﾝﾄﾛｰﾙNO", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ｺﾝﾄﾛｰﾙNO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@代表DIST", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "代表DIST", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@年度2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "年度2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@モデル2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "モデル2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@タイプ1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "タイプ1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@オプション1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "オプション1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@群", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "群", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@包装ロットNO", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "包装ロットNO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@基本部番ハイフン付", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "基本部番ハイフン付", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備5", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備5", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備6", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備6", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備7", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備7", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備8", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備8", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備9", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備9", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@予備10", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "予備10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -99947,81 +100873,23 @@ Namespace DS_TTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT id, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナブル容器数, ENG発泡材数, 積み付け回"& _ 
-                "数, パネルケース数, スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 外装用副資材使用数, 外直部品総数, 外直の防"& _ 
-                "錆回数, 外装ケース数, 部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, 個_内装資材, 外装資材, "& _ 
-                "資材計, 区分 FROM dbo.T_CCC_Lot_Chousei"
+            Me._commandCollection(0).CommandText = "SELECT id, lot_id, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナブル容器数, ENG発泡材"& _ 
+                "数, 積み付け回数, パネルケース数, スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 外装用副資材使用数, 外直部品"& _ 
+                "総数, 外直の防錆回数, 外装ケース数, 部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, 個_内装資材"& _ 
+                ", 外装資材, 資材計, 区分, CCC_Lot_id, ｺﾝﾄﾛｰﾙNO, 代表DIST, 年度2, モデル2, タイプ1, オプション1, 群, 包装ロット"& _ 
+                "NO, 基本部番ハイフン付, 予備1, 予備2, 予備3, 予備4, 予備5, 予備6, 予備7, 予備8, 予備9, 予備10 FROM dbo.T_CCC_"& _ 
+                "Lot_Save"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "DELETE FROM       T_CCC_Lot_Chousei"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE                       (見積No = @見積No) A"& _ 
-                "ND (区分 = @区分)"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@区分", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "区分", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT                      id, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナ"& _ 
-                "ブル容器数, ENG発泡材数, 積み付け回数, パネルケース数, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                      スカシケース数"& _ 
-                ", 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 外装用副資材使用数, 外直部品総数, 外直の防錆回数, 外装ケース数, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-                "                                  部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業"& _ 
-                ", 作業計, 個_内装資材, 外装資材, 資材計, 区分"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM                         T_CCC_Lot_Chousei"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WH"& _ 
-                "ERE                       (見積No = @見積No) AND (区分 = @区分)"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@区分", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "区分", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "INSERT INTO [dbo].[T_CCC_Lot_Chousei] ([見積No], [単品部品総数], [部品点数], [防錆回数], [個装数], ["& _ 
-                "内装資材数], [カートン数], [リターナブル容器数], [ENG発泡材数], [積み付け回数], [パネルケース数], [スカシケース数], [外装用段ボー"& _ 
-                "ルパット使用数], [外装用箱型ポリ袋], [外装用ボルト使用数], [外装用副資材使用数], [外直部品総数], [外直の防錆回数], [外装ケース数], ["& _ 
-                "部品点数_集計], [個装資材費], [内装資材費], [外装資材費], [個装作業], [内装作業], [外装作業], [作業計], [個_内装資材], [外"& _ 
-                "装資材], [資材計], [区分]) VALUES (@見積No, @単品部品総数, @部品点数, @防錆回数, @個装数, @内装資材数, @カートン数, @"& _ 
-                "リターナブル容器数, @ENG発泡材数, @積み付け回数, @パネルケース数, @スカシケース数, @外装用段ボールパット使用数, @外装用箱型ポリ袋, @外装"& _ 
-                "用ボルト使用数, @外装用副資材使用数, @外直部品総数, @外直の防錆回数, @外装ケース数, @部品点数_集計, @個装資材費, @内装資材費, @外装資材"& _ 
-                "費, @個装作業, @内装作業, @外装作業, @作業計, @個_内装資材, @外装資材, @資材計, @区分)"
-            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@見積No", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "見積No", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@単品部品総数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "単品部品総数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@部品点数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "部品点数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@防錆回数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "防錆回数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "個装数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装資材数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "内装資材数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@カートン数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "カートン数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@リターナブル容器数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "リターナブル容器数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ENG発泡材数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "ENG発泡材数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@積み付け回数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "積み付け回数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@パネルケース数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "パネルケース数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@スカシケース数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "スカシケース数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装用段ボールパット使用数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外装用段ボールパット使用数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装用箱型ポリ袋", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外装用箱型ポリ袋", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装用ボルト使用数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外装用ボルト使用数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装用副資材使用数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外装用副資材使用数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外直部品総数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外直部品総数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外直の防錆回数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外直の防錆回数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装ケース数", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外装ケース数", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@部品点数_集計", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "部品点数_集計", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装資材費", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "個装資材費", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装資材費", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "内装資材費", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装資材費", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外装資材費", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個装作業", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "個装作業", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@内装作業", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "内装作業", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装作業", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外装作業", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@作業計", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "作業計", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@個_内装資材", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "個_内装資材", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@外装資材", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "外装資材", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@資材計", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 16, 2, "資材計", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@区分", Global.System.Data.SqlDbType.NVarChar, 40, Global.System.Data.ParameterDirection.Input, 0, 0, "区分", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As DS_T.DT_T_CCC_Lot_ChouseiDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As DS_T.DT_T_CCC_Lot_SaveDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -100034,53 +100902,9 @@ Namespace DS_TTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As DS_T.DT_T_CCC_Lot_ChouseiDataTable
+        Public Overloads Overridable Function GetData() As DS_T.DT_T_CCC_Lot_SaveDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As DS_T.DT_T_CCC_Lot_ChouseiDataTable = New DS_T.DT_T_CCC_Lot_ChouseiDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function Q_調整工数取得(ByVal dataTable As DS_T.DT_T_CCC_Lot_ChouseiDataTable, ByVal 見積No As Global.System.Nullable(Of Integer), ByVal 区分 As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            If (見積No.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(見積No.Value,Integer)
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (区分 Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(区分,String)
-            End If
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal 見積No As Global.System.Nullable(Of Integer), ByVal 区分 As String) As DS_T.DT_T_CCC_Lot_ChouseiDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            If (見積No.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(見積No.Value,Integer)
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (区分 Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(区分,String)
-            End If
-            Dim dataTable As DS_T.DT_T_CCC_Lot_ChouseiDataTable = New DS_T.DT_T_CCC_Lot_ChouseiDataTable()
+            Dim dataTable As DS_T.DT_T_CCC_Lot_SaveDataTable = New DS_T.DT_T_CCC_Lot_SaveDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -100088,7 +100912,7 @@ Namespace DS_TTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As DS_T.DT_T_CCC_Lot_ChouseiDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As DS_T.DT_T_CCC_Lot_SaveDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
@@ -100096,7 +100920,7 @@ Namespace DS_TTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As DS_T) As Integer
-            Return Me.Adapter.Update(dataSet, "DT_T_CCC_Lot_Chousei")
+            Return Me.Adapter.Update(dataSet, "DT_T_CCC_Lot_Save")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -100118,6 +100942,7 @@ Namespace DS_TTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
         Public Overloads Overridable Function Insert( _
+                    ByVal lot_id As Global.System.Nullable(Of Integer),  _
                     ByVal 見積No As Global.System.Nullable(Of Integer),  _
                     ByVal 単品部品総数 As Global.System.Nullable(Of Decimal),  _
                     ByVal 部品点数 As Global.System.Nullable(Of Decimal),  _
@@ -100148,161 +100973,286 @@ Namespace DS_TTableAdapters
                     ByVal 個_内装資材 As Global.System.Nullable(Of Decimal),  _
                     ByVal 外装資材 As Global.System.Nullable(Of Decimal),  _
                     ByVal 資材計 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 区分 As String) As Integer
-            If (見積No.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(見積No.Value,Integer)
+                    ByVal 区分 As String,  _
+                    ByVal CCC_Lot_id As Global.System.Nullable(Of Integer),  _
+                    ByVal ｺﾝﾄﾛｰﾙNO As String,  _
+                    ByVal 代表DIST As String,  _
+                    ByVal 年度2 As String,  _
+                    ByVal モデル2 As String,  _
+                    ByVal タイプ1 As String,  _
+                    ByVal オプション1 As String,  _
+                    ByVal 群 As String,  _
+                    ByVal 包装ロットNO As String,  _
+                    ByVal 基本部番ハイフン付 As String,  _
+                    ByVal 予備1 As String,  _
+                    ByVal 予備2 As String,  _
+                    ByVal 予備3 As String,  _
+                    ByVal 予備4 As String,  _
+                    ByVal 予備5 As String,  _
+                    ByVal 予備6 As String,  _
+                    ByVal 予備7 As String,  _
+                    ByVal 予備8 As String,  _
+                    ByVal 予備9 As String,  _
+                    ByVal 予備10 As String) As Integer
+            If (lot_id.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(lot_id.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (単品部品総数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(単品部品総数.Value,Decimal)
+            If (見積No.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(見積No.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (部品点数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(部品点数.Value,Decimal)
+            If (単品部品総数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(単品部品総数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (防錆回数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(防錆回数.Value,Decimal)
+            If (部品点数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(部品点数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            If (個装数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(個装数.Value,Decimal)
+            If (防錆回数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(防錆回数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            If (内装資材数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(内装資材数.Value,Decimal)
+            If (個装数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(個装数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (カートン数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(カートン数.Value,Decimal)
+            If (内装資材数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(内装資材数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (リターナブル容器数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(リターナブル容器数.Value,Decimal)
+            If (カートン数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(カートン数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            If (ENG発泡材数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(ENG発泡材数.Value,Decimal)
+            If (リターナブル容器数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(リターナブル容器数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
-            If (積み付け回数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(積み付け回数.Value,Decimal)
+            If (ENG発泡材数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(ENG発泡材数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            If (パネルケース数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(パネルケース数.Value,Decimal)
+            If (積み付け回数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(積み付け回数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
-            If (スカシケース数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(スカシケース数.Value,Decimal)
+            If (パネルケース数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(パネルケース数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
-            If (外装用段ボールパット使用数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(外装用段ボールパット使用数.Value,Decimal)
+            If (スカシケース数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(スカシケース数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
             End If
-            If (外装用箱型ポリ袋.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(外装用箱型ポリ袋.Value,Decimal)
+            If (外装用段ボールパット使用数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(外装用段ボールパット使用数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (外装用ボルト使用数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(外装用ボルト使用数.Value,Decimal)
+            If (外装用箱型ポリ袋.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(外装用箱型ポリ袋.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
-            If (外装用副資材使用数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(外装用副資材使用数.Value,Decimal)
+            If (外装用ボルト使用数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(外装用ボルト使用数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
-            If (外直部品総数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(外直部品総数.Value,Decimal)
+            If (外装用副資材使用数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(外装用副資材使用数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            If (外直の防錆回数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(外直の防錆回数.Value,Decimal)
+            If (外直部品総数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(外直部品総数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
             End If
-            If (外装ケース数.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(外装ケース数.Value,Decimal)
+            If (外直の防錆回数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(外直の防錆回数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
-            If (部品点数_集計.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(19).Value = CType(部品点数_集計.Value,Decimal)
+            If (外装ケース数.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(外装ケース数.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
             End If
-            If (個装資材費.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(個装資材費.Value,Decimal)
+            If (部品点数_集計.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(部品点数_集計.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
             End If
-            If (内装資材費.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(21).Value = CType(内装資材費.Value,Decimal)
+            If (個装資材費.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(個装資材費.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
             End If
-            If (外装資材費.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(22).Value = CType(外装資材費.Value,Decimal)
+            If (内装資材費.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(内装資材費.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
             End If
-            If (個装作業.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(23).Value = CType(個装作業.Value,Decimal)
+            If (外装資材費.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(外装資材費.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
-            If (内装作業.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(24).Value = CType(内装作業.Value,Decimal)
+            If (個装作業.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(24).Value = CType(個装作業.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
             End If
-            If (外装作業.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(25).Value = CType(外装作業.Value,Decimal)
+            If (内装作業.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(25).Value = CType(内装作業.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
-            If (作業計.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(26).Value = CType(作業計.Value,Decimal)
+            If (外装作業.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(外装作業.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
             End If
-            If (個_内装資材.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(27).Value = CType(個_内装資材.Value,Decimal)
+            If (作業計.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(27).Value = CType(作業計.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
-            If (外装資材.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(28).Value = CType(外装資材.Value,Decimal)
+            If (個_内装資材.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(28).Value = CType(個_内装資材.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
             End If
-            If (資材計.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(29).Value = CType(資材計.Value,Decimal)
+            If (外装資材.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(29).Value = CType(外装資材.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
             End If
-            If (区分 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
+            If (資材計.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(30).Value = CType(資材計.Value,Decimal)
             Else
-                Me.Adapter.InsertCommand.Parameters(30).Value = CType(区分,String)
+                Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
+            End If
+            If (区分 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(31).Value = CType(区分,String)
+            End If
+            If (CCC_Lot_id.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(32).Value = CType(CCC_Lot_id.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
+            End If
+            If (ｺﾝﾄﾛｰﾙNO Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(33).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(33).Value = CType(ｺﾝﾄﾛｰﾙNO,String)
+            End If
+            If (代表DIST Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(34).Value = CType(代表DIST,String)
+            End If
+            If (年度2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(35).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(35).Value = CType(年度2,String)
+            End If
+            If (モデル2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(36).Value = CType(モデル2,String)
+            End If
+            If (タイプ1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(37).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(37).Value = CType(タイプ1,String)
+            End If
+            If (オプション1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(38).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(38).Value = CType(オプション1,String)
+            End If
+            If (群 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(39).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(39).Value = CType(群,String)
+            End If
+            If (包装ロットNO Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(40).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(40).Value = CType(包装ロットNO,String)
+            End If
+            If (基本部番ハイフン付 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(41).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(41).Value = CType(基本部番ハイフン付,String)
+            End If
+            If (予備1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(42).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(42).Value = CType(予備1,String)
+            End If
+            If (予備2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(43).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(43).Value = CType(予備2,String)
+            End If
+            If (予備3 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(44).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(44).Value = CType(予備3,String)
+            End If
+            If (予備4 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(45).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(45).Value = CType(予備4,String)
+            End If
+            If (予備5 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(46).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(46).Value = CType(予備5,String)
+            End If
+            If (予備6 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(47).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(47).Value = CType(予備6,String)
+            End If
+            If (予備7 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(48).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(48).Value = CType(予備7,String)
+            End If
+            If (予備8 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(49).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(49).Value = CType(予備8,String)
+            End If
+            If (予備9 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(50).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(50).Value = CType(予備9,String)
+            End If
+            If (予備10 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(51).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(51).Value = CType(予備10,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -100317,246 +101267,6 @@ Namespace DS_TTableAdapters
                     Me.Adapter.InsertCommand.Connection.Close
                 End If
             End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
-        Public Overloads Overridable Function Q_調整工数削除(ByVal 見積No As Global.System.Nullable(Of Integer), ByVal 区分 As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
-            If (見積No.HasValue = true) Then
-                command.Parameters(0).Value = CType(見積No.Value,Integer)
-            Else
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (区分 Is Nothing) Then
-                command.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(1).Value = CType(区分,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Integer
-            Try 
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function Q_調整工数登録( _
-                    ByVal 見積No As Global.System.Nullable(Of Integer),  _
-                    ByVal 単品部品総数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 部品点数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 防錆回数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 個装数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 内装資材数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal カートン数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal リターナブル容器数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal ENG発泡材数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 積み付け回数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal パネルケース数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal スカシケース数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外装用段ボールパット使用数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外装用箱型ポリ袋 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外装用ボルト使用数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外装用副資材使用数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外直部品総数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外直の防錆回数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外装ケース数 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 部品点数_集計 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 個装資材費 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 内装資材費 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外装資材費 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 個装作業 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 内装作業 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外装作業 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 作業計 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 個_内装資材 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 外装資材 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 資材計 As Global.System.Nullable(Of Decimal),  _
-                    ByVal 区分 As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
-            If (見積No.HasValue = true) Then
-                command.Parameters(0).Value = CType(見積No.Value,Integer)
-            Else
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (単品部品総数.HasValue = true) Then
-                command.Parameters(1).Value = CType(単品部品総数.Value,Decimal)
-            Else
-                command.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (部品点数.HasValue = true) Then
-                command.Parameters(2).Value = CType(部品点数.Value,Decimal)
-            Else
-                command.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            If (防錆回数.HasValue = true) Then
-                command.Parameters(3).Value = CType(防錆回数.Value,Decimal)
-            Else
-                command.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (個装数.HasValue = true) Then
-                command.Parameters(4).Value = CType(個装数.Value,Decimal)
-            Else
-                command.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (内装資材数.HasValue = true) Then
-                command.Parameters(5).Value = CType(内装資材数.Value,Decimal)
-            Else
-                command.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (カートン数.HasValue = true) Then
-                command.Parameters(6).Value = CType(カートン数.Value,Decimal)
-            Else
-                command.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (リターナブル容器数.HasValue = true) Then
-                command.Parameters(7).Value = CType(リターナブル容器数.Value,Decimal)
-            Else
-                command.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (ENG発泡材数.HasValue = true) Then
-                command.Parameters(8).Value = CType(ENG発泡材数.Value,Decimal)
-            Else
-                command.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (積み付け回数.HasValue = true) Then
-                command.Parameters(9).Value = CType(積み付け回数.Value,Decimal)
-            Else
-                command.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            If (パネルケース数.HasValue = true) Then
-                command.Parameters(10).Value = CType(パネルケース数.Value,Decimal)
-            Else
-                command.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (スカシケース数.HasValue = true) Then
-                command.Parameters(11).Value = CType(スカシケース数.Value,Decimal)
-            Else
-                command.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (外装用段ボールパット使用数.HasValue = true) Then
-                command.Parameters(12).Value = CType(外装用段ボールパット使用数.Value,Decimal)
-            Else
-                command.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (外装用箱型ポリ袋.HasValue = true) Then
-                command.Parameters(13).Value = CType(外装用箱型ポリ袋.Value,Decimal)
-            Else
-                command.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (外装用ボルト使用数.HasValue = true) Then
-                command.Parameters(14).Value = CType(外装用ボルト使用数.Value,Decimal)
-            Else
-                command.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (外装用副資材使用数.HasValue = true) Then
-                command.Parameters(15).Value = CType(外装用副資材使用数.Value,Decimal)
-            Else
-                command.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            If (外直部品総数.HasValue = true) Then
-                command.Parameters(16).Value = CType(外直部品総数.Value,Decimal)
-            Else
-                command.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (外直の防錆回数.HasValue = true) Then
-                command.Parameters(17).Value = CType(外直の防錆回数.Value,Decimal)
-            Else
-                command.Parameters(17).Value = Global.System.DBNull.Value
-            End If
-            If (外装ケース数.HasValue = true) Then
-                command.Parameters(18).Value = CType(外装ケース数.Value,Decimal)
-            Else
-                command.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (部品点数_集計.HasValue = true) Then
-                command.Parameters(19).Value = CType(部品点数_集計.Value,Decimal)
-            Else
-                command.Parameters(19).Value = Global.System.DBNull.Value
-            End If
-            If (個装資材費.HasValue = true) Then
-                command.Parameters(20).Value = CType(個装資材費.Value,Decimal)
-            Else
-                command.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (内装資材費.HasValue = true) Then
-                command.Parameters(21).Value = CType(内装資材費.Value,Decimal)
-            Else
-                command.Parameters(21).Value = Global.System.DBNull.Value
-            End If
-            If (外装資材費.HasValue = true) Then
-                command.Parameters(22).Value = CType(外装資材費.Value,Decimal)
-            Else
-                command.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (個装作業.HasValue = true) Then
-                command.Parameters(23).Value = CType(個装作業.Value,Decimal)
-            Else
-                command.Parameters(23).Value = Global.System.DBNull.Value
-            End If
-            If (内装作業.HasValue = true) Then
-                command.Parameters(24).Value = CType(内装作業.Value,Decimal)
-            Else
-                command.Parameters(24).Value = Global.System.DBNull.Value
-            End If
-            If (外装作業.HasValue = true) Then
-                command.Parameters(25).Value = CType(外装作業.Value,Decimal)
-            Else
-                command.Parameters(25).Value = Global.System.DBNull.Value
-            End If
-            If (作業計.HasValue = true) Then
-                command.Parameters(26).Value = CType(作業計.Value,Decimal)
-            Else
-                command.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (個_内装資材.HasValue = true) Then
-                command.Parameters(27).Value = CType(個_内装資材.Value,Decimal)
-            Else
-                command.Parameters(27).Value = Global.System.DBNull.Value
-            End If
-            If (外装資材.HasValue = true) Then
-                command.Parameters(28).Value = CType(外装資材.Value,Decimal)
-            Else
-                command.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (資材計.HasValue = true) Then
-                command.Parameters(29).Value = CType(資材計.Value,Decimal)
-            Else
-                command.Parameters(29).Value = Global.System.DBNull.Value
-            End If
-            If (区分 Is Nothing) Then
-                command.Parameters(30).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(30).Value = CType(区分,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Integer
-            Try 
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            Return returnValue
         End Function
     End Class
     
@@ -100597,7 +101307,7 @@ Namespace DS_TTableAdapters
         
         Private _tA_T_CCC_Lot_Work As TA_T_CCC_Lot_Work
         
-        Private _tA_T_CCC_Lot_Chousei As TA_T_CCC_Lot_Chousei
+        Private _tA_T_CCC_Lot_Save As TA_T_CCC_Lot_Save
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -100787,12 +101497,12 @@ Namespace DS_TTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property TA_T_CCC_Lot_Chousei() As TA_T_CCC_Lot_Chousei
+        Public Property TA_T_CCC_Lot_Save() As TA_T_CCC_Lot_Save
             Get
-                Return Me._tA_T_CCC_Lot_Chousei
+                Return Me._tA_T_CCC_Lot_Save
             End Get
             Set
-                Me._tA_T_CCC_Lot_Chousei = value
+                Me._tA_T_CCC_Lot_Save = value
             End Set
         End Property
         
@@ -100863,9 +101573,9 @@ Namespace DS_TTableAdapters
                             AndAlso (Not (Me._tA_T_CCC_Lot_Work.Connection) Is Nothing)) Then
                     Return Me._tA_T_CCC_Lot_Work.Connection
                 End If
-                If ((Not (Me._tA_T_CCC_Lot_Chousei) Is Nothing)  _
-                            AndAlso (Not (Me._tA_T_CCC_Lot_Chousei.Connection) Is Nothing)) Then
-                    Return Me._tA_T_CCC_Lot_Chousei.Connection
+                If ((Not (Me._tA_T_CCC_Lot_Save) Is Nothing)  _
+                            AndAlso (Not (Me._tA_T_CCC_Lot_Save.Connection) Is Nothing)) Then
+                    Return Me._tA_T_CCC_Lot_Save.Connection
                 End If
                 Return Nothing
             End Get
@@ -100916,7 +101626,7 @@ Namespace DS_TTableAdapters
                 If (Not (Me._tA_T_CCC_Lot_Work) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._tA_T_CCC_Lot_Chousei) Is Nothing) Then
+                If (Not (Me._tA_T_CCC_Lot_Save) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -101038,12 +101748,12 @@ Namespace DS_TTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._tA_T_CCC_Lot_Chousei) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.DT_T_CCC_Lot_Chousei.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+            If (Not (Me._tA_T_CCC_Lot_Save) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.DT_T_CCC_Lot_Save.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._tA_T_CCC_Lot_Chousei.Update(updatedRows))
+                    result = (result + Me._tA_T_CCC_Lot_Save.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -101153,11 +101863,11 @@ Namespace DS_TTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._tA_T_CCC_Lot_Chousei) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.DT_T_CCC_Lot_Chousei.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+            If (Not (Me._tA_T_CCC_Lot_Save) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.DT_T_CCC_Lot_Save.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._tA_T_CCC_Lot_Chousei.Update(addedRows))
+                    result = (result + Me._tA_T_CCC_Lot_Save.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -101171,11 +101881,11 @@ Namespace DS_TTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As DS_T, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._tA_T_CCC_Lot_Chousei) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.DT_T_CCC_Lot_Chousei.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+            If (Not (Me._tA_T_CCC_Lot_Save) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.DT_T_CCC_Lot_Save.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._tA_T_CCC_Lot_Chousei.Update(deletedRows))
+                    result = (result + Me._tA_T_CCC_Lot_Save.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -101364,8 +102074,8 @@ Namespace DS_TTableAdapters
                         AndAlso (Me.MatchTableAdapterConnection(Me._tA_T_CCC_Lot_Work.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。")
             End If
-            If ((Not (Me._tA_T_CCC_Lot_Chousei) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._tA_T_CCC_Lot_Chousei.Connection) = false)) Then
+            If ((Not (Me._tA_T_CCC_Lot_Save) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._tA_T_CCC_Lot_Save.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。")
             End If
             Dim workConnection As Global.System.Data.IDbConnection = Me.Connection
@@ -101507,13 +102217,13 @@ Namespace DS_TTableAdapters
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._tA_T_CCC_Lot_Work.Adapter)
                     End If
                 End If
-                If (Not (Me._tA_T_CCC_Lot_Chousei) Is Nothing) Then
-                    revertConnections.Add(Me._tA_T_CCC_Lot_Chousei, Me._tA_T_CCC_Lot_Chousei.Connection)
-                    Me._tA_T_CCC_Lot_Chousei.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._tA_T_CCC_Lot_Chousei.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._tA_T_CCC_Lot_Chousei.Adapter.AcceptChangesDuringUpdate Then
-                        Me._tA_T_CCC_Lot_Chousei.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tA_T_CCC_Lot_Chousei.Adapter)
+                If (Not (Me._tA_T_CCC_Lot_Save) Is Nothing) Then
+                    revertConnections.Add(Me._tA_T_CCC_Lot_Save, Me._tA_T_CCC_Lot_Save.Connection)
+                    Me._tA_T_CCC_Lot_Save.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._tA_T_CCC_Lot_Save.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._tA_T_CCC_Lot_Save.Adapter.AcceptChangesDuringUpdate Then
+                        Me._tA_T_CCC_Lot_Save.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tA_T_CCC_Lot_Save.Adapter)
                     End If
                 End If
                 '
@@ -101624,9 +102334,9 @@ Namespace DS_TTableAdapters
                     Me._tA_T_CCC_Lot_Work.Connection = CType(revertConnections(Me._tA_T_CCC_Lot_Work),Global.System.Data.SqlClient.SqlConnection)
                     Me._tA_T_CCC_Lot_Work.Transaction = Nothing
                 End If
-                If (Not (Me._tA_T_CCC_Lot_Chousei) Is Nothing) Then
-                    Me._tA_T_CCC_Lot_Chousei.Connection = CType(revertConnections(Me._tA_T_CCC_Lot_Chousei),Global.System.Data.SqlClient.SqlConnection)
-                    Me._tA_T_CCC_Lot_Chousei.Transaction = Nothing
+                If (Not (Me._tA_T_CCC_Lot_Save) Is Nothing) Then
+                    Me._tA_T_CCC_Lot_Save.Connection = CType(revertConnections(Me._tA_T_CCC_Lot_Save),Global.System.Data.SqlClient.SqlConnection)
+                    Me._tA_T_CCC_Lot_Save.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

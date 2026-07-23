@@ -98,6 +98,7 @@ Public Class F_Make_1Lot
                     'Update用SQL作成
                     ccc_update_sql = MakeSQL5(target_mitsumori_no, panel_case, sukashi_case, gaisou_danboru, gaisou_pori, gaisou_bolt, gaisou_fukushizai, gaichoku_bousabi, gaichoku_case)
                     kow_update_sql = MakeSQL6(target_mitsumori_no)
+                    Dim ccc_lot_save_sql As String = MakeSQL_CCC_Lot_Save(target_mitsumori_no)
 
                     Try
                         '*******************
@@ -155,6 +156,14 @@ Public Class F_Make_1Lot
                         Using cmdUp1 As New SqlCommand(ccc_update_sql, conn, transaction)
                             cmdUp1.CommandTimeout = 0
                             Dim rowsAffected As Integer = cmdUp1.ExecuteNonQuery()
+                        End Using
+
+                        '*******************
+                        '③-2 1lotテーブル完成分をSaveテーブルへ複製（編集画面の「元に戻す」用）
+                        '*******************
+                        Using cmdCccLotSave As New SqlCommand(ccc_lot_save_sql, conn, transaction)
+                            cmdCccLotSave.CommandTimeout = 0
+                            Dim rowsAffected As Integer = cmdCccLotSave.ExecuteNonQuery()
                         End Using
 
                         '*******************
@@ -4614,6 +4623,103 @@ Public Class F_Make_1Lot
         '資材計
         sql = sql & " UPDATE T_CCC_Lot
                         SET 資材計 = ISNULL(個_内装資材, 0)  + ISNULL(外装資材, 0)
+                        WHERE 見積No = " & _target_mitsumori_no & ";"
+
+        Return sql
+
+    End Function
+
+    Function MakeSQL_CCC_Lot_Save(_target_mitsumori_no As String) As String
+
+        ' 完成したT_CCC_Lotの内容をT_CCC_Lot_Saveへ複製（編集画面での「元に戻す」用の原本保存）
+
+        ' 再変換時は該当見積No分を作り直すので、古い保存分は削除してから登録する
+        Dim sql As String = "DELETE FROM T_CCC_Lot_Save WHERE 見積No = " & _target_mitsumori_no & ";"
+
+        sql = sql & " INSERT INTO T_CCC_Lot_Save (
+                            見積No,
+                            単品部品総数,
+                            部品点数,
+                            防錆回数,
+                            個装数,
+                            内装資材数,
+                            カートン数,
+                            リターナブル容器数,
+                            ENG発泡材数,
+                            積み付け回数,
+                            パネルケース数,
+                            スカシケース数,
+                            外装用段ボールパット使用数,
+                            外装用箱型ポリ袋,
+                            外装用ボルト使用数,
+                            外装用副資材使用数,
+                            外直部品総数,
+                            外直の防錆回数,
+                            外装ケース数,
+                            部品点数_集計,
+                            個装資材費,
+                            内装資材費,
+                            外装資材費,
+                            個装作業,
+                            内装作業,
+                            外装作業,
+                            作業計,
+                            個_内装資材,
+                            外装資材,
+                            資材計,
+                            CCC_Lot_id,
+                            ｺﾝﾄﾛｰﾙNO,
+                            代表DIST,
+                            年度2,
+                            モデル2,
+                            タイプ1,
+                            オプション1,
+                            群,
+                            包装ロットNO,
+                            基本部番ハイフン付
+                        )
+                        SELECT
+                            見積No,
+                            単品部品総数,
+                            部品点数,
+                            防錆回数,
+                            個装数,
+                            内装資材数,
+                            カートン数,
+                            リターナブル容器数,
+                            ENG発泡材数,
+                            積み付け回数,
+                            パネルケース数,
+                            スカシケース数,
+                            外装用段ボールパット使用数,
+                            外装用箱型ポリ袋,
+                            外装用ボルト使用数,
+                            外装用副資材使用数,
+                            外直部品総数,
+                            外直の防錆回数,
+                            外装ケース数,
+                            部品点数_集計,
+                            個装資材費,
+                            内装資材費,
+                            外装資材費,
+                            個装作業,
+                            内装作業,
+                            外装作業,
+                            作業計,
+                            個_内装資材,
+                            外装資材,
+                            資材計,
+                            id,
+                            ｺﾝﾄﾛｰﾙNO,
+                            代表DIST,
+                            年度2,
+                            モデル2,
+                            タイプ1,
+                            オプション1,
+                            群,
+                            包装ロットNO,
+                            基本部番ハイフン付
+                        FROM T_CCC_Lot
                         WHERE 見積No = " & _target_mitsumori_no & ";"
 
         Return sql

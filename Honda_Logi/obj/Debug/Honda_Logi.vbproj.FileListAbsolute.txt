@@ -378,7 +378,6 @@ C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Shiz
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.Resources.resources
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.GenerateResource.cache
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.CoreCompileInputs.cache
-C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.CopyComplete
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.exe
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.xml
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.pdb
@@ -411,3 +410,4 @@ C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Prin
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\bin\Debug\Excel_Format\見積書(機種)_見積依頼.xlsx
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.AssemblyReference.cache
 C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.F_Chousei.resources
+C:\01_hida_data\78_Honda_ロジ\01_PG\git\Honda_Logi\obj\Debug\Honda_Logi.vbproj.CopyComplete

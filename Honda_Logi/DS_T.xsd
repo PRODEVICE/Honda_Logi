@@ -4697,7 +4697,7 @@ WHERE                       (見積No = @見積No)</CommandText>
               <Mapping SourceColumn="区分" DataSetColumn="区分" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_一時保存データ削除" Modifier="Public" Name="Q_一時保存データ削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_一時保存データ削除">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_一時保存データ削除" Modifier="Public" Name="Q_一時保存データ削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_一時保存データ削除">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM       T_CCC_Lot_Work
@@ -4709,7 +4709,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.T_CCC_Lot_Work" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Q_一時保存データ取得" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="Q_一時保存データ取得" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_一時保存データ取得">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.T_CCC_Lot_Work" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Q_一時保存データ取得" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="Q_一時保存データ取得" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_一時保存データ取得">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      id, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナブル容器数, ENG発泡材数, 積み付け回数, パネルケース数, 
@@ -4766,13 +4766,14 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
               </DbSource>
             </Sources>
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TA_T_CCC_Lot_Chousei" GeneratorDataComponentClassName="TA_T_CCC_Lot_Chousei" Name="DT_T_CCC_Lot_Chousei" UserDataComponentName="TA_T_CCC_Lot_Chousei">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TA_T_CCC_Lot_Save" GeneratorDataComponentClassName="TA_T_CCC_Lot_Save" Name="DT_T_CCC_Lot_Save" UserDataComponentName="TA_T_CCC_Lot_Save">
             <MainSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.T_CCC_Lot_Save" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[T_CCC_Lot_Chousei] ([見積No], [単品部品総数], [部品点数], [防錆回数], [個装数], [内装資材数], [カートン数], [リターナブル容器数], [ENG発泡材数], [積み付け回数], [パネルケース数], [スカシケース数], [外装用段ボールパット使用数], [外装用箱型ポリ袋], [外装用ボルト使用数], [外装用副資材使用数], [外直部品総数], [外直の防錆回数], [外装ケース数], [部品点数_集計], [個装資材費], [内装資材費], [外装資材費], [個装作業], [内装作業], [外装作業], [作業計], [個_内装資材], [外装資材], [資材計], [区分]) VALUES (@見積No, @単品部品総数, @部品点数, @防錆回数, @個装数, @内装資材数, @カートン数, @リターナブル容器数, @ENG発泡材数, @積み付け回数, @パネルケース数, @スカシケース数, @外装用段ボールパット使用数, @外装用箱型ポリ袋, @外装用ボルト使用数, @外装用副資材使用数, @外直部品総数, @外直の防錆回数, @外装ケース数, @部品点数_集計, @個装資材費, @内装資材費, @外装資材費, @個装作業, @内装作業, @外装作業, @作業計, @個_内装資材, @外装資材, @資材計, @区分)</CommandText>
+                    <CommandText>INSERT INTO [dbo].[T_CCC_Lot_Save] ([lot_id], [見積No], [単品部品総数], [部品点数], [防錆回数], [個装数], [内装資材数], [カートン数], [リターナブル容器数], [ENG発泡材数], [積み付け回数], [パネルケース数], [スカシケース数], [外装用段ボールパット使用数], [外装用箱型ポリ袋], [外装用ボルト使用数], [外装用副資材使用数], [外直部品総数], [外直の防錆回数], [外装ケース数], [部品点数_集計], [個装資材費], [内装資材費], [外装資材費], [個装作業], [内装作業], [外装作業], [作業計], [個_内装資材], [外装資材], [資材計], [区分], [CCC_Lot_id], [ｺﾝﾄﾛｰﾙNO], [代表DIST], [年度2], [モデル2], [タイプ1], [オプション1], [群], [包装ロットNO], [基本部番ハイフン付], [予備1], [予備2], [予備3], [予備4], [予備5], [予備6], [予備7], [予備8], [予備9], [予備10]) VALUES (@lot_id, @見積No, @単品部品総数, @部品点数, @防錆回数, @個装数, @内装資材数, @カートン数, @リターナブル容器数, @ENG発泡材数, @積み付け回数, @パネルケース数, @スカシケース数, @外装用段ボールパット使用数, @外装用箱型ポリ袋, @外装用ボルト使用数, @外装用副資材使用数, @外直部品総数, @外直の防錆回数, @外装ケース数, @部品点数_集計, @個装資材費, @内装資材費, @外装資材費, @個装作業, @内装作業, @外装作業, @作業計, @個_内装資材, @外装資材, @資材計, @区分, @CCC_Lot_id, @ｺﾝﾄﾛｰﾙNO, @代表DIST, @年度2, @モデル2, @タイプ1, @オプション1, @群, @包装ロットNO, @基本部番ハイフン付, @予備1, @予備2, @予備3, @予備4, @予備5, @予備6, @予備7, @予備8, @予備9, @予備10)</CommandText>
                     <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@lot_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="lot_id" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@見積No" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="見積No" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@単品部品総数" Precision="16" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="単品部品総数" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@部品点数" Precision="16" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="部品点数" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -4804,12 +4805,32 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@外装資材" Precision="16" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="外装資材" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@資材計" Precision="16" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="資材計" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@区分" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="区分" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CCC_Lot_id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CCC_Lot_id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ｺﾝﾄﾛｰﾙNO" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ｺﾝﾄﾛｰﾙNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@代表DIST" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="代表DIST" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@年度2" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="年度2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@モデル2" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="モデル2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@タイプ1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="タイプ1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@オプション1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="オプション1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@群" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="群" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@包装ロットNO" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="包装ロットNO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@基本部番ハイフン付" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="基本部番ハイフン付" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備1" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備2" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備3" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備4" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備5" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備5" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備6" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備6" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備7" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備7" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備8" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備9" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備9" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@予備10" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="予備10" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT id, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナブル容器数, ENG発泡材数, 積み付け回数, パネルケース数, スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 外装用副資材使用数, 外直部品総数, 外直の防錆回数, 外装ケース数, 部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, 個_内装資材, 外装資材, 資材計, 区分 FROM dbo.T_CCC_Lot_Chousei</CommandText>
+                    <CommandText>SELECT id, lot_id, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナブル容器数, ENG発泡材数, 積み付け回数, パネルケース数, スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 外装用副資材使用数, 外直部品総数, 外直の防錆回数, 外装ケース数, 部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, 個_内装資材, 外装資材, 資材計, 区分, CCC_Lot_id, ｺﾝﾄﾛｰﾙNO, 代表DIST, 年度2, モデル2, タイプ1, オプション1, 群, 包装ロットNO, 基本部番ハイフン付, 予備1, 予備2, 予備3, 予備4, 予備5, 予備6, 予備7, 予備8, 予備9, 予備10 FROM dbo.T_CCC_Lot_Save</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -4817,6 +4838,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="lot_id" DataSetColumn="lot_id" />
               <Mapping SourceColumn="見積No" DataSetColumn="見積No" />
               <Mapping SourceColumn="単品部品総数" DataSetColumn="単品部品総数" />
               <Mapping SourceColumn="部品点数" DataSetColumn="部品点数" />
@@ -4848,76 +4870,28 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
               <Mapping SourceColumn="外装資材" DataSetColumn="外装資材" />
               <Mapping SourceColumn="資材計" DataSetColumn="資材計" />
               <Mapping SourceColumn="区分" DataSetColumn="区分" />
+              <Mapping SourceColumn="CCC_Lot_id" DataSetColumn="CCC_Lot_id" />
+              <Mapping SourceColumn="ｺﾝﾄﾛｰﾙNO" DataSetColumn="ｺﾝﾄﾛｰﾙNO" />
+              <Mapping SourceColumn="代表DIST" DataSetColumn="代表DIST" />
+              <Mapping SourceColumn="年度2" DataSetColumn="年度2" />
+              <Mapping SourceColumn="モデル2" DataSetColumn="モデル2" />
+              <Mapping SourceColumn="タイプ1" DataSetColumn="タイプ1" />
+              <Mapping SourceColumn="オプション1" DataSetColumn="オプション1" />
+              <Mapping SourceColumn="群" DataSetColumn="群" />
+              <Mapping SourceColumn="包装ロットNO" DataSetColumn="包装ロットNO" />
+              <Mapping SourceColumn="基本部番ハイフン付" DataSetColumn="基本部番ハイフン付" />
+              <Mapping SourceColumn="予備1" DataSetColumn="予備1" />
+              <Mapping SourceColumn="予備2" DataSetColumn="予備2" />
+              <Mapping SourceColumn="予備3" DataSetColumn="予備3" />
+              <Mapping SourceColumn="予備4" DataSetColumn="予備4" />
+              <Mapping SourceColumn="予備5" DataSetColumn="予備5" />
+              <Mapping SourceColumn="予備6" DataSetColumn="予備6" />
+              <Mapping SourceColumn="予備7" DataSetColumn="予備7" />
+              <Mapping SourceColumn="予備8" DataSetColumn="予備8" />
+              <Mapping SourceColumn="予備9" DataSetColumn="予備9" />
+              <Mapping SourceColumn="予備10" DataSetColumn="予備10" />
             </Mappings>
-            <Sources>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_調整工数削除" Modifier="Public" Name="Q_調整工数削除" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Q_調整工数削除">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>DELETE FROM       T_CCC_Lot_Chousei
-WHERE                       (見積No = @見積No) AND (区分 = @区分)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="見積No" ColumnName="見積No" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@見積No" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="見積No" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="区分" ColumnName="区分" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="nvarchar(40)" DbType="String" Direction="Input" ParameterName="@区分" Precision="0" ProviderType="NVarChar" Scale="0" Size="40" SourceColumn="区分" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-              </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Q_調整工数取得" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="Q_調整工数取得" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Q_調整工数取得">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT                      id, 見積No, 単品部品総数, 部品点数, 防錆回数, 個装数, 内装資材数, カートン数, リターナブル容器数, ENG発泡材数, 積み付け回数, パネルケース数, 
-                                      スカシケース数, 外装用段ボールパット使用数, 外装用箱型ポリ袋, 外装用ボルト使用数, 外装用副資材使用数, 外直部品総数, 外直の防錆回数, 外装ケース数, 
-                                      部品点数_集計, 個装資材費, 内装資材費, 外装資材費, 個装作業, 内装作業, 外装作業, 作業計, 個_内装資材, 外装資材, 資材計, 区分
-FROM                         T_CCC_Lot_Chousei
-WHERE                       (見積No = @見積No) AND (区分 = @区分)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="見積No" ColumnName="見積No" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@見積No" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="見積No" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="区分" ColumnName="区分" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="nvarchar(40)" DbType="String" Direction="Input" ParameterName="@区分" Precision="0" ProviderType="NVarChar" Scale="0" Size="40" SourceColumn="区分" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-              <DbSource ConnectionRef="Honda_LogiConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Q_調整工数登録" Modifier="Public" Name="Q_調整工数登録" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Q_調整工数登録">
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>INSERT INTO [dbo].[T_CCC_Lot_Chousei] ([見積No], [単品部品総数], [部品点数], [防錆回数], [個装数], [内装資材数], [カートン数], [リターナブル容器数], [ENG発泡材数], [積み付け回数], [パネルケース数], [スカシケース数], [外装用段ボールパット使用数], [外装用箱型ポリ袋], [外装用ボルト使用数], [外装用副資材使用数], [外直部品総数], [外直の防錆回数], [外装ケース数], [部品点数_集計], [個装資材費], [内装資材費], [外装資材費], [個装作業], [内装作業], [外装作業], [作業計], [個_内装資材], [外装資材], [資材計], [区分]) VALUES (@見積No, @単品部品総数, @部品点数, @防錆回数, @個装数, @内装資材数, @カートン数, @リターナブル容器数, @ENG発泡材数, @積み付け回数, @パネルケース数, @スカシケース数, @外装用段ボールパット使用数, @外装用箱型ポリ袋, @外装用ボルト使用数, @外装用副資材使用数, @外直部品総数, @外直の防錆回数, @外装ケース数, @部品点数_集計, @個装資材費, @内装資材費, @外装資材費, @個装作業, @内装作業, @外装作業, @作業計, @個_内装資材, @外装資材, @資材計, @区分)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="見積No" ColumnName="見積No" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@見積No" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="見積No" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="単品部品総数" ColumnName="単品部品総数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@単品部品総数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="単品部品総数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="部品点数" ColumnName="部品点数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@部品点数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="部品点数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="防錆回数" ColumnName="防錆回数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@防錆回数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="防錆回数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="個装数" ColumnName="個装数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@個装数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="個装数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="内装資材数" ColumnName="内装資材数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@内装資材数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="内装資材数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="カートン数" ColumnName="カートン数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@カートン数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="カートン数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="リターナブル容器数" ColumnName="リターナブル容器数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@リターナブル容器数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="リターナブル容器数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="ENG発泡材数" ColumnName="ENG発泡材数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@ENG発泡材数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="ENG発泡材数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="積み付け回数" ColumnName="積み付け回数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@積み付け回数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="積み付け回数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="パネルケース数" ColumnName="パネルケース数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@パネルケース数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="パネルケース数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="スカシケース数" ColumnName="スカシケース数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@スカシケース数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="スカシケース数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外装用段ボールパット使用数" ColumnName="外装用段ボールパット使用数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外装用段ボールパット使用数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外装用段ボールパット使用数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外装用箱型ポリ袋" ColumnName="外装用箱型ポリ袋" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外装用箱型ポリ袋" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外装用箱型ポリ袋" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外装用ボルト使用数" ColumnName="外装用ボルト使用数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外装用ボルト使用数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外装用ボルト使用数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外装用副資材使用数" ColumnName="外装用副資材使用数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外装用副資材使用数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外装用副資材使用数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外直部品総数" ColumnName="外直部品総数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外直部品総数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外直部品総数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外直の防錆回数" ColumnName="外直の防錆回数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外直の防錆回数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外直の防錆回数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外装ケース数" ColumnName="外装ケース数" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外装ケース数" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外装ケース数" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="部品点数_集計" ColumnName="部品点数_集計" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@部品点数_集計" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="部品点数_集計" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="個装資材費" ColumnName="個装資材費" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@個装資材費" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="個装資材費" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="内装資材費" ColumnName="内装資材費" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@内装資材費" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="内装資材費" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外装資材費" ColumnName="外装資材費" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外装資材費" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外装資材費" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="個装作業" ColumnName="個装作業" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@個装作業" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="個装作業" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="内装作業" ColumnName="内装作業" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@内装作業" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="内装作業" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外装作業" ColumnName="外装作業" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外装作業" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外装作業" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="作業計" ColumnName="作業計" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@作業計" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="作業計" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="個_内装資材" ColumnName="個_内装資材" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@個_内装資材" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="個_内装資材" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="外装資材" ColumnName="外装資材" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@外装資材" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="外装資材" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="資材計" ColumnName="資材計" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="decimal(16, 2)" DbType="Decimal" Direction="Input" ParameterName="@資材計" Precision="16" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="資材計" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="区分" ColumnName="区分" DataSourceName="Honda_Logi.dbo.T_CCC_Lot_Chousei" DataTypeServer="nvarchar(40)" DbType="String" Direction="Input" ParameterName="@区分" Precision="0" ProviderType="NVarChar" Scale="0" Size="40" SourceColumn="区分" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-              </DbSource>
-            </Sources>
+            <Sources />
           </TableAdapter>
         </Tables>
         <Sources />
@@ -4927,7 +4901,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
   <xs:element name="DS_T" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_T" msprop:Generator_UserDSName="DS_T">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DT_T_ERR_LOG" msprop:Generator_TableClassName="DT_T_ERR_LOGDataTable" msprop:Generator_TableVarName="tableDT_T_ERR_LOG" msprop:Generator_TablePropName="DT_T_ERR_LOG" msprop:Generator_RowDeletingName="DT_T_ERR_LOGRowDeleting" msprop:Generator_RowChangingName="DT_T_ERR_LOGRowChanging" msprop:Generator_RowEvHandlerName="DT_T_ERR_LOGRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_ERR_LOGRowDeleted" msprop:Generator_UserTableName="DT_T_ERR_LOG" msprop:Generator_RowChangedName="DT_T_ERR_LOGRowChanged" msprop:Generator_RowEvArgName="DT_T_ERR_LOGRowChangeEvent" msprop:Generator_RowClassName="DT_T_ERR_LOGRow">
+        <xs:element name="DT_T_ERR_LOG" msprop:Generator_TableClassName="DT_T_ERR_LOGDataTable" msprop:Generator_TableVarName="tableDT_T_ERR_LOG" msprop:Generator_RowChangedName="DT_T_ERR_LOGRowChanged" msprop:Generator_TablePropName="DT_T_ERR_LOG" msprop:Generator_RowDeletingName="DT_T_ERR_LOGRowDeleting" msprop:Generator_RowChangingName="DT_T_ERR_LOGRowChanging" msprop:Generator_RowEvHandlerName="DT_T_ERR_LOGRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_ERR_LOGRowDeleted" msprop:Generator_RowClassName="DT_T_ERR_LOGRow" msprop:Generator_UserTableName="DT_T_ERR_LOG" msprop:Generator_RowEvArgName="DT_T_ERR_LOGRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -4949,7 +4923,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Gyomu_Plan" msprop:Generator_TableClassName="DT_T_Gyomu_PlanDataTable" msprop:Generator_TableVarName="tableDT_T_Gyomu_Plan" msprop:Generator_TablePropName="DT_T_Gyomu_Plan" msprop:Generator_RowDeletingName="DT_T_Gyomu_PlanRowDeleting" msprop:Generator_RowChangingName="DT_T_Gyomu_PlanRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Gyomu_PlanRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Gyomu_PlanRowDeleted" msprop:Generator_UserTableName="DT_T_Gyomu_Plan" msprop:Generator_RowChangedName="DT_T_Gyomu_PlanRowChanged" msprop:Generator_RowEvArgName="DT_T_Gyomu_PlanRowChangeEvent" msprop:Generator_RowClassName="DT_T_Gyomu_PlanRow">
+        <xs:element name="DT_T_Gyomu_Plan" msprop:Generator_TableClassName="DT_T_Gyomu_PlanDataTable" msprop:Generator_TableVarName="tableDT_T_Gyomu_Plan" msprop:Generator_RowChangedName="DT_T_Gyomu_PlanRowChanged" msprop:Generator_TablePropName="DT_T_Gyomu_Plan" msprop:Generator_RowDeletingName="DT_T_Gyomu_PlanRowDeleting" msprop:Generator_RowChangingName="DT_T_Gyomu_PlanRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Gyomu_PlanRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Gyomu_PlanRowDeleted" msprop:Generator_RowClassName="DT_T_Gyomu_PlanRow" msprop:Generator_UserTableName="DT_T_Gyomu_Plan" msprop:Generator_RowEvArgName="DT_T_Gyomu_PlanRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -5510,7 +5484,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_KOW46" msprop:Generator_TableClassName="DT_T_KOW46DataTable" msprop:Generator_TableVarName="tableDT_T_KOW46" msprop:Generator_TablePropName="DT_T_KOW46" msprop:Generator_RowDeletingName="DT_T_KOW46RowDeleting" msprop:Generator_RowChangingName="DT_T_KOW46RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KOW46RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KOW46RowDeleted" msprop:Generator_UserTableName="DT_T_KOW46" msprop:Generator_RowChangedName="DT_T_KOW46RowChanged" msprop:Generator_RowEvArgName="DT_T_KOW46RowChangeEvent" msprop:Generator_RowClassName="DT_T_KOW46Row">
+        <xs:element name="DT_T_KOW46" msprop:Generator_TableClassName="DT_T_KOW46DataTable" msprop:Generator_TableVarName="tableDT_T_KOW46" msprop:Generator_RowChangedName="DT_T_KOW46RowChanged" msprop:Generator_TablePropName="DT_T_KOW46" msprop:Generator_RowDeletingName="DT_T_KOW46RowDeleting" msprop:Generator_RowChangingName="DT_T_KOW46RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KOW46RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KOW46RowDeleted" msprop:Generator_RowClassName="DT_T_KOW46Row" msprop:Generator_UserTableName="DT_T_KOW46" msprop:Generator_RowEvArgName="DT_T_KOW46RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -5665,7 +5639,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_KIT60" msprop:Generator_TableClassName="DT_T_KIT60DataTable" msprop:Generator_TableVarName="tableDT_T_KIT60" msprop:Generator_TablePropName="DT_T_KIT60" msprop:Generator_RowDeletingName="DT_T_KIT60RowDeleting" msprop:Generator_RowChangingName="DT_T_KIT60RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KIT60RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KIT60RowDeleted" msprop:Generator_UserTableName="DT_T_KIT60" msprop:Generator_RowChangedName="DT_T_KIT60RowChanged" msprop:Generator_RowEvArgName="DT_T_KIT60RowChangeEvent" msprop:Generator_RowClassName="DT_T_KIT60Row">
+        <xs:element name="DT_T_KIT60" msprop:Generator_TableClassName="DT_T_KIT60DataTable" msprop:Generator_TableVarName="tableDT_T_KIT60" msprop:Generator_RowChangedName="DT_T_KIT60RowChanged" msprop:Generator_TablePropName="DT_T_KIT60" msprop:Generator_RowDeletingName="DT_T_KIT60RowDeleting" msprop:Generator_RowChangingName="DT_T_KIT60RowChanging" msprop:Generator_RowEvHandlerName="DT_T_KIT60RowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_KIT60RowDeleted" msprop:Generator_RowClassName="DT_T_KIT60Row" msprop:Generator_UserTableName="DT_T_KIT60" msprop:Generator_RowEvArgName="DT_T_KIT60RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -6058,7 +6032,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC" msprop:Generator_TableClassName="DT_T_CCCDataTable" msprop:Generator_TableVarName="tableDT_T_CCC" msprop:Generator_RowChangedName="DT_T_CCCRowChanged" msprop:Generator_TablePropName="DT_T_CCC" msprop:Generator_RowDeletingName="DT_T_CCCRowDeleting" msprop:Generator_RowChangingName="DT_T_CCCRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCCRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCCRowDeleted" msprop:Generator_RowClassName="DT_T_CCCRow" msprop:Generator_UserTableName="DT_T_CCC" msprop:Generator_RowEvArgName="DT_T_CCCRowChangeEvent">
+        <xs:element name="DT_T_CCC" msprop:Generator_TableClassName="DT_T_CCCDataTable" msprop:Generator_TableVarName="tableDT_T_CCC" msprop:Generator_TablePropName="DT_T_CCC" msprop:Generator_RowDeletingName="DT_T_CCCRowDeleting" msprop:Generator_RowChangingName="DT_T_CCCRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCCRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCCRowDeleted" msprop:Generator_UserTableName="DT_T_CCC" msprop:Generator_RowChangedName="DT_T_CCCRowChanged" msprop:Generator_RowEvArgName="DT_T_CCCRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCCRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -8047,7 +8021,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Lot" msprop:Generator_TableClassName="DT_T_CCC_LotDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot" msprop:Generator_RowChangedName="DT_T_CCC_LotRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Lot" msprop:Generator_RowDeletingName="DT_T_CCC_LotRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_LotRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_LotRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_LotRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_LotRow" msprop:Generator_UserTableName="DT_T_CCC_Lot" msprop:Generator_RowEvArgName="DT_T_CCC_LotRowChangeEvent">
+        <xs:element name="DT_T_CCC_Lot" msprop:Generator_TableClassName="DT_T_CCC_LotDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot" msprop:Generator_TablePropName="DT_T_CCC_Lot" msprop:Generator_RowDeletingName="DT_T_CCC_LotRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_LotRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_LotRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_LotRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Lot" msprop:Generator_RowChangedName="DT_T_CCC_LotRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_LotRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_LotRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -10065,7 +10039,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Import_Rireki" msprop:Generator_TableClassName="DT_T_Import_RirekiDataTable" msprop:Generator_TableVarName="tableDT_T_Import_Rireki" msprop:Generator_TablePropName="DT_T_Import_Rireki" msprop:Generator_RowDeletingName="DT_T_Import_RirekiRowDeleting" msprop:Generator_RowChangingName="DT_T_Import_RirekiRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Import_RirekiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Import_RirekiRowDeleted" msprop:Generator_UserTableName="DT_T_Import_Rireki" msprop:Generator_RowChangedName="DT_T_Import_RirekiRowChanged" msprop:Generator_RowEvArgName="DT_T_Import_RirekiRowChangeEvent" msprop:Generator_RowClassName="DT_T_Import_RirekiRow">
+        <xs:element name="DT_T_Import_Rireki" msprop:Generator_TableClassName="DT_T_Import_RirekiDataTable" msprop:Generator_TableVarName="tableDT_T_Import_Rireki" msprop:Generator_RowChangedName="DT_T_Import_RirekiRowChanged" msprop:Generator_TablePropName="DT_T_Import_Rireki" msprop:Generator_RowDeletingName="DT_T_Import_RirekiRowDeleting" msprop:Generator_RowChangingName="DT_T_Import_RirekiRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Import_RirekiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Import_RirekiRowDeleted" msprop:Generator_RowClassName="DT_T_Import_RirekiRow" msprop:Generator_UserTableName="DT_T_Import_Rireki" msprop:Generator_RowEvArgName="DT_T_Import_RirekiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -10108,7 +10082,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_Buhin_Order_List" msprop:Generator_TableClassName="DT_T_Buhin_Order_ListDataTable" msprop:Generator_TableVarName="tableDT_T_Buhin_Order_List" msprop:Generator_RowChangedName="DT_T_Buhin_Order_ListRowChanged" msprop:Generator_TablePropName="DT_T_Buhin_Order_List" msprop:Generator_RowDeletingName="DT_T_Buhin_Order_ListRowDeleting" msprop:Generator_RowChangingName="DT_T_Buhin_Order_ListRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Buhin_Order_ListRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Buhin_Order_ListRowDeleted" msprop:Generator_RowClassName="DT_T_Buhin_Order_ListRow" msprop:Generator_UserTableName="DT_T_Buhin_Order_List" msprop:Generator_RowEvArgName="DT_T_Buhin_Order_ListRowChangeEvent">
+        <xs:element name="DT_T_Buhin_Order_List" msprop:Generator_TableClassName="DT_T_Buhin_Order_ListDataTable" msprop:Generator_TableVarName="tableDT_T_Buhin_Order_List" msprop:Generator_TablePropName="DT_T_Buhin_Order_List" msprop:Generator_RowDeletingName="DT_T_Buhin_Order_ListRowDeleting" msprop:Generator_RowChangingName="DT_T_Buhin_Order_ListRowChanging" msprop:Generator_RowEvHandlerName="DT_T_Buhin_Order_ListRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_Buhin_Order_ListRowDeleted" msprop:Generator_UserTableName="DT_T_Buhin_Order_List" msprop:Generator_RowChangedName="DT_T_Buhin_Order_ListRowChanged" msprop:Generator_RowEvArgName="DT_T_Buhin_Order_ListRowChangeEvent" msprop:Generator_RowClassName="DT_T_Buhin_Order_ListRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -10380,7 +10354,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Manual" msprop:Generator_TableClassName="DT_T_CCC_ManualDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Manual" msprop:Generator_TablePropName="DT_T_CCC_Manual" msprop:Generator_RowDeletingName="DT_T_CCC_ManualRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_ManualRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_ManualRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_ManualRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Manual" msprop:Generator_RowChangedName="DT_T_CCC_ManualRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_ManualRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_ManualRow">
+        <xs:element name="DT_T_CCC_Manual" msprop:Generator_TableClassName="DT_T_CCC_ManualDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Manual" msprop:Generator_RowChangedName="DT_T_CCC_ManualRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Manual" msprop:Generator_RowDeletingName="DT_T_CCC_ManualRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_ManualRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_ManualRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_ManualRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_ManualRow" msprop:Generator_UserTableName="DT_T_CCC_Manual" msprop:Generator_RowEvArgName="DT_T_CCC_ManualRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -12369,7 +12343,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Manual_Lot" msprop:Generator_TableClassName="DT_T_CCC_Manual_LotDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Manual_Lot" msprop:Generator_TablePropName="DT_T_CCC_Manual_Lot" msprop:Generator_RowDeletingName="DT_T_CCC_Manual_LotRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_Manual_LotRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_Manual_LotRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_Manual_LotRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Manual_Lot" msprop:Generator_RowChangedName="DT_T_CCC_Manual_LotRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_Manual_LotRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_Manual_LotRow">
+        <xs:element name="DT_T_CCC_Manual_Lot" msprop:Generator_TableClassName="DT_T_CCC_Manual_LotDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Manual_Lot" msprop:Generator_RowChangedName="DT_T_CCC_Manual_LotRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Manual_Lot" msprop:Generator_RowDeletingName="DT_T_CCC_Manual_LotRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_Manual_LotRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_Manual_LotRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_Manual_LotRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_Manual_LotRow" msprop:Generator_UserTableName="DT_T_CCC_Manual_Lot" msprop:Generator_RowEvArgName="DT_T_CCC_Manual_LotRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -14391,7 +14365,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Work" msprop:Generator_TableClassName="DT_T_CCC_WorkDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Work" msprop:Generator_RowChangedName="DT_T_CCC_WorkRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Work" msprop:Generator_RowDeletingName="DT_T_CCC_WorkRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_WorkRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_WorkRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_WorkRow" msprop:Generator_UserTableName="DT_T_CCC_Work" msprop:Generator_RowEvArgName="DT_T_CCC_WorkRowChangeEvent">
+        <xs:element name="DT_T_CCC_Work" msprop:Generator_TableClassName="DT_T_CCC_WorkDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Work" msprop:Generator_TablePropName="DT_T_CCC_Work" msprop:Generator_RowDeletingName="DT_T_CCC_WorkRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_WorkRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_WorkRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Work" msprop:Generator_RowChangedName="DT_T_CCC_WorkRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_WorkRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_WorkRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -16380,7 +16354,7 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Lot_Work" msprop:Generator_TableClassName="DT_T_CCC_Lot_WorkDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot_Work" msprop:Generator_TablePropName="DT_T_CCC_Lot_Work" msprop:Generator_RowDeletingName="DT_T_CCC_Lot_WorkRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_Lot_WorkRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_Lot_WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_Lot_WorkRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Lot_Work" msprop:Generator_RowChangedName="DT_T_CCC_Lot_WorkRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_Lot_WorkRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_Lot_WorkRow">
+        <xs:element name="DT_T_CCC_Lot_Work" msprop:Generator_TableClassName="DT_T_CCC_Lot_WorkDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot_Work" msprop:Generator_RowChangedName="DT_T_CCC_Lot_WorkRowChanged" msprop:Generator_TablePropName="DT_T_CCC_Lot_Work" msprop:Generator_RowDeletingName="DT_T_CCC_Lot_WorkRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_Lot_WorkRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_Lot_WorkRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_Lot_WorkRowDeleted" msprop:Generator_RowClassName="DT_T_CCC_Lot_WorkRow" msprop:Generator_UserTableName="DT_T_CCC_Lot_Work" msprop:Generator_RowEvArgName="DT_T_CCC_Lot_WorkRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -16424,10 +16398,11 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DT_T_CCC_Lot_Chousei" msprop:Generator_TableClassName="DT_T_CCC_Lot_ChouseiDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot_Chousei" msprop:Generator_TablePropName="DT_T_CCC_Lot_Chousei" msprop:Generator_RowDeletingName="DT_T_CCC_Lot_ChouseiRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_Lot_ChouseiRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_Lot_ChouseiRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_Lot_ChouseiRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Lot_Chousei" msprop:Generator_RowChangedName="DT_T_CCC_Lot_ChouseiRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_Lot_ChouseiRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_Lot_ChouseiRow">
+        <xs:element name="DT_T_CCC_Lot_Save" msprop:Generator_TableClassName="DT_T_CCC_Lot_SaveDataTable" msprop:Generator_TableVarName="tableDT_T_CCC_Lot_Save" msprop:Generator_TablePropName="DT_T_CCC_Lot_Save" msprop:Generator_RowDeletingName="DT_T_CCC_Lot_SaveRowDeleting" msprop:Generator_RowChangingName="DT_T_CCC_Lot_SaveRowChanging" msprop:Generator_RowEvHandlerName="DT_T_CCC_Lot_SaveRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_T_CCC_Lot_SaveRowDeleted" msprop:Generator_UserTableName="DT_T_CCC_Lot_Save" msprop:Generator_RowChangedName="DT_T_CCC_Lot_SaveRowChanged" msprop:Generator_RowEvArgName="DT_T_CCC_Lot_SaveRowChangeEvent" msprop:Generator_RowClassName="DT_T_CCC_Lot_SaveRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="lot_id" msprop:Generator_ColumnVarNameInTable="columnlot_id" msprop:Generator_ColumnPropNameInRow="lot_id" msprop:Generator_ColumnPropNameInTable="lot_idColumn" msprop:Generator_UserColumnName="lot_id" type="xs:int" minOccurs="0" />
               <xs:element name="見積No" msprop:Generator_ColumnVarNameInTable="column見積No" msprop:Generator_ColumnPropNameInRow="見積No" msprop:Generator_ColumnPropNameInTable="見積NoColumn" msprop:Generator_UserColumnName="見積No" type="xs:int" minOccurs="0" />
               <xs:element name="単品部品総数" msprop:Generator_ColumnVarNameInTable="column単品部品総数" msprop:Generator_ColumnPropNameInRow="単品部品総数" msprop:Generator_ColumnPropNameInTable="単品部品総数Column" msprop:Generator_UserColumnName="単品部品総数" type="xs:decimal" minOccurs="0" />
               <xs:element name="部品点数" msprop:Generator_ColumnVarNameInTable="column部品点数" msprop:Generator_ColumnPropNameInRow="部品点数" msprop:Generator_ColumnPropNameInTable="部品点数Column" msprop:Generator_UserColumnName="部品点数" type="xs:decimal" minOccurs="0" />
@@ -16459,6 +16434,140 @@ WHERE                       (見積No = @見積No) AND (区分 = @区分)</Comma
               <xs:element name="外装資材" msprop:Generator_ColumnVarNameInTable="column外装資材" msprop:Generator_ColumnPropNameInRow="外装資材" msprop:Generator_ColumnPropNameInTable="外装資材Column" msprop:Generator_UserColumnName="外装資材" type="xs:decimal" minOccurs="0" />
               <xs:element name="資材計" msprop:Generator_ColumnVarNameInTable="column資材計" msprop:Generator_ColumnPropNameInRow="資材計" msprop:Generator_ColumnPropNameInTable="資材計Column" msprop:Generator_UserColumnName="資材計" type="xs:decimal" minOccurs="0" />
               <xs:element name="区分" msprop:Generator_ColumnVarNameInTable="column区分" msprop:Generator_ColumnPropNameInRow="区分" msprop:Generator_ColumnPropNameInTable="区分Column" msprop:Generator_UserColumnName="区分" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CCC_Lot_id" msprop:Generator_ColumnVarNameInTable="columnCCC_Lot_id" msprop:Generator_ColumnPropNameInRow="CCC_Lot_id" msprop:Generator_ColumnPropNameInTable="CCC_Lot_idColumn" msprop:Generator_UserColumnName="CCC_Lot_id" type="xs:int" minOccurs="0" />
+              <xs:element name="_xFF7A__xFF9D__xFF84__xFF9B__xFF70__xFF99_NO" msprop:Generator_ColumnVarNameInTable="columnｺﾝﾄﾛｰﾙNO" msprop:Generator_ColumnPropNameInRow="ｺﾝﾄﾛｰﾙNO" msprop:Generator_ColumnPropNameInTable="ｺﾝﾄﾛｰﾙNOColumn" msprop:Generator_UserColumnName="ｺﾝﾄﾛｰﾙNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="代表DIST" msprop:Generator_ColumnVarNameInTable="column代表DIST" msprop:Generator_ColumnPropNameInRow="代表DIST" msprop:Generator_ColumnPropNameInTable="代表DISTColumn" msprop:Generator_UserColumnName="代表DIST" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="年度2" msprop:Generator_ColumnVarNameInTable="column年度2" msprop:Generator_ColumnPropNameInRow="年度2" msprop:Generator_ColumnPropNameInTable="年度2Column" msprop:Generator_UserColumnName="年度2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="モデル2" msprop:Generator_ColumnVarNameInTable="columnモデル2" msprop:Generator_ColumnPropNameInRow="モデル2" msprop:Generator_ColumnPropNameInTable="モデル2Column" msprop:Generator_UserColumnName="モデル2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="タイプ1" msprop:Generator_ColumnVarNameInTable="columnタイプ1" msprop:Generator_ColumnPropNameInRow="タイプ1" msprop:Generator_ColumnPropNameInTable="タイプ1Column" msprop:Generator_UserColumnName="タイプ1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="オプション1" msprop:Generator_ColumnVarNameInTable="columnオプション1" msprop:Generator_ColumnPropNameInRow="オプション1" msprop:Generator_ColumnPropNameInTable="オプション1Column" msprop:Generator_UserColumnName="オプション1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="群" msprop:Generator_ColumnVarNameInTable="column群" msprop:Generator_ColumnPropNameInRow="群" msprop:Generator_ColumnPropNameInTable="群Column" msprop:Generator_UserColumnName="群" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="包装ロットNO" msprop:Generator_ColumnVarNameInTable="column包装ロットNO" msprop:Generator_ColumnPropNameInRow="包装ロットNO" msprop:Generator_ColumnPropNameInTable="包装ロットNOColumn" msprop:Generator_UserColumnName="包装ロットNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="基本部番ハイフン付" msprop:Generator_ColumnVarNameInTable="column基本部番ハイフン付" msprop:Generator_ColumnPropNameInRow="基本部番ハイフン付" msprop:Generator_ColumnPropNameInTable="基本部番ハイフン付Column" msprop:Generator_UserColumnName="基本部番ハイフン付" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備1" msprop:Generator_ColumnVarNameInTable="column予備1" msprop:Generator_ColumnPropNameInRow="予備1" msprop:Generator_ColumnPropNameInTable="予備1Column" msprop:Generator_UserColumnName="予備1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備2" msprop:Generator_ColumnVarNameInTable="column予備2" msprop:Generator_ColumnPropNameInRow="予備2" msprop:Generator_ColumnPropNameInTable="予備2Column" msprop:Generator_UserColumnName="予備2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備3" msprop:Generator_ColumnVarNameInTable="column予備3" msprop:Generator_ColumnPropNameInRow="予備3" msprop:Generator_ColumnPropNameInTable="予備3Column" msprop:Generator_UserColumnName="予備3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備4" msprop:Generator_ColumnVarNameInTable="column予備4" msprop:Generator_ColumnPropNameInRow="予備4" msprop:Generator_ColumnPropNameInTable="予備4Column" msprop:Generator_UserColumnName="予備4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備5" msprop:Generator_ColumnVarNameInTable="column予備5" msprop:Generator_ColumnPropNameInRow="予備5" msprop:Generator_ColumnPropNameInTable="予備5Column" msprop:Generator_UserColumnName="予備5" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備6" msprop:Generator_ColumnVarNameInTable="column予備6" msprop:Generator_ColumnPropNameInRow="予備6" msprop:Generator_ColumnPropNameInTable="予備6Column" msprop:Generator_UserColumnName="予備6" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備7" msprop:Generator_ColumnVarNameInTable="column予備7" msprop:Generator_ColumnPropNameInRow="予備7" msprop:Generator_ColumnPropNameInTable="予備7Column" msprop:Generator_UserColumnName="予備7" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備8" msprop:Generator_ColumnVarNameInTable="column予備8" msprop:Generator_ColumnPropNameInRow="予備8" msprop:Generator_ColumnPropNameInTable="予備8Column" msprop:Generator_UserColumnName="予備8" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備9" msprop:Generator_ColumnVarNameInTable="column予備9" msprop:Generator_ColumnPropNameInRow="予備9" msprop:Generator_ColumnPropNameInTable="予備9Column" msprop:Generator_UserColumnName="予備9" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="予備10" msprop:Generator_ColumnVarNameInTable="column予備10" msprop:Generator_ColumnPropNameInRow="予備10" msprop:Generator_ColumnPropNameInTable="予備10Column" msprop:Generator_UserColumnName="予備10" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
