@@ -43,75 +43,8 @@ Partial Class F_Chousei
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Txt_DIST = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GV_Chousei = New System.Windows.Forms.DataGridView()
-        Me.DTTCCCLotBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DS_T = New Honda_Logi.DS_T()
-        Me.Btn_Clear = New System.Windows.Forms.Button()
-        Me.Btn_Touroku = New System.Windows.Forms.Button()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Txt_id = New System.Windows.Forms.TextBox()
-        Me.Btn_All_Return = New System.Windows.Forms.Button()
-        Me.Txt_Shizai_Total = New System.Windows.Forms.TextBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Txt_Gaisou_Shizai = New System.Windows.Forms.TextBox()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.Txt_Ko_Naisou_Shizai = New System.Windows.Forms.TextBox()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Txt_Sagyou_Total = New System.Windows.Forms.TextBox()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Txt_Gaisou_Sagyou = New System.Windows.Forms.TextBox()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.Txt_Naisou_Sagyou = New System.Windows.Forms.TextBox()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Txt_Kosou_Sagyou = New System.Windows.Forms.TextBox()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Txt_Gaisou_Shizaihi = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Txt_Naisou_Shizaihi = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Txt_Kosou_Shizaihi = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Txt_Buhin_Tensu_Sum = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Txt_Gaisou_Case = New System.Windows.Forms.TextBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Txt_Gaichoku_Bousabi = New System.Windows.Forms.TextBox()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Txt_Gaichoku_Buhinsu = New System.Windows.Forms.TextBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Txt_Gaisou_Fukushizai = New System.Windows.Forms.TextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Txt_Gaisou_Boltsu = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Txt_Gaisou_Poribukuro = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Txt_Gaisouo_Danborusu = New System.Windows.Forms.TextBox()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Txt_Sukashi_Casesu = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Txt_Tsumituke_Kaisu = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Txt_Panel_Casesu = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Txt_ENG = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Txt_Returnable = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Txt_Cartonsu = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Txt_Naisou_Shizaisu = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Txt_Kosousu = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Txt_Bousabi_Kaisu = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Txt_Buhin_Tensu = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Txt_Tanpin_Buhin_Sousu = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TA_T_CCC_Lot = New Honda_Logi.DS_TTableAdapters.TA_T_CCC_Lot()
         Me.選択 = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.変更フラグ = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -213,6 +146,72 @@ Partial Class F_Chousei
         Me.資材計 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.見積No = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.元に戻す = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.DTTCCCLotBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DS_T = New Honda_Logi.DS_T()
+        Me.Btn_Clear = New System.Windows.Forms.Button()
+        Me.Btn_Touroku = New System.Windows.Forms.Button()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Txt_id = New System.Windows.Forms.TextBox()
+        Me.Btn_All_Return = New System.Windows.Forms.Button()
+        Me.Txt_Shizai_Total = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Txt_Gaisou_Shizai = New System.Windows.Forms.TextBox()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Txt_Ko_Naisou_Shizai = New System.Windows.Forms.TextBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Txt_Sagyou_Total = New System.Windows.Forms.TextBox()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Txt_Gaisou_Sagyou = New System.Windows.Forms.TextBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Txt_Naisou_Sagyou = New System.Windows.Forms.TextBox()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Txt_Kosou_Sagyou = New System.Windows.Forms.TextBox()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Txt_Gaisou_Shizaihi = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Txt_Naisou_Shizaihi = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Txt_Kosou_Shizaihi = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Txt_Buhin_Tensu_Sum = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Txt_Gaisou_Case = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Txt_Gaichoku_Bousabi = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Txt_Gaichoku_Buhinsu = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Txt_Gaisou_Fukushizai = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Txt_Gaisou_Boltsu = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Txt_Gaisou_Poribukuro = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Txt_Gaisouo_Danborusu = New System.Windows.Forms.TextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Txt_Sukashi_Casesu = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Txt_Tsumituke_Kaisu = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Txt_Panel_Casesu = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Txt_ENG = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Txt_Returnable = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Txt_Cartonsu = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Txt_Naisou_Shizaisu = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Txt_Kosousu = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Txt_Bousabi_Kaisu = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Txt_Buhin_Tensu = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Txt_Tanpin_Buhin_Sousu = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TA_T_CCC_Lot = New Honda_Logi.DS_TTableAdapters.TA_T_CCC_Lot()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.GV_Chousei, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -262,13 +261,12 @@ Partial Class F_Chousei
         Me.Panel1.Controls.Add(Me.Label26)
         Me.Panel1.Controls.Add(Me.Txt_DIST)
         Me.Panel1.Controls.Add(Me.Label25)
-        Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Cmb_Target)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1264, 156)
+        Me.Panel1.Size = New System.Drawing.Size(1264, 129)
         Me.Panel1.TabIndex = 4
         '
         'Btn_Search
@@ -425,26 +423,13 @@ Partial Class F_Chousei
         Me.Label25.TabIndex = 71
         Me.Label25.Text = "DIST"
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(13, 127)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 18)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "1Lotデータ"
-        '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.GV_Chousei)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 156)
+        Me.Panel2.Location = New System.Drawing.Point(0, 129)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1264, 203)
+        Me.Panel2.Size = New System.Drawing.Size(1264, 181)
         Me.Panel2.TabIndex = 5
         '
         'GV_Chousei
@@ -460,653 +445,8 @@ Partial Class F_Chousei
         Me.GV_Chousei.Name = "GV_Chousei"
         Me.GV_Chousei.ReadOnly = True
         Me.GV_Chousei.RowTemplate.Height = 21
-        Me.GV_Chousei.Size = New System.Drawing.Size(1264, 203)
+        Me.GV_Chousei.Size = New System.Drawing.Size(1264, 181)
         Me.GV_Chousei.TabIndex = 0
-        '
-        'DTTCCCLotBindingSource
-        '
-        Me.DTTCCCLotBindingSource.DataMember = "DT_T_CCC_Lot"
-        Me.DTTCCCLotBindingSource.DataSource = Me.DS_T
-        '
-        'DS_T
-        '
-        Me.DS_T.DataSetName = "DS_T"
-        Me.DS_T.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Btn_Clear
-        '
-        Me.Btn_Clear.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Clear.Location = New System.Drawing.Point(972, 222)
-        Me.Btn_Clear.Name = "Btn_Clear"
-        Me.Btn_Clear.Size = New System.Drawing.Size(124, 65)
-        Me.Btn_Clear.TabIndex = 5
-        Me.Btn_Clear.Text = "クリア"
-        Me.Btn_Clear.UseVisualStyleBackColor = True
-        '
-        'Btn_Touroku
-        '
-        Me.Btn_Touroku.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_Touroku.Location = New System.Drawing.Point(815, 222)
-        Me.Btn_Touroku.Name = "Btn_Touroku"
-        Me.Btn_Touroku.Size = New System.Drawing.Size(124, 65)
-        Me.Btn_Touroku.TabIndex = 4
-        Me.Btn_Touroku.Text = "登　録"
-        Me.Btn_Touroku.UseVisualStyleBackColor = True
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.Txt_id)
-        Me.Panel3.Controls.Add(Me.Btn_All_Return)
-        Me.Panel3.Controls.Add(Me.Txt_Shizai_Total)
-        Me.Panel3.Controls.Add(Me.Label29)
-        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Shizai)
-        Me.Panel3.Controls.Add(Me.Label30)
-        Me.Panel3.Controls.Add(Me.Txt_Ko_Naisou_Shizai)
-        Me.Panel3.Controls.Add(Me.Label31)
-        Me.Panel3.Controls.Add(Me.Txt_Sagyou_Total)
-        Me.Panel3.Controls.Add(Me.Label32)
-        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Sagyou)
-        Me.Panel3.Controls.Add(Me.Label33)
-        Me.Panel3.Controls.Add(Me.Txt_Naisou_Sagyou)
-        Me.Panel3.Controls.Add(Me.Label34)
-        Me.Panel3.Controls.Add(Me.Txt_Kosou_Sagyou)
-        Me.Panel3.Controls.Add(Me.Label35)
-        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Shizaihi)
-        Me.Panel3.Controls.Add(Me.Label14)
-        Me.Panel3.Controls.Add(Me.Txt_Naisou_Shizaihi)
-        Me.Panel3.Controls.Add(Me.Label15)
-        Me.Panel3.Controls.Add(Me.Txt_Kosou_Shizaihi)
-        Me.Panel3.Controls.Add(Me.Label16)
-        Me.Panel3.Controls.Add(Me.Txt_Buhin_Tensu_Sum)
-        Me.Panel3.Controls.Add(Me.Label17)
-        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Case)
-        Me.Panel3.Controls.Add(Me.Label18)
-        Me.Panel3.Controls.Add(Me.Txt_Gaichoku_Bousabi)
-        Me.Panel3.Controls.Add(Me.Label19)
-        Me.Panel3.Controls.Add(Me.Txt_Gaichoku_Buhinsu)
-        Me.Panel3.Controls.Add(Me.Label20)
-        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Fukushizai)
-        Me.Panel3.Controls.Add(Me.Label21)
-        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Boltsu)
-        Me.Panel3.Controls.Add(Me.Label22)
-        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Poribukuro)
-        Me.Panel3.Controls.Add(Me.Label23)
-        Me.Panel3.Controls.Add(Me.Txt_Gaisouo_Danborusu)
-        Me.Panel3.Controls.Add(Me.Label24)
-        Me.Panel3.Controls.Add(Me.Txt_Sukashi_Casesu)
-        Me.Panel3.Controls.Add(Me.Label12)
-        Me.Panel3.Controls.Add(Me.Txt_Tsumituke_Kaisu)
-        Me.Panel3.Controls.Add(Me.Label13)
-        Me.Panel3.Controls.Add(Me.Txt_Panel_Casesu)
-        Me.Panel3.Controls.Add(Me.Label9)
-        Me.Panel3.Controls.Add(Me.Txt_ENG)
-        Me.Panel3.Controls.Add(Me.Label10)
-        Me.Panel3.Controls.Add(Me.Txt_Returnable)
-        Me.Panel3.Controls.Add(Me.Label11)
-        Me.Panel3.Controls.Add(Me.Txt_Cartonsu)
-        Me.Panel3.Controls.Add(Me.Label6)
-        Me.Panel3.Controls.Add(Me.Txt_Naisou_Shizaisu)
-        Me.Panel3.Controls.Add(Me.Label7)
-        Me.Panel3.Controls.Add(Me.Txt_Kosousu)
-        Me.Panel3.Controls.Add(Me.Label8)
-        Me.Panel3.Controls.Add(Me.Txt_Bousabi_Kaisu)
-        Me.Panel3.Controls.Add(Me.Label5)
-        Me.Panel3.Controls.Add(Me.Txt_Buhin_Tensu)
-        Me.Panel3.Controls.Add(Me.Label4)
-        Me.Panel3.Controls.Add(Me.Txt_Tanpin_Buhin_Sousu)
-        Me.Panel3.Controls.Add(Me.Label2)
-        Me.Panel3.Controls.Add(Me.Btn_Touroku)
-        Me.Panel3.Controls.Add(Me.Btn_Clear)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(0, 359)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1264, 299)
-        Me.Panel3.TabIndex = 6
-        '
-        'Txt_id
-        '
-        Me.Txt_id.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_id.Location = New System.Drawing.Point(1102, 106)
-        Me.Txt_id.Name = "Txt_id"
-        Me.Txt_id.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_id.TabIndex = 71
-        Me.Txt_id.Visible = False
-        '
-        'Btn_All_Return
-        '
-        Me.Btn_All_Return.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Btn_All_Return.Location = New System.Drawing.Point(1128, 222)
-        Me.Btn_All_Return.Name = "Btn_All_Return"
-        Me.Btn_All_Return.Size = New System.Drawing.Size(124, 65)
-        Me.Btn_All_Return.TabIndex = 70
-        Me.Btn_All_Return.Text = "全て戻す"
-        Me.Btn_All_Return.UseVisualStyleBackColor = True
-        '
-        'Txt_Shizai_Total
-        '
-        Me.Txt_Shizai_Total.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Shizai_Total.Location = New System.Drawing.Point(1102, 172)
-        Me.Txt_Shizai_Total.Name = "Txt_Shizai_Total"
-        Me.Txt_Shizai_Total.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Shizai_Total.TabIndex = 68
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label29.Location = New System.Drawing.Point(1099, 153)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(56, 16)
-        Me.Label29.TabIndex = 69
-        Me.Label29.Text = "資材計"
-        '
-        'Txt_Gaisou_Shizai
-        '
-        Me.Txt_Gaisou_Shizai.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaisou_Shizai.Location = New System.Drawing.Point(993, 172)
-        Me.Txt_Gaisou_Shizai.Name = "Txt_Gaisou_Shizai"
-        Me.Txt_Gaisou_Shizai.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaisou_Shizai.TabIndex = 67
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label30.Location = New System.Drawing.Point(990, 153)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(72, 16)
-        Me.Label30.TabIndex = 66
-        Me.Label30.Text = "外装資材"
-        '
-        'Txt_Ko_Naisou_Shizai
-        '
-        Me.Txt_Ko_Naisou_Shizai.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Ko_Naisou_Shizai.Location = New System.Drawing.Point(886, 172)
-        Me.Txt_Ko_Naisou_Shizai.Name = "Txt_Ko_Naisou_Shizai"
-        Me.Txt_Ko_Naisou_Shizai.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Ko_Naisou_Shizai.TabIndex = 65
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label31.Location = New System.Drawing.Point(883, 153)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(93, 16)
-        Me.Label31.TabIndex = 64
-        Me.Label31.Text = "個_内装資材"
-        '
-        'Txt_Sagyou_Total
-        '
-        Me.Txt_Sagyou_Total.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Sagyou_Total.Location = New System.Drawing.Point(779, 172)
-        Me.Txt_Sagyou_Total.Name = "Txt_Sagyou_Total"
-        Me.Txt_Sagyou_Total.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Sagyou_Total.TabIndex = 62
-        '
-        'Label32
-        '
-        Me.Label32.AutoSize = True
-        Me.Label32.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label32.Location = New System.Drawing.Point(776, 153)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(56, 16)
-        Me.Label32.TabIndex = 63
-        Me.Label32.Text = "作業計"
-        '
-        'Txt_Gaisou_Sagyou
-        '
-        Me.Txt_Gaisou_Sagyou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaisou_Sagyou.Location = New System.Drawing.Point(672, 172)
-        Me.Txt_Gaisou_Sagyou.Name = "Txt_Gaisou_Sagyou"
-        Me.Txt_Gaisou_Sagyou.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaisou_Sagyou.TabIndex = 61
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label33.Location = New System.Drawing.Point(669, 153)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(72, 16)
-        Me.Label33.TabIndex = 60
-        Me.Label33.Text = "外装作業"
-        '
-        'Txt_Naisou_Sagyou
-        '
-        Me.Txt_Naisou_Sagyou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Naisou_Sagyou.Location = New System.Drawing.Point(565, 172)
-        Me.Txt_Naisou_Sagyou.Name = "Txt_Naisou_Sagyou"
-        Me.Txt_Naisou_Sagyou.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Naisou_Sagyou.TabIndex = 59
-        '
-        'Label34
-        '
-        Me.Label34.AutoSize = True
-        Me.Label34.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label34.Location = New System.Drawing.Point(562, 153)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(72, 16)
-        Me.Label34.TabIndex = 58
-        Me.Label34.Text = "内装作業"
-        '
-        'Txt_Kosou_Sagyou
-        '
-        Me.Txt_Kosou_Sagyou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Kosou_Sagyou.Location = New System.Drawing.Point(458, 172)
-        Me.Txt_Kosou_Sagyou.Name = "Txt_Kosou_Sagyou"
-        Me.Txt_Kosou_Sagyou.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Kosou_Sagyou.TabIndex = 56
-        '
-        'Label35
-        '
-        Me.Label35.AutoSize = True
-        Me.Label35.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label35.Location = New System.Drawing.Point(455, 153)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(72, 16)
-        Me.Label35.TabIndex = 57
-        Me.Label35.Text = "個装作業"
-        '
-        'Txt_Gaisou_Shizaihi
-        '
-        Me.Txt_Gaisou_Shizaihi.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaisou_Shizaihi.Location = New System.Drawing.Point(351, 172)
-        Me.Txt_Gaisou_Shizaihi.Name = "Txt_Gaisou_Shizaihi"
-        Me.Txt_Gaisou_Shizaihi.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaisou_Shizaihi.TabIndex = 55
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label14.Location = New System.Drawing.Point(348, 153)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(88, 16)
-        Me.Label14.TabIndex = 54
-        Me.Label14.Text = "外装資材費"
-        '
-        'Txt_Naisou_Shizaihi
-        '
-        Me.Txt_Naisou_Shizaihi.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Naisou_Shizaihi.Location = New System.Drawing.Point(244, 172)
-        Me.Txt_Naisou_Shizaihi.Name = "Txt_Naisou_Shizaihi"
-        Me.Txt_Naisou_Shizaihi.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Naisou_Shizaihi.TabIndex = 53
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label15.Location = New System.Drawing.Point(241, 153)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(88, 16)
-        Me.Label15.TabIndex = 52
-        Me.Label15.Text = "内装資材費"
-        '
-        'Txt_Kosou_Shizaihi
-        '
-        Me.Txt_Kosou_Shizaihi.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Kosou_Shizaihi.Location = New System.Drawing.Point(137, 172)
-        Me.Txt_Kosou_Shizaihi.Name = "Txt_Kosou_Shizaihi"
-        Me.Txt_Kosou_Shizaihi.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Kosou_Shizaihi.TabIndex = 51
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label16.Location = New System.Drawing.Point(134, 153)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(88, 16)
-        Me.Label16.TabIndex = 50
-        Me.Label16.Text = "個装資材費"
-        '
-        'Txt_Buhin_Tensu_Sum
-        '
-        Me.Txt_Buhin_Tensu_Sum.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Buhin_Tensu_Sum.Location = New System.Drawing.Point(30, 172)
-        Me.Txt_Buhin_Tensu_Sum.Name = "Txt_Buhin_Tensu_Sum"
-        Me.Txt_Buhin_Tensu_Sum.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Buhin_Tensu_Sum.TabIndex = 49
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label17.Location = New System.Drawing.Point(27, 153)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(109, 16)
-        Me.Label17.TabIndex = 48
-        Me.Label17.Text = "部品点数_集計"
-        '
-        'Txt_Gaisou_Case
-        '
-        Me.Txt_Gaisou_Case.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaisou_Case.Location = New System.Drawing.Point(901, 106)
-        Me.Txt_Gaisou_Case.Name = "Txt_Gaisou_Case"
-        Me.Txt_Gaisou_Case.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaisou_Case.TabIndex = 46
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label18.Location = New System.Drawing.Point(898, 87)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(94, 16)
-        Me.Label18.TabIndex = 47
-        Me.Label18.Text = "外装ケース数"
-        '
-        'Txt_Gaichoku_Bousabi
-        '
-        Me.Txt_Gaichoku_Bousabi.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaichoku_Bousabi.Location = New System.Drawing.Point(781, 106)
-        Me.Txt_Gaichoku_Bousabi.Name = "Txt_Gaichoku_Bousabi"
-        Me.Txt_Gaichoku_Bousabi.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaichoku_Bousabi.TabIndex = 45
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label19.Location = New System.Drawing.Point(778, 87)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(117, 16)
-        Me.Label19.TabIndex = 44
-        Me.Label19.Text = "外直の防錆回数"
-        '
-        'Txt_Gaichoku_Buhinsu
-        '
-        Me.Txt_Gaichoku_Buhinsu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaichoku_Buhinsu.Location = New System.Drawing.Point(674, 106)
-        Me.Txt_Gaichoku_Buhinsu.Name = "Txt_Gaichoku_Buhinsu"
-        Me.Txt_Gaichoku_Buhinsu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaichoku_Buhinsu.TabIndex = 43
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label20.Location = New System.Drawing.Point(671, 87)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(104, 16)
-        Me.Label20.TabIndex = 42
-        Me.Label20.Text = "外直部品総数"
-        '
-        'Txt_Gaisou_Fukushizai
-        '
-        Me.Txt_Gaisou_Fukushizai.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaisou_Fukushizai.Location = New System.Drawing.Point(523, 106)
-        Me.Txt_Gaisou_Fukushizai.Name = "Txt_Gaisou_Fukushizai"
-        Me.Txt_Gaisou_Fukushizai.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaisou_Fukushizai.TabIndex = 40
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label21.Location = New System.Drawing.Point(520, 87)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(152, 16)
-        Me.Label21.TabIndex = 41
-        Me.Label21.Text = "外装用副資材使用数"
-        '
-        'Txt_Gaisou_Boltsu
-        '
-        Me.Txt_Gaisou_Boltsu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaisou_Boltsu.Location = New System.Drawing.Point(376, 106)
-        Me.Txt_Gaisou_Boltsu.Name = "Txt_Gaisou_Boltsu"
-        Me.Txt_Gaisou_Boltsu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaisou_Boltsu.TabIndex = 39
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label22.Location = New System.Drawing.Point(373, 87)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(141, 16)
-        Me.Label22.TabIndex = 38
-        Me.Label22.Text = "外装用ボルト使用数"
-        '
-        'Txt_Gaisou_Poribukuro
-        '
-        Me.Txt_Gaisou_Poribukuro.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaisou_Poribukuro.Location = New System.Drawing.Point(244, 106)
-        Me.Txt_Gaisou_Poribukuro.Name = "Txt_Gaisou_Poribukuro"
-        Me.Txt_Gaisou_Poribukuro.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaisou_Poribukuro.TabIndex = 37
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label23.Location = New System.Drawing.Point(241, 87)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(126, 16)
-        Me.Label23.TabIndex = 36
-        Me.Label23.Text = "外装用箱型ポリ袋"
-        '
-        'Txt_Gaisouo_Danborusu
-        '
-        Me.Txt_Gaisouo_Danborusu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Gaisouo_Danborusu.Location = New System.Drawing.Point(30, 106)
-        Me.Txt_Gaisouo_Danborusu.Name = "Txt_Gaisouo_Danborusu"
-        Me.Txt_Gaisouo_Danborusu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Gaisouo_Danborusu.TabIndex = 34
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label24.Location = New System.Drawing.Point(30, 87)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(192, 16)
-        Me.Label24.TabIndex = 35
-        Me.Label24.Text = "外装用段ボールパット使用数"
-        '
-        'Txt_Sukashi_Casesu
-        '
-        Me.Txt_Sukashi_Casesu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Sukashi_Casesu.Location = New System.Drawing.Point(1102, 44)
-        Me.Txt_Sukashi_Casesu.Name = "Txt_Sukashi_Casesu"
-        Me.Txt_Sukashi_Casesu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Sukashi_Casesu.TabIndex = 33
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label12.Location = New System.Drawing.Point(1099, 25)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(98, 16)
-        Me.Label12.TabIndex = 32
-        Me.Label12.Text = "スカシケース数"
-        '
-        'Txt_Tsumituke_Kaisu
-        '
-        Me.Txt_Tsumituke_Kaisu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Tsumituke_Kaisu.Location = New System.Drawing.Point(888, 44)
-        Me.Txt_Tsumituke_Kaisu.Name = "Txt_Tsumituke_Kaisu"
-        Me.Txt_Tsumituke_Kaisu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Tsumituke_Kaisu.TabIndex = 31
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label13.Location = New System.Drawing.Point(992, 25)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(101, 16)
-        Me.Label13.TabIndex = 30
-        Me.Label13.Text = "パネルケース数"
-        '
-        'Txt_Panel_Casesu
-        '
-        Me.Txt_Panel_Casesu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Panel_Casesu.Location = New System.Drawing.Point(995, 44)
-        Me.Txt_Panel_Casesu.Name = "Txt_Panel_Casesu"
-        Me.Txt_Panel_Casesu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Panel_Casesu.TabIndex = 29
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label9.Location = New System.Drawing.Point(885, 25)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(99, 16)
-        Me.Label9.TabIndex = 28
-        Me.Label9.Text = "積み付け回数"
-        '
-        'Txt_ENG
-        '
-        Me.Txt_ENG.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_ENG.Location = New System.Drawing.Point(781, 44)
-        Me.Txt_ENG.Name = "Txt_ENG"
-        Me.Txt_ENG.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_ENG.TabIndex = 27
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label10.Location = New System.Drawing.Point(778, 25)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(102, 16)
-        Me.Label10.TabIndex = 26
-        Me.Label10.Text = "ENG発泡材数"
-        '
-        'Txt_Returnable
-        '
-        Me.Txt_Returnable.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Returnable.Location = New System.Drawing.Point(674, 44)
-        Me.Txt_Returnable.Name = "Txt_Returnable"
-        Me.Txt_Returnable.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Returnable.TabIndex = 24
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label11.Location = New System.Drawing.Point(671, 25)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(127, 16)
-        Me.Label11.TabIndex = 25
-        Me.Label11.Text = "リターナブル容器数"
-        '
-        'Txt_Cartonsu
-        '
-        Me.Txt_Cartonsu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Cartonsu.Location = New System.Drawing.Point(565, 44)
-        Me.Txt_Cartonsu.Name = "Txt_Cartonsu"
-        Me.Txt_Cartonsu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Cartonsu.TabIndex = 23
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label6.Location = New System.Drawing.Point(562, 25)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(71, 16)
-        Me.Label6.TabIndex = 22
-        Me.Label6.Text = "カートン数"
-        '
-        'Txt_Naisou_Shizaisu
-        '
-        Me.Txt_Naisou_Shizaisu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Naisou_Shizaisu.Location = New System.Drawing.Point(458, 44)
-        Me.Txt_Naisou_Shizaisu.Name = "Txt_Naisou_Shizaisu"
-        Me.Txt_Naisou_Shizaisu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Naisou_Shizaisu.TabIndex = 21
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(455, 25)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(88, 16)
-        Me.Label7.TabIndex = 20
-        Me.Label7.Text = "内装資材数"
-        '
-        'Txt_Kosousu
-        '
-        Me.Txt_Kosousu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Kosousu.Location = New System.Drawing.Point(351, 44)
-        Me.Txt_Kosousu.Name = "Txt_Kosousu"
-        Me.Txt_Kosousu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Kosousu.TabIndex = 18
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label8.Location = New System.Drawing.Point(348, 25)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(56, 16)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "個装数"
-        '
-        'Txt_Bousabi_Kaisu
-        '
-        Me.Txt_Bousabi_Kaisu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Bousabi_Kaisu.Location = New System.Drawing.Point(244, 44)
-        Me.Txt_Bousabi_Kaisu.Name = "Txt_Bousabi_Kaisu"
-        Me.Txt_Bousabi_Kaisu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Bousabi_Kaisu.TabIndex = 17
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(241, 25)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(72, 16)
-        Me.Label5.TabIndex = 16
-        Me.Label5.Text = "防錆回数"
-        '
-        'Txt_Buhin_Tensu
-        '
-        Me.Txt_Buhin_Tensu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Buhin_Tensu.Location = New System.Drawing.Point(137, 44)
-        Me.Txt_Buhin_Tensu.Name = "Txt_Buhin_Tensu"
-        Me.Txt_Buhin_Tensu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Buhin_Tensu.TabIndex = 15
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label4.Location = New System.Drawing.Point(134, 25)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(72, 16)
-        Me.Label4.TabIndex = 14
-        Me.Label4.Text = "部品点数"
-        '
-        'Txt_Tanpin_Buhin_Sousu
-        '
-        Me.Txt_Tanpin_Buhin_Sousu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Txt_Tanpin_Buhin_Sousu.Location = New System.Drawing.Point(30, 44)
-        Me.Txt_Tanpin_Buhin_Sousu.Name = "Txt_Tanpin_Buhin_Sousu"
-        Me.Txt_Tanpin_Buhin_Sousu.Size = New System.Drawing.Size(101, 23)
-        Me.Txt_Tanpin_Buhin_Sousu.TabIndex = 12
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(27, 25)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(104, 16)
-        Me.Label2.TabIndex = 13
-        Me.Label2.Text = "単品部品総数"
-        '
-        'TA_T_CCC_Lot
-        '
-        Me.TA_T_CCC_Lot.ClearBeforeFill = True
         '
         '選択
         '
@@ -1819,11 +1159,663 @@ Partial Class F_Chousei
         Me.元に戻す.Text = "元に戻す"
         Me.元に戻す.UseColumnTextForLinkValue = True
         '
+        'DTTCCCLotBindingSource
+        '
+        Me.DTTCCCLotBindingSource.DataMember = "DT_T_CCC_Lot"
+        Me.DTTCCCLotBindingSource.DataSource = Me.DS_T
+        '
+        'DS_T
+        '
+        Me.DS_T.DataSetName = "DS_T"
+        Me.DS_T.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Btn_Clear
+        '
+        Me.Btn_Clear.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Clear.Location = New System.Drawing.Point(972, 222)
+        Me.Btn_Clear.Name = "Btn_Clear"
+        Me.Btn_Clear.Size = New System.Drawing.Size(124, 65)
+        Me.Btn_Clear.TabIndex = 5
+        Me.Btn_Clear.Text = "クリア"
+        Me.Btn_Clear.UseVisualStyleBackColor = True
+        '
+        'Btn_Touroku
+        '
+        Me.Btn_Touroku.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_Touroku.Location = New System.Drawing.Point(815, 222)
+        Me.Btn_Touroku.Name = "Btn_Touroku"
+        Me.Btn_Touroku.Size = New System.Drawing.Size(124, 65)
+        Me.Btn_Touroku.TabIndex = 4
+        Me.Btn_Touroku.Text = "登　録"
+        Me.Btn_Touroku.UseVisualStyleBackColor = True
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.Txt_id)
+        Me.Panel3.Controls.Add(Me.Btn_All_Return)
+        Me.Panel3.Controls.Add(Me.Txt_Shizai_Total)
+        Me.Panel3.Controls.Add(Me.Label29)
+        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Shizai)
+        Me.Panel3.Controls.Add(Me.Label30)
+        Me.Panel3.Controls.Add(Me.Txt_Ko_Naisou_Shizai)
+        Me.Panel3.Controls.Add(Me.Label31)
+        Me.Panel3.Controls.Add(Me.Txt_Sagyou_Total)
+        Me.Panel3.Controls.Add(Me.Label32)
+        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Sagyou)
+        Me.Panel3.Controls.Add(Me.Label33)
+        Me.Panel3.Controls.Add(Me.Txt_Naisou_Sagyou)
+        Me.Panel3.Controls.Add(Me.Label34)
+        Me.Panel3.Controls.Add(Me.Txt_Kosou_Sagyou)
+        Me.Panel3.Controls.Add(Me.Label35)
+        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Shizaihi)
+        Me.Panel3.Controls.Add(Me.Label14)
+        Me.Panel3.Controls.Add(Me.Txt_Naisou_Shizaihi)
+        Me.Panel3.Controls.Add(Me.Label15)
+        Me.Panel3.Controls.Add(Me.Txt_Kosou_Shizaihi)
+        Me.Panel3.Controls.Add(Me.Label16)
+        Me.Panel3.Controls.Add(Me.Txt_Buhin_Tensu_Sum)
+        Me.Panel3.Controls.Add(Me.Label17)
+        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Case)
+        Me.Panel3.Controls.Add(Me.Label18)
+        Me.Panel3.Controls.Add(Me.Txt_Gaichoku_Bousabi)
+        Me.Panel3.Controls.Add(Me.Label19)
+        Me.Panel3.Controls.Add(Me.Txt_Gaichoku_Buhinsu)
+        Me.Panel3.Controls.Add(Me.Label20)
+        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Fukushizai)
+        Me.Panel3.Controls.Add(Me.Label21)
+        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Boltsu)
+        Me.Panel3.Controls.Add(Me.Label22)
+        Me.Panel3.Controls.Add(Me.Txt_Gaisou_Poribukuro)
+        Me.Panel3.Controls.Add(Me.Label23)
+        Me.Panel3.Controls.Add(Me.Txt_Gaisouo_Danborusu)
+        Me.Panel3.Controls.Add(Me.Label24)
+        Me.Panel3.Controls.Add(Me.Txt_Sukashi_Casesu)
+        Me.Panel3.Controls.Add(Me.Label12)
+        Me.Panel3.Controls.Add(Me.Txt_Tsumituke_Kaisu)
+        Me.Panel3.Controls.Add(Me.Label13)
+        Me.Panel3.Controls.Add(Me.Txt_Panel_Casesu)
+        Me.Panel3.Controls.Add(Me.Label9)
+        Me.Panel3.Controls.Add(Me.Txt_ENG)
+        Me.Panel3.Controls.Add(Me.Label10)
+        Me.Panel3.Controls.Add(Me.Txt_Returnable)
+        Me.Panel3.Controls.Add(Me.Label11)
+        Me.Panel3.Controls.Add(Me.Txt_Cartonsu)
+        Me.Panel3.Controls.Add(Me.Label6)
+        Me.Panel3.Controls.Add(Me.Txt_Naisou_Shizaisu)
+        Me.Panel3.Controls.Add(Me.Label7)
+        Me.Panel3.Controls.Add(Me.Txt_Kosousu)
+        Me.Panel3.Controls.Add(Me.Label8)
+        Me.Panel3.Controls.Add(Me.Txt_Bousabi_Kaisu)
+        Me.Panel3.Controls.Add(Me.Label5)
+        Me.Panel3.Controls.Add(Me.Txt_Buhin_Tensu)
+        Me.Panel3.Controls.Add(Me.Label4)
+        Me.Panel3.Controls.Add(Me.Txt_Tanpin_Buhin_Sousu)
+        Me.Panel3.Controls.Add(Me.Label2)
+        Me.Panel3.Controls.Add(Me.Btn_Touroku)
+        Me.Panel3.Controls.Add(Me.Btn_Clear)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel3.Location = New System.Drawing.Point(0, 310)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1264, 299)
+        Me.Panel3.TabIndex = 6
+        '
+        'Txt_id
+        '
+        Me.Txt_id.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_id.Location = New System.Drawing.Point(1102, 106)
+        Me.Txt_id.Name = "Txt_id"
+        Me.Txt_id.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_id.TabIndex = 71
+        Me.Txt_id.Visible = False
+        '
+        'Btn_All_Return
+        '
+        Me.Btn_All_Return.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Btn_All_Return.Location = New System.Drawing.Point(1128, 222)
+        Me.Btn_All_Return.Name = "Btn_All_Return"
+        Me.Btn_All_Return.Size = New System.Drawing.Size(124, 65)
+        Me.Btn_All_Return.TabIndex = 70
+        Me.Btn_All_Return.Text = "全て戻す"
+        Me.Btn_All_Return.UseVisualStyleBackColor = True
+        '
+        'Txt_Shizai_Total
+        '
+        Me.Txt_Shizai_Total.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Shizai_Total.Location = New System.Drawing.Point(1102, 172)
+        Me.Txt_Shizai_Total.Name = "Txt_Shizai_Total"
+        Me.Txt_Shizai_Total.ReadOnly = True
+        Me.Txt_Shizai_Total.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Shizai_Total.TabIndex = 68
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label29.Location = New System.Drawing.Point(1099, 153)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(56, 16)
+        Me.Label29.TabIndex = 69
+        Me.Label29.Text = "資材計"
+        '
+        'Txt_Gaisou_Shizai
+        '
+        Me.Txt_Gaisou_Shizai.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaisou_Shizai.Location = New System.Drawing.Point(993, 172)
+        Me.Txt_Gaisou_Shizai.Name = "Txt_Gaisou_Shizai"
+        Me.Txt_Gaisou_Shizai.ReadOnly = True
+        Me.Txt_Gaisou_Shizai.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaisou_Shizai.TabIndex = 67
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label30.Location = New System.Drawing.Point(990, 153)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(72, 16)
+        Me.Label30.TabIndex = 66
+        Me.Label30.Text = "外装資材"
+        '
+        'Txt_Ko_Naisou_Shizai
+        '
+        Me.Txt_Ko_Naisou_Shizai.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Ko_Naisou_Shizai.Location = New System.Drawing.Point(886, 172)
+        Me.Txt_Ko_Naisou_Shizai.Name = "Txt_Ko_Naisou_Shizai"
+        Me.Txt_Ko_Naisou_Shizai.ReadOnly = True
+        Me.Txt_Ko_Naisou_Shizai.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Ko_Naisou_Shizai.TabIndex = 65
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label31.Location = New System.Drawing.Point(883, 153)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(93, 16)
+        Me.Label31.TabIndex = 64
+        Me.Label31.Text = "個_内装資材"
+        '
+        'Txt_Sagyou_Total
+        '
+        Me.Txt_Sagyou_Total.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Sagyou_Total.Location = New System.Drawing.Point(779, 172)
+        Me.Txt_Sagyou_Total.Name = "Txt_Sagyou_Total"
+        Me.Txt_Sagyou_Total.ReadOnly = True
+        Me.Txt_Sagyou_Total.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Sagyou_Total.TabIndex = 62
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label32.Location = New System.Drawing.Point(776, 153)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(56, 16)
+        Me.Label32.TabIndex = 63
+        Me.Label32.Text = "作業計"
+        '
+        'Txt_Gaisou_Sagyou
+        '
+        Me.Txt_Gaisou_Sagyou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaisou_Sagyou.Location = New System.Drawing.Point(672, 172)
+        Me.Txt_Gaisou_Sagyou.Name = "Txt_Gaisou_Sagyou"
+        Me.Txt_Gaisou_Sagyou.ReadOnly = True
+        Me.Txt_Gaisou_Sagyou.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaisou_Sagyou.TabIndex = 61
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label33.Location = New System.Drawing.Point(669, 153)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(72, 16)
+        Me.Label33.TabIndex = 60
+        Me.Label33.Text = "外装作業"
+        '
+        'Txt_Naisou_Sagyou
+        '
+        Me.Txt_Naisou_Sagyou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Naisou_Sagyou.Location = New System.Drawing.Point(565, 172)
+        Me.Txt_Naisou_Sagyou.Name = "Txt_Naisou_Sagyou"
+        Me.Txt_Naisou_Sagyou.ReadOnly = True
+        Me.Txt_Naisou_Sagyou.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Naisou_Sagyou.TabIndex = 59
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label34.Location = New System.Drawing.Point(562, 153)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(72, 16)
+        Me.Label34.TabIndex = 58
+        Me.Label34.Text = "内装作業"
+        '
+        'Txt_Kosou_Sagyou
+        '
+        Me.Txt_Kosou_Sagyou.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Kosou_Sagyou.Location = New System.Drawing.Point(458, 172)
+        Me.Txt_Kosou_Sagyou.Name = "Txt_Kosou_Sagyou"
+        Me.Txt_Kosou_Sagyou.ReadOnly = True
+        Me.Txt_Kosou_Sagyou.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Kosou_Sagyou.TabIndex = 56
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label35.Location = New System.Drawing.Point(455, 153)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(72, 16)
+        Me.Label35.TabIndex = 57
+        Me.Label35.Text = "個装作業"
+        '
+        'Txt_Gaisou_Shizaihi
+        '
+        Me.Txt_Gaisou_Shizaihi.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaisou_Shizaihi.Location = New System.Drawing.Point(351, 172)
+        Me.Txt_Gaisou_Shizaihi.Name = "Txt_Gaisou_Shizaihi"
+        Me.Txt_Gaisou_Shizaihi.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaisou_Shizaihi.TabIndex = 55
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label14.Location = New System.Drawing.Point(348, 153)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(88, 16)
+        Me.Label14.TabIndex = 54
+        Me.Label14.Text = "外装資材費"
+        '
+        'Txt_Naisou_Shizaihi
+        '
+        Me.Txt_Naisou_Shizaihi.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Naisou_Shizaihi.Location = New System.Drawing.Point(244, 172)
+        Me.Txt_Naisou_Shizaihi.Name = "Txt_Naisou_Shizaihi"
+        Me.Txt_Naisou_Shizaihi.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Naisou_Shizaihi.TabIndex = 53
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label15.Location = New System.Drawing.Point(241, 153)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(88, 16)
+        Me.Label15.TabIndex = 52
+        Me.Label15.Text = "内装資材費"
+        '
+        'Txt_Kosou_Shizaihi
+        '
+        Me.Txt_Kosou_Shizaihi.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Kosou_Shizaihi.Location = New System.Drawing.Point(137, 172)
+        Me.Txt_Kosou_Shizaihi.Name = "Txt_Kosou_Shizaihi"
+        Me.Txt_Kosou_Shizaihi.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Kosou_Shizaihi.TabIndex = 51
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label16.Location = New System.Drawing.Point(134, 153)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(88, 16)
+        Me.Label16.TabIndex = 50
+        Me.Label16.Text = "個装資材費"
+        '
+        'Txt_Buhin_Tensu_Sum
+        '
+        Me.Txt_Buhin_Tensu_Sum.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Buhin_Tensu_Sum.Location = New System.Drawing.Point(30, 172)
+        Me.Txt_Buhin_Tensu_Sum.Name = "Txt_Buhin_Tensu_Sum"
+        Me.Txt_Buhin_Tensu_Sum.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Buhin_Tensu_Sum.TabIndex = 49
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label17.Location = New System.Drawing.Point(27, 153)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(109, 16)
+        Me.Label17.TabIndex = 48
+        Me.Label17.Text = "部品点数_集計"
+        '
+        'Txt_Gaisou_Case
+        '
+        Me.Txt_Gaisou_Case.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaisou_Case.Location = New System.Drawing.Point(901, 106)
+        Me.Txt_Gaisou_Case.Name = "Txt_Gaisou_Case"
+        Me.Txt_Gaisou_Case.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaisou_Case.TabIndex = 46
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label18.Location = New System.Drawing.Point(898, 87)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(94, 16)
+        Me.Label18.TabIndex = 47
+        Me.Label18.Text = "外装ケース数"
+        '
+        'Txt_Gaichoku_Bousabi
+        '
+        Me.Txt_Gaichoku_Bousabi.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaichoku_Bousabi.Location = New System.Drawing.Point(781, 106)
+        Me.Txt_Gaichoku_Bousabi.Name = "Txt_Gaichoku_Bousabi"
+        Me.Txt_Gaichoku_Bousabi.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaichoku_Bousabi.TabIndex = 45
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label19.Location = New System.Drawing.Point(778, 87)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(117, 16)
+        Me.Label19.TabIndex = 44
+        Me.Label19.Text = "外直の防錆回数"
+        '
+        'Txt_Gaichoku_Buhinsu
+        '
+        Me.Txt_Gaichoku_Buhinsu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaichoku_Buhinsu.Location = New System.Drawing.Point(674, 106)
+        Me.Txt_Gaichoku_Buhinsu.Name = "Txt_Gaichoku_Buhinsu"
+        Me.Txt_Gaichoku_Buhinsu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaichoku_Buhinsu.TabIndex = 43
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label20.Location = New System.Drawing.Point(671, 87)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(104, 16)
+        Me.Label20.TabIndex = 42
+        Me.Label20.Text = "外直部品総数"
+        '
+        'Txt_Gaisou_Fukushizai
+        '
+        Me.Txt_Gaisou_Fukushizai.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaisou_Fukushizai.Location = New System.Drawing.Point(523, 106)
+        Me.Txt_Gaisou_Fukushizai.Name = "Txt_Gaisou_Fukushizai"
+        Me.Txt_Gaisou_Fukushizai.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaisou_Fukushizai.TabIndex = 40
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label21.Location = New System.Drawing.Point(520, 87)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(152, 16)
+        Me.Label21.TabIndex = 41
+        Me.Label21.Text = "外装用副資材使用数"
+        '
+        'Txt_Gaisou_Boltsu
+        '
+        Me.Txt_Gaisou_Boltsu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaisou_Boltsu.Location = New System.Drawing.Point(376, 106)
+        Me.Txt_Gaisou_Boltsu.Name = "Txt_Gaisou_Boltsu"
+        Me.Txt_Gaisou_Boltsu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaisou_Boltsu.TabIndex = 39
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label22.Location = New System.Drawing.Point(373, 87)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(141, 16)
+        Me.Label22.TabIndex = 38
+        Me.Label22.Text = "外装用ボルト使用数"
+        '
+        'Txt_Gaisou_Poribukuro
+        '
+        Me.Txt_Gaisou_Poribukuro.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaisou_Poribukuro.Location = New System.Drawing.Point(244, 106)
+        Me.Txt_Gaisou_Poribukuro.Name = "Txt_Gaisou_Poribukuro"
+        Me.Txt_Gaisou_Poribukuro.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaisou_Poribukuro.TabIndex = 37
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label23.Location = New System.Drawing.Point(241, 87)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(126, 16)
+        Me.Label23.TabIndex = 36
+        Me.Label23.Text = "外装用箱型ポリ袋"
+        '
+        'Txt_Gaisouo_Danborusu
+        '
+        Me.Txt_Gaisouo_Danborusu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Gaisouo_Danborusu.Location = New System.Drawing.Point(30, 106)
+        Me.Txt_Gaisouo_Danborusu.Name = "Txt_Gaisouo_Danborusu"
+        Me.Txt_Gaisouo_Danborusu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Gaisouo_Danborusu.TabIndex = 34
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label24.Location = New System.Drawing.Point(30, 87)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(192, 16)
+        Me.Label24.TabIndex = 35
+        Me.Label24.Text = "外装用段ボールパット使用数"
+        '
+        'Txt_Sukashi_Casesu
+        '
+        Me.Txt_Sukashi_Casesu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Sukashi_Casesu.Location = New System.Drawing.Point(1102, 44)
+        Me.Txt_Sukashi_Casesu.Name = "Txt_Sukashi_Casesu"
+        Me.Txt_Sukashi_Casesu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Sukashi_Casesu.TabIndex = 33
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label12.Location = New System.Drawing.Point(1099, 25)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(98, 16)
+        Me.Label12.TabIndex = 32
+        Me.Label12.Text = "スカシケース数"
+        '
+        'Txt_Tsumituke_Kaisu
+        '
+        Me.Txt_Tsumituke_Kaisu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Tsumituke_Kaisu.Location = New System.Drawing.Point(888, 44)
+        Me.Txt_Tsumituke_Kaisu.Name = "Txt_Tsumituke_Kaisu"
+        Me.Txt_Tsumituke_Kaisu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Tsumituke_Kaisu.TabIndex = 31
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label13.Location = New System.Drawing.Point(992, 25)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(101, 16)
+        Me.Label13.TabIndex = 30
+        Me.Label13.Text = "パネルケース数"
+        '
+        'Txt_Panel_Casesu
+        '
+        Me.Txt_Panel_Casesu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Panel_Casesu.Location = New System.Drawing.Point(995, 44)
+        Me.Txt_Panel_Casesu.Name = "Txt_Panel_Casesu"
+        Me.Txt_Panel_Casesu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Panel_Casesu.TabIndex = 29
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label9.Location = New System.Drawing.Point(885, 25)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(99, 16)
+        Me.Label9.TabIndex = 28
+        Me.Label9.Text = "積み付け回数"
+        '
+        'Txt_ENG
+        '
+        Me.Txt_ENG.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_ENG.Location = New System.Drawing.Point(781, 44)
+        Me.Txt_ENG.Name = "Txt_ENG"
+        Me.Txt_ENG.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_ENG.TabIndex = 27
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label10.Location = New System.Drawing.Point(778, 25)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(102, 16)
+        Me.Label10.TabIndex = 26
+        Me.Label10.Text = "ENG発泡材数"
+        '
+        'Txt_Returnable
+        '
+        Me.Txt_Returnable.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Returnable.Location = New System.Drawing.Point(674, 44)
+        Me.Txt_Returnable.Name = "Txt_Returnable"
+        Me.Txt_Returnable.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Returnable.TabIndex = 24
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label11.Location = New System.Drawing.Point(671, 25)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(127, 16)
+        Me.Label11.TabIndex = 25
+        Me.Label11.Text = "リターナブル容器数"
+        '
+        'Txt_Cartonsu
+        '
+        Me.Txt_Cartonsu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Cartonsu.Location = New System.Drawing.Point(565, 44)
+        Me.Txt_Cartonsu.Name = "Txt_Cartonsu"
+        Me.Txt_Cartonsu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Cartonsu.TabIndex = 23
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label6.Location = New System.Drawing.Point(562, 25)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(71, 16)
+        Me.Label6.TabIndex = 22
+        Me.Label6.Text = "カートン数"
+        '
+        'Txt_Naisou_Shizaisu
+        '
+        Me.Txt_Naisou_Shizaisu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Naisou_Shizaisu.Location = New System.Drawing.Point(458, 44)
+        Me.Txt_Naisou_Shizaisu.Name = "Txt_Naisou_Shizaisu"
+        Me.Txt_Naisou_Shizaisu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Naisou_Shizaisu.TabIndex = 21
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label7.Location = New System.Drawing.Point(455, 25)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(88, 16)
+        Me.Label7.TabIndex = 20
+        Me.Label7.Text = "内装資材数"
+        '
+        'Txt_Kosousu
+        '
+        Me.Txt_Kosousu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Kosousu.Location = New System.Drawing.Point(351, 44)
+        Me.Txt_Kosousu.Name = "Txt_Kosousu"
+        Me.Txt_Kosousu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Kosousu.TabIndex = 18
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label8.Location = New System.Drawing.Point(348, 25)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(56, 16)
+        Me.Label8.TabIndex = 19
+        Me.Label8.Text = "個装数"
+        '
+        'Txt_Bousabi_Kaisu
+        '
+        Me.Txt_Bousabi_Kaisu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Bousabi_Kaisu.Location = New System.Drawing.Point(244, 44)
+        Me.Txt_Bousabi_Kaisu.Name = "Txt_Bousabi_Kaisu"
+        Me.Txt_Bousabi_Kaisu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Bousabi_Kaisu.TabIndex = 17
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label5.Location = New System.Drawing.Point(241, 25)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(72, 16)
+        Me.Label5.TabIndex = 16
+        Me.Label5.Text = "防錆回数"
+        '
+        'Txt_Buhin_Tensu
+        '
+        Me.Txt_Buhin_Tensu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Buhin_Tensu.Location = New System.Drawing.Point(137, 44)
+        Me.Txt_Buhin_Tensu.Name = "Txt_Buhin_Tensu"
+        Me.Txt_Buhin_Tensu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Buhin_Tensu.TabIndex = 15
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label4.Location = New System.Drawing.Point(134, 25)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(72, 16)
+        Me.Label4.TabIndex = 14
+        Me.Label4.Text = "部品点数"
+        '
+        'Txt_Tanpin_Buhin_Sousu
+        '
+        Me.Txt_Tanpin_Buhin_Sousu.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Txt_Tanpin_Buhin_Sousu.Location = New System.Drawing.Point(30, 44)
+        Me.Txt_Tanpin_Buhin_Sousu.Name = "Txt_Tanpin_Buhin_Sousu"
+        Me.Txt_Tanpin_Buhin_Sousu.Size = New System.Drawing.Size(101, 23)
+        Me.Txt_Tanpin_Buhin_Sousu.TabIndex = 12
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label2.Location = New System.Drawing.Point(27, 25)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(104, 16)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "単品部品総数"
+        '
+        'TA_T_CCC_Lot
+        '
+        Me.TA_T_CCC_Lot.ClearBeforeFill = True
+        '
         'F_Chousei
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1264, 658)
+        Me.ClientSize = New System.Drawing.Size(1264, 609)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
@@ -1848,7 +1840,6 @@ Partial Class F_Chousei
     Friend WithEvents GV_Chousei As DataGridView
     Friend WithEvents Btn_Clear As Button
     Friend WithEvents Btn_Touroku As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents Panel3 As Panel
     Friend WithEvents DS_T As DS_T
     Friend WithEvents DTTCCCLotBindingSource As BindingSource

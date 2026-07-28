@@ -284,6 +284,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TA_T_CCC_Lot.Extensions.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="F_Chousei.resx">

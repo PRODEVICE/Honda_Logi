@@ -622,6 +622,79 @@ Public Class F_Chousei
 
     End Function
 
+    '******************************************************************************
+    '編集エリア自動計算（ReadOnly項目を関連テキストボックスの変更に応じて再計算）
+    '計算式はF_Make_1Lot.vbのT_CCC_Lot更新SQLと同一のものを使用
+    '******************************************************************************
+
+    'テキストの数値をDecimalとして取得（未入力・数値以外は0扱い）
+    Function GetDecimalOrZero(txt As TextBox) As Decimal
+
+        Dim value As Decimal
+
+        If Decimal.TryParse(txt.Text, value) Then
+            Return value
+        Else
+            Return 0
+        End If
+
+    End Function
+
+    '個装作業＝防錆回数＋個装数
+    Private Sub Recalc_Kosou_Sagyou(sender As Object, e As EventArgs) Handles Txt_Bousabi_Kaisu.TextChanged, Txt_Kosousu.TextChanged
+
+        Txt_Kosou_Sagyou.Text = (GetDecimalOrZero(Txt_Bousabi_Kaisu) + GetDecimalOrZero(Txt_Kosousu)).ToString()
+
+    End Sub
+
+    '内装作業＝単品部品総数＋部品点数＋内装資材数＋カートン数＋リターナブル容器数＋ENG発泡材数＋積み付け回数
+    Private Sub Recalc_Naisou_Sagyou(sender As Object, e As EventArgs) Handles Txt_Tanpin_Buhin_Sousu.TextChanged, Txt_Buhin_Tensu.TextChanged, _
+        Txt_Naisou_Shizaisu.TextChanged, Txt_Cartonsu.TextChanged, Txt_Returnable.TextChanged, Txt_ENG.TextChanged, Txt_Tsumituke_Kaisu.TextChanged
+
+        Txt_Naisou_Sagyou.Text = (GetDecimalOrZero(Txt_Tanpin_Buhin_Sousu) + GetDecimalOrZero(Txt_Buhin_Tensu) + GetDecimalOrZero(Txt_Naisou_Shizaisu) + _
+            GetDecimalOrZero(Txt_Cartonsu) + GetDecimalOrZero(Txt_Returnable) + GetDecimalOrZero(Txt_ENG) + GetDecimalOrZero(Txt_Tsumituke_Kaisu)).ToString()
+
+    End Sub
+
+    '外装作業＝パネルケース数＋スカシケース数＋外装用段ボールパット使用数＋外装用箱型ポリ袋＋外装用ボルト使用数＋外装用副資材使用数＋外直部品総数＋外直の防錆回数＋外装ケース数
+    Private Sub Recalc_Gaisou_Sagyou(sender As Object, e As EventArgs) Handles Txt_Panel_Casesu.TextChanged, Txt_Sukashi_Casesu.TextChanged, _
+        Txt_Gaisouo_Danborusu.TextChanged, Txt_Gaisou_Poribukuro.TextChanged, Txt_Gaisou_Boltsu.TextChanged, Txt_Gaisou_Fukushizai.TextChanged, _
+        Txt_Gaichoku_Buhinsu.TextChanged, Txt_Gaichoku_Bousabi.TextChanged, Txt_Gaisou_Case.TextChanged
+
+        Txt_Gaisou_Sagyou.Text = (GetDecimalOrZero(Txt_Panel_Casesu) + GetDecimalOrZero(Txt_Sukashi_Casesu) + GetDecimalOrZero(Txt_Gaisouo_Danborusu) + _
+            GetDecimalOrZero(Txt_Gaisou_Poribukuro) + GetDecimalOrZero(Txt_Gaisou_Boltsu) + GetDecimalOrZero(Txt_Gaisou_Fukushizai) + _
+            GetDecimalOrZero(Txt_Gaichoku_Buhinsu) + GetDecimalOrZero(Txt_Gaichoku_Bousabi) + GetDecimalOrZero(Txt_Gaisou_Case)).ToString()
+
+    End Sub
+
+    '作業計＝個装作業＋内装作業＋外装作業
+    Private Sub Recalc_Sagyou_Total(sender As Object, e As EventArgs) Handles Txt_Kosou_Sagyou.TextChanged, Txt_Naisou_Sagyou.TextChanged, Txt_Gaisou_Sagyou.TextChanged
+
+        Txt_Sagyou_Total.Text = (GetDecimalOrZero(Txt_Kosou_Sagyou) + GetDecimalOrZero(Txt_Naisou_Sagyou) + GetDecimalOrZero(Txt_Gaisou_Sagyou)).ToString()
+
+    End Sub
+
+    '個_内装資材＝個装資材費＋内装資材費
+    Private Sub Recalc_Ko_Naisou_Shizai(sender As Object, e As EventArgs) Handles Txt_Kosou_Shizaihi.TextChanged, Txt_Naisou_Shizaihi.TextChanged
+
+        Txt_Ko_Naisou_Shizai.Text = (GetDecimalOrZero(Txt_Kosou_Shizaihi) + GetDecimalOrZero(Txt_Naisou_Shizaihi)).ToString()
+
+    End Sub
+
+    '外装資材＝外装資材費
+    Private Sub Recalc_Gaisou_Shizai(sender As Object, e As EventArgs) Handles Txt_Gaisou_Shizaihi.TextChanged
+
+        Txt_Gaisou_Shizai.Text = GetDecimalOrZero(Txt_Gaisou_Shizaihi).ToString()
+
+    End Sub
+
+    '資材計＝個_内装資材＋外装資材
+    Private Sub Recalc_Shizai_Total(sender As Object, e As EventArgs) Handles Txt_Ko_Naisou_Shizai.TextChanged, Txt_Gaisou_Shizai.TextChanged
+
+        Txt_Shizai_Total.Text = (GetDecimalOrZero(Txt_Ko_Naisou_Shizai) + GetDecimalOrZero(Txt_Gaisou_Shizai)).ToString()
+
+    End Sub
+
     '編集エリアの入力欄をクリア
     Sub Clear_Henshu()
 

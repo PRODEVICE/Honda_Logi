@@ -341,6 +341,8 @@ Public Class F_Make_1Lot
                 Dim ta As New DS_TTableAdapters.TA_T_CCC_Lot
                 Dim ta_ccc As New DS_TTableAdapters.TA_T_CCC
 
+                ta.SetCommandTimeout(300)
+
                 Dim target_mitsumori_no As String = ta_ccc.Q_Max見積No取得
                 ta.Q_CCC_Lot取得(dt, target_mitsumori_no)
 
@@ -512,6 +514,44 @@ Public Class F_Make_1Lot
 
             Next
 
+            'ユニーク判定用辞書2
+            Dim lotDict2 As New Dictionary(Of String, Integer)(StringComparer.Ordinal)
+            Dim lotMinIdDict2 As New Dictionary(Of String, String)(StringComparer.Ordinal)
+
+            ' まず DataRow 配列にする（高速化）
+            Dim rows2 As DataRow() = dt_ccc_lot.Select()
+
+            For Each dr As DataRow In rows2
+
+                Dim key As String = String.Concat(
+                SafeGetString(dr, "ｺﾝﾄﾛｰﾙNO"),
+                SafeGetString(dr, "ケースNO1"),
+                SafeGetString(dr, "包装ロットNO"),
+                SafeGetString(dr, "包装ロット連番"),
+                SafeGetString(dr, "モジュール手順SEQ"),
+                SafeGetString(dr, "内装NO")
+            )
+
+                Dim id As String = SafeGetString(dr, "id")
+
+                If lotDict2.ContainsKey(key) Then
+                    lotDict2(key) += 1
+                Else
+                    lotDict2(key) = 1
+                End If
+
+                ' 最小ID保持
+                If Not lotMinIdDict2.ContainsKey(key) Then
+                    lotMinIdDict2(key) = id
+                Else
+                    ' 文字列比較でなく数値比較したいならCInt等にする
+                    If CInt(id) < CInt(lotMinIdDict2(key)) Then
+                        lotMinIdDict2(key) = id
+                    End If
+                End If
+
+            Next
+
             '部品オーダーリスト辞書
             ta_order_list.Q_オーダーリスト取得(dt_order_list, _target_mitsumori_no)
             Dim searchDict As New Dictionary(Of String, List(Of OrderInfo))(StringComparer.Ordinal)
@@ -648,6 +688,7 @@ Public Class F_Make_1Lot
                 Dim houzou_line_gaisou As String = SafeGetString(row, "包装ライン_外装") '117
                 Dim kosou_shizai_cd As String = SafeGetString(row, "個装資材記号") '156
                 Dim naisou_shizai_cd As String = SafeGetString(row, "内装資材記号") '160
+                Dim naisou_no As String = SafeGetString(row, "内装NO") '162
                 Dim gaisou_shizai_cd As String = SafeGetString(row, "外装資材記号") '165
                 Dim module_seq As String = SafeGetString(row, "モジュール手順SEQ") '166
                 Dim naisou_irisu As String = SafeGetString(row, "内装入り数") '167
@@ -901,6 +942,11 @@ Public Class F_Make_1Lot
                                     '使用数を加算する
                                     total_shiyou_su = total_shiyou_su + shiyou_su
 
+                                    '資材コードにCZを含む場合は主資材のみカウントするのでフラグを変更
+                                    If shizai_cd.Substring(0, 2) = "CZ" Then
+                                        target_flg = False
+                                    End If
+
                                 Else
                                     target_flg = False
                                 End If
@@ -932,6 +978,54 @@ Public Class F_Make_1Lot
                         Next
 
                         carton_su = total_shiyou_su * naisou_irisu * carton_second
+
+                        '副資材系を加算する
+                        If houzou_line_gaisou.Contains("A0") Then
+
+                        Else
+
+                            '225列目～249列目の中に内装主資材データ記載の資材が存在するかチェック
+                            For i As Integer = 0 To fuku_shizaiSmall.Length - 1
+                                Dim shizai_cd As String = fuku_shizaiSmall(i)
+                                Dim qty As Decimal = hitsuyou_suSmall(i)
+                                Dim suryou As Decimal = 0
+                                ' 空チェック
+                                If Not String.IsNullOrEmpty(shizai_cd) AndAlso qty > 0 Then
+
+                                    If naisouDict.ContainsKey(shizai_cd) Then
+                                        suryou = naisouDict(shizai_cd)
+                                    Else
+                                        suryou = -1
+                                    End If
+                                    'suryou = ta_M_naisou.Q_数量取得(shizai_cd)
+
+                                    If suryou <> -1 Then
+                                        carton_su = carton_su + qty * suryou * carton_second
+                                    End If
+
+                                End If
+
+                            Next
+
+                        End If
+
+                        '内装NOが空白でなければ
+                        If naisou_no <> "" Then
+
+                            Dim lotKey_MIN As String = controll_no & case_no & housou_lot_no & housou_lot_eda_no & module_seq & naisou_no
+
+                            If lotDict2.ContainsKey(lotKey_MIN) AndAlso lotDict(lotKey_MIN) > 1 Then
+
+                                ' 最小IDだけ値を入れる
+                                If target_id = lotMinIdDict2(lotKey_MIN) Then
+                                    ' そのまま carton_su
+                                Else
+                                    carton_su = 0
+                                End If
+
+                            End If
+
+                        End If
 
                     Else 'KOWに存在しない
 
@@ -1418,6 +1512,11 @@ Public Class F_Make_1Lot
 
                                     '使用数を加算する
                                     total_shiyou_su = total_shiyou_su + shiyou_su
+
+                                    '資材コードにCZを含む場合は主資材のみカウントするのでフラグを変更
+                                    If shizai_cd.Substring(0, 2) = "CZ" Then
+                                        target_flg = False
+                                    End If
 
                                 Else
                                     target_flg = False
@@ -3841,15 +3940,7 @@ Public Class F_Make_1Lot
 		                     ELSE 0 END AS 単品部品総数
 		 
 		                     --部品点数
-                            ,CASE WHEN Kosou.個装資材コード IS NOT NULL THEN　
-                                CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second2.秒数
-                            ELSE 
-                                CASE WHEN Kosou2.個装資材コード IS NOT NULL THEN　
-                                    CONVERT(decimal,CASE WHEN Main.内装入り数 = '0' THEN '1' ELSE Main.内装入り数 END) * Second2.秒数
-                                ELSE
-                                    Second2.秒数
-                                END     
-		                    END AS 部品点数
+                             ,Second2.秒数  AS 部品点数
 
 		                     --防錆回数
 		                    ,0  AS 防錆回数

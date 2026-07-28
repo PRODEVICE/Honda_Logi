@@ -30,9 +30,10 @@
             'モードによって表示制御
             If _mode = 1 Then
                 Lbl_Mode.Visible = False
-
+                Btn_Chousei.Visible = True
             ElseIf _mode = 2 Then
                 Lbl_Mode.Visible = True
+                Btn_Chousei.Visible = False
             End If
 
         Catch ex As Exception
